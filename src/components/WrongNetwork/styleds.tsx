@@ -7,7 +7,7 @@ export const ImageContainer = styled.div`
 	min-width: 5rem;
 	min-height: 5rem;
 	border-radius: 50%;
-	margin-bottom: 1rem;
+	margin: 0 auto 1rem;
 	padding: 1rem;
 	background: ${({ theme }) => theme.primaryLight || "lightgray"};
 `;

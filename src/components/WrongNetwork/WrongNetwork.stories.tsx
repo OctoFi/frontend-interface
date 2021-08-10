@@ -1,14 +1,18 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { WrongNetwork } from "./WrongNetwork";
+import { PureWrongNetwork, PureWrongNetworkProps } from "./WrongNetwork";
 
 export default {
 	title: "Components/WrongNetwork",
-	component: WrongNetwork,
+	component: PureWrongNetwork,
 } as Meta;
 
-const Template: Story = (args) => <WrongNetwork {...args} />;
+const Template: Story<PureWrongNetworkProps> = (args) => <PureWrongNetwork {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+	title: "Wrong Network",
+	message: "Please connect to the Ethereum network to continue.",
+	label: "Change Network",
+};
