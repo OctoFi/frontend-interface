@@ -6,7 +6,7 @@ import { BigNumber } from "@ethersproject/bignumber";
 // import { abi as IUniswapV2Router02ABI } from "@uniswap/v2-periphery/build/IUniswapV2Router02.json";
 // import { ROUTER_ADDRESS } from "../../../octofi-app-aquafarm/src/constants";
 // import { Token, Currency, ETHER } from "@uniswap/sdk";
-import { ChainId, JSBI, Percent, CurrencyAmount } from "@uniswap/sdk";
+import { JSBI, Percent, CurrencyAmount } from "@uniswap/sdk";
 // import { TokenAddressMap } from "../../../octofi-app-aquafarm/src/state/lists/hooks";
 
 // returns the checksummed address if the address is valid, otherwise returns false
@@ -15,39 +15,6 @@ export function isAddress(value: any): string | false {
 		return getAddress(value);
 	} catch {
 		return false;
-	}
-}
-
-const EXPLORER_PREFIXES: { [chainId in ChainId]: string } = {
-	1: "",
-	3: "ropsten.",
-	4: "rinkeby.",
-	5: "goerli.",
-	42: "kovan.",
-};
-
-// TODO: make generic
-export function getExplorerLink(
-	chainId: ChainId,
-	data: string,
-	type: "transaction" | "token" | "address" | "block"
-): string {
-	const prefix = `https://${EXPLORER_PREFIXES[chainId] || EXPLORER_PREFIXES[1]}etherscan.io`;
-
-	switch (type) {
-		case "transaction": {
-			return `${prefix}/tx/${data}`;
-		}
-		case "token": {
-			return `${prefix}/token/${data}`;
-		}
-		case "block": {
-			return `${prefix}/block/${data}`;
-		}
-		case "address":
-		default: {
-			return `${prefix}/address/${data}`;
-		}
 	}
 }
 
