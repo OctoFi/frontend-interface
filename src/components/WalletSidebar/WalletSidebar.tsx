@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Button, Offcanvas, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Wallet } from "react-bootstrap-icons";
-import { Copy } from "react-feather";
 import { useTranslation } from "react-i18next";
 
-import { useActiveWeb3React } from "../../hooks/useActiveWeb3React";
+// import { useActiveWeb3React } from "../../hooks/useActiveWeb3React";
 import { shortenAddress } from "../../utils";
 import AddFundsButton from "../AddFunds";
+import CopyButton from "../CopyButton";
 
 export const WalletSidebar = () => {
 	// const { account } = useActiveWeb3React();
@@ -38,15 +38,7 @@ export const WalletSidebar = () => {
 						<>
 							<div className="mb-2 text-end">
 								<OverlayTrigger placement={"top"} overlay={<Tooltip id={"copy-tooltip"}>Copy</Tooltip>}>
-									<Button
-										onClick={toggleConnectModal}
-										variant="light"
-										className="text-muted bg-transparent border-0"
-									>
-										{account && shortenAddress(account)}
-
-										<Copy size={16} className="ms-1" />
-									</Button>
+									<CopyButton toCopy={account}>{account && shortenAddress(account)}</CopyButton>
 								</OverlayTrigger>
 							</div>
 
