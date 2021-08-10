@@ -9,9 +9,13 @@ export interface GasIndicatorProps {
 
 export const GasIndicator = ({ gas = 0, onClick }: GasIndicatorProps) => {
 	return (
-		<Button variant="light" onClick={onClick} className="d-inline-flex align-items-center text-success fw-bold">
+		<Button
+			variant="light"
+			onClick={onClick}
+			className="d-flex gap-2 flex-nowrap align-items-center text-success fw-bold"
+		>
 			<SVG src={GasStationOutlined} />
-			<span className="ms-1">{gas}</span>
+			<span>{gas}</span>
 		</Button>
 	);
 };
