@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Img from "../UI/Img";
 
-export const InnerCard = styled.div`
+export const Wrap = styled.div`
 	display: flex;
 	flex-direction: column;
 	border-radius: 12px;
@@ -10,6 +10,7 @@ export const InnerCard = styled.div`
 	align-items: stretch;
 	border: 1px solid ${({ theme }) => theme.borderColor};
 	margin-bottom: 20px;
+	max-width: 400px;
 `;
 
 export const ItemImageContainer = styled.div`

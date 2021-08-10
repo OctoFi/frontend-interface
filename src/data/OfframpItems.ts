@@ -10,19 +10,7 @@ import BitgildImage from "../assets/images/offramp/bitgild.png";
 import TravalaImage from "../assets/images/offramp/travala.png";
 import GivingImage from "../assets/images/offramp/giving.png";
 
-export type OfframpItem = {
-    thumbnail: string;
-    title: string;
-    url: string;
-    traits: Array<OfframpTraitItem>;
-}
-
-export type OfframpTraitItem = {
-    title: string;
-    icon: string;
-}
-
-export const OfframpItems: Array<OfframpItem> = [
+const OfframpItems = [
     {
         thumbnail: BitrefillImage,
         title: "Bitrefill",
@@ -176,3 +164,5 @@ export const OfframpItems: Array<OfframpItem> = [
         ],
     },
 ];
+
+export default OfframpItems;
