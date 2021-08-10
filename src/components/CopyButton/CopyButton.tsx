@@ -12,18 +12,18 @@ export const PureCopyButton = ({ onCopy, success, children }: PureCopyButtonProp
 		<Button
 			onClick={onCopy}
 			variant="light"
-			className={`bg-transparent border-0 d-flex gap-2 flex-nowrap align-items-center ${
+			className={`bg-transparent border-0 d-inline-flex gap-2 flex-nowrap align-items-center ${
 				success ? "text-success" : "text-muted"
 			}`}
 		>
 			{success ? (
 				<>
-					<CheckCircle size={20} />
+					<CheckCircle size={24} />
 					<span>Copied</span>
 				</>
 			) : (
 				<>
-					<Copy size={20} />
+					<Copy size={24} />
 					{children}
 				</>
 			)}

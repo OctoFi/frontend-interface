@@ -8,8 +8,8 @@ export type PureDisconnectAccountProps = {
 
 export const PureDisconnectAccount = ({ label, onLogout }: PureDisconnectAccountProps) => {
 	return (
-		<Button onClick={onLogout} variant="light" className="d-flex gap-2 flex-nowrap align-items-center">
-			<X size={20} />
+		<Button onClick={onLogout} variant="light" className="d-inline-flex gap-2 flex-nowrap align-items-center">
+			<X size={24} />
 			<span>{label}</span>
 		</Button>
 	);

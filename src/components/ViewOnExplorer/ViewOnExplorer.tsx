@@ -1,6 +1,6 @@
+import { Button } from "react-bootstrap";
 import { ExternalLink } from "react-feather";
 import { getExplorerLink } from "../../utils/explorer";
-import * as Styled from "./styleds";
 
 export type PureViewOnExplorerProps = {
 	address: string;
@@ -9,13 +9,16 @@ export type PureViewOnExplorerProps = {
 
 export const PureViewOnExplorer = ({ address, chainId }: PureViewOnExplorerProps) => {
 	return (
-		<Styled.ExplorerLink
+		<Button
+			as="a"
 			href={getExplorerLink(chainId, address, "address")}
 			target="_blank"
 			rel="noreferrer noopener"
+			variant="light"
+			className={"d-inline-flex gap-2 flex-nowrap align-items-center"}
 		>
-			<ExternalLink size={20} />
+			<ExternalLink size={24} />
 			<span>View on explorer</span>
-		</Styled.ExplorerLink>
+		</Button>
 	);
 };

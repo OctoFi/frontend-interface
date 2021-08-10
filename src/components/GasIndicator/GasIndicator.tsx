@@ -12,7 +12,7 @@ export const GasIndicator = ({ gas = 0, onClick }: GasIndicatorProps) => {
 		<Button
 			variant="light"
 			onClick={onClick}
-			className="d-flex gap-2 flex-nowrap align-items-center text-success fw-bold"
+			className="d-inline-flex gap-2 flex-nowrap align-items-center text-success fw-bold"
 		>
 			<SVG src={GasStationOutlined} />
 			<span>{gas}</span>
