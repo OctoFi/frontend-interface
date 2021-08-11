@@ -1,35 +1,31 @@
+import { ChainId, EXPLORER_URL, EXPLORER_URL_TX, EXPLORER_URL_TOKEN, EXPLORER_URL_BLOCK, EXPLORER_URL_ADDRESS } from "../constants/explorer";
 
-import { ChainId } from "@uniswap/sdk";
-
-const EXPLORER_PREFIXES: { [chainId in ChainId]: string } = {
-    1: "",
-    3: "ropsten.",
-    4: "rinkeby.",
-    5: "goerli.",
-    42: "kovan.",
-};
-
-// TODO: make generic
 export function getExplorerLink(
     chainId: ChainId,
     data: string,
-    type: "transaction" | "token" | "address" | "block"
+    type: "transaction" | "token" | "address" | "block" | "default"
 ): string {
-    const prefix = `https://${EXPLORER_PREFIXES[chainId] || EXPLORER_PREFIXES[1]}etherscan.io`;
+    const prefix = EXPLORER_URL[chainId] || EXPLORER_URL[1];
+    const segmentTx = EXPLORER_URL_TX[chainId] || EXPLORER_URL_TX[1];
+    const segmentToken = EXPLORER_URL_TOKEN[chainId] || EXPLORER_URL_TOKEN[1];
+    const segmentBlock = EXPLORER_URL_BLOCK[chainId] || EXPLORER_URL_BLOCK[1];
+    const segmentAddress = EXPLORER_URL_ADDRESS[chainId] || EXPLORER_URL_ADDRESS[1];
 
     switch (type) {
         case "transaction": {
-            return `${prefix}/tx/${data}`;
+            return prefix + segmentTx + data;
         }
         case "token": {
-            return `${prefix}/token/${data}`;
+            return prefix + segmentToken + data;
+        }
+        case "address": {
+            return prefix + segmentAddress + data;
         }
         case "block": {
-            return `${prefix}/block/${data}`;
+            return prefix + segmentBlock + data;
         }
-        case "address":
         default: {
-            return `${prefix}/address/${data}`;
+            return prefix;
         }
     }
 }
