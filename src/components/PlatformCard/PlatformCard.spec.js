@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import renderer from "react-test-renderer";
 import { cleanup } from "@testing-library/react";
-import { Default } from "./OverviewCard.stories";
+import { Default } from "./PlatformCard.stories";
 
 afterEach(cleanup);
 

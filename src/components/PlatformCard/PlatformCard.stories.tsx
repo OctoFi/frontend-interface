@@ -1,15 +1,15 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { PureOverviewCard, PureOverviewCardProps } from "./OverviewCard";
+import { PurePlatformCard, PurePlatformCardProps } from "./PlatformCard";
 import Image from "../../assets/images/ethereum-logo.png";
 
 export default {
-	title: "Components/OverviewCard",
-	component: PureOverviewCard,
+	title: "Components/PlatformCard",
+	component: PurePlatformCard,
 } as Meta;
 
-const Template: Story<PureOverviewCardProps> = (args) => <PureOverviewCard {...args} />;
+const Template: Story<PurePlatformCardProps> = (args) => <PurePlatformCard {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

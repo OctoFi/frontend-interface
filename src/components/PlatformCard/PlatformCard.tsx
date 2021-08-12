@@ -1,14 +1,14 @@
 // import CurrencyText from "../CurrencyText";
 import * as Styled from "./styleds";
 
-export interface PureOverviewCardProps {
+export interface PurePlatformCardProps {
 	title: string;
 	value: string | null;
 	image: any;
 	onClick?: () => void;
 }
 
-export const PureOverviewCard = ({ title, value, image, onClick }: PureOverviewCardProps) => {
+export const PurePlatformCard = ({ title, value, image, onClick }: PurePlatformCardProps) => {
 	return (
 		<Styled.Card onClick={onClick}>
 			<Styled.CardBody>
