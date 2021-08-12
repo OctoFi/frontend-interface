@@ -7,6 +7,10 @@ import { useTranslation } from "react-i18next";
 import { shortenAddress } from "../../utils";
 import AddFundsButton from "../AddFunds";
 import CopyButton from "../CopyButton";
+import DisconnectAccount from "../DisconnectAccount";
+import ProfileAddress from "../ProfileAddress";
+import ViewOnExplorer from "../ViewOnExplorer";
+import WalletConnectorName from "../WalletConnectorName";
 
 export const WalletSidebar = () => {
 	// const { account } = useActiveWeb3React();
@@ -43,6 +47,13 @@ export const WalletSidebar = () => {
 							</div>
 
 							<AddFundsButton />
+
+							<div className="mt-2">
+								<WalletConnectorName />
+								<ProfileAddress />
+								<ViewOnExplorer />
+								<DisconnectAccount />
+							</div>
 						</>
 					)}
 				</Offcanvas.Body>

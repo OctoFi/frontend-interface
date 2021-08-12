@@ -1,0 +1,39 @@
+@import "../../styles/abstracts/variables";
+
+.chart__label {
+	color: $light-title;
+	fill: $light-title;
+
+	.dark-mode & {
+		color: $title;
+		fill: $title;
+	}
+}
+
+.chart__tooltip-title {
+	color: $light-title;
+	font-size: 0.75rem;
+
+	.dark-mode & {
+		color: $title;
+	}
+}
+
+.chart__tooltip-value {
+	color: $secondary;
+	font-weight: 700;
+	font-size: 0.75rem;
+}
+
+.apexcharts-tooltip.apexcharts-active {
+	border-radius: 12px;
+	background-color: rgba($title, 0.9);
+	box-shadow: 1px 4px 13px rgba(6, 115, 141, 0.15);
+	padding: 15px;
+	color: $light-title;
+
+	.dark-mode & {
+		background-color: rgba($background, 0.9);
+		color: $title;
+	}
+}

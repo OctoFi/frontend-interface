@@ -20,7 +20,7 @@ const History = lazy(() => import("./pages/History"));
 // const Governance = lazy(() => import("./pages/Governance"));
 // const CreateProposal = lazy(() => import("./pages/CreateProposal"));
 // const Proposals = lazy(() => import("./pages/Proposals"));
-// const Vote = lazy(() => import("./pages/Vote"));
+// const VotePage = lazy(() => import("./pages/VotePage"));
 const Offramp = lazy(() => import("./pages/Offramp"));
 const Onramp = lazy(() => import("./pages/Onramp"));
 // const NFT = lazy(() => import("./pages/NFT"));
@@ -71,7 +71,7 @@ const Routes = () => {
 				<Route path={"/governance"} exact component={Governance} />
 				<Route path={"/governance/:space/create"} exact component={CreateProposal} />
 				<Route path={"/governance/:space"} exact component={Proposals} />
-				<Route path={"/governance/:space/proposal/:id"} exact component={Vote} />
+				<Route path={"/governance/:space/proposal/:id"} exact component={VotePage} />
 				<Route path={"/launchpad"} exact component={Launchpad} />
 				<Route path={"/launchpad/new"} exact component={NewLaunchpad} />
 				<Route path={"/launchpad/:address"} exact component={LaunchpadItem} />

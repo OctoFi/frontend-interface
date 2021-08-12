@@ -11,10 +11,10 @@ import { Toaster } from "react-hot-toast";
 // import UserUpdater from "./state/user/updater";
 import SplashScreen from "./components/SplashScreen";
 // import RouteChanger from "./components/RouteChanger/routeChanger";
-// import WalletModal from "./components/WalletModal";
+// import { WalletModal } from "./components/WalletModal";
 // import Web3ReactManager from "./components/Web3ReactManager";
 // import TransactionHandler from "./components/TransactionHandler";
-// import { FixedGlobalStyle, ThemedGlobalStyle } from "./theme";
+import { FixedGlobalStyle, ThemedGlobalStyle } from "./theme";
 import Routes from "./Routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "./global.scss";
@@ -38,11 +38,10 @@ function App() {
 
 	return (
 		<Suspense fallback={<SplashScreen />}>
-			{/*
-			<Web3ReactManager>
-				<FixedGlobalStyle />
-				<Updaters />
-				*/}
+			{/* <Web3ReactManager> */}
+			<FixedGlobalStyle />
+			{/* <Updaters /> */}
+
 			<Toaster
 				position="bottom-right"
 				toastOptions={{
@@ -62,7 +61,7 @@ function App() {
 				{/* color={darkMode ? "#1e1f24" : "#d4daf2"}
 					highlightColor={darkMode ? "#232429" : "#F3F5FD"} */}
 
-				{/* <ThemedGlobalStyle /> */}
+				<ThemedGlobalStyle />
 				<Router>
 					{/* <WalletModal /> */}
 					{/* <RouteChanger /> */}
