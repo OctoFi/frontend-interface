@@ -10,7 +10,7 @@ import DatePicker from "react-modern-calendar-datepicker";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 
 import { ResponsiveCard } from "../../components/Card";
-import { AppState } from "../../state";
+// import { AppState } from "../../state";
 import { fetchSpaces } from "../../state/governance/actions";
 import { useActiveWeb3React } from "../../hooks";
 import Snapshot from "../../http/snapshot";
@@ -88,7 +88,7 @@ const CreateProposals = (props) => {
 
 	const toggleWalletModal = useWalletModalToggle();
 	const dispatch = useDispatch();
-	const { spaces } = useSelector((state: AppState) => state.governance);
+	const { spaces } = useSelector((state) => state.governance);
 	const { t } = useTranslation();
 
 	const [loading, setLoading] = useState(false);
