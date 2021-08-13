@@ -10,7 +10,6 @@ export const PageContent = styled.div`
 	flex: 1;
 	overflow-y: auto;
 	overflow-x: hidden;
-	padding-top: 2rem;
 
 	&::-webkit-scrollbar {
 		width: 0.625rem;
@@ -32,6 +31,7 @@ export const PageContent = styled.div`
 
 export const PageContainer = styled.div`
 	background-color: transparent;
+	padding-top: 2rem;
 	padding-bottom: 3rem;
 	flex: 1;
 `;

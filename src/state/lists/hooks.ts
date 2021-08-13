@@ -1,4 +1,5 @@
 import { UNSUPPORTED_LIST_URLS } from "../../constants/lists";
+// TODO: replace with an OCTO default-token-list
 import DEFAULT_TOKEN_LIST from "@uniswap/default-token-list";
 import { ChainId, Token } from "@uniswap/sdk";
 import { Tags, TokenInfo, TokenList } from "@uniswap/token-lists";

@@ -1,11 +1,13 @@
 import { CSSProperties, MutableRefObject, useCallback, useMemo } from "react";
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from "@uniswap/sdk";
+// CurrencyAmount
+import { Currency, currencyEquals, ETHER, Token } from "@uniswap/sdk";
 import { FixedSizeList } from "react-window";
 // import { Spinner } from "react-bootstrap";
 import { Text } from "rebass";
 import styled from "styled-components";
 import { useActiveWeb3React } from "../../hooks";
-import { WrappedTokenInfo, useCombinedActiveList } from "../../state/lists/hooks";
+// WrappedTokenInfo
+import { useCombinedActiveList } from "../../state/lists/hooks";
 // import { useCurrencyBalance } from "../../state/wallet/hooks";
 import { TYPE } from "../../theme";
 import { useIsUserAddedToken, useAllInactiveTokens } from "../../hooks/Tokens";

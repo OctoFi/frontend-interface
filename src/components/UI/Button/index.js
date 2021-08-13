@@ -1,4 +1,4 @@
-import "./style.scss";
+// import "./style.scss";
 
 const Button = ({ className, ...props }) => {
 	let classes = ["btn btn-primary btn-gradient-primary"];

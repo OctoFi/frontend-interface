@@ -23,9 +23,9 @@ export const Page = ({ title, fluid = false, networkSensitive = false, children 
 
 	return (
 		<PageWrap>
-			<Header />
-			<Navigation />
 			<PageContent>
+				<Header />
+				<Navigation />
 				<PageContainer className={`page ${fluid ? "container-fluid" : "container-lg"}`}>
 					<div>
 						{title && <Title>{title}</Title>}

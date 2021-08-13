@@ -3,7 +3,7 @@ import { ArrowDown, AlertTriangle } from "react-feather";
 import { Button } from "react-bootstrap";
 import { Text } from "rebass";
 import { Trade, TradeType } from "@uniswap/sdk";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "../../../hooks/useTheme";
 import { Field } from "../../../state/swap/actions";
 import { TYPE } from "../../../theme";
 import { isAddress, shortenAddress } from "../../../utils";

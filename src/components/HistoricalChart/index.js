@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 import CurrencyText from "../CurrencyText";
 import Observer from "../ComponentObserver";
-import "./style.scss";
+// import "./style.scss";
 import {formatMoney} from "../../lib/helper";
 
 const Title = styled.span`

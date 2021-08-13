@@ -11,7 +11,6 @@ import SearchIcon from "../../assets/images/search.svg";
 import { sortedData } from "../../lib/helper";
 import MarketApi from "../../http/market";
 import { fetchCoinMarketPrices, fetchMarketCoins } from "../../state/market/actions";
-import { useIsDarkMode } from "../../state/user/hooks";
 import CurrencyText from "../CurrencyText";
 import { InputGroup, InputGroupFormControl as FormControl, InputGroupText } from "../Form";
 import ResponsiveTable from "../ResponsiveTable";
@@ -21,10 +20,9 @@ import * as Styled from "./styleds";
 const api = new MarketApi();
 
 const PAGE_SIZE = 100;
-let typingInterval;
+let typingInterval: any;
 
 export const MarketTokens = () => {
-	const darkMode = useIsDarkMode();
 	const history = useHistory();
 	const [query, setQuery] = useState("");
 	const [expanded, setExpanded] = useState([]);

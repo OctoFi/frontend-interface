@@ -4,7 +4,7 @@ import { Currency, Pair } from "@uniswap/sdk";
 import { useActiveWeb3React } from "../../hooks";
 import { usePoolBalance } from "../../state/pools/hooks";
 import PlatformLogo from "../Logo/PlatformLogo";
-import { Input as NumericalInput } from "../NumericalInput";
+import NumericalInput from "../NumericalInput";
 import { RowBetween } from "../Row";
 import * as Styled from "./styleds";
 

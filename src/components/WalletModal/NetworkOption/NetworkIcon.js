@@ -1,14 +1,14 @@
 import React from "react";
 
-import Ethereum from "../../assets/images/networks/ethereumMainnet.svg";
-import Avalanche from "../../assets/images/networks/avalanche.svg";
-import BSC from "../../assets/images/networks/binanceSmartChain.svg";
-import Fantom from "../../assets/images/networks/fantom.svg";
-import Fusion from "../../assets/images/networks/fusion.svg";
-import Huobi from "../../assets/images/networks/Huobi.svg";
-import Optimism from "../../assets/images/networks/optimism.svg";
-import Polygon from "../../assets/images/networks/polygonMainnet.svg";
-import XDai from "../../assets/images/networks/xDai.svg";
+import Ethereum from "../../../assets/images/networks/ethereumMainnet.svg";
+import Avalanche from "../../../assets/images/networks/avalanche.svg";
+import BSC from "../../../assets/images/networks/binanceSmartChain.svg";
+import Fantom from "../../../assets/images/networks/fantom.svg";
+import Fusion from "../../../assets/images/networks/fusion.svg";
+import Huobi from "../../../assets/images/networks/Huobi.svg";
+import Optimism from "../../../assets/images/networks/optimism.svg";
+import Polygon from "../../../assets/images/networks/polygonMainnet.svg";
+import XDai from "../../../assets/images/networks/xDai.svg";
 
 import styled from "styled-components";
 

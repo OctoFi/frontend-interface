@@ -41,14 +41,14 @@ export const Dashboard = () => {
 		dispatch(fetchTransformedBalances(balances, walletBalances, ETH));
 	}, [balances, walletBalances, ETH, dispatch]);
 
-	const onClickToken = (token: any) => {
-		if (token.metadata.symbol === "ETH") {
-			history.push("/coins/ethereum");
-		} else {
-			history.push(`/coins/${token.metadata.address}`);
-			// history.push(`/coins/contract/${token.metadata.address}`);
-		}
-	};
+	// const onClickToken = (token: any) => {
+	// 	if (token.metadata.symbol === "ETH") {
+	// 		history.push("/coins/ethereum");
+	// 	} else {
+	// 		history.push(`/coins/${token.metadata.address}`);
+	// 		// history.push(`/coins/contract/${token.metadata.address}`);
+	// 	}
+	// };
 
 	const onSelectCard = (asset: string) => {
 		emitter.emit("open-modal", {
@@ -70,9 +70,9 @@ export const Dashboard = () => {
 				<Col xs={12} lg={8} className="mb-3 mb-lg-0">
 					<div className="mb-3">
 						{/* TODO: replace with a Portfolio Balance Chart */}
-						<ChartCard />
+						{/* <ChartCard /> */}
 					</div>
-					<WalletCard />
+					{/* <WalletCard /> */}
 					{/* <WalletTable
 						balances={overview.wallet.balances}
 						size={"sm"}
@@ -150,8 +150,8 @@ export const Dashboard = () => {
 			<Styled.RowTitle className={"h4"}>{t("platforms")}</Styled.RowTitle>
 			<Platforms />
 
-			<Route path={"/dashboard/assets"} component={WalletModal} />
-			<Route path={"/dashboard/account/:asset"} component={AssetModal} />
+			{/* <Route path={"/dashboard/assets"} component={WalletModal} /> */}
+			{/* <Route path={"/dashboard/account/:asset"} component={AssetModal} /> */}
 		</Page>
 	);
 };

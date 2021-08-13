@@ -4,7 +4,7 @@ import { Flex } from "rebass";
 import { Trade } from "@uniswap/sdk";
 import { TYPE } from "../../../theme";
 import CurrencyLogo from "../../Logo/CurrencyLogo";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "../../../hooks/useTheme";
 import styled from "styled-components";
 
 const LogoContainer = styled.div`

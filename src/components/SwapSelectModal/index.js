@@ -22,16 +22,16 @@ export default function SwapSelectModal({ isOpen, onDismiss, onCurrencySelect, s
 		return currencies.filter((token) => JSON.stringify(token).toLowerCase().includes(searchQuery) || !searchQuery);
 	}, [currencies, searchQuery]);
 
-	const titles = useMemo(() => {
-		return currencies
-			.map((token, index) => {
-				return {
-					...token,
-					index,
-				};
-			})
-			.filter((token) => token.type === "title");
-	}, [currencies]);
+	// const titles = useMemo(() => {
+	// 	return currencies
+	// 		.map((token, index) => {
+	// 			return {
+	// 				...token,
+	// 				index,
+	// 			};
+	// 		})
+	// 		.filter((token) => token.type === "title");
+	// }, [currencies]);
 
 	useEffect(() => {
 		if (isOpen) {
@@ -50,7 +50,7 @@ export default function SwapSelectModal({ isOpen, onDismiss, onCurrencySelect, s
 			onCurrencySelect(currency, type);
 			onDismiss();
 		},
-		[onDismiss, onCurrencySelect]
+		[onDismiss, onCurrencySelect, type]
 	);
 
 	return (

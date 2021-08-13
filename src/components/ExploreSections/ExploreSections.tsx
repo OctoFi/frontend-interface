@@ -11,7 +11,7 @@ import ExploreCard from "../ExploreCard";
 import ExploreSection from "../ExploreSection";
 import ExchangeIcon from "../Icons/Exchange";
 
-import "./style.scss";
+// import "./style.scss";
 import * as Styled from "./styleds";
 
 export const ExploreSections = () => {

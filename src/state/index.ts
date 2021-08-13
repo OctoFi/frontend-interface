@@ -22,7 +22,6 @@ import relayer from "./relayer/reducer";
 import spot from "./spot/reducer";
 import spotUI from "./spotUI/reducer";
 import aave from "./aave/reducers";
-import margin from "./margin/reducer";
 
 const rootReducer = combineReducers({
 	application,
@@ -44,7 +43,6 @@ const rootReducer = combineReducers({
 	relayer,
 	spot,
 	spotUI,
-	margin,
 });
 
 const PERSISTED_KEYS: string[] = ["user", "transactions", "currency", "lists"];
@@ -61,6 +59,7 @@ export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof rootReducer>;
 
+// eslint-disable-next-line
 export default {
 	store,
 };

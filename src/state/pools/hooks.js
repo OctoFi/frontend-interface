@@ -9,6 +9,7 @@ import { getContract } from "../../utils";
 import { useHasPendingApproval, useTransactionAdder } from "../../state/transactions/hooks";
 import { useSingleCallResult } from "../../state/multicall/hooks";
 
+// eslint-disable-next-line
 Number.prototype.toFixedNoRounding = function (n) {
 	const reg = new RegExp("^-?\\d+(?:\\.\\d{0," + n + "})?", "g");
 	const a = this.toString().match(reg)[0];
@@ -55,7 +56,7 @@ export const usePoolBalance = (address = undefined, token) => {
 		const value = balances?.[0]?.[token];
 		const amount = value ? value.toString() : undefined;
 		return amount;
-	}, [address, token, balances]);
+	}, [token, balances]);
 };
 
 export function usePoolApproveCallback(pool, amountToApprove, spender) {
@@ -63,10 +64,10 @@ export function usePoolApproveCallback(pool, amountToApprove, spender) {
 	const token = pool.address === "0x00" ? "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2" : pool.address;
 	const { account, library } = useActiveWeb3React();
 	const tokenContract = getContract(token, ERC20_ABI, library, account);
-	const inputs = useMemo(() => [account, spender || "0x79B6C6F8634ea477ED725eC23b7b6Fcb41F00E58"], [
-		account,
-		spender,
-	]);
+	const inputs = useMemo(
+		() => [account, spender || "0x79B6C6F8634ea477ED725eC23b7b6Fcb41F00E58"],
+		[account, spender]
+	);
 	const currentAllowance = useSingleCallResult(tokenContract, "allowance", inputs).result;
 	const pendingApproval = useHasPendingApproval(token, spender);
 
@@ -122,7 +123,7 @@ export function usePoolApproveCallback(pool, amountToApprove, spender) {
 				console.debug("Failed to approve token", error);
 				throw error;
 			});
-	}, [approvalState, token, tokenContract, parsedAmountA, spender, addTransaction]);
+	}, [approvalState, token, tokenContract, parsedAmountA, spender, addTransaction, pool.poolName]);
 
 	return [approvalState, approve];
 }

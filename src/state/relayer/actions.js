@@ -437,7 +437,6 @@ export const submitMarketOrder = (amount, side, ethAccount, library) => {
 export const cancelOrder = (order) => {
 	return async (dispatch, getState) => {
 		const state = getState();
-		const baseToken = getBaseToken(state);
 		const gasInfo = getGasInfo(state);
 		const gasPrice = gasInfo.gasPriceInWei;
 

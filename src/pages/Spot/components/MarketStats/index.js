@@ -19,7 +19,7 @@ import { filterMarketsByString, filterMarketsByTokenSymbol, marketToString } fro
 import { ResponsiveCard } from "../../../../components/Card";
 import { useActiveWeb3React } from "../../../../hooks";
 import SearchIcon from "../../../../assets/images/search.svg";
-import "./styles.scss";
+// import "./styles.scss";
 import { InputGroupFormControl as FormControl, InputGroupText, InputGroup } from "../../../../components/Form";
 
 const Card = styled(ResponsiveCard)`

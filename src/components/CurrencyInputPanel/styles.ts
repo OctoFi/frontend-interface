@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ReactComponent as DropDown } from "../../assets/images/dropdown.svg";
 
 export const InputPanel = styled.div<{ hideInput?: boolean; withoutMargin?: boolean }>`
 	${({ theme }) => theme.flexColumnNoWrap};

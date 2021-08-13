@@ -7,7 +7,7 @@ export const MERKLE_DISTRIBUTOR_ADDRESS: { [chainId in ChainId]?: string } = {
     [ChainId.MAINNET]: "0x090D4613473dEE047c3f2706764f49E0821D256e",
 };
 
-// export * from "./spot";
+export * from "./spot";
 // export * from "./derivatives";
 
 export enum Network {

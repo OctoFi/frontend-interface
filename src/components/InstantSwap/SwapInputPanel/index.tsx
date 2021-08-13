@@ -4,7 +4,7 @@ import { ChevronDown } from "react-feather";
 import { ETHER, Token } from "@uniswap/sdk";
 import { useActiveWeb3React } from "../../../hooks";
 import { useCurrencyBalance } from "../../../state/wallet/hooks";
-import { Input as NumericalInput } from "../../NumericalInput";
+import NumericalInput from "../../NumericalInput";
 import SwapSelectModal from "../../SwapSelectModal";
 import * as Styled from "./styleds";
 import { Button } from "react-bootstrap";

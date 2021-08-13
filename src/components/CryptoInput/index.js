@@ -5,7 +5,7 @@ import dompurify from "dompurify";
 
 import EUR from "../../assets/images/currencies/EU.svg";
 import CurrencySelectModal from "../CurrencySelectModal";
-import { Input as NumericalInput } from "../NumericalInput";
+import NumericalInput from "../NumericalInput";
 import { RowBetween } from "../Row";
 import * as Styled from "./styleds";
 

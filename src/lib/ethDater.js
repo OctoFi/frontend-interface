@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export default class {
+class EthDater {
 	constructor(web3) {
 		this.web3 = web3;
 		this.checkedBlocks = {};
@@ -122,3 +122,5 @@ export default class {
 		return this.savedBlocks[block];
 	}
 }
+
+export default EthDater;

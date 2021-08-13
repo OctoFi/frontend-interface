@@ -1,7 +1,7 @@
 import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 
-import "./style.scss";
+// import "./style.scss";
 import ResponsiveTable from "../../components/ResponsiveTable";
 
 export function Table({ entities, columns }) {

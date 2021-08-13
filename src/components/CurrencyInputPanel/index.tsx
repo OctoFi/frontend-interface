@@ -6,7 +6,7 @@ import CurrencySearchModal from "../SearchModal/CurrencySearchModal";
 import CurrencyLogo from "../Logo/CurrencyLogo";
 import DoubleCurrencyLogo from "../Logo/DoubleLogo";
 import { RowBetween } from "../Row";
-import { Input as NumericalInput } from "../NumericalInput";
+import NumericalInput from "../NumericalInput";
 
 import { useActiveWeb3React } from "../../hooks";
 import { useCurrencyBalance } from "../../state/wallet/hooks";

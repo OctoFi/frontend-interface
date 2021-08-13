@@ -125,7 +125,7 @@ export const lendingAToken = (token, aToken, amount, isEth, ethAccount) => {
 
 export const unLendingAToken = (token, aToken, amount, isEth, ethAccount) => {
 	return async (dispatch, getState) => {
-		const state = getState();
+		// const state = getState();
 		const gasPrice = DEFAULT_GAS_PRICE;
 		const web3 = new Web3(Web3.givenProvider || new Web3.providers.HttpProvider(process.env.REACT_APP_NETWORK_URL));
 		const web3Wrapper = new Web3Wrapper(web3.currentProvider);
@@ -162,7 +162,7 @@ export const unLendingAToken = (token, aToken, amount, isEth, ethAccount) => {
 
 export const borrowAToken = (token, aToken, amount, isEth, ethAccount) => {
 	return async (dispatch, getState) => {
-		const state = getState();
+		// const state = getState();
 		const gasPrice = DEFAULT_GAS_PRICE;
 		const web3 = new Web3(Web3.givenProvider || new Web3.providers.HttpProvider(process.env.REACT_APP_NETWORK_URL));
 		const web3Wrapper = new Web3Wrapper(web3.currentProvider);
@@ -198,7 +198,7 @@ export const borrowAToken = (token, aToken, amount, isEth, ethAccount) => {
 
 export const repayAToken = (token, aToken, amount, isEth, ethAccount) => {
 	return async (dispatch, getState) => {
-		const state = getState();
+		// const state = getState();
 		const gasPrice = DEFAULT_GAS_PRICE;
 		const web3 = new Web3(Web3.givenProvider || new Web3.providers.HttpProvider(process.env.REACT_APP_NETWORK_URL));
 		const web3Wrapper = new Web3Wrapper(web3.currentProvider);

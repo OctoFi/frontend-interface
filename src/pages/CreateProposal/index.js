@@ -16,7 +16,7 @@ import { useActiveWeb3React } from "../../hooks";
 import Snapshot from "../../http/snapshot";
 import Page from "../../components/Page";
 import { useWalletModalToggle } from "../../state/application/hooks";
-import "./style.scss";
+// import "./style.scss";
 
 const Header = styled.div`
 	padding: 0;

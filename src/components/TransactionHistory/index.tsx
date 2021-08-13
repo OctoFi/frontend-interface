@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
+import { CSVLink } from "react-csv";
+import { Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import moment from "moment";
 import axios from "axios";
 
 import { useActiveWeb3React } from "../../hooks";
+import ExchangeIcon from "../Icons/Exchange";
 import Collapse from "../Collapse";
 import { PureTransactionHistory } from "./TransactionHistory";
+import * as Styled from "./styleds";
 
 const TransactionHistory = () => {
+	const { t } = useTranslation();
 	const { account } = useActiveWeb3React();
 	const PAGE_SIZE = 30;
 	const [loading, setLoading] = useState(false);
@@ -119,12 +125,33 @@ const TransactionHistory = () => {
 	};
 
 	return (
-		<PureTransactionHistory
-			sections={sections}
-			finished={finished}
-			loading={loading}
-			onLoadMore={fetchTransactions}
-		/>
+		<Styled.CustomCard
+			header={
+				<Styled.Header className={"d-flex align-items-center justify-content-between"}>
+					<Styled.Title>{t("history")}</Styled.Title>
+					{account && transactions && (
+						<CSVLink data={transactions} filename={`${account}_${blockNumber}__defi_dashboard.csv`}>
+							<Button variant={"outline-primary"}>{t("download", { file: "CSV" })}</Button>
+						</CSVLink>
+					)}
+				</Styled.Header>
+			}
+		>
+			{account ? (
+				<PureTransactionHistory
+					sections={sections}
+					finished={finished}
+					loading={loading}
+					onLoadMore={fetchTransactions}
+				/>
+			) : (
+				<div className="d-flex flex-column align-items-center justify-content-center py-5 px-4">
+					<ExchangeIcon size={48} fill={"#6993FF"} color={"#6993FF"} />
+					<h5 className="text-primary font-weight-bolder mb-3 mt-5">{t("wallet.notConnected")}</h5>
+					<span className="text-muted font-weight-light font-size-lg">{t("errors.walletConnect")}</span>
+				</div>
+			)}
+		</Styled.CustomCard>
 	);
 };
 

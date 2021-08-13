@@ -1,5 +1,5 @@
 import BootstrapTable from "react-bootstrap-table-next";
-import ResponsiveTable from "../../../components/ResponsiveTable";
+import ResponsiveTable from "../../ResponsiveTable";
 import * as Styled from "./styleds";
 
 export type WalletTableProps = {

@@ -2,7 +2,7 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { isMobile } from "react-device-detect";
 import moment from "moment";
-import "./style.scss";
+// import "./style.scss";
 
 export interface ChartProps {
 	color?: any;

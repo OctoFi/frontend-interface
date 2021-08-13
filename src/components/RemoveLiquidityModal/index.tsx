@@ -45,7 +45,7 @@ import { BigNumber } from "@ethersproject/bignumber";
 import { PriceTopbar } from "../AddLiquidityModal/uniswap";
 import { useWalletModalToggle } from "../../state/application/hooks";
 import { LightCard } from "../StyledCards";
-import { PlatformTitle } from "../AddLiquidityModal";
+import { PlatformTitle } from "../AddLiquidityModal/styleds";
 import { useTranslation } from "react-i18next";
 import { Form } from "react-bootstrap";
 
@@ -449,7 +449,6 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 													type={"radio"}
 													id={`withdraw-pair`}
 													className={"d-flex align-items-center py-2 ml-2"}
-													custom
 												>
 													<Check.Input
 														type={"radio"}
@@ -472,7 +471,6 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 													type={"radio"}
 													id={`withdraw-token`}
 													className={"d-flex align-items-center py-2 ml-2"}
-													custom
 												>
 													<Check.Input
 														type={"radio"}
@@ -523,7 +521,6 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 												type={"radio"}
 												id={`withdraw-pair-mobile`}
 												className={"d-flex align-items-center py-2 ml-2"}
-												custom
 											>
 												<Check.Input
 													type={"radio"}
@@ -544,7 +541,6 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 												type={"radio"}
 												id={`withdraw-token-mobile`}
 												className={"d-flex align-items-center py-2 ml-2"}
-												custom
 											>
 												<Check.Input
 													type={"radio"}
@@ -655,11 +651,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 				) : attemptingTxn ? (
 					<ConfirmationPendingContent onDismiss={handleDismissConfirmation} pendingText={pendingText} />
 				) : txHash ? (
-					<TransactionSubmittedContent
-						chainId={chainId}
-						hash={txHash}
-						onDismiss={handleDismissConfirmation}
-					/>
+					<TransactionSubmittedContent hash={txHash} onDismiss={handleDismissConfirmation} />
 				) : (
 					<ConfirmationModalContent
 						title={t("pools.willPay")}

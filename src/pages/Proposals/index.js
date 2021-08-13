@@ -13,7 +13,7 @@ import { useActiveWeb3React } from "../../hooks";
 import { ResponsiveCard } from "../../components/Card";
 import Page from "../../components/Page";
 import ResponsiveTable from "../../components/ResponsiveTable";
-import "../../components/UI/Button/style.scss";
+// import "../../components/UI/Button/style.scss";
 import * as Styled from "./styleds";
 
 const Proposals = (props) => {

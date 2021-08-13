@@ -20,7 +20,7 @@ import StyledCard from "../../../../components/Card";
 import Img from "../../../../components/UI/Img";
 import { toAbsoluteUrl } from "../../../../lib/helper";
 import ResponsiveTable from "../../../../components/ResponsiveTable";
-import "./styles.scss";
+// import "./styles.scss";
 
 const Card = styled(StyledCard)`
 	display: flex;

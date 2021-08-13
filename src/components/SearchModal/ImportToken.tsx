@@ -12,7 +12,7 @@ import { RowBetween, RowFixed, AutoRow } from "../Row";
 import CurrencyLogo from "../Logo/CurrencyLogo";
 import useTheme from "../../hooks/useTheme";
 import { useAddUserToken } from "../../state/user/hooks";
-import { getExplorerLink } from "../../utils";
+import { getExplorerLink } from "../../utils/explorer";
 import { useActiveWeb3React } from "../../hooks";
 import { ExternalLink } from "../../theme";
 import { useCombinedInactiveList } from "../../state/lists/hooks";

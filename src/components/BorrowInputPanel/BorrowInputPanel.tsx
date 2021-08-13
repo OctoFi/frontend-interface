@@ -3,7 +3,7 @@ import { Token } from "@uniswap/sdk";
 
 import { tokenAmountInUnits, unitsInTokenAmount } from "../../utils/spot/tokens";
 import CurrencyLogo from "../Logo/CurrencyLogo";
-import { Input as NumericalInput } from "../NumericalInput";
+import NumericalInput from "../NumericalInput";
 import { RowBetween } from "../Row";
 import * as Styled from "./styleds";
 

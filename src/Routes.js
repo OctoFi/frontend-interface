@@ -9,14 +9,14 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import HomePage from "./pages/Home";
 import SplashScreen from "./components/SplashScreen";
 
-// const Dashboard = lazy(() => import("./pages/Dashboard"));
-// const Platform = lazy(() => import("./pages/Platform"));
-// const Pools = lazy(() => import("./pages/Pools"));
-// const Exchange = lazy(() => import("./pages/Exchange"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Platform = lazy(() => import("./pages/Platform"));
+const Pools = lazy(() => import("./pages/Pools"));
+const Exchange = lazy(() => import("./pages/Exchange"));
 const Favorites = lazy(() => import("./pages/Favorites"));
 const History = lazy(() => import("./pages/History"));
-// const Explore = lazy(() => import("./pages/Explore"));
-// const MarketsExplore = lazy(() => import("./pages/MarketsExplore"));
+const Explore = lazy(() => import("./pages/Explore"));
+const MarketsExplore = lazy(() => import("./pages/MarketsExplore"));
 // const CoinDetailsPage = lazy(() => import("./pages/CoinDetailsPage"));
 // const Governance = lazy(() => import("./pages/Governance"));
 // const CreateProposal = lazy(() => import("./pages/CreateProposal"));
@@ -26,7 +26,7 @@ const Offramp = lazy(() => import("./pages/Offramp"));
 const Onramp = lazy(() => import("./pages/Onramp"));
 // const NFT = lazy(() => import("./pages/NFT"));
 // const Borrow = lazy(() => import("./pages/Borrow"));
-// const TokenSets = lazy(() => import("./pages/TokenSets"));
+const TokenSets = lazy(() => import("./pages/TokenSets"));
 // const Launchpad = lazy(() => import("./pages/Launchpad"));
 // const LaunchpadItem = lazy(() => import("./pages/LaunchpadItem"));
 // const NewLaunchpad = lazy(() => import("./pages/NewLaunchpad"));
@@ -59,15 +59,15 @@ const Routes = () => {
 				<Route path={"/offramp"} component={Offramp} />
 				<Route path={"/onramp"} component={Onramp} />
 				<Route path={"/settings"} component={Settings} />
-				{/*
 				<Route path={"/dashboard"} component={Dashboard} />
 				<Route path={"/exchange"} component={Exchange} />
+				<Route path={"/platforms/:platform"} component={Platform} />
 				<Route path={"/invest"} exact component={Explore} />
 				<Route path={"/invest/pools"} component={Pools} />
 				<Route path={"/invest/tokens"} component={MarketsExplore} />
 				<Route path={"/invest/tokensets"} component={TokenSets} />
+				{/*
 				<Route path={"/invest/loans"} component={Borrow} />
-				<Route path={"/platforms/:platform"} component={Platform} />
 				<Route path={"/nft"} exact component={NFT} />
 				<Route path={"/governance"} exact component={Governance} />
 				<Route path={"/governance/:space/create"} exact component={CreateProposal} />

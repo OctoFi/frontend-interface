@@ -205,6 +205,7 @@ export class LendingPoolContract extends BaseContract {
 		]);
 		const provider = providerUtils.standardizeOrThrow(supportedProvider);
 		const constructorAbi = BaseContract._lookupConstructorAbi(abi);
+		// eslint-disable-next-line
 		[] = BaseContract._formatABIDataItemList(constructorAbi.inputs, [], BaseContract._bigNumberToString);
 		// @ts-ignore
 		const iface = new ethers.utils.Interface(abi);

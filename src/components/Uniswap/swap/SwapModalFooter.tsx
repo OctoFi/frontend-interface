@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Repeat } from "react-feather";
 import { Text } from "rebass";
 import { Trade, TradeType } from "@uniswap/sdk";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "../../../hooks/useTheme";
 import { Field } from "../../../state/swap/actions";
 import { TYPE } from "../../../theme";
 import {

@@ -30,7 +30,7 @@ export const useMemoTokenBalances = () => {
 			ETHER: ethBalance[account] || null,
 			...walletBalances,
 		};
-	}, [account, walletBalances]);
+	}, [account, walletBalances, ethBalance]);
 };
 
 export const getBalances = (balances, wallet, ethRate) => {
@@ -118,7 +118,14 @@ export const getBalances = (balances, wallet, ethRate) => {
 							const underlyingBalance = innerBalance.underlying.map((ub) => {
 								const lowerAddress = ub.metadata.address.toLowerCase();
 								const value = Number.parseInt(ub.balance) / 10 ** ub.metadata.decimals;
-								const balanceUSD = lowerAddress === '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee' ? value ? value / ethRate : 0 : prices[lowerAddress] ? prices[lowerAddress].usd * value : 0;
+								const balanceUSD =
+									lowerAddress === "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+										? value
+											? value / ethRate
+											: 0
+										: prices[lowerAddress]
+										? prices[lowerAddress].usd * value
+										: 0;
 								return {
 									...ub,
 									balanceUSD,

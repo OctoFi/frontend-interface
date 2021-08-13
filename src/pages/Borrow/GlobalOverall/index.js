@@ -1,7 +1,7 @@
 import { BigNumber } from "@0x/utils";
 import { useDispatch, useSelector } from "react-redux";
 
-import "./styles.scss";
+// import "./styles.scss";
 import { useActiveWeb3React } from "../../../hooks";
 import { getAaveCurrency, getAaveUserAccountData, getEthInUsd } from "../../../state/selectors";
 import { getAaveOverall } from "../../../services/aave/aave";

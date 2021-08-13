@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { getExplorerLink } from "../../utils";
+import { getExplorerLink } from "../../utils/explorer";
 import * as Styled from "./styleds";
 
 const TransactionsList = ({ transactions }) => {

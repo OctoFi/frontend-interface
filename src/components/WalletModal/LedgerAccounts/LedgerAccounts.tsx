@@ -3,9 +3,9 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 
-import { useActiveWeb3React } from "../../hooks";
-import { useETHBalances } from "../../state/wallet/hooks";
-import { shortenAddress } from "../../utils";
+import { useActiveWeb3React } from "../../../hooks";
+import { useETHBalances } from "../../../state/wallet/hooks";
+import { shortenAddress } from "../../../utils";
 import * as Styled from "./styleds";
 
 export interface LedgerAccountsProps {

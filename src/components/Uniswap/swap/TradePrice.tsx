@@ -1,7 +1,7 @@
 import { Repeat } from "react-feather";
 import { Text } from "rebass";
 import { Price } from "@uniswap/sdk";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "../../../hooks/useTheme";
 import { StyledBalanceMaxMini } from "./styleds";
 
 interface TradePriceProps {

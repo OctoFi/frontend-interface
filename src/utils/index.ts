@@ -5,9 +5,9 @@ import { JsonRpcSigner, Web3Provider } from "@ethersproject/providers";
 import { BigNumber } from "@ethersproject/bignumber";
 import { abi as IUniswapV2Router02ABI } from "@uniswap/v2-periphery/build/IUniswapV2Router02.json";
 import { ROUTER_ADDRESS } from "../constants";
-// import { Token, Currency, ETHER } from "@uniswap/sdk";
+import { Token, Currency, ETHER } from "@uniswap/sdk";
 import { JSBI, Percent, CurrencyAmount } from "@uniswap/sdk";
-// import { TokenAddressMap } from "../state/lists/hooks";
+import { TokenAddressMap } from "../state/lists/hooks";
 
 // returns the checksummed address if the address is valid, otherwise returns false
 export function isAddress(value: any): string | false {
@@ -78,7 +78,7 @@ export function escapeRegExp(string: string): string {
 	return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 }
 
-// export function isTokenOnList(defaultTokens: TokenAddressMap, currency?: Currency): boolean {
-// 	if (currency === ETHER) return true;
-// 	return Boolean(currency instanceof Token && defaultTokens[currency.chainId]?.[currency.address]);
-// }
+export function isTokenOnList(defaultTokens: TokenAddressMap, currency?: Currency): boolean {
+	if (currency === ETHER) return true;
+	return Boolean(currency instanceof Token && defaultTokens[currency.chainId]?.[currency.address]);
+}

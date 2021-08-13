@@ -14,7 +14,7 @@ import { UNLIMITED_ALLOWANCE_IN_BASE_UNITS } from "../../constants";
 import { useActiveWeb3React } from "../../hooks";
 import useTheme from "../../hooks/useTheme";
 import { getContractWrappers } from "../../utils/spot/contractWrapper";
-import { AppState } from "../../state";
+// import { AppState } from "../../state";
 import { useMemoTokenBalances } from "../../state/balances/hooks";
 import { fetchBalances, fetchTransformedBalances } from "../../state/balances/actions";
 
@@ -37,11 +37,10 @@ const WalletCard = (props) => {
 	const [unlocking, setUnlocking] = useState(false);
 	const [showUnlockModal, setShowUnlockModal] = useState(false);
 	const [done, setDone] = useState(false);
-	const overview = useSelector((state: AppState) => state.balances.overview);
-	const loading = useSelector((state: AppState) => state.balances.loading);
-	const balances = useSelector((state: AppState) => state.balances.data);
-	const { selected, currenciesRate } = useSelector((state: AppState) => state.currency);
-	const { ETH } = useSelector((state: AppState) => state.currency.currenciesRate);
+	const overview = useSelector((state) => state.balances.overview);
+	const loading = useSelector((state) => state.balances.loading);
+	const balances = useSelector((state) => state.balances.data);
+	const { ETH } = useSelector((state) => state.currency.currenciesRate);
 	const dispatch = useDispatch();
 	const walletBalances = useMemoTokenBalances();
 	const { t } = useTranslation();

@@ -417,9 +417,9 @@ const Uniswap = (props: any) => {
 								</Row>
 							) : (
 								<Button
-									block={
-										!(!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError)
-									}
+									// block={
+									// 	!(!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError)
+									// }
 									onClick={() => {
 										if (isExpertMode) {
 											handleSwap();

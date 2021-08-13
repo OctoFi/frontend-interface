@@ -1,4 +1,3 @@
-import { UNI } from "./../../constants/index";
 import { Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount } from "@uniswap/sdk";
 import { useMemo } from "react";
 import ERC20_INTERFACE from "../../constants/abis/erc20";
@@ -7,8 +6,6 @@ import { useActiveWeb3React } from "../../hooks";
 import { useMulticallContract } from "../../hooks/useContract";
 import { isAddress } from "../../utils";
 import { useSingleContractMultipleData, useMultipleContractSingleData } from "../multicall/hooks";
-import { useUserUnclaimedAmount } from "../claim/hooks";
-import { useTotalUniEarned } from "../stake/hooks";
 
 /**
  * Returns a map of the given addresses to their eventually consistent ETH balances.
@@ -22,9 +19,9 @@ export function useETHBalances(
 		() =>
 			uncheckedAddresses
 				? uncheckedAddresses
-						.map(isAddress)
-						.filter((a): a is string => a !== false)
-						.sort()
+					.map(isAddress)
+					.filter((a): a is string => a !== false)
+					.sort()
 				: [],
 		[uncheckedAddresses]
 	);
@@ -69,13 +66,13 @@ export function useTokenBalancesWithLoadingIndicator(
 			() =>
 				address && validatedTokens.length > 0
 					? validatedTokens.reduce<{ [tokenAddress: string]: TokenAmount | undefined }>((memo, token, i) => {
-							const value = balances?.[i]?.result?.[0];
-							const amount = value ? JSBI.BigInt(value.toString()) : undefined;
-							if (amount) {
-								memo[token.address] = new TokenAmount(token, amount);
-							}
-							return memo;
-					  }, {})
+						const value = balances?.[i]?.result?.[0];
+						const amount = value ? JSBI.BigInt(value.toString()) : undefined;
+						if (amount) {
+							memo[token.address] = new TokenAmount(token, amount);
+						}
+						return memo;
+					}, {})
 					: {},
 			[address, validatedTokens, balances]
 		),
@@ -134,25 +131,4 @@ export function useAllTokenBalances(): { [tokenAddress: string]: TokenAmount | u
 	const allTokensArray = useMemo(() => Object.values(allTokens ?? {}), [allTokens]);
 	const balances = useTokenBalances(account ?? undefined, allTokensArray);
 	return balances ?? {};
-}
-
-// get the total owned, unclaimed, and unharvested UNI for account
-export function useAggregateUniBalance(): TokenAmount | undefined {
-	const { account, chainId } = useActiveWeb3React();
-
-	const uni = chainId ? UNI[chainId] : undefined;
-
-	const uniBalance: TokenAmount | undefined = useTokenBalance(account ?? undefined, uni);
-	const uniUnclaimed: TokenAmount | undefined = useUserUnclaimedAmount(account);
-	const uniUnHarvested: TokenAmount | undefined = useTotalUniEarned();
-
-	if (!uni) return undefined;
-
-	return new TokenAmount(
-		uni,
-		JSBI.add(
-			JSBI.add(uniBalance?.raw ?? JSBI.BigInt(0), uniUnclaimed?.raw ?? JSBI.BigInt(0)),
-			uniUnHarvested?.raw ?? JSBI.BigInt(0)
-		)
-	);
 }

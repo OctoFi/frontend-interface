@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { RowBetween } from "../Row";
-import { Input as NumericalInput } from "../NumericalInput";
+import NumericalInput from "../NumericalInput";
 import { tokenAmountInUnits, unitsInTokenAmount } from "../../utils/spot/tokens";
-import { ZERO } from "../../constants";
-import { ETHER, Token } from "@uniswap/sdk";
-import { useCurrencyBalance } from "../../state/wallet/hooks";
-import { useActiveWeb3React } from "../../hooks";
 
 const InputRow = styled.div`
 	${({ theme }) => theme.flexRowNoWrap};

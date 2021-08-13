@@ -23,7 +23,7 @@ import UIButton from "../UI/Button";
 import LedgerAccounts from "./LedgerAccounts";
 import NetworkOption from "./NetworkOption";
 import Option from "./Option";
-import "./style.scss";
+// import "./style.scss";
 import * as Styled from "./styleds";
 
 const { Check } = Form;

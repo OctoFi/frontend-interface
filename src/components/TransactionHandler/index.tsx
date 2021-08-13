@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import toast from "react-hot-toast";
 
-import { getExplorerLink } from "../../utils";
+import { getExplorerLink } from "../../utils/explorer";
 import { useActiveWeb3React } from "../../hooks";
 import { useActivePopups, useRemovePopup } from "../../state/application/hooks";
 import { ExternalLink } from "react-feather";
