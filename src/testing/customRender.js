@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import "inter-ui";
 import { createWeb3ReactRoot, Web3ReactProvider } from "@web3-react/core";
 import getLibrary from "../utils/getLibrary";
-import { NetworkContextName } from "../constants";
+import { NetworkContextName } from "../constants/network";
 import "../i18n";
 import { createStore } from "redux";
 import { reducer } from "./testReducer";

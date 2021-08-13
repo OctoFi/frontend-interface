@@ -1,7 +1,6 @@
+import { PropsWithChildren } from "react";
+import useTheme from "../../hooks/useTheme";
 import { PureAccountCard } from "./AccountCard";
-
-import { PropsWithChildren, useContext } from "react";
-import { ThemeContext } from "styled-components";
 
 import AssetIcon from "../../assets/images/account/assets.svg";
 import DebtIcon from "../../assets/images/account/debts.svg";
@@ -41,11 +40,9 @@ function AccountCard({
 	className,
 	children,
 }: PropsWithChildren<AccountCardProps>) {
-	const theme = useContext(ThemeContext);
+	const theme = useTheme();
 	// @ts-ignore
 	const themeColor = theme[color];
-	const showCardBody = children && assets?.balances?.length > 0;
-	const showCardAction = assets?.balances?.length > 5;
 
 	if (!show) {
 		return null;

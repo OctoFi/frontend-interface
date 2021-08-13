@@ -1,6 +1,5 @@
-// import { useContext } from "react";
+// import useTheme from "../../hooks/useTheme";
 // import { TYPE } from "../../theme";
-// import { ThemeContext } from "styled-components";
 import * as Styled from "./styleds";
 
 export type PureBrandLogoProps = {
@@ -10,7 +9,7 @@ export type PureBrandLogoProps = {
 };
 
 export const PureBrandLogo = ({ logo, name, hideName = false }: PureBrandLogoProps) => {
-	// const theme = useContext(ThemeContext);
+	// const theme = useTheme();
 
 	return (
 		<Styled.CustomLink to={"/"}>

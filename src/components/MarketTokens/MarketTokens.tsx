@@ -43,7 +43,6 @@ export const MarketTokens = () => {
 	const loader = useRef(null);
 	const dispatch = useDispatch();
 	const marketCoins = useSelector((state) => state.market.marketCoins);
-	// const theme = useContext(ThemeContext);
 
 	const allTokensData = useMemo(() => {
 		return sortedData(allTokens, sort);

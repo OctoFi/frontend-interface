@@ -2,7 +2,7 @@ import React from "react";
 import { Check } from "react-feather";
 
 import NetworkIcon from "./NetworkIcon";
-import useTheme from "../../hooks/useTheme";
+import useTheme from "../../../hooks/useTheme";
 import * as Styled from "./styleds";
 
 export interface NetworkOptionProps {

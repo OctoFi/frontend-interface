@@ -1,7 +1,6 @@
-import { PureValueCard } from "./ValueCard";
-import { useContext } from "react";
 import { Spinner } from "react-bootstrap";
-import { ThemeContext } from "styled-components";
+import useTheme from "../../hooks/useTheme";
+import { PureValueCard } from "./ValueCard";
 
 import AssetIcon from "../../assets/images/account/assets.svg";
 import DebtIcon from "../../assets/images/account/debts.svg";
@@ -23,7 +22,7 @@ export type ValueCardProps = {
 };
 
 function ValueCard({ value, title, type, color = "primary", show = true, loading = false }: ValueCardProps) {
-	const theme = useContext(ThemeContext);
+	const theme = useTheme();
 	// @ts-ignore
 	const themeColor = theme[color];
 

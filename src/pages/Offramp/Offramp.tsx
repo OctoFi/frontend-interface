@@ -1,5 +1,5 @@
 import Page from "../../components/Page";
-import { OfframpItems } from "../../data/OfframpItems";
+import OfframpItems from "../../data/OfframpItems";
 import OfframpList from "../../components/OfframpList";
 
 export const Offramp = () => {

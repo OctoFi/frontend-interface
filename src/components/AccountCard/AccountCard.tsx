@@ -1,10 +1,10 @@
-import { PropsWithChildren, useContext } from "react";
+import { PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
 import Skeleton from "react-loading-skeleton";
 import SVG from "react-inlinesvg";
 import { Button } from "react-bootstrap";
-import { ThemeContext } from "styled-components";
 
+import useTheme from "../../hooks/useTheme";
 import ArrowRightIcon from "../../assets/images/global/arrow-right.svg";
 import CurrencyText from "../CurrencyText";
 import * as Styled from "./styleds";
@@ -13,14 +13,14 @@ export interface PureAccountCardProps {
 	className?: string | undefined;
 	color?: any;
 	title: string;
-	value: string;
+	value: string | number;
 	assets?: any;
 	onShowMore?: any;
 	loading?: boolean;
 	icon: string;
 }
 
-export const AccountCard = ({
+export const PureAccountCard = ({
 	className = "",
 	color = "primary",
 	title,
@@ -32,7 +32,7 @@ export const AccountCard = ({
 	icon,
 }: PropsWithChildren<PureAccountCardProps>) => {
 	const { t } = useTranslation();
-	const theme = useContext(ThemeContext);
+	const theme = useTheme();
 	// @ts-ignore
 	const themeColor = theme[color];
 	const showCardBody = children && assets?.balances?.length > 0;

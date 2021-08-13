@@ -3,7 +3,7 @@ import walletCreate from '../public/walletCreate.js'
 // import React, { useState, useReducer, useEffect, useContext, createContext } from 'react'
 // import { AbstractConnector } from '@web3-react/abstract-connector';
 // import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
-// import { NetworkContextName } from '../../constants'
+// import { NetworkContextName } from '../../constants/network'
 // import {setAccount} from '../../../hooks'
 // import {LedgerConnect} from './ledgerConnect'
 // const ethUtil = require('ethereumjs-util')

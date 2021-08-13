@@ -1,5 +1,5 @@
-import { useContext, useRef, useState } from "react";
-import { ThemeContext } from "styled-components";
+import { useRef, useState } from "react";
+import useTheme from "../../hooks/useTheme";
 import { TYPE } from "../../theme";
 import { AutoColumn } from "../Column";
 import { RowBetween, RowFixed } from "../Row";
@@ -16,7 +16,7 @@ const DeadlineError = {
 };
 
 const TransactionSettings = ({ rawSlippage, setRawSlippage, deadline, setDeadline }) => {
-	const theme = useContext(ThemeContext);
+	const theme = useTheme();
 	const inputRef = useRef();
 
 	const [slippageInput, setSlippageInput] = useState("");
