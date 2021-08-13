@@ -240,7 +240,7 @@ class HistoricalChart extends React.Component {
 			<div id="chart" className={this.props.isPrimary ? "primary-chart" : ""}>
 				<Observer value={this.props.data} didUpdate={this.updateSeries} />
 				<div className="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
-					<div className="d-flex flex-column text-left">
+					<div className="d-flex flex-column text-start">
 						<Title isPrimary={this.props.isPrimary}>
 							<CurrencyText value={this.state.currentData || this.props.currentData} />
 						</Title>

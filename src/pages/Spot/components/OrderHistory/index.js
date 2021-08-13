@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { Spinner } from "react-bootstrap";
+import { CloseButton, Spinner } from "react-bootstrap";
 import { OrderStatus } from "@0x/types";
 import { lighten } from "polished";
 import styled from "styled-components";
@@ -12,7 +12,6 @@ import { OrderSide } from "../../../../constants";
 import { getCurrencyPairFromTokens } from "../../../../utils/spot/knownCurrencyPair";
 import { ResponsiveCard } from "../../../../components/Card";
 import { cancelOrder } from "../../../../state/relayer/actions";
-import { CloseIcon } from "../../../../theme";
 import { useActiveWeb3React } from "../../../../hooks";
 
 const Card = styled(ResponsiveCard)`
@@ -115,6 +114,7 @@ const TR = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 `;
+
 const CustomHead = styled(TR)`
 	background-color: ${({ theme }) => theme.text1}10;
 	max-height: 40px;
@@ -169,11 +169,6 @@ const TBody = styled.div`
 	}
 `;
 
-const Close = styled(CloseIcon)`
-	width: 16px;
-	height: 16px;
-`;
-
 const orderToRow = (order, index, baseToken, quoteToken, cancelOrder) => {
 	const sideLabel = order.side === OrderSide.Sell ? "Sell" : "Buy";
 	const size = tokenAmountInUnits(order.size, baseToken.decimals, baseToken.displayDecimals);
@@ -200,7 +195,7 @@ const orderToRow = (order, index, baseToken, quoteToken, cancelOrder) => {
 				<div className="d-flex align-items-center justify-content-between">
 					<span>{status}</span>
 
-					<Close onClick={cancelOrder.bind(this, order)} />
+					<CloseButton onClick={() => cancelOrder(order)} />
 				</div>
 			</TD>
 		</TR>

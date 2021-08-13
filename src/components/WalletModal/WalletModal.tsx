@@ -371,7 +371,6 @@ export const WalletModal = () => {
 											type={"radio"}
 											id={`hd-path-${index}`}
 											className={"d-flex align-items-center py-3"}
-											custom
 										>
 											<Check.Input
 												type={"radio"}
@@ -393,7 +392,6 @@ export const WalletModal = () => {
 									type={"radio"}
 									id="hd-path-custom"
 									className={"d-flex align-items-center mb-3 pt-3 pt-xl-0"}
-									custom
 								>
 									<Check.Input
 										type={"radio"}

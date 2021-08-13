@@ -6,7 +6,7 @@ import {
 	DefaultTheme,
 } from "styled-components";
 import { Text, TextProps } from "rebass";
-// import { useIsDarkMode } from "../state/user/hooks";
+import { useIsDarkMode } from "../state/user/hooks";
 import { Colors } from "./styled";
 
 export * from "./components";
@@ -116,14 +116,13 @@ export function theme(darkMode?: boolean): DefaultTheme {
 }
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-	// const darkMode = useIsDarkMode();
-	const darkMode = false;
-
+	const darkMode = useIsDarkMode();
 	const themeObject = useMemo(() => theme(darkMode), [darkMode]);
 
 	return <StyledComponentsThemeProvider theme={themeObject}>{children}</StyledComponentsThemeProvider>;
 }
 
+// TODO: fix props so children is output
 export const TYPE = {
 	Main(props: TextProps) {
 		// {...props}

@@ -130,9 +130,14 @@ const TransactionHistory = () => {
 				<Styled.Header className={"d-flex align-items-center justify-content-between"}>
 					<Styled.Title>{t("history")}</Styled.Title>
 					{account && transactions && (
-						<CSVLink data={transactions} filename={`${account}_${blockNumber}__defi_dashboard.csv`}>
-							<Button variant={"outline-primary"}>{t("download", { file: "CSV" })}</Button>
-						</CSVLink>
+						<Button
+							as={CSVLink}
+							variant={"outline-primary"}
+							data={transactions}
+							filename={`${account}_${blockNumber}__defi_dashboard.csv`}
+						>
+							{t("download", { file: "CSV" })}
+						</Button>
 					)}
 				</Styled.Header>
 			}

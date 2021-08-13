@@ -4,7 +4,7 @@ import { isMobile } from "react-device-detect";
 import QRCode from "react-qr-code";
 import _ from "lodash";
 import { ThemeContext } from "styled-components";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, CloseButton } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { withTranslation } from "react-i18next";
 import { ArrowDown } from "react-feather";
@@ -30,7 +30,6 @@ import ERC20_ABI from "../../constants/abis/erc20.json";
 import { walletTokens as tokens } from "../../constants/spot-config/mainnet/config.json";
 import InstantSwapApi from "../../http/instantSwap";
 import { addTransaction } from "../../state/transactions/actions";
-import { CloseIcon } from "../../theme";
 import { getContract } from "../../utils";
 
 // import AddressInputPanel from "../AddressInputPanel";
@@ -1553,7 +1552,7 @@ class InstantSwap extends React.Component {
 					<Modal.Body className={"d-flex flex-column"} style={{ minHeight: 480, padding: "30px 60px" }}>
 						<RowBetween style={{ padding: "8px 0 24px" }}>
 							<div />
-							<CloseIcon
+							<CloseButton
 								onClick={() => {
 									this.setState({
 										showQrModal: false,

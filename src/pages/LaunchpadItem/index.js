@@ -30,7 +30,7 @@ import { serializeError } from "eth-rpc-errors";
 
 import Presales from "../../constants/presales.json";
 // import { useContract } from "../../hooks/useContract";
-import CurrencyLogo from "../../components/CurrencyLogo";
+import CurrencyLogo from "../../components/Logo/CurrencyLogo";
 import * as Styled from "./styleds";
 
 const LaunchpadItem = () => {

@@ -2,10 +2,10 @@ import { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { TokenList } from "@uniswap/token-lists";
-import { Button } from "react-bootstrap";
+import { Button, CloseButton } from "react-bootstrap";
 import styled from "styled-components";
 import { transparentize } from "polished";
-import { TYPE, CloseIcon } from "../../theme";
+import { TYPE } from "../../theme";
 import Card from "../Card";
 import { AutoColumn } from "../Column";
 import { RowBetween, RowFixed, AutoRow } from "../Row";
@@ -77,7 +77,7 @@ export function ImportList({ listURL, list, setModalView, onDismiss }: ImportPro
 				<RowBetween>
 					<ArrowLeft style={{ cursor: "pointer" }} onClick={() => setModalView(CurrencyModalView.manage)} />
 					<TYPE.MediumHeader>{t("importList.import")}</TYPE.MediumHeader>
-					<CloseIcon onClick={onDismiss} />
+					<CloseButton onClick={onDismiss} />
 				</RowBetween>
 			</PaddedColumn>
 			<SectionBreak />

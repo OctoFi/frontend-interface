@@ -1,12 +1,8 @@
-import { useState } from "react";
-// import { useDarkModeManager } from "../../state/user/hooks";
 import { PureThemeToggle } from "./ThemeToggle";
+import { useDarkModeManager } from "../../state/user/hooks";
 
 const ThemeToggle = () => {
-	// TODO: use app state
-	// const [darkMode, toggleDarkMode] = useDarkModeManager();
-	const [darkMode, setDarkMode] = useState(false);
-	const toggleDarkMode = () => setDarkMode(!darkMode);
+	const [darkMode, toggleDarkMode] = useDarkModeManager();
 
 	return <PureThemeToggle onChange={toggleDarkMode} checked={darkMode} />;
 };

@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { ArrowLeft, AlertTriangle } from "react-feather";
 import { transparentize } from "polished";
 import { useTranslation } from "react-i18next";
-import { Button } from 'react-bootstrap';
-import { TYPE, CloseIcon } from "../../theme";
+import { Button, CloseButton } from "react-bootstrap";
+import { TYPE } from "../../theme";
 import Card from "../Card";
 import { AutoColumn } from "../Column";
 import { RowBetween, RowFixed, AutoRow } from "../Row";
@@ -75,7 +75,7 @@ export function ImportToken({ tokens, onBack, onDismiss, handleCurrencySelect }:
 				<RowBetween>
 					{onBack ? <ArrowLeft style={{ cursor: "pointer" }} onClick={onBack} /> : <div></div>}
 					<TYPE.MediumHeader>Import {tokens.length > 1 ? "Tokens" : "Token"}</TYPE.MediumHeader>
-					{onDismiss ? <CloseIcon onClick={onDismiss} /> : <div></div>}
+					{onDismiss ? <CloseButton onClick={onDismiss} /> : <div></div>}
 				</RowBetween>
 			</PaddedColumn>
 			<SectionBreak />
@@ -163,7 +163,8 @@ export function ImportToken({ tokens, onBack, onDismiss, handleCurrencySelect }:
 						</TYPE.Body>
 					</AutoRow>
 				</Card>
-				<Button variant="primary"
+				<Button
+					variant="primary"
 					disabled={!confirmed}
 					onClick={() => {
 						tokens.map((token) => addToken(token));

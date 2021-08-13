@@ -1,12 +1,2 @@
-import Page from "../../components/Page";
-import CoinDetails from "../../components/CoinDetails";
-
-const CoinDetailsPage = () => {
-	return (
-		<Page title={"Coin Details"}>
-			<CoinDetails />
-		</Page>
-	);
-};
-
+import { CoinDetailsPage } from "./CoinDetailsPage";
 export default CoinDetailsPage;

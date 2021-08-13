@@ -17,45 +17,27 @@ export const Wrapper = styled.section`
 	}
 `;
 
-export const CurrenciesTable = styled.div`
+export const TableWrap = styled.div`
 	.table {
 		position: relative;
 		width: 100%;
 		border-collapse: collapse;
-		color: ${({ theme }) => theme.text1};
 		margin-bottom: 0.5rem;
-	}
 
-	.table thead th {
-		border-bottom: 0;
-		border-top: 0;
-		font-weight: 400;
-		padding: 1.5rem 1rem;
-		color: ${({ theme }) => theme.text1};
-
-		&:focus {
-			outline: none;
+		thead th {
+			border-bottom-color: ${({ theme }) => theme.borderColor2} !important;
+			color: ${({ theme }) => theme.text1};
+			font-weight: 500;
+			padding: 1.5rem 1rem;
 		}
-	}
 
-	.table tbody td {
-		vertical-align: middle;
-		border: 1px solid ${({ theme }) => theme.borderColor};
-		border-left-width: 0;
-		border-right-width: 0;
-		color: white;
-		cursor: pointer;
-		padding: 1rem;
-	}
-`;
-
-export const CoinPrice = styled.span`
-	font-size: 0.875rem;
-	font-weight: 500;
-	color: ${({ theme }) => theme.text1};
-
-	@media (min-width: 768px) {
-		font-size: 1.125rem;
+		tbody td {
+			border-bottom-color: ${({ theme }) => theme.borderColor};
+			color: ${({ theme }) => theme.text1};
+			cursor: pointer;
+			padding: 1rem;
+			vertical-align: middle;
+		}
 	}
 `;
 

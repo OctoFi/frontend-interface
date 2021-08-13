@@ -3,7 +3,6 @@ import { PaddedColumn, Separator } from "./styleds";
 import { RowBetween } from "../Row";
 import { ArrowLeft } from "react-feather";
 import { Text } from "rebass";
-import { CloseIcon } from "../../theme";
 import styled from "styled-components";
 import { Token } from "@uniswap/sdk";
 import { ManageLists } from "./ManageLists";
@@ -11,6 +10,7 @@ import ManageTokens from "./ManageTokens";
 import { TokenList } from "@uniswap/token-lists";
 import { CurrencyModalView } from "./CurrencySearchModal";
 import { useTranslation } from "react-i18next";
+import { CloseButton } from "react-bootstrap";
 
 const Wrapper = styled.div`
 	width: 100%;
@@ -67,7 +67,7 @@ export default function Manage({
 					<Text fontWeight={500} fontSize={20}>
 						{t("manage")}
 					</Text>
-					<CloseIcon onClick={onDismiss} />
+					<CloseButton onClick={onDismiss} />
 				</RowBetween>
 			</PaddedColumn>
 			<Separator />

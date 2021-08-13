@@ -10,6 +10,15 @@ export type VoteInformationProps = {
 	id: any;
 };
 
+const Strategy = ({ index, id, symbol }: { index: number; id: string; symbol: string }) => {
+	return (
+		<div className="d-flex align-items-center ml-3">
+			<Styled.Logo src={useLogo(id, index)} size={30} />
+			<Styled.TokenValue>{symbol}</Styled.TokenValue>
+		</div>
+	);
+};
+
 export const VoteInformation = ({ proposal, space, id }: VoteInformationProps) => {
 	const { t } = useTranslation();
 
@@ -30,14 +39,12 @@ export const VoteInformation = ({ proposal, space, id }: VoteInformationProps) =
 						<div className="d-flex align-items-center justify-content-end">
 							{space.strategies.map((s: any, index: number) => {
 								return (
-									<div
+									<Strategy
 										key={`space-strategy-${index}`}
-										className="d-flex align-items-center"
-										style={{ marginLeft: index !== 0 ? "21px" : "0px" }}
-									>
-										<Styled.Logo src={useLogo(id, index)} size={30} />
-										<Styled.TokenValue>{s.params.symbol}</Styled.TokenValue>
-									</div>
+										symbol={s.params.symbol}
+										id={id}
+										index={index}
+									/>
 								);
 							})}
 						</div>

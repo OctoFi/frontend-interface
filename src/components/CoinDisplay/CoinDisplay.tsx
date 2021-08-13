@@ -10,7 +10,7 @@ export interface CoinDisplayProps {
 
 export const CoinDisplay = ({ name, symbol, image }: CoinDisplayProps) => {
 	return (
-		<div className="d-flex align-items-center">
+		<div className="d-flex align-items-center gap-3">
 			{image ? (
 				<Styled.CoinIcon src={image} alt={name || symbol} />
 			) : (

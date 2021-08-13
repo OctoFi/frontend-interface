@@ -3,7 +3,7 @@ import { Row, Col, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import BootstrapTable from "react-bootstrap-table-next";
 import { useTranslation } from "react-i18next";
-import { match, useHistory, useParams } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import moment from "moment";
 
 import { fetchProposals, fetchSpaces } from "../../state/governance/actions";
@@ -23,6 +23,7 @@ const Proposals = (props) => {
 	const { t } = useTranslation();
 	const { spaces, loading: governanceLoading, proposals } = useSelector((state) => state.governance);
 	const history = useHistory();
+	const location = useLocation();
 	const { space } = useParams();
 	let currentSpace = spaces[space];
 
@@ -165,13 +166,13 @@ const Proposals = (props) => {
 						<Styled.Header>
 							<Styled.Title className="card-title">{t("governance.proposals")}</Styled.Title>
 							<Styled.NewButton
-								to={`${match.url}/create`}
+								to={`${location.pathname}/create`}
 								className="bg-light-primary d-none d-md-flex"
 							>
 								{t("createNew")}
 							</Styled.NewButton>
 							<Styled.GradientButton
-								to={`${match.url}/create`}
+								to={`${location.pathname}/create`}
 								className=" btn btn-primary btn-gradient-primary d-flex d-md-none"
 							>
 								{t("createNew")}

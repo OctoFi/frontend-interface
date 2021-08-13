@@ -1,23 +1,5 @@
 import styled from "styled-components";
 
-export const Feature = styled.a`
-	display: block;
-	text-decoration: none;
-	color: inherit;
-
-	&:hover,
-	&:focus,
-	&:active {
-		text-decoration: none;
-		outline: none;
-	}
-
-	&:hover .feature__wrapper,
-	&:hover .feature__icon {
-		border-color: ${({ theme }) => theme.primary};
-	}
-`;
-
 export const Wrapper = styled.div`
 	position: relative;
 	border-radius: 1.125rem;
@@ -49,6 +31,19 @@ export const Icon = styled.div`
 	border: 1px solid ${({ theme }) => theme.borderColor2};
 	color: ${({ theme }) => theme.text1};
 	transition: all ease 0.3s;
+`;
+
+export const Feature = styled.a`
+	display: block;
+	text-decoration: none;
+	color: inherit;
+
+	&:hover ${Wrapper},
+	&:focus ${Wrapper},
+	&:hover ${Icon},
+	&:focus ${Icon} {
+		border-color: ${({ theme }) => theme.primary};
+	}
 `;
 
 export const Title = styled.h3`

@@ -1,11 +1,12 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { Tab, Nav, Spinner } from "react-bootstrap";
+import { Button, Tab, Nav, Spinner } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
 import SVG from "react-inlinesvg";
 
+import { ROUTE_MARKET } from "../../constants/routes";
 import { AppState } from "../../state";
 import SearchIcon from "../../assets/images/search.svg";
 import { sortedData } from "../../lib/helper";
@@ -16,6 +17,8 @@ import { InputGroup, InputGroupFormControl as FormControl, InputGroupText } from
 import ResponsiveTable from "../ResponsiveTable";
 import CoinDisplay from "../CoinDisplay";
 import * as Styled from "./styleds";
+import { useIsDarkMode } from "../../state/user/hooks";
+import { ThreeDotsVertical } from "react-bootstrap-icons";
 
 const api = new MarketApi();
 
@@ -23,6 +26,7 @@ const PAGE_SIZE = 100;
 let typingInterval: any;
 
 export const MarketTokens = () => {
+	const darkMode = useIsDarkMode();
 	const history = useHistory();
 	const [query, setQuery] = useState("");
 	const [expanded, setExpanded] = useState([]);
@@ -144,7 +148,7 @@ export const MarketTokens = () => {
 		{
 			dataField: "id",
 			text: "#",
-			formatter: (cellContent, row, rowIndex) => {
+			formatter: (cellContent: any, row: any) => {
 				return row?.market_cap_rank;
 			},
 			sort: false,
@@ -152,15 +156,15 @@ export const MarketTokens = () => {
 		{
 			dataField: "name",
 			text: t("tokens.assets"),
-			formatter: (cellContent, row, rowIndex) => {
-				return <CoinDisplay name={row?.name} symbol={row?.symbol} image={row?.image} key={rowIndex} />;
+			formatter: (cellContent: any, row: any) => {
+				return <CoinDisplay name={row?.name} symbol={row?.symbol} image={row?.image} />;
 			},
 			sort: true,
 		},
 		{
 			dataField: "current_price",
 			text: t("table.price"),
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<Styled.CellText>
 					<CurrencyText value={row.current_price} />
 				</Styled.CellText>
@@ -170,7 +174,7 @@ export const MarketTokens = () => {
 		{
 			dataField: "price_change_percentage_24h",
 			text: t("table.24_price"),
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<span className={row.price_change_percentage_24h >= 0 ? "text-success" : "text-danger"}>
 					{row.price_change_percentage_24h ? `${row.price_change_percentage_24h.toFixed(2)}%` : "-"}
 				</span>
@@ -180,7 +184,7 @@ export const MarketTokens = () => {
 		{
 			dataField: "price_change_percentage_7d_in_currency",
 			text: t("tokensets.week"),
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<span className={row.price_change_percentage_7d_in_currency >= 0 ? "text-success" : "text-danger"}>
 					{row.price_change_percentage_7d_in_currency
 						? `${row.price_change_percentage_7d_in_currency.toFixed(2)}%`
@@ -192,7 +196,7 @@ export const MarketTokens = () => {
 		{
 			dataField: "price_change_percentage_30d_in_currency",
 			text: t("tokensets.month"),
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<span className={row.price_change_percentage_30d_in_currency >= 0 ? "text-success" : "text-danger"}>
 					{row.price_change_percentage_30d_in_currency
 						? `${row.price_change_percentage_30d_in_currency.toFixed(2)}%`
@@ -204,7 +208,7 @@ export const MarketTokens = () => {
 		{
 			dataField: "price_change_percentage_1y_in_currency",
 			text: t("tokensets.year"),
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<span className={row.price_change_percentage_1y_in_currency >= 0 ? "text-success" : "text-danger"}>
 					{row.price_change_percentage_1y_in_currency
 						? `${row.price_change_percentage_1y_in_currency.toFixed(2)}%`
@@ -216,30 +220,29 @@ export const MarketTokens = () => {
 		{
 			dataField: "market_cap",
 			text: t("table.marketCap"),
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<Styled.CellText>
 					<CurrencyText value={row.market_cap || "-"} />
 				</Styled.CellText>
 			),
 			sort: true,
 		},
+		{
+			dataField: "aggregations",
+			text: "Feeds",
+			formatter: (cellContent: any, row: any) =>
+				hasCoinFetch && (
+					<Button variant={darkMode ? "dark" : "light"}>
+						<ThreeDotsVertical />
+					</Button>
+				),
+			sort: false,
+		},
 	];
 
-	/* {
-		{hasCoinFetch && (
-			<button
-				className={`btn ${
-					darkMode ? "btn-light-primary" : "btn-primary"
-				} btn-sm ml-2 d-none d-lg-block`}
-			>
-				Aggregations <ArrowDown size={18} fill={"currentColor"} />
-			</button>
-		)}
-	} */
-
 	const rowEvents = {
-		onClick: (e, row) => {
-			if (e.target.tagName === "BUTTON") {
+		onClick: (e: any, row: any) => {
+			if (["button", "svg", "path"].includes(e.target.tagName)) {
 				if (expanded.includes(row.id)) {
 					setExpanded(expanded.filter((exRow) => exRow !== row.id));
 				} else {
@@ -252,21 +255,21 @@ export const MarketTokens = () => {
 					setExpanded(expanded.concat(row.id));
 				}
 			} else {
-				history.push(`/market/${row.id}`);
+				history.push(`${ROUTE_MARKET}/${row.id}`);
 			}
 		},
 	};
 
 	const expandRow = {
-		renderer: (row) => {
+		renderer: (row: any) => {
 			const loading = marketCoins.prices.loading[row.id];
 			const coinPrices = marketCoins.prices.data[row.id];
 			return loading ? (
-				<div className="d-flex flex-column flex-lg-row align-items-center justify-content-center py-5">
-					<Spinner animation="border" variant="primary" id={"load-markets"} />
+				<div className="d-flex justify-content-center py-4">
+					<Spinner animation="border" variant="primary" id="load-markets" />
 				</div>
 			) : (
-				<div className="d-flex flex-column flex-lg-row align-items-lg-center py-4 px-6">
+				<div className="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between py-2 px-4 text-center">
 					{coinPrices && coinPrices.hasOwnProperty("links") ? (
 						Object.keys(coinPrices.links).map((market) => {
 							return (
@@ -306,7 +309,7 @@ export const MarketTokens = () => {
 		expanded: expanded,
 	};
 
-	const onChangeTable = (type, context) => {
+	const onChangeTable = (type: string, context: any) => {
 		if (type === "sort") {
 			setSort({
 				field: context.sortField,
@@ -323,7 +326,7 @@ export const MarketTokens = () => {
 			});
 			if (coins.length > 0) {
 				const res = await api.get("searchedCoins", {
-					ids: coins.map((coin) => coin.id),
+					ids: coins.map((coin: any) => coin.id),
 					pageSize: PAGE_SIZE,
 					page: settings.page,
 				});
@@ -388,17 +391,17 @@ export const MarketTokens = () => {
 
 	return (
 		<Tab.Container defaultActiveKey="featured">
-			<div className="d-flex flex-column-reverse flex-lg-row align-items-stretch align-items-lg-start justify-content-start justify-content-lg-between mb-4">
+			<div className="d-flex flex-column-reverse flex-lg-row align-items-stretch align-items-lg-center justify-content-start justify-content-lg-between py-4 px-3">
 				<Nav variant="pills">
-					<Styled.NavItem>
-						<Styled.NavLink eventKey="featured">{t("featuredCoins")}</Styled.NavLink>
-					</Styled.NavItem>
-					<Styled.NavItem>
-						<Styled.NavLink eventKey="all">{t("allCoins")}</Styled.NavLink>
-					</Styled.NavItem>
+					<Nav.Item>
+						<Nav.Link eventKey="all">{t("allCoins")}</Nav.Link>
+					</Nav.Item>
+					<Nav.Item>
+						<Nav.Link eventKey="featured">{t("featuredCoins")}</Nav.Link>
+					</Nav.Item>
 				</Nav>
 
-				<InputGroup className="w-auto mb-4 mb-lg-0" bg={"darker"}>
+				<InputGroup className="w-auto mb-4 mb-lg-0" size="lg" bg={"darker"}>
 					<InputGroupText>
 						<SVG src={SearchIcon} />
 					</InputGroupText>
@@ -407,31 +410,6 @@ export const MarketTokens = () => {
 			</div>
 
 			<Tab.Content className="bg-transparent">
-				<Tab.Pane eventKey="featured">
-					<Styled.ExploreTableWrap>
-						<BootstrapTable
-							wrapperClasses="table-responsive d-none d-lg-block"
-							bordered={false}
-							classes="table table-head-custom table-borderless table-vertical-center overflow-hidden table-hover"
-							bootstrap4
-							remote
-							keyField="id"
-							onTableChange={onChangeTable}
-							columns={columns(false, true)}
-							data={marketCoinsData}
-							rowEvents={rowEvents}
-							expandRow={expandRow}
-						/>
-					</Styled.ExploreTableWrap>
-					<ResponsiveTable
-						centered
-						size={"lg"}
-						breakpoint={"lg"}
-						columns={columns(false, true)}
-						data={marketCoinsData}
-						direction={"rtl"}
-					/>
-				</Tab.Pane>
 				<Tab.Pane eventKey="all">
 					<Styled.ExploreTableWrap>
 						<BootstrapTable
@@ -457,12 +435,12 @@ export const MarketTokens = () => {
 					/>
 
 					<div className="d-flex align-items-center justify-content-center" ref={loader}>
-						{page.hasMore || (allTokensData.length === 0 && page > 1) ? (
+						{page.hasMore || (allTokensData.length === 0 && page.page > 1) ? (
 							page.seeMore ? (
 								<div className="py-4">
-									<button className="btn btn-light-primary py-3" onClick={onShowMore}>
+									<Button variant={"primary"} onClick={onShowMore} size="lg">
 										See More
-									</button>
+									</Button>
 								</div>
 							) : (
 								<div className="py-5">
@@ -471,6 +449,31 @@ export const MarketTokens = () => {
 							)
 						) : null}
 					</div>
+				</Tab.Pane>
+
+				<Tab.Pane eventKey="featured">
+					<Styled.ExploreTableWrap>
+						<BootstrapTable
+							keyField="id"
+							data={marketCoinsData}
+							columns={columns(false, true)}
+							rowEvents={rowEvents}
+							bordered={false}
+							striped
+							hover
+							remote
+							onTableChange={onChangeTable}
+							expandRow={expandRow}
+						/>
+					</Styled.ExploreTableWrap>
+					<ResponsiveTable
+						centered
+						size={"lg"}
+						breakpoint={"lg"}
+						columns={columns(false, true)}
+						data={marketCoinsData}
+						direction={"rtl"}
+					/>
 				</Tab.Pane>
 			</Tab.Content>
 		</Tab.Container>

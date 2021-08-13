@@ -66,7 +66,6 @@
         "notConnected": "Wallet Not Connected",
         "connected": "Wallet Connected",
         "connectedTo": "You are connected to",
-        "viewOrChange": "View or change account",
         "title": "Wallet"
     },
     "tokens": {
@@ -115,6 +114,9 @@
         "requiredAddress": "Recipient address required for this pair",
         "signAccount": "Confirm your address to view your open orders. This step keeps your orders private.",
         "selectAAccount": "Please select a account to connect, otherwise connector will use your default address"
+    },
+    "homepage": {
+        "callToAction": "View Dashboard"
     },
     "cross": {
         "action": "Action",

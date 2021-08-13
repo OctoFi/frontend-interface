@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Features = styled.section`
-	padding: 20px 0 0;
+	margin-top: 3rem;
 
-	@media (min-width: 576px) {
-		padding: 35px 0 0;
+	@media (min-width: 768px) {
+		margin-top: 5rem;
 	}
 `;
 
@@ -18,7 +18,6 @@ export const Inner = styled.div`
 	padding-bottom: 24px;
 
 	.slick-slide {
-		height: 100%;
 		padding: 0 10px;
 	}
 

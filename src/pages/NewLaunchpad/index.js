@@ -12,7 +12,7 @@ import Page from "../../components/Page";
 import Card from "../../components/Card";
 import useTheme from "../../hooks/useTheme";
 import AddressInputPanel from "../../components/AddressInputPanel";
-import CurrencyLogo from "../../components/CurrencyLogo";
+import CurrencyLogo from "../../components/Logo/CurrencyLogo";
 import CurrencyInputPanel from "../../components/CurrencyInputPanel";
 import { getContract, shortenAddress } from "../../utils";
 import { UNLIMITED_ALLOWANCE_IN_BASE_UNITS, ZERO_ADDRESS } from "../../constants";
@@ -21,7 +21,7 @@ import PresaleGeneratorABI from "../../constants/abis/Presale/PresaleGenerator.j
 import { useActiveWeb3React } from "../../hooks";
 import { useContract } from "../../hooks/useContract";
 import WalletConnectStatus from "../../components/WalletConnectStatus";
-import { AccountState, AccountStateContent, AccountStateTitle } from "../../components/WalletConnectStatus/styles";
+import { AccountState, AccountStateContent, AccountStateTitle } from "../../components/WalletConnectStatus/styleds";
 import GradientButton from "../../components/UI/Button";
 import { useWalletModalToggle } from "../../state/application/hooks";
 import TokenAddressInput from "./TokenInputPanel/TokenInputPanel";

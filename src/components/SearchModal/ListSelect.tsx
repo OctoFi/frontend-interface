@@ -2,7 +2,7 @@ import React, { memo, useCallback, useMemo, useRef, useState } from "react";
 import { ArrowLeft } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
 import { Text } from "rebass";
-import { Button, Form, Dropdown } from "react-bootstrap";
+import { Button, Form, Dropdown, CloseButton } from "react-bootstrap";
 import { lighten } from "polished";
 import styled from "styled-components";
 import { useFetchListCallback } from "../../hooks/useFetchListCallback";
@@ -12,7 +12,7 @@ import useToggle from "../../hooks/useToggle";
 import { AppDispatch, AppState } from "../../state";
 import { acceptListUpdate, removeList, selectList } from "../../state/lists/actions";
 import { useSelectedListUrl } from "../../state/lists/hooks";
-import { CloseIcon, TYPE } from "../../theme";
+import { TYPE } from "../../theme";
 import listVersionLabel from "../../utils/listVersionLabel";
 import { parseENSAddress } from "../../utils/parseENSAddress";
 import uriToHttp from "../../utils/uriToHttp";
@@ -275,7 +275,7 @@ export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBac
 					<Text fontWeight={600} fontSize={"16px"}>
 						Manage Lists
 					</Text>
-					<CloseIcon onClick={onDismiss} />
+					<CloseButton onClick={onDismiss} />
 				</RowBetween>
 			</PaddedColumn>
 			<Separator />

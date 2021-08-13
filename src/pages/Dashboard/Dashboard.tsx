@@ -16,7 +16,7 @@ import { WalletModal } from "../../components/AssetModal/WalletModal";
 import AssetTable from "../../components/AssetTable";
 // import WalletTable from "../../components/AssetTable/WalletTable";
 import WalletCard from "../../components/WalletCard";
-import ChartCard from "../../components/ChartCard";
+// import ChartCard from "../../components/ChartCard";
 import Platforms from "../../components/Platforms";
 import * as Styled from "./styleds";
 
@@ -72,7 +72,7 @@ export const Dashboard = () => {
 						{/* TODO: replace with a Portfolio Balance Chart */}
 						{/* <ChartCard /> */}
 					</div>
-					{/* <WalletCard /> */}
+					<WalletCard />
 					{/* <WalletTable
 						balances={overview.wallet.balances}
 						size={"sm"}

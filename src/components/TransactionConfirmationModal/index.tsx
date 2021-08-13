@@ -1,12 +1,11 @@
 import React from "react";
-import { Spinner, Button } from "react-bootstrap";
+import { Spinner, Button, CloseButton } from "react-bootstrap";
 import { Text } from "rebass";
 import { AlertTriangle, ArrowUpCircle } from "react-feather";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import Modal from "../Modal";
 import { ExternalLink } from "../../theme";
-import { CloseIcon } from "../../theme/components";
 import { RowBetween } from "../Row";
 import { AutoColumn, ColumnCenter } from "../Column";
 
@@ -39,7 +38,13 @@ const ConfirmedIcon = styled(ColumnCenter)`
 	padding: 60px 0;
 `;
 
-export function ConfirmationPendingContent({ onDismiss, pendingText }: { onDismiss: () => void; pendingText: string }) {
+export function ConfirmationPendingContent({
+	onDismiss,
+	pendingText,
+}: {
+	onDismiss?: () => void;
+	pendingText: string;
+}) {
 	const theme = useTheme();
 	const { t } = useTranslation();
 
@@ -48,7 +53,7 @@ export function ConfirmationPendingContent({ onDismiss, pendingText }: { onDismi
 			<Section>
 				<RowBetween>
 					<div />
-					<CloseIcon onClick={onDismiss} />
+					<CloseButton onClick={onDismiss} />
 				</RowBetween>
 				<ConfirmedIcon>
 					<Spinner animation="border" variant="primary" id={"confirmation_pending"} />
@@ -71,7 +76,7 @@ export function ConfirmationPendingContent({ onDismiss, pendingText }: { onDismi
 	);
 }
 
-export function TransactionSubmittedContent({ onDismiss, hash }: { onDismiss: () => void; hash: string | undefined }) {
+export function TransactionSubmittedContent({ onDismiss, hash }: { onDismiss?: () => void; hash: string | undefined }) {
 	const theme = useTheme();
 	const { t } = useTranslation();
 	const { chainId } = useActiveWeb3React();
@@ -81,7 +86,7 @@ export function TransactionSubmittedContent({ onDismiss, hash }: { onDismiss: ()
 			<Section>
 				<RowBetween>
 					<div />
-					<CloseIcon onClick={onDismiss} />
+					<CloseButton onClick={onDismiss} />
 				</RowBetween>
 				<ConfirmedIcon>
 					<ArrowUpCircle strokeWidth={0.5} size={90} color={theme.primary} />
@@ -126,7 +131,7 @@ export function ConfirmationModalContent({
 					<Text fontWeight={500} fontSize={20}>
 						{title}
 					</Text>
-					<CloseIcon onClick={onDismiss} className={"d-none d-xl-flex"} />
+					<CloseButton onClick={onDismiss} />
 				</RowBetween>
 				{topContent()}
 			</Section>
@@ -146,7 +151,7 @@ export function TransactionErrorContent({ message, onDismiss }: { message: strin
 					<Text fontWeight={500} fontSize={20}>
 						{t("error")}
 					</Text>
-					<CloseIcon onClick={onDismiss} />
+					<CloseButton onClick={onDismiss} />
 				</RowBetween>
 				<AutoColumn style={{ marginTop: 20, padding: "2rem 0" }} gap="24px" justify="center">
 					<AlertTriangle color={theme.red1} style={{ strokeWidth: 1.5 }} size={64} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 
 import OpenSeaApi from "../../http/opensea";
 import { useActiveWeb3React } from "../../hooks";

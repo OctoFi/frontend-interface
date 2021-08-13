@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { match } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Row, Col, Spinner } from "react-bootstrap";
 import dompurify from "dompurify";
 
@@ -28,7 +28,7 @@ const CoinDetails = () => {
 	const [walletBalance, setWalletBalance] = useState<number>(0);
 	const selected = marketData.selected.data || false;
 	const tokenContract = useTokenContract(selected.contract_address);
-	const id = match.params.id;
+	const { id } = useParams();
 
 	useEffect(() => {
 		if (tokenContract) {
@@ -120,6 +120,7 @@ const CoinDetails = () => {
 				/>
 			</Styled.ChartResponsiveCard>
 
+			{/* 
 			<Row>
 				<Col xs={12} md={6}>
 					<Styled.ChartResponsiveCard>
@@ -151,7 +152,7 @@ const CoinDetails = () => {
 						/>
 					</Styled.ChartResponsiveCard>
 				</Col>
-			</Row>
+			</Row> */}
 
 			<Row className={"d-flex align-items-stretch"}>
 				<Col lg={3} md={6} xs={12}>

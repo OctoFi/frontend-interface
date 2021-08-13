@@ -133,13 +133,6 @@ export const IconWrapper = styled.div<{ stroke?: string; size?: string; marginRi
 	}
 `;
 
-export const CloseIcon = styled(X)<{ onClick: () => void }>`
-	cursor: pointer;
-	@media (max-width: 1199px) {
-		display: none;
-	}
-`;
-
 // A button that triggers some onClick result, but looks like a link.
 export const LinkStyledButton = styled.button<{ disabled?: boolean }>`
 	border: none;

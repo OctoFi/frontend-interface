@@ -40,45 +40,6 @@ export const CustomNavLink = styled(Nav.Link)`
 	}
 `;
 
-export const LogoContainer = styled.div`
-	max-width: 24px;
-	max-height: 24px;
-	height: 24px;
-	width: 24px;
-	min-width: 24px;
-	margin-left: 1rem;
-
-	@media (min-width: 992px) {
-		max-width: 32px;
-		max-height: 32px;
-		height: 32px;
-		width: 32px;
-		min-width: 32px;
-		margin-right: 1.5rem;
-		margin-left: 0;
-	}
-`;
-
-export const Title = styled.span`
-	font-weight: bold;
-	font-size: 1rem;
-	color: ${({ theme }) => theme.text1};
-
-	@media (max-width: 991px) {
-		font-size: 0.875rem;
-	}
-`;
-
-export const CustomText = styled.span`
-	color: ${({ theme }) => theme.text1};
-	font-weight: 400;
-	font-size: 0.875rem;
-
-	@media (max-width: 991px) {
-		font-size: 0.75rem;
-	}
-`;
-
 export const PoolsButton = styled(Button)`
 	border-radius: 12px;
 	background-color: ${({ theme }) => theme.bg1};
@@ -147,5 +108,44 @@ export const StyledLink = styled(Link)`
 		text-decoration: none;
 		outline: none;
 		box-shadow: none;
+	}
+`;
+
+export const LogoContainer = styled.div`
+	max-width: 24px;
+	max-height: 24px;
+	height: 24px;
+	width: 24px;
+	min-width: 24px;
+	margin-left: 1rem;
+
+	@media (min-width: 992px) {
+		max-width: 32px;
+		max-height: 32px;
+		height: 32px;
+		width: 32px;
+		min-width: 32px;
+		margin-right: 1.5rem;
+		margin-left: 0;
+	}
+`;
+
+export const Title = styled.span`
+	font-weight: bold;
+	font-size: 1rem;
+	color: ${({ theme }) => theme.text1};
+
+	@media (max-width: 991px) {
+		font-size: 0.875rem;
+	}
+`;
+
+export const CustomText = styled.span`
+	color: ${({ theme }) => theme.text1};
+	font-weight: 400;
+	font-size: 0.875rem;
+
+	@media (max-width: 991px) {
+		font-size: 0.75rem;
 	}
 `;

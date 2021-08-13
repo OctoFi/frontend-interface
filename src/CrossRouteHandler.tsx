@@ -1,19 +1,19 @@
-import { Route, Switch } from 'react-router-dom';
-import {lazy, Suspense} from "react";
+import { Route, Switch } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
-import LocalStorageContextProvider, { Updater as LocalStorageContextUpdater } from './contexts/LocalStorage'
-import ApplicationContextProvider, { Updater as ApplicationContextUpdater } from './contexts/Application'
-import TransactionContextProvider, { Updater as TransactionContextUpdater } from './contexts/Transactions'
-import BalancesContextProvider, { Updater as BalancesContextUpdater } from './contexts/Balances'
-import TokensContextProvider from './contexts/Tokens/index.js'
-import AllowancesContextProvider from './contexts/Allowances'
+import LocalStorageContextProvider, { Updater as LocalStorageContextUpdater } from "./contexts/LocalStorage";
+import ApplicationContextProvider, { Updater as ApplicationContextUpdater } from "./contexts/Application";
+import TransactionContextProvider, { Updater as TransactionContextUpdater } from "./contexts/Transactions";
+import BalancesContextProvider, { Updater as BalancesContextUpdater } from "./contexts/Balances";
+import TokensContextProvider from "./contexts/Tokens/index.js";
+import AllowancesContextProvider from "./contexts/Allowances";
 import SplashScreen from "./components/SplashScreen";
 
 const CrossBalance = lazy(() => import("./pages/CrossBalance"));
 const CrossBridge = lazy(() => import("./pages/CrossBridge"));
-const CrossAnySwap = lazy(() => import("./pages/CrossAnySwap"))
+const CrossAnySwap = lazy(() => import("./pages/CrossAnySwap"));
 
-function ContextProviders({ children }) {
+function ContextProviders({ children }: { children?: any }) {
 	return (
 		<LocalStorageContextProvider>
 			<ApplicationContextProvider>
@@ -26,9 +26,8 @@ function ContextProviders({ children }) {
 				</TransactionContextProvider>
 			</ApplicationContextProvider>
 		</LocalStorageContextProvider>
-	)
+	);
 }
-
 
 function Updaters() {
 	return (
@@ -38,13 +37,13 @@ function Updaters() {
 			<TransactionContextUpdater />
 			<BalancesContextUpdater />
 		</>
-	)
+	);
 }
 
-const CrossRouteHandler = props => {
+const CrossRouteHandler = () => {
 	return (
 		<ContextProviders>
-			<Updaters/>
+			<Updaters />
 			<Suspense fallback={<SplashScreen />}>
 				<Switch>
 					<Route path={"/cross/balance"} component={CrossBalance} />
@@ -53,7 +52,7 @@ const CrossRouteHandler = props => {
 				</Switch>
 			</Suspense>
 		</ContextProviders>
-	)
-}
+	);
+};
 
 export default CrossRouteHandler;

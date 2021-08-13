@@ -4,7 +4,7 @@ import { FixedSizeList } from "react-window";
 import { Text } from "rebass";
 import { useActiveWeb3React } from "../../hooks";
 import { useAllTokens, useToken, useIsUserAddedToken, useFoundOnInactiveList } from "../../hooks/Tokens";
-import { CloseIcon, TYPE, ButtonText, IconWrapper } from "../../theme";
+import { TYPE, ButtonText, IconWrapper } from "../../theme";
 import { isAddress } from "../../utils";
 import Column from "../Column";
 import Row, { RowBetween, RowFixed } from "../Row";
@@ -22,6 +22,7 @@ import ImportRow from "./ImportRow";
 import { Edit } from "react-feather";
 import useDebounce from "../../hooks/useDebounce";
 import { useTranslation } from "react-i18next";
+import { CloseButton } from "react-bootstrap";
 
 const ContentWrapper = styled(Column)`
 	width: 100%;
@@ -153,7 +154,7 @@ export function CurrencySearch({
 					<Text fontWeight={500} fontSize={16}>
 						{t("exchange.selectToken")}
 					</Text>
-					<CloseIcon onClick={onDismiss} />
+					<CloseButton onClick={onDismiss} />
 				</RowBetween>
 				<Row>
 					<SearchInput

@@ -12,7 +12,7 @@ import { getKnownTokens, isWethToken } from "../../../utils/known_tokens";
 import { tokenAmountInUnits } from "../../../utils/spot/tokens";
 import { Protocol } from "../../../utils/aave/types";
 import { startLendingTokenSteps, startUnLendingTokenSteps } from "../../../state/spotUI/actions";
-import CurrencyLogo from "../../../components/CurrencyLogo";
+import CurrencyLogo from "../../../components/Logo/CurrencyLogo";
 import { StyledLink, TradeButton } from "../../../components/WalletCard/styleds";
 import BootstrapTable from "react-bootstrap-table-next";
 import ResponsiveTable from "../../../components/ResponsiveTable";

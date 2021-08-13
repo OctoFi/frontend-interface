@@ -2,7 +2,6 @@ import React, { useState, useCallback } from "react";
 import { HelpCircle } from "react-feather";
 import * as Styled from "./styleds";
 
-// TODO: verify the props works correctly
 export interface ImgProps {
 	src?: string;
 	alt?: string;
@@ -17,11 +16,11 @@ export const Img = ({ src, alt, ...props }: ImgProps) => {
 	}, []);
 
 	if (tries > -1 && src) {
-		return <img {...props} src={src} alt={alt} onError={errorHandler} />;
+		return <img src={src} alt={alt} onError={errorHandler} {...props} />;
 	}
 
 	return (
-		<Styled.BadSource {...props}>
+		<Styled.BadSource>
 			<HelpCircle />
 		</Styled.BadSource>
 	);

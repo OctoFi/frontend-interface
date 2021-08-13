@@ -1,6 +1,9 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { BigNumber } from "@0x/utils";
+import { Token } from "@uniswap/sdk";
+import BootstrapTable from "react-bootstrap-table-next";
 import styled from "styled-components";
 
 import {
@@ -15,24 +18,15 @@ import withBalance from "../../../components/hoc/withBalance";
 import { useActiveWeb3React } from "../../../hooks";
 import { setAaveCurrency } from "../../../state/aave/actions";
 import { getKnownTokens, isWethToken } from "../../../utils/known_tokens";
-import { formatTokenSymbol, tokenAmountInUnits } from "../../../utils/spot/tokens";
+import { tokenAmountInUnits } from "../../../utils/spot/tokens";
 import { Protocol } from "../../../utils/aave/types";
-import {
-	startBorrowTokenSteps,
-	startLendingTokenSteps,
-	startRepayTokenSteps,
-	startUnLendingTokenSteps,
-} from "../../../state/spotUI/actions";
-import CurrencyLogo from "../../../components/CurrencyLogo";
-import Skeleton from "react-loading-skeleton";
+import { startBorrowTokenSteps, startRepayTokenSteps } from "../../../state/spotUI/actions";
+import CurrencyLogo from "../../../components/Logo/CurrencyLogo";
 import { StyledLink, TradeButton } from "../../../components/WalletCard/styleds";
-import BootstrapTable from "react-bootstrap-table-next";
 import ResponsiveTable from "../../../components/ResponsiveTable";
 import BorrowTokenModal from "./BorrowTokenModal";
 import RepayTokenModal from "./RepayTokenModal";
-import { Token } from "@uniswap/sdk";
 import { sortedData } from "../../../lib/helper";
-import { useTranslation } from "react-i18next";
 import useTheme from "../../../hooks/useTheme";
 import * as Styled from "../styleds";
 

@@ -14,7 +14,7 @@ import { UNLIMITED_ALLOWANCE_IN_BASE_UNITS } from "../../constants";
 import { useActiveWeb3React } from "../../hooks";
 import useTheme from "../../hooks/useTheme";
 import { getContractWrappers } from "../../utils/spot/contractWrapper";
-// import { AppState } from "../../state";
+import { AppState } from "../../state";
 import { useMemoTokenBalances } from "../../state/balances/hooks";
 import { fetchBalances, fetchTransformedBalances } from "../../state/balances/actions";
 
@@ -22,7 +22,7 @@ import { ResponsiveCard } from "../Card";
 import CurrencyLogo from "../Logo/CurrencyLogo";
 import CurrencyText from "../CurrencyText";
 import { InputGroupText, InputGroupFormControl as FormControl } from "../Form";
-import NftTab from "./NftTab";
+import NftTab from "./NftWallet";
 import { WalletTable } from "./WalletTable";
 import UnlockModal from "./UnlockModal";
 import * as Styled from "./styleds";
@@ -30,17 +30,19 @@ import * as Styled from "./styleds";
 let web3;
 let web3Wrapper;
 
-const WalletCard = (props) => {
+export interface WalletCardProps {}
+
+export const WalletCard = (props: WalletCardProps) => {
 	const theme = useTheme();
 	const { account } = useActiveWeb3React();
 	const [query, setQuery] = useState("");
 	const [unlocking, setUnlocking] = useState(false);
 	const [showUnlockModal, setShowUnlockModal] = useState(false);
 	const [done, setDone] = useState(false);
-	const overview = useSelector((state) => state.balances.overview);
-	const loading = useSelector((state) => state.balances.loading);
-	const balances = useSelector((state) => state.balances.data);
-	const { ETH } = useSelector((state) => state.currency.currenciesRate);
+	const overview = useSelector((state: AppState) => state.balances.overview);
+	const loading = useSelector((state: AppState) => state.balances.loading);
+	const balances = useSelector((state: AppState) => state.balances.data);
+	const { ETH } = useSelector((state: AppState) => state.currency.currenciesRate);
 	const dispatch = useDispatch();
 	const walletBalances = useMemoTokenBalances();
 	const { t } = useTranslation();
@@ -110,7 +112,7 @@ const WalletCard = (props) => {
 		{
 			dataField: "token",
 			text: t("token"),
-			formatter: (cellContent, row) => {
+			formatter: (cellContent: any, row: any) => {
 				const isLoading = row.loading || false;
 				return (
 					<div className="d-flex align-items-center flex-row-reverse flex-lg-row">
@@ -131,16 +133,14 @@ const WalletCard = (props) => {
 		{
 			dataField: "balance",
 			text: t("balanceTitle"),
-			formatter: (cellContent, row) => {
+			formatter: (cellContent: any, row: any) => {
 				const isLoading = row.loading || false;
 				return (
 					<div>
 						{isLoading ? (
 							<Skeleton width={80} height={24} />
 						) : (
-							<Styled.CustomText size={props.size || "md"}>
-								{row.balance ? row.balance.toSignificant(6) : 0}
-							</Styled.CustomText>
+							<Styled.CustomText>{row.balance ? row.balance.toSignificant(6) : 0}</Styled.CustomText>
 						)}
 					</div>
 				);
@@ -149,7 +149,7 @@ const WalletCard = (props) => {
 		{
 			dataField: "value",
 			text: t("totalValue"),
-			formatter: (cellContent, row) => {
+			formatter: (cellContent: any, row: any) => {
 				const isLoading = row.loading || false;
 				return (
 					<div>
@@ -159,7 +159,7 @@ const WalletCard = (props) => {
 								<Skeleton width={80} height={24} />
 							</div>
 						) : (
-							<Styled.CustomText size={props.size || "md"}>
+							<Styled.CustomText>
 								<CurrencyText value={row.balanceUSD} />
 							</Styled.CustomText>
 						)}
@@ -170,7 +170,7 @@ const WalletCard = (props) => {
 		{
 			dataField: "action",
 			text: t("table.actions"),
-			formatter: (cellContent, row, rowIndex, { unlockHandler }) => {
+			formatter: (cellContent: any, row: any, rowIndex: number, { unlockHandler }) => {
 				const isLoading = row.loading || false;
 				// const value = row.balanceUSD * (currenciesRate["BTC"] || 1);
 				return (
@@ -191,7 +191,7 @@ const WalletCard = (props) => {
 
 								<Styled.TradeButton
 									variant={theme.warning}
-									onClick={unlockHandler.bind(this, row.metadata)}
+									onClick={() => unlockHandler(row.metadata)}
 									disabled={row.metadata.symbol === "ETH"}
 								>
 									{t("buttons.unlock")}
@@ -246,7 +246,7 @@ const WalletCard = (props) => {
 			/>
 
 			<ResponsiveCard>
-				<Tab.Container defaultActiveKey={"tokens"}>
+				<Tab.Container defaultActiveKey={"nft"}>
 					<div className="d-flex flex-column-reverse flex-lg-row align-items-stretch align-items-lg-center justify-content-between mb-4">
 						<Nav fill variant="pills">
 							<Styled.CustomNavItem>
@@ -264,12 +264,12 @@ const WalletCard = (props) => {
 							<FormControl
 								id="walletSearch"
 								placeholder={t("search")}
-								onChange={(e) => setQuery(e.target.value)}
+								onChange={(e: any) => setQuery(e.target.value)}
 							/>
 						</Styled.CustomInputGroup>
 					</div>
-					<Tab.Content className={"bg-transparent"}>
-						<Tab.Pane eventKey="tokens">
+					<Tab.Content>
+						{/* <Tab.Pane eventKey="tokens">
 							{loading ? (
 								<div className="py-5 w-100 d-flex align-items-center justify-content-center">
 									<Spinner animation="border" variant="primary" id="tokens-wallet" />
@@ -277,7 +277,7 @@ const WalletCard = (props) => {
 							) : (
 								<WalletTable columns={TokensColumns} entities={filteredTokensData} />
 							)}
-						</Tab.Pane>
+						</Tab.Pane> */}
 						<Tab.Pane eventKey="nft">
 							<NftTab query={query} />
 						</Tab.Pane>
@@ -287,5 +287,3 @@ const WalletCard = (props) => {
 		</div>
 	);
 };
-
-export default WalletCard;

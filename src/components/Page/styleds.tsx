@@ -30,19 +30,12 @@ export const PageContent = styled.div`
 `;
 
 export const PageContainer = styled.div`
-	background-color: transparent;
 	padding-top: 2rem;
 	padding-bottom: 3rem;
 	flex: 1;
 `;
 
 export const Title = styled.h1`
-	font-size: 1.25rem;
-	font-weight: 700;
-	color: ${({ theme }) => theme.text1};
-	margin-top: 0;
-
-	@media (min-width: 768px) {
-		font-size: 2.5rem;
-	}
+	font-weight: 600;
+	margin-bottom: 2rem;
 `;
