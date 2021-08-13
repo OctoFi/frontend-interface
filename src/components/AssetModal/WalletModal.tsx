@@ -1,13 +1,13 @@
-import React from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { X as Close } from "react-bootstrap-icons";
+import { AppState } from "../../state";
 import WalletTable from "../AssetTable/WalletTable";
 import { Modal } from "../Modal/bootstrap";
 import * as Styled from "./styleds";
 
 export const WalletModal = () => {
-	const overview = useSelector((state) => state.balances.overview);
+	const overview = useSelector((state: AppState) => state.balances.overview);
 	const history = useHistory();
 
 	const onHide = () => {

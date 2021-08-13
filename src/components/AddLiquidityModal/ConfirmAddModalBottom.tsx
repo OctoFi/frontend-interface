@@ -1,7 +1,7 @@
 import { Currency, CurrencyAmount, Fraction, Percent } from "@uniswap/sdk";
 import Button from "../UI/Button";
 import { RowBetween, RowFixed } from "../Row";
-import CurrencyLogo from "../../components/CurrencyLogo";
+import CurrencyLogo from "../Logo/CurrencyLogo";
 import { Field } from "../../state/mint/actions";
 import { TYPE } from "../../theme";
 import styled from "styled-components";
@@ -39,22 +39,14 @@ export function ConfirmAddModalBottom({
 			<RowBetween>
 				<Description>{currencies[Field.CURRENCY_A]?.symbol} Deposited</Description>
 				<RowFixed>
-					<CurrencyLogo
-						currency={currencies[Field.CURRENCY_A]}
-						style={{ marginRight: "8px" }}
-						size={24}
-					/>
+					<CurrencyLogo currency={currencies[Field.CURRENCY_A]} style={{ marginRight: "8px" }} size={24} />
 					<Value>{parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)}</Value>
 				</RowFixed>
 			</RowBetween>
 			<RowBetween>
 				<Description>{currencies[Field.CURRENCY_B]?.symbol} Deposited</Description>
 				<RowFixed>
-					<CurrencyLogo
-						currency={currencies[Field.CURRENCY_B]}
-						style={{ marginRight: "8px" }}
-						size={24}
-					/>
+					<CurrencyLogo currency={currencies[Field.CURRENCY_B]} style={{ marginRight: "8px" }} size={24} />
 					<Value>{parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)}</Value>
 				</RowFixed>
 			</RowBetween>

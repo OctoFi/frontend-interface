@@ -358,11 +358,7 @@ export default function AddLiquidityModal({ history }: RouteComponentProps) {
 				) : attemptingTxn ? (
 					<ConfirmationPendingContent onDismiss={handleDismissConfirmation} pendingText={pendingText} />
 				) : txHash ? (
-					<TransactionSubmittedContent
-						chainId={chainId}
-						hash={txHash}
-						onDismiss={handleDismissConfirmation}
-					/>
+					<TransactionSubmittedContent hash={txHash} onDismiss={handleDismissConfirmation} />
 				) : (
 					<ConfirmationModalContent
 						title={noLiquidity ? t("pools.creatingPool") : t("pools.willReceive")}

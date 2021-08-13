@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Spinner } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
 
+import { AppState } from "../../state";
 import { fetchTokens } from "../../state/explore/actions";
 import CurrencyLogo from "../Logo/CurrencyLogo";
 import CurrencyText from "../CurrencyText";
@@ -13,8 +14,7 @@ const TokenSetsExploreTable = () => {
 	const dispatch = useDispatch();
 	const [data, setData] = useState<Array<any>>([]);
 	const [loading, setLoading] = useState<boolean>(true);
-	// @ts-ignore
-	const exploreSets = useSelector((state) => state.explore);
+	const exploreSets = useSelector((state: AppState) => state.explore);
 
 	useEffect(() => {
 		if (exploreSets.tokenSets.data.length === 0) {

@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import { useActiveWeb3React } from "../../hooks";
 import { emitter } from "../../lib/helper";
+import { AppState } from "../../state";
 import { fetchBalances, fetchTransformedBalances } from "../../state/balances/actions";
 import { useMemoTokenBalances } from "../../state/balances/hooks";
 import Page from "../../components/Page";
@@ -22,10 +23,10 @@ import * as Styled from "./styleds";
 export const Dashboard = () => {
 	const { t } = useTranslation();
 	const { account } = useActiveWeb3React();
-	const overview = useSelector((state) => state.balances.overview);
-	const loading = useSelector((state) => state.balances.loading);
-	const balances = useSelector((state) => state.balances.data);
-	const { ETH } = useSelector((state) => state.currency.currenciesRate);
+	const overview = useSelector((state: AppState) => state.balances.overview);
+	const loading = useSelector((state: AppState) => state.balances.loading);
+	const balances = useSelector((state: AppState) => state.balances.data);
+	const { ETH } = useSelector((state: AppState) => state.currency.currenciesRate);
 	const dispatch = useDispatch();
 	const walletBalances = useMemoTokenBalances();
 	const history = useHistory();

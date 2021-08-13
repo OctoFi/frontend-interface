@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import SVG from "react-inlinesvg";
 import _ from "lodash";
 
+import { AppState } from "../../state";
 import SearchIcon from "../../assets/images/search.svg";
 import { fetchSpaces } from "../../state/governance/actions";
 import { GOVERNANCE_PINNED } from "../../constants/governance";
@@ -16,7 +17,7 @@ export const Governance = () => {
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
 	const [search, setSearch] = useState("");
-	const { loading, spaces } = useSelector((state) => state.governance);
+	const { loading, spaces } = useSelector((state: AppState) => state.governance);
 	const [transformedSpaces, setTransformedSpaces] = useState([]);
 
 	useEffect(() => {

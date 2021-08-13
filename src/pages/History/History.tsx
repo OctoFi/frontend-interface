@@ -1,7 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { CSVLink } from "react-csv";
+import { Button } from "react-bootstrap";
 
 import Page from "../../components/Page";
+import ExchangeIcon from "../../components/Icons/Exchange";
 // import TransactionHistory from "../../components/TransactionHistory";
 import * as Styled from "./styleds";
 

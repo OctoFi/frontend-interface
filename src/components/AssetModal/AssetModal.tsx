@@ -1,15 +1,15 @@
-import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { X as Close } from "react-bootstrap-icons";
 
+import { AppState } from "../../state";
 import AssetTable from "../AssetTable";
 import { Modal } from "../Modal/bootstrap";
 import * as Styled from "./styleds";
 
 export const AssetModal = () => {
 	const history = useHistory();
-	const overview = useSelector((state) => state.balances.overview);
+	const overview = useSelector((state: AppState) => state.balances.overview);
 	const { asset } = useParams();
 
 	const onHide = () => history.push("/dashboard");

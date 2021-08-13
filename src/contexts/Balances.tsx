@@ -189,9 +189,7 @@ export default function Provider({ children }: { children: ReactNode }) {
   //       })),
   //   [allTokenDetails]
   // )
-  // console.log(allExchanges)
-  // console.log(state)
-  // console.log(account)
+
   const startListening = useCallback((chainId, address, tokenAddress) => {
     dispatch({ type: Action.START_LISTENING, payload: { chainId, address, tokenAddress } })
   }, [])

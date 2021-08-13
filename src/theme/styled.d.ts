@@ -18,7 +18,7 @@ export interface Colors {
 	bg3: Color;
 	bg4: Color;
 	bg5: Color;
-	
+
 	// UI
 	borderColor: Color;
 	borderColor2: Color;
@@ -72,5 +72,7 @@ declare module "styled-components" {
 		// css snippets
 		flexColumnNoWrap: FlattenSimpleInterpolation;
 		flexRowNoWrap: FlattenSimpleInterpolation;
+
+		fontSizes: Array<number>;
 	}
 }

@@ -10,6 +10,7 @@ import HistoricalChart from "../../components/HistoricalChart";
 import { useActiveWeb3React } from "../../hooks";
 import { useTokenContract } from "../../hooks/useContract";
 import useTheme from "../../hooks/useTheme";
+import { AppState } from "../../state";
 import { useIsDarkMode } from "../../state/user/hooks";
 import { fetchContractHistoricalData, fetchSelectedContract } from "../../state/market/actions";
 import CurrencyText from "../../components/CurrencyText";
@@ -23,7 +24,7 @@ const ContractDetails = (props) => {
 	const theme = useTheme();
 	const darkMode = useIsDarkMode();
 	const dispatch = useDispatch();
-	const marketData = useSelector((state) => state.market);
+	const marketData = useSelector((state: AppState) => state.market);
 	const [walletBalance, setWalletBalance] = useState(false);
 	const selected = marketData.selected.data || false;
 	const { contract } = useParams();

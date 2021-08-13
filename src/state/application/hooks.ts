@@ -34,6 +34,7 @@ export function useToggleModal(modal: ApplicationModal): () => void {
 	return useCallback(() => {
 		dispatch(setOpenModal(open ? null : modal));
 		modalEmitter();
+		// eslint-disable-next-line
 	}, [dispatch, modal, open]);
 }
 

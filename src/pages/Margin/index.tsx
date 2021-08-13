@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import TradingViewWidget, { Themes } from "react-tradingview-widget";
 import styled from "styled-components";
 
 import Page from "../../components/Page";
@@ -6,10 +8,8 @@ import StyledCard, { ResponsiveCard } from "../../components/Card";
 import Orderbook from "./components/Orderbook";
 import TradeHistory from "./components/TradeHistory";
 import MarketDetails from "./components/MarketDetails";
-import TradingViewWidget, { Themes } from "react-tradingview-widget";
 import OrderHistory from "./components/OrderHistory";
 import Providers from "./Provider";
-import { useSelector } from "react-redux";
 import MarketStats from "./components/MarketStats";
 import BuyOrSell from "./components/BuyOrSell";
 
@@ -66,8 +66,8 @@ const Card = styled(StyledCard)`
 	}
 `;
 
-const Margin = (props) => {
-	const selectedMarket = useSelector((state) => state.margin.selectedMarket);
+const Margin = () => {
+	const selectedMarket = useSelector((state: AppState) => state.margin.selectedMarket);
 
 	return (
 		<Page title={false} size={"xl"} networkSensitive={true}>

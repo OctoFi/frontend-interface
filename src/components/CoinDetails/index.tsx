@@ -4,6 +4,7 @@ import { match } from "react-router-dom";
 import { Row, Col, Spinner } from "react-bootstrap";
 import dompurify from "dompurify";
 
+import { AppState } from "../../state";
 import { useActiveWeb3React } from "../../hooks";
 import useTheme from "../../hooks/useTheme";
 import { useTokenContract } from "../../hooks/useContract";
@@ -23,7 +24,7 @@ const CoinDetails = () => {
 	const darkMode = useIsDarkMode();
 	const dispatch = useDispatch();
 	// @ts-ignore
-	const marketData = useSelector((state) => state.market);
+	const marketData = useSelector((state: AppState) => state.market);
 	const [walletBalance, setWalletBalance] = useState<number>(0);
 	const selected = marketData.selected.data || false;
 	const tokenContract = useTokenContract(selected.contract_address);

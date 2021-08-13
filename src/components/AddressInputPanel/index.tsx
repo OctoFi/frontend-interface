@@ -4,7 +4,7 @@ import { PATTERN } from "../../constants";
 import useENS from "../../hooks/useENS";
 import { useActiveWeb3React } from "../../hooks";
 import { ExternalLink } from "../../theme";
-import { getExplorerLink } from "../../utils";
+import { getExplorerLink } from "../../utils/explorer";
 import { AutoColumn } from "../Column";
 import * as Styled from "./styleds";
 
@@ -44,7 +44,7 @@ const AddressInputPanel = ({
 			<Styled.InputContainer>
 				<AutoColumn gap="md">
 					<Styled.ContainerRow error={error}>
-						<Styled.Label for={id}>{label}</Styled.Label>
+						<Styled.Label htmlFor={id}>{label}</Styled.Label>
 						<Styled.Input
 							id={id}
 							className="recipient-address-input"
@@ -55,7 +55,7 @@ const AddressInputPanel = ({
 							spellCheck="false"
 							placeholder={placeholder}
 							error={error}
-							pattern={PATTERN.global}
+							pattern={`${PATTERN.global}`}
 							onChange={handleInput}
 							value={value}
 						/>

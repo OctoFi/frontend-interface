@@ -3,6 +3,7 @@ import { Suspense, lazy } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
 
+// import { AppState } from "./state";
 // import { fetchCurrencies } from "./state/currency/actions";
 // import { useDarkModeManager } from "./state/user/hooks";
 import HomePage from "./pages/Home";
@@ -34,7 +35,7 @@ const Settings = lazy(() => import("./pages/Settings"));
 
 const Routes = () => {
 	// const [darkMode] = useDarkModeManager();
-	// const selectedCurrency = useSelector((state) => state.currency.selected);
+	// const selectedCurrency = useSelector((state: AppState) => state.currency.selected);
 	// const dispatch = useDispatch();
 
 	// useEffect(() => {

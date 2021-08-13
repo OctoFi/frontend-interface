@@ -3,11 +3,11 @@ import { getAddress } from "@ethersproject/address";
 import { AddressZero } from "@ethersproject/constants";
 import { JsonRpcSigner, Web3Provider } from "@ethersproject/providers";
 import { BigNumber } from "@ethersproject/bignumber";
-// import { abi as IUniswapV2Router02ABI } from "@uniswap/v2-periphery/build/IUniswapV2Router02.json";
-// import { ROUTER_ADDRESS } from "../../../octofi-app-aquafarm/src/constants";
+import { abi as IUniswapV2Router02ABI } from "@uniswap/v2-periphery/build/IUniswapV2Router02.json";
+import { ROUTER_ADDRESS } from "../constants";
 // import { Token, Currency, ETHER } from "@uniswap/sdk";
 import { JSBI, Percent, CurrencyAmount } from "@uniswap/sdk";
-// import { TokenAddressMap } from "../../../octofi-app-aquafarm/src/state/lists/hooks";
+// import { TokenAddressMap } from "../state/lists/hooks";
 
 // returns the checksummed address if the address is valid, otherwise returns false
 export function isAddress(value: any): string | false {
@@ -70,9 +70,9 @@ export function getContract(address: string, ABI: any, library: Web3Provider, ac
 }
 
 // account is optional
-// export function getRouterContract(_: number, library: Web3Provider, account?: string): Contract {
-// 	return getContract(ROUTER_ADDRESS, IUniswapV2Router02ABI, library, account);
-// }
+export function getRouterContract(_: number, library: Web3Provider, account?: string): Contract {
+	return getContract(ROUTER_ADDRESS, IUniswapV2Router02ABI, library, account);
+}
 
 export function escapeRegExp(string: string): string {
 	return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string

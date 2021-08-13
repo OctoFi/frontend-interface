@@ -6,6 +6,7 @@ import { Tab, Nav, Spinner } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
 import SVG from "react-inlinesvg";
 
+import { AppState } from "../../state";
 import SearchIcon from "../../assets/images/search.svg";
 import { sortedData } from "../../lib/helper";
 import MarketApi from "../../http/market";
@@ -42,7 +43,7 @@ export const MarketTokens = () => {
 
 	const loader = useRef(null);
 	const dispatch = useDispatch();
-	const marketCoins = useSelector((state) => state.market.marketCoins);
+	const marketCoins = useSelector((state: AppState) => state.market.marketCoins);
 
 	const allTokensData = useMemo(() => {
 		return sortedData(allTokens, sort);

@@ -1,6 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import Page from "../../components/Page";
-import Uniswap from "../../../../octofi-app-aquafarm/src/components/Uniswap";
+import Uniswap from "../../components/Uniswap";
 
 export const Swap = () => {
 	return (

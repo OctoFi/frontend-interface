@@ -1,11 +1,12 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { AppState } from "../../state";
 import { PurePlatforms } from "./Platforms";
 
 const Platforms = () => {
 	const history = useHistory();
-	const balance = useSelector((state) => state.balances.transformedBalance);
-	const loading = useSelector((state) => state.balances.loading);
+	const balance = useSelector((state: AppState) => state.balances.transformedBalance);
+	const loading = useSelector((state: AppState) => state.balances.loading);
 
 	const onSelectPlatform = (platform: any) => {
 		history.push(`/platforms/${platform}`);

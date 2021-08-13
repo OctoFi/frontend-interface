@@ -80,7 +80,7 @@ export function ExternalLinkIcon({
 				event.preventDefault();
 			}
 		},
-		[href, target]
+		[target]
 	);
 	return (
 		<LinkIconWrapper target={target} rel={rel} href={href} onClick={handleClick} {...rest}>
@@ -232,7 +232,7 @@ export function ExternalLink({
 				event.preventDefault();
 			}
 		},
-		[href, target]
+		[target]
 	);
 	return <StyledLink target={target} rel={rel} href={href} onClick={handleClick} {...rest} />;
 }

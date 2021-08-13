@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import styled, {
+import {
 	ThemeProvider as StyledComponentsThemeProvider,
 	createGlobalStyle,
 	css,
@@ -89,6 +89,7 @@ export function colors(darkMode?: boolean): Colors {
 export function theme(darkMode?: boolean): DefaultTheme {
 	return {
 		...colors(darkMode),
+		fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
 
 		grids: {
 			sm: 8,
@@ -123,55 +124,52 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
 	return <StyledComponentsThemeProvider theme={themeObject}>{children}</StyledComponentsThemeProvider>;
 }
 
-const TextWrapper = styled(Text)<{ color: keyof Colors }>`
-	color: ${({ color, theme }) => (theme as any)[color]};
-`;
-
 export const TYPE = {
 	Main(props: TextProps) {
-		return <TextWrapper fontWeight={500} color={"text2"} {...props} />;
+		// {...props}
+		return <Text fontWeight={500} color="text2" />;
 	},
 	Link(props: TextProps) {
-		return <TextWrapper fontWeight={500} color={"primary"} {...props} />;
+		return <Text fontWeight={500} color={"primary"} />;
 	},
 	Black(props: TextProps) {
-		return <TextWrapper fontWeight={500} color={"text1"} {...props} />;
+		return <Text fontWeight={500} color={"text1"} />;
 	},
 	White(props: TextProps) {
-		return <TextWrapper fontWeight={500} color={"white"} {...props} />;
+		return <Text fontWeight={500} color={"white"} />;
 	},
 	Body(props: TextProps) {
-		return <TextWrapper fontWeight={400} fontSize={16} color={"text1"} {...props} />;
+		return <Text fontWeight={400} color={"text1"} fontSize={2} />;
 	},
 	LargeHeader(props: TextProps) {
-		return <TextWrapper fontWeight={600} fontSize={24} {...props} />;
+		return <Text fontWeight={600} fontSize={4} />;
 	},
 	MediumHeader(props: TextProps) {
-		return <TextWrapper fontWeight={500} fontSize={20} {...props} />;
+		return <Text fontWeight={500} fontSize={3} />;
 	},
 	SubHeader(props: TextProps) {
-		return <TextWrapper fontWeight={400} fontSize={14} {...props} />;
+		return <Text fontWeight={400} fontSize={1} />;
 	},
 	Small(props: TextProps) {
-		return <TextWrapper fontWeight={500} fontSize={11} {...props} />;
+		return <Text fontWeight={500} fontSize={0} />;
 	},
 	Blue(props: TextProps) {
-		return <TextWrapper fontWeight={500} color={"primary"} {...props} />;
+		return <Text fontWeight={500} color={"primary"} />;
 	},
 	Yellow(props: TextProps) {
-		return <TextWrapper fontWeight={500} color={"yellow1"} {...props} />;
+		return <Text fontWeight={500} color={"yellow1"} />;
 	},
 	DarkGray(props: TextProps) {
-		return <TextWrapper fontWeight={500} color={"text3"} {...props} />;
+		return <Text fontWeight={500} color={"text3"} />;
 	},
 	Gray(props: TextProps) {
-		return <TextWrapper fontWeight={500} color={"bg4"} {...props} />;
+		return <Text fontWeight={500} color={"bg4"} />;
 	},
 	Italic(props: TextProps) {
-		return <TextWrapper fontWeight={500} fontSize={12} fontStyle={"italic"} color={"text2"} {...props} />;
+		return <Text fontWeight={500} color={"text2"} fontSize={0} fontStyle={"italic"} />;
 	},
 	Error({ error, ...props }: { error: boolean } & TextProps) {
-		return <TextWrapper fontWeight={500} color={error ? "red1" : "text2"} {...props} />;
+		return <Text fontWeight={500} color={error ? "red1" : "text2"} />;
 	},
 };
 

@@ -1,4 +1,3 @@
-import { ChainId } from "@uniswap/sdk";
 import React from "react";
 import { Spinner, Button } from "react-bootstrap";
 import { Text } from "rebass";
@@ -11,7 +10,7 @@ import { CloseIcon } from "../../theme/components";
 import { RowBetween } from "../Row";
 import { AutoColumn, ColumnCenter } from "../Column";
 
-import { getExplorerLink } from "../../utils";
+import { getExplorerLink } from "../../utils/explorer";
 import { useActiveWeb3React } from "../../hooks";
 import useTheme from "../../hooks/useTheme";
 
@@ -72,17 +71,10 @@ export function ConfirmationPendingContent({ onDismiss, pendingText }: { onDismi
 	);
 }
 
-export function TransactionSubmittedContent({
-	onDismiss,
-	chainId,
-	hash,
-}: {
-	onDismiss: () => void;
-	hash: string | undefined;
-	chainId: ChainId | undefined;
-}) {
+export function TransactionSubmittedContent({ onDismiss, hash }: { onDismiss: () => void; hash: string | undefined }) {
 	const theme = useTheme();
 	const { t } = useTranslation();
+	const { chainId } = useActiveWeb3React();
 
 	return (
 		<Wrapper>

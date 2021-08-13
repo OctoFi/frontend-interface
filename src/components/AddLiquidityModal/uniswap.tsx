@@ -30,6 +30,7 @@ import { ApprovalState, useApproveCallback } from "../../hooks/useApproveCallbac
 import useTransactionDeadline from "../../hooks/useTransactionDeadline";
 import { useDerivedMintInfo, useMintActionHandlers, useMintState } from "../../state/mint/hooks";
 
+import { AppState } from "../../state";
 import { useTransactionAdder } from "../../state/transactions/hooks";
 import { useUserSlippageTolerance } from "../../state/user/hooks";
 import { TYPE } from "../../theme";
@@ -100,17 +101,8 @@ const HeaderCurrencyText = styled(Text)`
 	}
 `;
 
-export const ArrowWrapper = styled.div<{ clickable: boolean }>`
+export const ArrowWrapper = styled.div`
 	padding: 2px;
-
-	${({ clickable }) =>
-		clickable &&
-		css`
-			&:hover {
-				cursor: pointer;
-				opacity: 0.8;
-			}
-		`};
 `;
 
 export default function UniswapLiquidityModal({
@@ -270,7 +262,7 @@ export default function UniswapLiquidityModal({
 	const dispatch = useDispatch();
 
 	// @ts-ignore
-	const { gasPrice, selectedGasPrice } = useSelector((state) => state.currency);
+	const { gasPrice, selectedGasPrice } = useSelector((state: AppState) => state.currency);
 
 	useEffect(() => {
 		dispatch(getGasPrice());
@@ -399,7 +391,7 @@ export default function UniswapLiquidityModal({
 						/>
 
 						<SwitchCol>
-							<ArrowWrapper clickable={false}>
+							<ArrowWrapper>
 								<Plus size="16" color={theme.text2} />
 							</ArrowWrapper>
 						</SwitchCol>
@@ -519,11 +511,7 @@ export default function UniswapLiquidityModal({
 				) : attemptingTxn ? (
 					<ConfirmationPendingContent onDismiss={handleDismissConfirmation} pendingText={pendingText} />
 				) : txHash ? (
-					<TransactionSubmittedContent
-						chainId={chainId}
-						hash={txHash}
-						onDismiss={handleDismissConfirmation}
-					/>
+					<TransactionSubmittedContent hash={txHash} onDismiss={handleDismissConfirmation} />
 				) : (
 					<ConfirmationModalContent
 						title={noLiquidity ? t("pools.creatingPool") : t("pools.willReceive")}

@@ -8,6 +8,7 @@ import { useHistory, useParams } from "react-router-dom";
 
 import { formatProposal, getScores } from "../../lib/utils";
 import Snapshot from "../../http/snapshot";
+import { AppState } from "../../state";
 import { useWalletModalToggle } from "../../state/application/hooks";
 import { fetchProposals, fetchSpaces } from "../../state/governance/actions";
 import { Modal } from "../Modal/bootstrap";
@@ -29,7 +30,7 @@ export const Vote = () => {
 	const [status, setStatus] = useState({});
 	const dispatch = useDispatch();
 	const toggleWalletModal = useWalletModalToggle();
-	const { spaces, loading: governanceLoading, proposals } = useSelector((state) => state.governance);
+	const { spaces, loading: governanceLoading, proposals } = useSelector((state: AppState) => state.governance);
 	const { t } = useTranslation();
 	const api = new Snapshot();
 	const history = useHistory();
