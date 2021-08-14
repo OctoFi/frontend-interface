@@ -8,6 +8,7 @@ import { useActiveWeb3React } from "../../hooks";
 import useTheme from "../../hooks/useTheme";
 import CurrencyLogo from "../Logo/CurrencyLogo";
 import * as Styled from "./styleds";
+import { getExplorerLink } from "../../utils/explorer";
 
 const hashText = (hash) => {
 	return hash.slice(0, 6) + "..." + hash.slice(-4);
@@ -328,7 +329,7 @@ const Collapse = (props) => {
 									<Styled.Details vertical={true}>
 										<Styled.DescTitle>{t("transactionHash")}</Styled.DescTitle>
 										<Styled.DescAnchor
-											href={`https://etherscan.io/tx/${tokens.ref.hash}`}
+											href={getExplorerLink(chainId, tokens.ref.hash, "transaction")}
 											target={"_blank"}
 											rel={"noopener noreferrer"}
 										>
@@ -351,9 +352,9 @@ const Collapse = (props) => {
 								<Styled.DescValue>{tokens.ref.blockNumber}</Styled.DescValue>
 							</Styled.Details>
 							<Styled.Details>
-								<Styled.DescTitle>{t("blockNumber")}</Styled.DescTitle>
+								<Styled.DescTitle>{t("transactionHash")}</Styled.DescTitle>
 								<Styled.DescAnchor
-									href={`https://etherscan.io/tx/${tokens.ref.hash}`}
+									href={getExplorerLink(chainId, tokens.ref.hash, "transaction")}
 									target={"_blank"}
 									rel={"noopener noreferrer"}
 								>

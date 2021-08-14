@@ -22,7 +22,6 @@ import { tokenAmountInUnits } from "../../../utils/spot/tokens";
 import { Protocol } from "../../../utils/aave/types";
 import { startBorrowTokenSteps, startRepayTokenSteps } from "../../../state/spotUI/actions";
 import CurrencyLogo from "../../../components/Logo/CurrencyLogo";
-import { StyledLink, TradeButton } from "../../../components/WalletCard/styleds";
 import ResponsiveTable from "../../../components/ResponsiveTable";
 import BorrowTokenModal from "./BorrowTokenModal";
 import RepayTokenModal from "./RepayTokenModal";
@@ -391,8 +390,8 @@ const BorrowBalance = (props) => {
 							"d-flex align-items-stretch justify-content-center flex-column flex-lg-row align-items-lg-center justify-content-lg-start w-100"
 						}
 					>
-						<StyledLink>
-							<TradeButton
+						<Styled.CustomLink>
+							<Styled.TradeButton
 								onClick={openBorrowModal.bind(
 									this,
 									tokenD,
@@ -404,18 +403,18 @@ const BorrowBalance = (props) => {
 								disabled={availableForBorrow.isEqualTo(0) || !account}
 							>
 								{t("borrow.title")}
-							</TradeButton>
-						</StyledLink>
+							</Styled.TradeButton>
+						</Styled.CustomLink>
 
-						<StyledLink>
-							<TradeButton
+						<Styled.CustomLink>
+							<Styled.TradeButton
 								variant={theme.warning}
 								onClick={openRepayModal.bind(this, tokenD, isEthToken, tokB, token, borrowBalance)}
 								disabled={(borrowBalance && borrowBalance.isEqualTo(0)) || !account}
 							>
 								{t("repay")}
-							</TradeButton>
-						</StyledLink>
+							</Styled.TradeButton>
+						</Styled.CustomLink>
 					</div>
 				);
 			},

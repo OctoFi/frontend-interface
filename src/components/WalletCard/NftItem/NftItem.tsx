@@ -8,14 +8,16 @@ export interface PureNftItemProps {
 
 export const PureNftItem = ({ item }: PureNftItemProps) => {
 	return (
-		<Styled.Item href={item.external_link} target={"_blank"} rel={"noopener noreferrer"}>
-			<Ratio aspectRatio={"1x1"}>
-				<Styled.Thumbnail
+		<Styled.Item href={item.permalink} target={"_blank"} rel={"noopener noreferrer"}>
+			<Styled.Thumbnail as={Ratio} aspectRatio={"1x1"}>
+				<Styled.ThumbnailImg
 					src={item.image_preview_url || item.image_thumbnail_url || item.image_url}
 					alt={item.name}
 				/>
-			</Ratio>
-			<Styled.Name className={"mb-1"}>{item.name}</Styled.Name>
+			</Styled.Thumbnail>
+			<Styled.Name className={"mb-1"}>
+				{item.name?.length > 16 ? item.name?.slice(0, 16) + "..." : item.name}
+			</Styled.Name>
 
 			{/* <Styled.Description>
 				{item?.description?.length > 120 ? item?.description?.slice(0, 120) + "..." : item?.description}

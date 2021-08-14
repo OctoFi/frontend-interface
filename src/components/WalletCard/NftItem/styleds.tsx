@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Img from "../../UI/Img";
 
-export const Item = styled(Link)`
+export const Item = styled.a`
 	min-width: 8rem;
 	max-width: 10rem;
 	display: block;
@@ -9,11 +9,16 @@ export const Item = styled(Link)`
 	text-decoration: none;
 `;
 
-export const Thumbnail = styled.img`
+export const Thumbnail = styled.div`
+	border: 1px solid ${({ theme }) => theme.borderColor2};
+	border-radius: 12px;
+	overflow: hidden;
+`;
+
+export const ThumbnailImg = styled(Img)`
 	width: 100%;
 	height: 100%;
 	display: block;
-	border-radius: 12px;
 `;
 
 export const Name = styled.h3`
@@ -33,7 +38,7 @@ export const Description = styled.p`
 	}
 `;
 
-export const CollectionLogo = styled.img`
+export const CollectionLogo = styled(Img)`
 	width: 1.5rem;
 	height: auto;
 	border-radius: 50%;

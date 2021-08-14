@@ -1,5 +1,5 @@
-import { Modal } from "../../Modal/bootstrap";
-import { ConfirmationPendingContent, TransactionSubmittedContent } from "../../TransactionConfirmationModal";
+import { Modal } from "../Modal/bootstrap";
+import { ConfirmationPendingContent, TransactionSubmittedContent } from "../TransactionConfirmationModal";
 
 export interface UnlockModalProps {
 	show?: boolean;

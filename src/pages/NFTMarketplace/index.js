@@ -13,7 +13,7 @@ import * as Styled from "./styleds";
 
 const PAGE_SIZE = 24;
 
-class NFT extends Component {
+class NFTMarketplace extends Component {
 	state = {
 		selectedCollection: undefined,
 		side: OrderSide.Buy,
@@ -293,4 +293,4 @@ class NFT extends Component {
 	};
 }
 
-export default withWeb3Account(withTranslation()(NFT));
+export default withWeb3Account(withTranslation()(NFTMarketplace));

@@ -17,8 +17,11 @@ import ArrowUp from "../Icons/ArrowUp";
 import ArrowDown from "../Icons/ArrowDown";
 import GradientButton from "../UI/Button";
 import * as Styled from "./styleds";
+// import UnlockModal from "../UnlockModal";
 
 const CoinDetails = () => {
+	// const [unlocking, setUnlocking] = useState(false);
+	// const [showUnlockModal, setShowUnlockModal] = useState(false);
 	const { account } = useActiveWeb3React();
 	const theme = useTheme();
 	const darkMode = useIsDarkMode();
@@ -69,8 +72,60 @@ const CoinDetails = () => {
 		);
 	}
 
+	// const unlockHandler = async (token) => {
+	// 	setShowUnlockModal(true);
+	// 	try {
+	// 		if (token.address) {
+	// 			const contractWrappers = await getContractWrappers(web3.currentProvider || window.ethereum);
+	// 			const approveAddress = token.address ? token.address : contractWrappers.contractAddresses.erc20Proxy;
+
+	// 			const erc20Token = new ERC20TokenContract(token.address, contractWrappers.getProvider());
+	// 			const amount = UNLIMITED_ALLOWANCE_IN_BASE_UNITS;
+
+	// 			const tx = await erc20Token.approve(approveAddress, amount).sendTransactionAsync({
+	// 				from: account,
+	// 			});
+	// 			setUnlocking(true);
+	// 			await web3Wrapper.awaitTransactionSuccessAsync(tx);
+
+	// 			if (tx) {
+	// 				setUnlocking(false);
+	// 				setDone(true);
+	// 			}
+	// 		} else if (token.symbol === "ETH") {
+	// 			throw new Error("Unnecessary Approve for ethereum");
+	// 		} else {
+	// 			throw new Error("Token is invalid");
+	// 		}
+	// 	} catch (e) {
+	// 		toast.error("Unnecessary Approve for ethereum or token is invalid");
+	// 		setUnlocking(false);
+	// 		setShowUnlockModal(false);
+	// 		setDone(false);
+	// 	}
+	// };
+
 	return (
 		<>
+			{/* <UnlockModal
+				done={done}
+				show={showUnlockModal}
+				unlocking={unlocking}
+				onDismiss={() => {
+					setDone(false);
+					setUnlocking(false);
+					setShowUnlockModal(false);
+				}}
+			/> */}
+
+			{/* <Styled.TradeButton
+				variant={theme.warning}
+				onClick={() => unlockHandler(row.metadata)}
+				disabled={row.metadata.symbol === "ETH"}
+			>
+				{t("buttons.unlock")}
+			</Styled.TradeButton> */}
+
 			{selected && walletBalance > 0 && (
 				<Styled.BalanceCard>
 					<div className="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between">

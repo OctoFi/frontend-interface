@@ -1,101 +1,38 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Row, Col, Spinner } from "react-bootstrap";
+// import { useTranslation } from "react-i18next";
+import { Row, Col, Button } from "react-bootstrap";
 
-import OpenSeaApi from "../../../http/opensea";
-import { useActiveWeb3React } from "../../../hooks";
 import NftItem from "../NftItem";
+import { NavLink } from "react-router-dom";
+import { ROUTE_NFT_MARKETPLACE } from "../../../constants/routes";
 
-export interface NftWalletProps {
-	query?: any;
+export interface PureNftWalletProps {
+	items?: any;
 }
 
-export const NftWallet = ({ query }: NftWalletProps) => {
-	const { account } = useActiveWeb3React();
-	const [page, setPage] = useState(1);
-	const [data, setData] = useState([]);
-	const [hasMore, setHasMore] = useState(true);
-	const [loading, setLoading] = useState(true);
-	const loader = useRef(null);
-	const api = new OpenSeaApi();
-	const PAGE_SIZE: number = 20;
+export const PureNftWallet = ({ items }: PureNftWalletProps) => {
+	// const { t } = useTranslation();
 
-	const loadMore = () => {
-		setPage((p) => {
-			return p + 1;
-		});
-	};
-
-	const handleObserver = (entities: any) => {
-		const target = entities[0];
-		if (target.isIntersecting) {
-			loadMore();
-		}
-	};
-
-	useEffect(() => {
-		const options = {
-			root: null,
-			rootMargin: "20px",
-			threshold: 0,
-		};
-
-		const observer = new IntersectionObserver(handleObserver, options);
-		if (loader.current) {
-			observer.observe(loader.current);
-		}
-	}, []);
-
-	useEffect(() => {
-		if (hasMore) {
-			api.get("userAssets", {
-				params: {
-					limit: PAGE_SIZE,
-					offset: (page - 1) * PAGE_SIZE,
-				},
-				// @ts-ignore
-				address: account,
-			}).then((response) => {
-				setLoading(false);
-
-				if (response?.data) {
-					setData((data) => data.concat(response.data?.assets));
-					if (response.data.assets?.length < PAGE_SIZE) {
-						setHasMore(false);
-					}
-				}
-			});
-		}
-	}, [page]);
-
-	const filteredData = useMemo(() => {
-		if (query === "") {
-			return data;
-		} else {
-			const lowerQuery = query.toLowerCase();
-			return data.filter((token: any) => JSON.stringify(token.metadata).toLowerCase().includes(lowerQuery));
-		}
-	}, [data, query]);
+	if (items.length === 0) {
+		return (
+			<div className="text-center pt-4">
+				<h4>No NFTs were found</h4>
+				<p>You can find the most popular NFTs on OpenSea using our marketplace.</p>
+				<Button as={NavLink} to={ROUTE_NFT_MARKETPLACE} variant="primary" size="lg">
+					Go to Marketplace
+				</Button>
+			</div>
+		);
+	}
 
 	return (
-		<>
-			<Row>
-				{filteredData.map((item: any, index: number) => {
-					return (
-						<Col key={`nft-${index}`}>
-							<NftItem item={item} />
-						</Col>
-					);
-				})}
-			</Row>
-
-			<div className="d-flex align-items-center justify-content-center mt-3" ref={loader}>
-				{loading ||
-					(hasMore && (
-						<div className="py-3">
-							<Spinner animation="border" variant="primary" id="nft-wallet-loader" />
-						</div>
-					))}
-			</div>
-		</>
+		<Row className="justify-content-start">
+			{items.map((item: any) => {
+				return (
+					<Col key={`nft-${item.id}`}>
+						<NftItem item={item} />
+					</Col>
+				);
+			})}
+		</Row>
 	);
 };

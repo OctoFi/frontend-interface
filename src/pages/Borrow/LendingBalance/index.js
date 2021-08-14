@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BigNumber } from "@0x/utils";
 import styled from "styled-components";
@@ -13,14 +13,14 @@ import { tokenAmountInUnits } from "../../../utils/spot/tokens";
 import { Protocol } from "../../../utils/aave/types";
 import { startLendingTokenSteps, startUnLendingTokenSteps } from "../../../state/spotUI/actions";
 import CurrencyLogo from "../../../components/Logo/CurrencyLogo";
-import { StyledLink, TradeButton } from "../../../components/WalletCard/styleds";
 import BootstrapTable from "react-bootstrap-table-next";
 import ResponsiveTable from "../../../components/ResponsiveTable";
 import LendingModalContainer from "./LendingModalContainer";
 import { sortedData } from "../../../lib/helper";
 import { useTranslation } from "react-i18next";
 import useTheme from "../../../hooks/useTheme";
-import * as Styled from '../styleds';
+import { BorrowTableWrap } from "../styleds";
+import * as Styled from "../styleds";
 
 const LogoContainer = styled.div`
 	width: 32px;
@@ -329,24 +329,24 @@ const LendingBalance = (props) => {
 							"d-flex align-items-stretch justify-content-center flex-column flex-lg-row align-items-lg-center justify-content-lg-start w-100"
 						}
 					>
-						<StyledLink>
-							<TradeButton
+						<Styled.CustomLink>
+							<Styled.TradeButton
 								onClick={openLendingModal.bind(this, tokenD, isEthToken, tokB, token)}
 								disabled={tokB.isEqualTo(0)}
 							>
 								{t("deposit")}
-							</TradeButton>
-						</StyledLink>
+							</Styled.TradeButton>
+						</Styled.CustomLink>
 
-						<StyledLink>
-							<TradeButton
+						<Styled.CustomLink>
+							<Styled.TradeButton
 								variant={theme.warning}
 								onClick={openUnLendingModal.bind(this, tokenD, isEthToken, tokB, token)}
 								disabled={balance && balance.isEqualTo(0)}
 							>
 								{t("withdraw")}
-							</TradeButton>
-						</StyledLink>
+							</Styled.TradeButton>
+						</Styled.CustomLink>
 					</div>
 				);
 			},
@@ -360,7 +360,7 @@ const LendingBalance = (props) => {
 
 	return (
 		<div className="d-flex flex-column">
-			<Styled.BorrowTableWrap>
+			<BorrowTableWrap>
 				<BootstrapTable
 					wrapperClasses="table-responsive d-none d-lg-block"
 					bordered={false}
@@ -372,7 +372,7 @@ const LendingBalance = (props) => {
 					columns={columns}
 					onTableChange={onTableChange}
 				></BootstrapTable>
-			</Styled.BorrowTableWrap>
+			</BorrowTableWrap>
 			<ResponsiveTable breakpoint={"lg"} columns={columns} data={tokensRow} direction={"rtl"} />
 
 			{isModalOpenState && aTokenDataState && (

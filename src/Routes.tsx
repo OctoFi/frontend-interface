@@ -23,7 +23,7 @@ const Proposals = lazy(() => import("./pages/Proposals"));
 const VotePage = lazy(() => import("./pages/VotePage"));
 const Offramp = lazy(() => import("./pages/Offramp"));
 const Onramp = lazy(() => import("./pages/Onramp"));
-const NFT = lazy(() => import("./pages/NFT"));
+const NFTMarketplace = lazy(() => import("./pages/NFTMarketplace"));
 const Borrow = lazy(() => import("./pages/Borrow"));
 const TokenSets = lazy(() => import("./pages/TokenSets"));
 const Launchpad = lazy(() => import("./pages/Launchpad"));
@@ -65,7 +65,7 @@ const Routes = () => {
 				<Route path={"/invest/pools"} component={Pools} />
 				<Route path={"/invest/tokens"} component={MarketsExplore} />
 				<Route path={"/invest/tokensets"} component={TokenSets} />
-				<Route path={"/nft"} exact component={NFT} />
+				<Route path={"/nft"} exact component={NFTMarketplace} />
 				<Route path={"/governance"} exact component={Governance} />
 				<Route path={"/governance/:space/create"} exact component={CreateProposal} />
 				<Route path={"/governance/:space"} exact component={Proposals} />

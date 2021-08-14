@@ -12,7 +12,6 @@ import { useMemoTokenBalances } from "../../state/balances/hooks";
 import Page from "../../components/Page";
 import AccountCard from "../../components/AccountCard";
 import AssetModal from "../../components/AssetModal";
-import { WalletModal } from "../../components/AssetModal/WalletModal";
 import AssetTable from "../../components/AssetTable";
 // import WalletTable from "../../components/AssetTable/WalletTable";
 import WalletCard from "../../components/WalletCard";
@@ -25,10 +24,10 @@ export const Dashboard = () => {
 	const { account } = useActiveWeb3React();
 	const overview = useSelector((state: AppState) => state.balances.overview);
 	const loading = useSelector((state: AppState) => state.balances.loading);
-	const balances = useSelector((state: AppState) => state.balances.data);
-	const { ETH } = useSelector((state: AppState) => state.currency.currenciesRate);
+	// const balances = useSelector((state: AppState) => state.balances.data);
+	// const { ETH } = useSelector((state: AppState) => state.currency.currenciesRate);
 	const dispatch = useDispatch();
-	const walletBalances = useMemoTokenBalances();
+	// const walletBalances = useMemoTokenBalances();
 	const history = useHistory();
 
 	useEffect(() => {
@@ -37,9 +36,9 @@ export const Dashboard = () => {
 		}
 	}, [account, dispatch]);
 
-	useEffect(() => {
-		dispatch(fetchTransformedBalances(balances, walletBalances, ETH));
-	}, [balances, walletBalances, ETH, dispatch]);
+	// useEffect(() => {
+	// 	dispatch(fetchTransformedBalances(balances, walletBalances, ETH));
+	// }, [balances, walletBalances, ETH, dispatch]);
 
 	// const onClickToken = (token: any) => {
 	// 	if (token.metadata.symbol === "ETH") {
@@ -65,21 +64,11 @@ export const Dashboard = () => {
 	};
 
 	return (
-		<Page title={undefined} networkSensitive={false}>
+		<Page>
 			<Row className="mb-3">
 				<Col xs={12} lg={8} className="mb-3 mb-lg-0">
-					<div className="mb-3">
-						{/* TODO: replace with a Portfolio Balance Chart */}
-						{/* <ChartCard /> */}
-					</div>
-					<WalletCard />
-					{/* <WalletTable
-						balances={overview.wallet.balances}
-						size={"sm"}
-						onClickToken={onClickToken}
-						loading={!overview}
-						show={overview}
-					/> */}
+					{/* TODO: replace with a Portfolio Balance Chart */}
+					{/* <ChartCard /> */}
 				</Col>
 				<Col xs={12} lg={4}>
 					<AccountCard
@@ -146,11 +135,22 @@ export const Dashboard = () => {
 					</AccountCard>
 				</Col>
 			</Row>
+			<Row>
+				<Col xs={12}>
+					<WalletCard />
+					{/* <WalletTable
+						balances={overview.wallet.balances}
+						size={"sm"}
+						onClickToken={onClickToken}
+						loading={!overview}
+						show={overview}
+					/> */}
+				</Col>
+			</Row>
 
 			<Styled.RowTitle className={"h4"}>{t("platforms")}</Styled.RowTitle>
 			<Platforms />
 
-			{/* <Route path={"/dashboard/assets"} component={WalletModal} /> */}
 			{/* <Route path={"/dashboard/account/:asset"} component={AssetModal} /> */}
 		</Page>
 	);
