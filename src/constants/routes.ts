@@ -20,3 +20,63 @@ export const ROUTE_COIN_DETAILS = "/coins";
 export const ROUTE_LAUNCHPAD = "/launchpad";
 export const ROUTE_LAUNCHPAD_NEW = "/launchpad/new";
 export const ROUTE_CROSS = "/cross";
+
+export const navigation: Array<{ title: string; path?: string; routes?: Array<{ title: string; path?: string }> }> = [
+    {
+        title: "home",
+        path: ROUTE_HOME,
+    },
+    {
+        title: "dashboard",
+        path: ROUTE_DASHBOARD,
+    },
+    {
+        title: "history",
+        path: ROUTE_HISTORY,
+    },
+    {
+        title: "exchange",
+        path: ROUTE_EXCHANGE,
+    },
+    {
+        title: "invest",
+        path: ROUTE_INVEST,
+    },
+    {
+        title: "pools",
+        path: ROUTE_POOLS,
+    },
+    {
+        title: "more",
+        routes: [
+            {
+                title: "governance",
+                path: ROUTE_GOVERNANCE,
+            },
+            {
+                title: "nft",
+                path: ROUTE_NFT_MARKETPLACE,
+            },
+            {
+                title: "crypto",
+                path: ROUTE_ONRAMP,
+            },
+            {
+                title: "giftCards",
+                path: ROUTE_OFFRAMP,
+            },
+            {
+                title: "loans",
+                path: ROUTE_LOANS,
+            },
+            {
+                title: "launchpad",
+                path: ROUTE_LAUNCHPAD,
+            },
+            {
+                title: "cross",
+                path: ROUTE_CROSS,
+            }
+        ]
+    },
+];

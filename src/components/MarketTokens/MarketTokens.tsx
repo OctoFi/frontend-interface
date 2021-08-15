@@ -278,7 +278,7 @@ export const MarketTokens = () => {
 									key={market}
 								>
 									<Styled.MarketLink
-										className="mb-lg-1 mr-2 mr-lg-0 font-size-base"
+										className="mb-lg-1 mr-2 mr-lg-0 fs-6"
 										href={coinPrices.links[market]}
 										target={"_blank"}
 										rel={"noopener noreferrer"}
@@ -290,7 +290,7 @@ export const MarketTokens = () => {
 											coinPrices.result[market] >= row.current_price
 												? "text-success"
 												: "text-danger"
-										} font-weight-bold font-size-h4`}
+										} fw-bold fs-5`}
 										style={{ flex: "1" }}
 									>
 										<CurrencyText value={coinPrices.result[market]} />

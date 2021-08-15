@@ -4,10 +4,9 @@ import { Button } from "react-bootstrap";
 export const Hero = styled.section`
 	// #f969cd
 	background-image: linear-gradient(90deg, #4235d0 0%, ${({ theme }) => theme.primary} 188%);
-	padding: 1rem 0 6rem;
+	padding: 1rem 0 8rem;
 	position: relative;
 	margin: -2rem -1rem 0;
-	min-height: 40vh;
 
 	@media (min-width: 768px) {
 		min-height: 75vh;
@@ -38,7 +37,7 @@ export const CtaButton = styled(Button)`
 
 export const WavePosition = styled.div`
 	position: absolute;
-	bottom: -1px;
+	bottom: 0;
 	width: 100%;
 
 	svg {

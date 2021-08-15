@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Nav, NavDropdown } from "react-bootstrap";
-import { routes } from "../../constants/headerRoutes";
+import { navigation } from "../../constants/routes";
 import * as Styled from "./styleds";
 
 export const Navigation = () => {
@@ -9,7 +9,7 @@ export const Navigation = () => {
 
 	return (
 		<Nav className="me-auto ms-4">
-			{routes.map((route, index) => {
+			{navigation.map((route, index) => {
 				if (route.path) {
 					return (
 						<Nav.Link

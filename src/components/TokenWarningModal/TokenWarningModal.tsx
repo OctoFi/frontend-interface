@@ -20,21 +20,21 @@ export const TokenWarningModal = ({ isOpen, tokens, onConfirm }: TokenWarningMod
 			<Modal.Header className={"px-5"}>
 				<Modal.Title className={"d-flex align-items-center"}>
 					<Styled.WarningIcon />
-					<Styled.Title className={"font-weight-bolder font-size-lg text-danger mb-0 ml-4"}>
+					<Styled.Title className={"fw-bolder fs-5 text-danger mb-0 ml-4"}>
 						Token imported
 					</Styled.Title>
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body className={"px-5"}>
-				<p className={"text-danger font-weight-normal"}>
+				<p className={"text-danger fw-normal"}>
 					Anyone can create an ERC20 token on Ethereum with <em>any</em> name, including creating fake
 					versions of existing tokens and tokens that claim to represent projects that do not have a token.
 				</p>
-				<p className={"text-danger font-weight-normal"}>
+				<p className={"text-danger fw-normal"}>
 					This interface can load arbitrary tokens by token addresses. Please take extra caution and do your
 					research when interacting with arbitrary ERC20 tokens.
 				</p>
-				<p className={"text-danger font-weight-normal"}>
+				<p className={"text-danger fw-normal"}>
 					If you purchase an arbitrary token, <strong>you may be unable to sell it back.</strong>
 				</p>
 				{tokens.map((token) => {
@@ -52,7 +52,7 @@ export const TokenWarningModal = ({ isOpen, tokens, onConfirm }: TokenWarningMod
 					/>
 					<Button
 						disabled={!understandChecked}
-						className={"px-4 py-2 font-weight-bold"}
+						className={"px-4 py-2 fw-bold"}
 						onClick={onConfirm}
 						variant={"danger"}
 					>

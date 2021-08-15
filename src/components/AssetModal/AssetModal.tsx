@@ -24,7 +24,7 @@ export const AssetModal = () => {
 	return (
 		<Modal size={"lg"} show={true} centered={true} className={"assets"} onHide={onHide}>
 			<Modal.Header className={"d-flex align-items-center justify-content-between"}>
-				<Modal.Title className={"mb-0 font-size-base"}>
+				<Modal.Title className={"mb-0 fs-6"}>
 					<Styled.Title>{overview[asset].title || "Assets"}</Styled.Title>
 				</Modal.Title>
 

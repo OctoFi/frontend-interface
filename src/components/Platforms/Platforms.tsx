@@ -23,7 +23,7 @@ export const PurePlatforms = ({ balance, onSelectPlatform, loading }: PurePlatfo
 		return (
 			<Styled.Wrap className="d-flex flex-column align-items-center justify-content-center py-8 px-4">
 				<SVG src={LayoutBlockIcon} width={64} height={64} />
-				<h5 className="text-primary font-weight-bolder mb-3 mt-3">{t("errors.noPlatform")}</h5>
+				<h5 className="text-primary fw-bolder mb-3 mt-3">{t("errors.noPlatform")}</h5>
 				<span className="text-dark-50">{t("errors.noPlatformDesc")}</span>
 			</Styled.Wrap>
 		);

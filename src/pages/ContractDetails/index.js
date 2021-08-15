@@ -81,7 +81,7 @@ const ContractDetails = (props) => {
 								<CustomTitle className={"card-title text-muted mb-0"}>
 									Your "{selected.name}" Balance
 								</CustomTitle>
-								<div className="card-title mb-0 font-weight-bold font-size-lg">
+								<div className="card-title mb-0 fw-bold fs-5">
 									{selected.symbol.toUpperCase()} {walletBalance.toFixed(6)}{" "}
 									<span className="text-muted">
 										(
@@ -193,7 +193,7 @@ const ContractDetails = (props) => {
 					<CustomCard>
 						<div className="card-body">
 							<div
-								className={`font-weight-bolder font-size-h2 mt-3 ${
+								className={`fw-bolder fs-3 mt-3 ${
 									selected && selected.market_data.price_change_percentage_24h >= 0
 										? "text-success"
 										: "text-danger"
@@ -201,7 +201,7 @@ const ContractDetails = (props) => {
 							>
 								{selected && Number(selected.market_data.price_change_percentage_24h).toFixed(4)}%
 							</div>
-							<span className="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">
+							<span className="text-muted text-hover-primary fw-bold fs-5 mt-1">
 								Daily Changes Percentage
 							</span>
 						</div>
@@ -211,7 +211,7 @@ const ContractDetails = (props) => {
 					<CustomCard>
 						<div className="card-body">
 							<div
-								className={`font-weight-bolder font-size-h2 mt-3 ${
+								className={`fw-bolder fs-3 mt-3 ${
 									selected && selected.market_data.price_change_percentage_7d >= 0
 										? "text-success"
 										: "text-danger"
@@ -219,7 +219,7 @@ const ContractDetails = (props) => {
 							>
 								{selected && Number(selected.market_data.price_change_percentage_7d).toFixed(4)}%
 							</div>
-							<span className="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">
+							<span className="text-muted text-hover-primary fw-bold fs-5 mt-1">
 								Weekly Changes Percentage
 							</span>
 						</div>
@@ -229,7 +229,7 @@ const ContractDetails = (props) => {
 					<CustomCard>
 						<div className="card-body">
 							<div
-								className={`font-weight-bolder font-size-h2 mt-3 ${
+								className={`fw-bolder fs-3 mt-3 ${
 									selected && selected.market_data.price_change_percentage_30d >= 0
 										? "text-success"
 										: "text-danger"
@@ -237,7 +237,7 @@ const ContractDetails = (props) => {
 							>
 								{selected && Number(selected.market_data.price_change_percentage_30d).toFixed(4)}%
 							</div>
-							<span className="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">
+							<span className="text-muted text-hover-primary fw-bold fs-5 mt-1">
 								Monthly Changes Percentage
 							</span>
 						</div>
@@ -247,7 +247,7 @@ const ContractDetails = (props) => {
 					<CustomCard>
 						<div className="card-body">
 							<div
-								className={`font-weight-bolder font-size-h2 mt-3 ${
+								className={`fw-bolder fs-3 mt-3 ${
 									selected && selected.market_data.price_change_percentage_1y >= 0
 										? "text-success"
 										: "text-danger"
@@ -255,7 +255,7 @@ const ContractDetails = (props) => {
 							>
 								{selected && Number(selected.market_data.price_change_percentage_1y).toFixed(4)}%
 							</div>
-							<span className="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">
+							<span className="text-muted text-hover-primary fw-bold fs-5 mt-1">
 								Yearly Changes Percentage
 							</span>
 						</div>
@@ -270,20 +270,20 @@ const ContractDetails = (props) => {
 						</CustomHeader>
 						<div className="card-body d-flex align-items-center justify-content-between row pb-2">
 							<Col xs={12} md={4} className={"d-flex flex-column justify-content-center gutter-b"}>
-								<span className="text-muted font-size-sm font-weight-bold mb-2">Market Cap</span>
-								<span className="font-size-h3 font-weight-bolder">
+								<span className="text-muted fs-6 fw-bold mb-2">Market Cap</span>
+								<span className="fs-4 fw-bolder">
 									${selected && selected.market_data.market_cap.usd}
 								</span>
 							</Col>
 							<Col xs={12} md={4} className={"d-flex flex-column justify-content-center gutter-b"}>
-								<span className="text-muted font-size-sm font-weight-bold mb-2">All time High</span>
-								<span className="font-size-h3 font-weight-bolder text-success">
+								<span className="text-muted fs-6 fw-bold mb-2">All time High</span>
+								<span className="fs-4 fw-bolder text-success">
 									${selected && selected.market_data.ath.usd}
 								</span>
 							</Col>
 							<Col xs={12} md={4} className={"d-flex flex-column justify-content-center gutter-b"}>
-								<span className="text-muted font-size-sm font-weight-bold mb-2">All Time Low</span>
-								<span className="font-size-h3 font-weight-bolder text-danger">
+								<span className="text-muted fs-6 fw-bold mb-2">All Time Low</span>
+								<span className="fs-4 fw-bolder text-danger">
 									${selected && selected.market_data.atl.usd}
 								</span>
 							</Col>
@@ -312,10 +312,10 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Currency Name</span>
+											<span className="fw-bolder fs-5">Currency Name</span>
 										</Col>
 										<Col xs={8}>
-											<span className="font-weight-normal text-muted font-size-lg">
+											<span className="fw-normal text-muted fs-5">
 												{selected && selected.name}
 											</span>
 										</Col>
@@ -324,10 +324,10 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Symbol</span>
+											<span className="fw-bolder fs-5">Symbol</span>
 										</Col>
 										<Col xs={8}>
-											<span className="font-weight-normal text-muted font-size-lg">
+											<span className="fw-normal text-muted fs-5">
 												{selected && selected.symbol.toUpperCase()}
 											</span>
 										</Col>
@@ -336,12 +336,12 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Website</span>
+											<span className="fw-bolder fs-5">Website</span>
 										</Col>
 										<Col xs={8}>
 											<a
 												href={selected && selected.links.homepage[0]}
-												className="font-weight-normal text-muted font-size-lg"
+												className="fw-normal text-muted fs-5"
 												target={"_blank"}
 												rel={"noopener noreferrer"}
 											>
@@ -353,7 +353,7 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Whitepaper</span>
+											<span className="fw-bolder fs-5">Whitepaper</span>
 										</Col>
 										<Col xs={8}>
 											<a
@@ -362,7 +362,7 @@ const ContractDetails = (props) => {
 														? selected.ico_data.links.whitepaper
 														: "#"
 												}
-												className="font-weight-normal text-muted font-size-lg"
+												className="fw-normal text-muted fs-5"
 												target={"_blank"}
 												rel={"noopener noreferrer"}
 											>
@@ -376,12 +376,12 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Block Explorer</span>
+											<span className="fw-bolder fs-5">Block Explorer</span>
 										</Col>
 										<Col xs={8}>
 											<a
 												href={selected && (selected.links.blockchain_site[0] || "#")}
-												className="font-weight-normal text-muted font-size-lg"
+												className="fw-normal text-muted fs-5"
 												target={"_blank"}
 												rel={"noopener noreferrer"}
 											>
@@ -393,12 +393,12 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Github</span>
+											<span className="fw-bolder fs-5">Github</span>
 										</Col>
 										<Col xs={8}>
 											<a
 												href={selected && (selected.links.repos_url.github[0] || "#")}
-												className="font-weight-normal text-muted font-size-lg"
+												className="fw-normal text-muted fs-5"
 												target={"_blank"}
 												rel={"noopener noreferrer"}
 											>
@@ -410,7 +410,7 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Twitter</span>
+											<span className="fw-bolder fs-5">Twitter</span>
 										</Col>
 										<Col xs={8}>
 											<a
@@ -420,7 +420,7 @@ const ContractDetails = (props) => {
 														? `https://twitter.com/${selected.links.twitter_screen_name}`
 														: "#")
 												}
-												className="font-weight-normal text-muted font-size-lg"
+												className="fw-normal text-muted fs-5"
 												target={"_blank"}
 												rel={"noopener noreferrer"}
 											>
@@ -435,7 +435,7 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Facebook</span>
+											<span className="fw-bolder fs-5">Facebook</span>
 										</Col>
 										<Col xs={8}>
 											<a
@@ -445,7 +445,7 @@ const ContractDetails = (props) => {
 														? `https://facebook.com/${selected.links.facebook_username}`
 														: "#")
 												}
-												className="font-weight-normal text-muted font-size-lg"
+												className="fw-normal text-muted fs-5"
 												target={"_blank"}
 												rel={"noopener noreferrer"}
 											>
@@ -460,12 +460,12 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Reddit</span>
+											<span className="fw-bolder fs-5">Reddit</span>
 										</Col>
 										<Col xs={8}>
 											<a
 												href={selected && (selected.links.subreddit_url || "#")}
-												className="font-weight-normal text-muted font-size-lg"
+												className="fw-normal text-muted fs-5"
 												target={"_blank"}
 												rel={"noopener noreferrer"}
 											>
@@ -477,7 +477,7 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Telegram</span>
+											<span className="fw-bolder fs-5">Telegram</span>
 										</Col>
 										<Col xs={8}>
 											<a
@@ -487,7 +487,7 @@ const ContractDetails = (props) => {
 														? `https://t.me/${selected.links.telegram_channel_identifier}`
 														: "#")
 												}
-												className="font-weight-normal text-muted font-size-lg"
+												className="fw-normal text-muted fs-5"
 												target={"_blank"}
 												rel={"noopener noreferrer"}
 											>
@@ -502,7 +502,7 @@ const ContractDetails = (props) => {
 								<Col xs={12} md={6} className={"py-3"}>
 									<Row>
 										<Col xs={4}>
-											<span className="font-weight-bolder font-size-lg">Bitcoin Talk</span>
+											<span className="fw-bolder fs-5">Bitcoin Talk</span>
 										</Col>
 										<Col xs={8}>
 											<a
@@ -512,7 +512,7 @@ const ContractDetails = (props) => {
 														? `https://bitcointalk.org/index.php?topic=${selected.links.bitcointalk_thread_identifier}`
 														: "#")
 												}
-												className="font-weight-normal text-muted font-size-lg"
+												className="fw-normal text-muted fs-5"
 												target={"_blank"}
 												rel={"noopener noreferrer"}
 											>

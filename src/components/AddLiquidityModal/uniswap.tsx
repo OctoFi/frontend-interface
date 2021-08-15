@@ -505,7 +505,7 @@ export default function UniswapLiquidityModal({
 								}
 								className="py-3 w-100"
 							>
-								<span className="font-weight-bold">{error ?? t("pools.supply")}</span>
+								<span className="fw-bold">{error ?? t("pools.supply")}</span>
 							</Button>
 						</div>
 					</div>

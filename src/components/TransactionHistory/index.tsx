@@ -152,8 +152,8 @@ const TransactionHistory = () => {
 			) : (
 				<div className="d-flex flex-column align-items-center justify-content-center py-5 px-4">
 					<ExchangeIcon size={48} fill={"#6993FF"} color={"#6993FF"} />
-					<h5 className="text-primary font-weight-bolder mb-3 mt-5">{t("wallet.notConnected")}</h5>
-					<span className="text-muted font-weight-light font-size-lg">{t("errors.walletConnect")}</span>
+					<h5 className="text-primary fw-bolder mb-3 mt-5">{t("wallet.notConnected")}</h5>
+					<span className="text-muted fw-light fs-5">{t("errors.walletConnect")}</span>
 				</div>
 			)}
 		</Styled.CustomCard>

@@ -58,7 +58,7 @@ export const AssetTable = ({ balances, size = "md", loading }: AssetTableProps) 
 												</Styled.LogoContainer>
 												<Styled.Title
 													size={size}
-													className={"font-weight-boldest assets__title"}
+													className={"fw-boldest assets__title"}
 												>
 													{uRow.metadata.symbol}
 												</Styled.Title>
@@ -96,7 +96,7 @@ export const AssetTable = ({ balances, size = "md", loading }: AssetTableProps) 
 											<Styled.LogoContainer>
 												<CurrencyLogo currency={currency} />
 											</Styled.LogoContainer>
-											<Styled.Title size={size} className={"font-weight-boldest assets__title"}>
+											<Styled.Title size={size} className={"fw-boldest assets__title"}>
 												{row.base.metadata.symbol}
 											</Styled.Title>
 										</div>

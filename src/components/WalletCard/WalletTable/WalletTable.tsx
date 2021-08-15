@@ -36,17 +36,20 @@ export const PureWalletTable = ({ data, loading = false }: PureWalletTableProps)
 			text: t("token"),
 			formatter: (cellContent: any, row: any) => {
 				const isLoading = row.loading || false;
-				if (isLoading) {
-					return <Skeleton width={"100%"} height={"100%"} circle />;
-				} else {
-					return (
-						<CoinDisplay
-							currency={row.balance.currency}
-							name={row.metadata.name}
-							symbol={row.metadata.symbol}
-						/>
-					);
-				}
+
+				return (
+					<>
+						{isLoading ? (
+							<Skeleton width={"100%"} height={"100%"} circle />
+						) : (
+							<CoinDisplay
+								currency={row.balance.currency}
+								name={row.metadata.name}
+								symbol={row.metadata.symbol}
+							/>
+						)}
+					</>
+				);
 			},
 		},
 		{
@@ -54,11 +57,16 @@ export const PureWalletTable = ({ data, loading = false }: PureWalletTableProps)
 			text: t("balanceTitle"),
 			formatter: (cellContent: any, row: any) => {
 				const isLoading = row.loading || false;
-				if (isLoading) {
-					return <Skeleton width={80} height={24} />;
-				} else {
-					return <span>{row.balance ? row.balance.toSignificant(6) : 0}</span>;
-				}
+
+				return (
+					<>
+						{isLoading ? (
+							<Skeleton width={80} height={24} />
+						) : (
+							<span>{row.balance ? row.balance.toSignificant(6) : 0}</span>
+						)}
+					</>
+				);
 			},
 		},
 		{
@@ -66,16 +74,19 @@ export const PureWalletTable = ({ data, loading = false }: PureWalletTableProps)
 			text: t("totalValue"),
 			formatter: (cellContent: any, row: any) => {
 				const isLoading = row.loading || false;
-				if (isLoading) {
-					return (
-						<div className={"d-flex align-items-center"}>
-							<Skeleton width={24} height={24} className={"mr-2"} />
-							<Skeleton width={80} height={24} />
-						</div>
-					);
-				} else {
-					return <CurrencyText value={row.balanceUSD} />;
-				}
+
+				return (
+					<>
+						{isLoading ? (
+							<div className={"d-flex align-items-center"}>
+								<Skeleton width={24} height={24} className={"mr-2"} />
+								<Skeleton width={80} height={24} />
+							</div>
+						) : (
+							<CurrencyText value={row.balanceUSD} />
+						)}
+					</>
+				);
 			},
 		},
 	];

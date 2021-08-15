@@ -40,8 +40,7 @@ export const Home = () => {
 	}, [queryString, message]);
 
 	return (
-		<Page>
-			<Hero />
+		<Page hero={<Hero />}>
 			<Banners />
 			<Currencies />
 			<Features />

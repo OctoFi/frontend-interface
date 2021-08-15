@@ -314,7 +314,7 @@ export default function AddLiquidityModal({ history }: RouteComponentProps) {
 									style={{ minWidth: 250 }}
 									variant={"outline-primary"}
 									disabled
-									className="py-3 font-size-lg font-weight-bolder"
+									className="py-3 fs-5 fw-bolder"
 								>
 									{t("wallet.connect")}
 								</Button>
@@ -344,7 +344,7 @@ export default function AddLiquidityModal({ history }: RouteComponentProps) {
 											: ""
 									} py-3`}
 								>
-									<span className="font-weight-bold font-size-lg">
+									<span className="fw-bold fs-5">
 										{!parsedAmounts[Field.CURRENCY_A]
 											? "Please Enter Amount"
 											: Number(maxAmounts[Field.CURRENCY_A]?.toSignificant(6)) <

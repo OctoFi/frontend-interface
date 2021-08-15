@@ -348,7 +348,7 @@ const Uniswap = (props: any) => {
 											: null)}
 								</Button>
 							) : noRoute && userHasSpecifiedInputOutput ? (
-								<Button variant={"outline-primary"} disabled={true} className={"mb-2 font-weight-bold"}>
+								<Button variant={"outline-primary"} disabled={true} className={"mb-2 fw-bold"}>
 									{t("insufficientLiquidity")}
 								</Button>
 							) : showApproveFlow ? (
@@ -405,7 +405,7 @@ const Uniswap = (props: any) => {
 											variant={"outline-secondary-light"}
 											className={"flex-grow-1"}
 										>
-											<span className={"font-weight-medium"}>
+											<span className={"fw-bolder"}>
 												{priceImpactSeverity > 3 && !isExpertMode
 													? t("impactHigh")
 													: priceImpactSeverity > 2
@@ -439,7 +439,7 @@ const Uniswap = (props: any) => {
 									}
 									variant={"primary"}
 								>
-									<span className={"font-weight-medium"}>
+									<span className={"fw-bolder"}>
 										{swapInputError
 											? swapInputError
 											: priceImpactSeverity > 3 && !isExpertMode

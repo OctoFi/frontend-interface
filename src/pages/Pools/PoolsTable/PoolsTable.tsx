@@ -1,9 +1,15 @@
 import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
-import ResponsiveTable from "../../components/ResponsiveTable";
-import * as Styled from "./styleds";
+import ResponsiveTable from "../../../components/ResponsiveTable";
+import * as Styled from "../styleds";
 
-export function PoolsTable({ entities, columns, onTableChange }) {
+export interface PoolsTableProps {
+	entities?: any;
+	columns?: any;
+	onTableChange?: any;
+}
+
+export const PoolsTable = ({ entities, columns, onTableChange }: PoolsTableProps) => {
 	return (
 		<>
 			<Styled.PoolsTableWrap>
@@ -22,4 +28,4 @@ export function PoolsTable({ entities, columns, onTableChange }) {
 			<ResponsiveTable breakpoint="lg" columns={columns} data={entities} direction="rtl" />
 		</>
 	);
-}
+};

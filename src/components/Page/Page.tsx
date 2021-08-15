@@ -11,9 +11,16 @@ export type PageProps = {
 	title?: string;
 	fluid?: boolean;
 	networkSensitive?: boolean;
+	hero?: any;
 };
 
-export const Page = ({ title, fluid = false, networkSensitive = false, children }: PropsWithChildren<PageProps>) => {
+export const Page = ({
+	title,
+	fluid = false,
+	networkSensitive = false,
+	hero,
+	children,
+}: PropsWithChildren<PageProps>) => {
 	const { chainId } = useActiveWeb3React();
 
 	// TODO: verify this isn't needed
@@ -26,6 +33,7 @@ export const Page = ({ title, fluid = false, networkSensitive = false, children 
 			<Styled.PageContent>
 				<Header />
 				<Toolbar />
+				{hero}
 				<Styled.PageContainer className={`page ${fluid ? "container-fluid" : "container-lg"}`}>
 					<div>
 						{title && <Styled.Title>{title}</Styled.Title>}

@@ -24,7 +24,7 @@ export const ProposalVotes = ({ votes, result, proposal, space }: ProposalVotesP
 						<Styled.BoxTitle>{t("governance.votes")}</Styled.BoxTitle>
 						{votes && (
 							<span
-								className={`label label-light-primary label-lg font-weight-medium d-flex label-inline py-3 ml-3`}
+								className={`label label-light-primary label-lg fw-bolder d-flex label-inline py-3 ml-3`}
 							>
 								{Object.keys(votes).length}
 							</span>

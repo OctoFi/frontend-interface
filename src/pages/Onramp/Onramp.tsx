@@ -1,6 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import Page from "../../components/Page";
-// import FiatOnramp from "../../components/FiatOnramp";
+import FiatOnramp from "../../components/FiatOnramp";
 import * as Styled from "./styleds";
 
 export const Onramp = () => {
@@ -18,7 +18,7 @@ export const Onramp = () => {
 					</Styled.List>
 				</Col>
 				<Col xs={12} lg={6}>
-					{/* <FiatOnramp /> */}
+					<FiatOnramp />
 				</Col>
 			</Row>
 		</Page>

@@ -378,7 +378,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 				</RowBetween>
 				<Button
 					variant={"primary"}
-					className={"py-3 font-weight-bolder font-size-lg"}
+					className={"py-3 fw-bolder fs-5"}
 					style={{ margin: "20px 0 0 0", maxHeight: 56 }}
 					onClick={onRemove}
 				>
@@ -461,7 +461,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 														className={"d-flex flex-column pl-2 wallet-modal__label"}
 													>
 														<div
-															className={"font-weight-bold"}
+															className={"fw-bold"}
 															style={{ marginTop: ".375rem" }}
 														>
 															{t("pools.inDepositedTokens")}
@@ -483,7 +483,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 														className={"d-flex flex-column pl-2 wallet-modal__label"}
 													>
 														<div
-															className={"font-weight-bold"}
+															className={"fw-bold"}
 															style={{ marginTop: ".375rem" }}
 														>
 															{t("pools.inCustomToken")}
@@ -531,7 +531,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 												/>
 												<Check.Label className={"d-flex flex-column pl-2 wallet-modal__label"}>
 													<div
-														className={"font-weight-bold"}
+														className={"fw-bold"}
 														style={{ marginTop: ".375rem" }}
 													>
 														{t("pools.inDepositedTokens")}
@@ -551,7 +551,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 												/>
 												<Check.Label className={"d-flex flex-column pl-2 wallet-modal__label"}>
 													<div
-														className={"font-weight-bold"}
+														className={"fw-bold"}
 														style={{ marginTop: ".375rem" }}
 													>
 														{t("pools.inCustomToken")}
@@ -595,7 +595,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 									style={{ minWidth: 250 }}
 									variant={"outline-primary"}
 									disabled
-									className={"py-3 font-size-lg font-weight-bolder"}
+									className={"py-3 fs-5 fw-bolder"}
 								>
 									Connect to your wallet
 								</Button>
@@ -633,7 +633,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 											: ""
 									} py-3`}
 								>
-									<span className="font-weight-bold font-size-lg">
+									<span className="fw-bold fs-5">
 										{!amount || Number(amount) === 0
 											? t("exchange.enterAmount")
 											: Number(selectedCurrencyBalance) < Number(amount)

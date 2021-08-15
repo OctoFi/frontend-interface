@@ -28,7 +28,7 @@ export const PureHero = ({ connected = false, onCallToAction }: PureHeroProps) =
 			</div>
 
 			<Styled.WavePosition>
-				<SVG src={Wave} />
+				<SVG src={Wave} height={80} width={'100%'} />
 			</Styled.WavePosition>
 		</Styled.Hero>
 	);

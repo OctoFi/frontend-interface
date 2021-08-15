@@ -31,7 +31,7 @@ const TokenSetsExploreTable = () => {
 			text: "ID",
 			// @ts-ignore
 			formatter: (cellContent, row, rowIndex) => (
-				<Styled.CellText className="font-weight-bold">{rowIndex + 1}</Styled.CellText>
+				<Styled.CellText className="fw-bold">{rowIndex + 1}</Styled.CellText>
 			),
 		},
 
@@ -52,7 +52,7 @@ const TokenSetsExploreTable = () => {
 						</Styled.LogoContainer>
 					)}
 					<div className="d-flex flex-column justify-content-center ml-lg-3 mr-3 mr-lg-0">
-						<Styled.TokenSetCustomTitle className={"font-weight-bold"}>
+						<Styled.TokenSetCustomTitle className={"fw-bold"}>
 							{row.name}
 						</Styled.TokenSetCustomTitle>
 					</div>
@@ -82,7 +82,7 @@ const TokenSetsExploreTable = () => {
 					{/* @ts-ignore */}
 					{row.components.map((c, index) => {
 						return (
-							<Styled.CellText key={`cell-${index}`} className={`mr-lg-4 ml-2 font-size-base`}>
+							<Styled.CellText key={`cell-${index}`} className={`mr-lg-4 ml-2 fs-6`}>
 								{c.symbol}
 							</Styled.CellText>
 						);
@@ -95,7 +95,7 @@ const TokenSetsExploreTable = () => {
 			text: "NATURAL UNITS",
 			// @ts-ignore
 			formatter: (cellContent, row) => (
-				<Styled.CellText className="font-weight-bold">{row.natural_unit}</Styled.CellText>
+				<Styled.CellText className="fw-bold">{row.natural_unit}</Styled.CellText>
 			),
 		},
 		{
@@ -103,7 +103,7 @@ const TokenSetsExploreTable = () => {
 			text: "UNIT SHARES",
 			// @ts-ignore
 			formatter: (cellContent, row) => (
-				<Styled.CellText className="font-weight-bold">{row.unit_shares}</Styled.CellText>
+				<Styled.CellText className="fw-bold">{row.unit_shares}</Styled.CellText>
 			),
 		},
 		{

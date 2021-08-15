@@ -1562,7 +1562,7 @@ class InstantSwap extends React.Component {
 						</RowBetween>
 						{this.state.orderType === "simpleSwap" || this.state.orderType === "stealthex" ? (
 							<div className="d-flex flex-column flex-grow-1 justify-content-start align-items-center">
-								<h4 className="font-weight-bold mt-0 mb-0" style={{ paddingTop: 30 }}>
+								<h4 className="fw-bold mt-0 mb-0" style={{ paddingTop: 30 }}>
 									{t("instantSwap.submitted")}
 								</h4>
 								<div style={{ paddingTop: 40, paddingBottom: 45, marginBottom: "auto" }}>
@@ -1573,20 +1573,20 @@ class InstantSwap extends React.Component {
 									/>
 								</div>
 								<div className="d-flex flex-column align-items-stretch align-self-stretch mb-4">
-									<span className="font-size-large mb-2 d-block">
+									<span className="fs-5 mb-2 d-block">
 										{t("instantSwap.sendCrypto", {
 											amount: this.state.order?.amount_from,
 											crypto: this.state.order?.currency_from?.toUpperCase(),
 										})}
 									</span>
-									<span className="opacity-50 font-size-sm">
+									<span className="opacity-50 fs-6">
 										{t("instantSwap.exchangeDescription")}
 									</span>
 								</div>
 
 								<div className={"align-self-stretch d-flex flex-column mb-3"}>
 									<span className="opacity-50 mb-2">ADDRESS</span>
-									<span className=" font-weight-bold">{this.state.order?.address_from}</span>
+									<span className=" fw-bold">{this.state.order?.address_from}</span>
 								</div>
 								<div className={"align-self-stretch d-flex flex-column"}>
 									<span className="opacity-50 mb-2">Order ID</span>
@@ -1595,7 +1595,7 @@ class InstantSwap extends React.Component {
 							</div>
 						) : this.state.orderType === "changeNow" ? (
 							<div className="d-flex flex-column flex-grow-1 justify-content-start align-items-center">
-								<h4 className="font-weight-bold mt-0 mb-0" style={{ paddingTop: 30 }}>
+								<h4 className="fw-bold mt-0 mb-0" style={{ paddingTop: 30 }}>
 									{t("instantSwap.submitted")}
 								</h4>
 								<div style={{ paddingTop: 40, paddingBottom: 45, marginBottom: "auto" }}>
@@ -1606,20 +1606,20 @@ class InstantSwap extends React.Component {
 									/>
 								</div>
 								<div className="d-flex flex-column align-items-stretch align-self-stretch mb-4">
-									<span className="font-size-large mb-2 d-block">
+									<span className="fs-5 mb-2 d-block">
 										{t("instantSwap.sendCrypto", {
 											amount: this.state.order?.fromAmount,
 											crypto: this.state.order?.fromCurrency?.toUpperCase(),
 										})}
 									</span>
-									<span className="opacity-50 font-size-sm">
+									<span className="opacity-50 fs-6">
 										{t("instantSwap.exchangeDescription")}
 									</span>
 								</div>
 
 								<div className={"align-self-stretch d-flex flex-column mb-3"}>
 									<span className="opacity-50 mb-2">ADDRESS</span>
-									<span className=" font-weight-bold">{this.state.order?.payinAddress}</span>
+									<span className=" fw-bold">{this.state.order?.payinAddress}</span>
 								</div>
 								<div className={"align-self-stretch d-flex flex-column mb-3"}>
 									<span className="opacity-50 mb-2">Order ID</span>
@@ -1632,7 +1632,7 @@ class InstantSwap extends React.Component {
 							</div>
 						) : this.state.orderType === "sideShift" ? (
 							<div className="d-flex flex-column flex-grow-1 justify-content-start align-items-center">
-								<h4 className="font-weight-bold mt-0 mb-0" style={{ paddingTop: 30 }}>
+								<h4 className="fw-bold mt-0 mb-0" style={{ paddingTop: 30 }}>
 									{t("instantSwap.submitted")}
 								</h4>
 								<div style={{ paddingTop: 40, paddingBottom: 45, marginBottom: "auto" }}>
@@ -1643,26 +1643,26 @@ class InstantSwap extends React.Component {
 									/>
 								</div>
 								<div className="d-flex flex-column align-items-stretch align-self-stretch mb-4">
-									<span className="font-size-large mb-2 d-block">
+									<span className="fs-5 mb-2 d-block">
 										{t("instantSwap.sendCrypto", {
 											amount: this.state.order?.fromAmount,
 											crypto: this.state.order?.depositMethodId?.toUpperCase(),
 										})}
 									</span>
-									<span className="opacity-50 font-size-sm">
+									<span className="opacity-50 fs-6">
 										{t("instantSwap.exchangeDescription")}
 									</span>
 								</div>
 
 								<div className={"align-self-stretch d-flex flex-column mb-3"}>
 									<span className="opacity-50 mb-2">ADDRESS</span>
-									<span className=" font-weight-bold">
+									<span className=" fw-bold">
 										{this.state.order?.depositAddress?.address}
 									</span>
 								</div>
 								<div className={"align-self-stretch d-flex flex-column mb-3"}>
 									<span className="opacity-50 mb-2">EXPIRATION DATE</span>
-									<span className=" font-weight-bold">
+									<span className=" fw-bold">
 										{moment(this.state.order?.expiresAtISO).format("YYYY-MM-DD HH:mm")}
 									</span>
 								</div>

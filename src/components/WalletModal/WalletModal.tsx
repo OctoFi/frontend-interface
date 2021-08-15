@@ -379,8 +379,8 @@ export const WalletModal = () => {
 												onChange={() => setSelectedPath(item.path)}
 											/>
 											<Check.Label className={"d-flex flex-column pl-2 wallet-modal__label"}>
-												<div className={"font-weight-bold mb-1"}>{item.path}</div>
-												<div className={"font-size-sm"}>{item.label}</div>
+												<div className={"fw-bold mb-1"}>{item.path}</div>
+												<div className={"fs-6"}>{item.label}</div>
 											</Check.Label>
 										</Check>
 									</Col>
@@ -400,7 +400,7 @@ export const WalletModal = () => {
 										onChange={() => setSelectedPath("custom")}
 									/>
 									<Check.Label className={"d-flex flex-column pl-2 pt-1 wallet-modal__label"}>
-										<div className={"font-weight-bold"}>Or Add Custom path</div>
+										<div className={"fw-bold"}>Or Add Custom path</div>
 									</Check.Label>
 								</Check>
 							</Col>

@@ -24,7 +24,7 @@ export const ProposalContent = ({ proposal, status }: ProposalContentProps) => {
 						<Styled.BoxTitle>{proposal.msg.payload.name}</Styled.BoxTitle>
 						{status && (
 							<span
-								className={`label ${status.className} label-lg font-weight-medium d-flex label-inline py-3 ml-3`}
+								className={`label ${status.className} label-lg fw-bolder d-flex label-inline py-3 ml-3`}
 							>
 								{status.title}
 							</span>

@@ -213,7 +213,7 @@ export const Currencies = () => {
 						</Styled.GotoMarketContainer>
 					</>
 				) : (
-					<div className="py-4 font-size-base font-weight-medium d-flex align-items-center justify-content-center">
+					<div className="py-4 fs-6 fw-bolder d-flex align-items-center justify-content-center">
 						{t("tokens.noToken")}
 					</div>
 				)}

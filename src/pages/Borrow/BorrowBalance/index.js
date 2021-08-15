@@ -65,7 +65,7 @@ const CellText = styled.span`
 	font-size: 0.875rem;
 	color: ${({ theme }) => theme.text1};
 
-	&.font-size-base {
+	&.fs-6 {
 		font-size: 1rem;
 	}
 
@@ -327,8 +327,8 @@ const BorrowBalance = (props) => {
 							<CurrencyLogo currency={currency} />
 						</LogoContainer>
 						<div className="d-flex flex-column justify-content-center ml-lg-3 mr-3 mr-lg-0">
-							<Symbol className={"font-weight-bold"}>{row.tokenSymbol}</Symbol>
-							<Name className={"font-weight-bold"}>{row.tokenName}</Name>
+							<Symbol className={"fw-bold"}>{row.tokenSymbol}</Symbol>
+							<Name className={"fw-bold"}>{row.tokenName}</Name>
 						</div>
 					</div>
 				);
