@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 import { useActiveWeb3React } from "../../hooks/useActiveWeb3React";
 import AppBar from "../AppBar";
 import Header from "../Header";
-import HeaderSecondary from "../HeaderSecondary";
+import Toolbar from "../Toolbar";
 import Footer from "../Footer";
 import WrongNetwork from "../WrongNetwork";
 import * as Styled from "./styleds";
@@ -25,7 +25,7 @@ export const Page = ({ title, fluid = false, networkSensitive = false, children 
 		<Styled.PageWrap>
 			<Styled.PageContent>
 				<Header />
-				<HeaderSecondary />
+				<Toolbar />
 				<Styled.PageContainer className={`page ${fluid ? "container-fluid" : "container-lg"}`}>
 					<div>
 						{title && <Styled.Title>{title}</Styled.Title>}

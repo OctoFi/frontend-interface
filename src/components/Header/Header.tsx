@@ -6,8 +6,8 @@ import Navigation from "../Navigation";
 
 export const Header = () => {
 	return (
-		<Navbar bg="primary" variant="dark" className="py-3">
-			<Container fluid>
+		<Navbar variant="dark" className="py-3">
+			<Container fluid={false}>
 				<Navbar.Brand as={NavLink} to="/">
 					<BrandLogo logo={LogoImage} name="OctoFi" />
 				</Navbar.Brand>

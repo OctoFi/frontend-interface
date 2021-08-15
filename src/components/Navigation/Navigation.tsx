@@ -8,28 +8,35 @@ export const Navigation = () => {
 	const { t } = useTranslation();
 
 	return (
-		<Nav>
-			{Object.keys(routes).map((key, index) => {
-				// @ts-ignore
-				const r = routes[key];
-				if (r.hasOwnProperty("path")) {
+		<Nav className="me-auto ms-4">
+			{routes.map((route, index) => {
+				if (route.path) {
 					return (
-						<Nav.Link as={Styled.HeaderItem} to={r.path} key={index} activeClassName={"active"} exact>
-							{t(`menu.${r.title}`)}
+						<Nav.Link
+							as={Styled.HeaderItem}
+							to={route.path}
+							key={index}
+							activeClassName={"active"}
+							exact
+							className="me-3"
+						>
+							{t(`menu.${route.title}`)}
 						</Nav.Link>
 					);
-				} else {
+				} else if (route.routes) {
 					return (
-						<NavDropdown title={t(`menu.${r.title}`)} id={`dropdown-${index}`} key={index} align="end">
-							{Object.values(r.routes).map((item: any, index) => {
+						<NavDropdown title={t(`menu.${route.title}`)} id={`dropdown-${index}`} key={index} align="end">
+							{route.routes.map((item: any, index) => {
 								return (
-									<NavDropdown.Item as={Link} to={item.path} key={`${r.title}-${index}`}>
+									<NavDropdown.Item as={Link} to={item.path} key={`${route.title}-${index}`}>
 										{t(`menu.${item.title}`)}
 									</NavDropdown.Item>
 								);
 							})}
 						</NavDropdown>
 					);
+				} else {
+					return false;
 				}
 			})}
 		</Nav>

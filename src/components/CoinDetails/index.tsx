@@ -3,43 +3,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Row, Col, Spinner } from "react-bootstrap";
 import dompurify from "dompurify";
-// import Web3 from "web3";
-// import { Web3Wrapper } from "@0x/web3-wrapper";
-// import { ERC20TokenContract } from "@0x/contract-wrappers";
-// import toast from "react-hot-toast";
-// import { UNLIMITED_ALLOWANCE_IN_BASE_UNITS } from "../../constants";
-// import { getContractWrappers } from "../../utils/spot/contractWrapper";
 
-import { AppState } from "../../state";
 import { useActiveWeb3React } from "../../hooks";
 import useTheme from "../../hooks/useTheme";
 import { useTokenContract } from "../../hooks/useContract";
+import { AppState } from "../../state";
 import { useIsDarkMode } from "../../state/user/hooks";
 import { fetchSelectedCoin, fetchHistoricalData } from "../../state/market/actions";
-import Card from "../Card";
-import CurrencyText from "../CurrencyText";
+import Card, { ResponsiveCard } from "../Card";
 import HistoricalChart from "../HistoricalChart";
-import ArrowUp from "../Icons/ArrowUp";
-import ArrowDown from "../Icons/ArrowDown";
-import GradientButton from "../UI/Button";
-// import UnlockModal from "../UnlockModal";
-import * as Styled from "./styleds";
+import { CoinInformation } from "./CoinInformation/CoinInformation";
+import { CoinStats } from "./CoinStats/CoinStats";
+import { CoinChanges } from "./CoinChanges/CoinChanges";
 
 const CoinDetails = () => {
-	// const [unlocking, setUnlocking] = useState(false);
-	// const [showUnlockModal, setShowUnlockModal] = useState(false);
 	const { account } = useActiveWeb3React();
 	const theme = useTheme();
 	const darkMode = useIsDarkMode();
 	const dispatch = useDispatch();
-	// @ts-ignore
 	const marketData = useSelector((state: AppState) => state.market);
 	const [walletBalance, setWalletBalance] = useState<number>(0);
 	const selected = marketData.selected.data || false;
 	const tokenContract = useTokenContract(selected.contract_address);
 	const { id } = useParams();
-	// let web3;
-	// let web3Wrapper;
 
 	useEffect(() => {
 		if (tokenContract) {
@@ -58,16 +44,9 @@ const CoinDetails = () => {
 		dispatch(fetchHistoricalData(id));
 	}, [dispatch, id]);
 
-	// useEffect(() => {
-	// 	web3 = new Web3(Web3.givenProvider || new Web3.providers.HttpProvider(process.env.REACT_APP_NETWORK_URL));
-	// 	if (web3.currentProvider) {
-	// 		web3Wrapper = new Web3Wrapper(web3.currentProvider);
-	// 	}
-	// }, []);
-
 	const coinAbout = useMemo(() => {
 		if (selected) {
-			return dompurify?.sanitize(selected?.description?.en);
+			return dompurify?.sanitize(selected.description?.en);
 		}
 
 		return "";
@@ -75,108 +54,17 @@ const CoinDetails = () => {
 
 	if (marketData?.selected?.loading) {
 		return (
-			<Row>
-				<Col xs={12}>
-					<Card>
-						<div className={"d-flex align-items-center justify-content-center"} style={{ height: 400 }}>
-							<Spinner animation="border" variant="primary" />
-						</div>
-					</Card>
-				</Col>
-			</Row>
+			<Card>
+				<div className={"d-flex align-items-center justify-content-center"} style={{ height: 400 }}>
+					<Spinner animation="border" variant="primary" />
+				</div>
+			</Card>
 		);
 	}
 
-	// const unlockHandler = async (token) => {
-	// 	setShowUnlockModal(true);
-	// 	try {
-	// 		if (token.address) {
-	// 			const contractWrappers = await getContractWrappers(web3.currentProvider || window.ethereum);
-	// 			const approveAddress = token.address ? token.address : contractWrappers.contractAddresses.erc20Proxy;
-
-	// 			const erc20Token = new ERC20TokenContract(token.address, contractWrappers.getProvider());
-	// 			const amount = UNLIMITED_ALLOWANCE_IN_BASE_UNITS;
-
-	// 			const tx = await erc20Token.approve(approveAddress, amount).sendTransactionAsync({
-	// 				from: account,
-	// 			});
-	// 			setUnlocking(true);
-	// 			await web3Wrapper.awaitTransactionSuccessAsync(tx);
-
-	// 			if (tx) {
-	// 				setUnlocking(false);
-	// 				setDone(true);
-	// 			}
-	// 		} else if (token.symbol === "ETH") {
-	// 			throw new Error("Unnecessary Approve for ethereum");
-	// 		} else {
-	// 			throw new Error("Token is invalid");
-	// 		}
-	// 	} catch (e) {
-	// 		toast.error("Unnecessary Approve for ethereum or token is invalid");
-	// 		setUnlocking(false);
-	// 		setShowUnlockModal(false);
-	// 		setDone(false);
-	// 	}
-	// };
-
 	return (
 		<>
-			{/* <UnlockModal
-				done={done}
-				show={showUnlockModal}
-				unlocking={unlocking}
-				onDismiss={() => {
-					setDone(false);
-					setUnlocking(false);
-					setShowUnlockModal(false);
-				}}
-			/> */}
-
-			{/* <Styled.TradeButton
-				variant={theme.warning}
-				onClick={() => unlockHandler(row.metadata)}
-				disabled={row.metadata.symbol === "ETH"}
-			>
-				{t("buttons.unlock")}
-			</Styled.TradeButton> */}
-
-			{selected && walletBalance > 0 && (
-				<Styled.BalanceCard>
-					<div className="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between">
-						<Styled.BalanceText>Your "{selected.name}" Balance</Styled.BalanceText>
-						<Styled.BalanceValue>
-							{selected.symbol.toUpperCase()} {walletBalance.toFixed(6)} (
-							<CurrencyText value={walletBalance * selected.market_data.current_price.usd} />)
-						</Styled.BalanceValue>
-					</div>
-				</Styled.BalanceCard>
-			)}
-
-			<Styled.ChartResponsiveCard>
-				{selected && selected.contract_address && (
-					<div className="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between mb-4">
-						<Styled.BuyHelper className={"font-weight-normal font-size-base"}>
-							Do you wanna Exchange {selected.name}?
-						</Styled.BuyHelper>
-						<div className="d-flex align-items-center justify-content">
-							<Styled.BuyLink
-								to={`/exchange?outputCurrency=${selected.contract_address}`}
-								className="mr-4"
-							>
-								<GradientButton className={""} style={{ minWidth: 125 }}>
-									Buy
-								</GradientButton>
-							</Styled.BuyLink>
-							<Styled.BuyLink to={`/exchange?inputCurrency=${selected.contract_address}`}>
-								<GradientButton className={""} style={{ minWidth: 125 }}>
-									Sell
-								</GradientButton>
-							</Styled.BuyLink>
-						</div>
-					</div>
-				)}
-
+			<ResponsiveCard>
 				<HistoricalChart
 					isPrimary={true}
 					theme={theme}
@@ -188,12 +76,11 @@ const CoinDetails = () => {
 					days={marketData.historical.days}
 					currentData={selected && selected.market_data.current_price.usd}
 				/>
-			</Styled.ChartResponsiveCard>
+			</ResponsiveCard>
 
-			{/* 
 			<Row>
 				<Col xs={12} md={6}>
-					<Styled.ChartResponsiveCard>
+					<ResponsiveCard>
 						<HistoricalChart
 							theme={theme}
 							darkMode={darkMode}
@@ -205,10 +92,10 @@ const CoinDetails = () => {
 							currentData={selected && selected.market_data.market_cap.usd}
 							minHeight={250}
 						/>
-					</Styled.ChartResponsiveCard>
+					</ResponsiveCard>
 				</Col>
 				<Col xs={12} md={6}>
-					<Styled.ChartResponsiveCard>
+					<ResponsiveCard>
 						<HistoricalChart
 							theme={theme}
 							darkMode={darkMode}
@@ -220,417 +107,25 @@ const CoinDetails = () => {
 							description={`${selected && selected.name} Historical Total Volume`}
 							currentData={selected && selected.market_data.total_volume.usd}
 						/>
-					</Styled.ChartResponsiveCard>
-				</Col>
-			</Row> */}
-
-			<Row className={"d-flex align-items-stretch"}>
-				<Col lg={3} md={6} xs={12}>
-					<Styled.ResponsiveCol>
-						<Styled.ChangesCard
-							className={
-								"d-flex flex-column flex-lg-row align-items-center justify-content-center justify-content-lg-start"
-							}
-						>
-							<div className="d-flex align-items-center">
-								{selected && selected.market_data.price_change_percentage_24h >= 0 ? (
-									// TODO: fix fills
-									// @ts-ignore
-									<ArrowUp fill={"#1BC5BD"} size={64} />
-								) : (
-									// @ts-ignore
-									<ArrowDown fill={"#F64E60"} size={64} />
-								)}
-								<Styled.ChangesTitle
-									className={
-										selected && selected.market_data.price_change_percentage_24h >= 0
-											? "text-success"
-											: "text-danger"
-									}
-								>
-									{selected && Number(selected.market_data.price_change_percentage_24h).toFixed(4)}%
-								</Styled.ChangesTitle>
-							</div>
-							<Styled.ChangesSubtitle>Daily Changes Percentage</Styled.ChangesSubtitle>
-						</Styled.ChangesCard>
-					</Styled.ResponsiveCol>
-				</Col>
-				<Col lg={3} md={6} xs={12}>
-					<Styled.ResponsiveCol>
-						<Styled.ChangesCard
-							className={
-								"d-flex flex-column flex-lg-row align-items-center justify-content-center justify-content-lg-start"
-							}
-						>
-							<div className="d-flex align-items-center">
-								{selected && selected.market_data.price_change_percentage_7d >= 0 ? (
-									<ArrowUp />
-								) : (
-									<ArrowDown />
-								)}
-								<Styled.ChangesTitle
-									className={
-										selected && selected.market_data.price_change_percentage_7d >= 0
-											? "text-success"
-											: "text-danger"
-									}
-								>
-									{selected && Number(selected.market_data.price_change_percentage_7d).toFixed(4)}%
-								</Styled.ChangesTitle>
-							</div>
-							<Styled.ChangesSubtitle>Weekly Changes Percentage</Styled.ChangesSubtitle>
-						</Styled.ChangesCard>
-					</Styled.ResponsiveCol>
-				</Col>
-				<Col lg={3} md={6} xs={12}>
-					<Styled.ResponsiveCol>
-						<Styled.ChangesCard
-							className={
-								"d-flex flex-column flex-lg-row align-items-center justify-content-center justify-content-lg-start"
-							}
-						>
-							<div className="d-flex align-items-center">
-								{selected && selected.market_data.price_change_percentage_30d >= 0 ? (
-									<ArrowUp />
-								) : (
-									<ArrowDown />
-								)}
-								<Styled.ChangesTitle
-									className={
-										selected && selected.market_data.price_change_percentage_30d >= 0
-											? "text-success"
-											: "text-danger"
-									}
-								>
-									{selected && Number(selected.market_data.price_change_percentage_30d).toFixed(4)}%
-								</Styled.ChangesTitle>
-							</div>
-							<Styled.ChangesSubtitle>Monthly Changes Percentage</Styled.ChangesSubtitle>
-						</Styled.ChangesCard>
-					</Styled.ResponsiveCol>
-				</Col>
-				<Col lg={3} md={6} xs={12}>
-					<Styled.ResponsiveCol>
-						<Styled.ChangesCard
-							className={
-								"d-flex flex-column flex-lg-row align-items-center justify-content-center justify-content-lg-start"
-							}
-						>
-							<div className="d-flex align-items-center">
-								{selected && selected.market_data.price_change_percentage_1y >= 0 ? (
-									<ArrowUp />
-								) : (
-									<ArrowDown />
-								)}
-								<Styled.ChangesTitle
-									className={
-										selected && selected.market_data.price_change_percentage_1y >= 0
-											? "text-success"
-											: "text-danger"
-									}
-								>
-									{selected && Number(selected.market_data.price_change_percentage_1y).toFixed(4)}%
-								</Styled.ChangesTitle>
-							</div>
-							<Styled.ChangesSubtitle>Yearly Changes Percentage</Styled.ChangesSubtitle>
-						</Styled.ChangesCard>
-					</Styled.ResponsiveCol>
+					</ResponsiveCard>
 				</Col>
 			</Row>
 
-			<Styled.ResponsiveCol>
-				<Styled.StyledCard header={true} title={"Coin Stats"}>
-					<div className="d-flex align-items-center justify-content-between row pb-0 pb-lg-2">
-						<Col
-							xs={12}
-							md={4}
-							className={
-								"d-flex flex-row flex-lg-column align-items-center align-items-lg-start justify-content-between justify-content-lg-center "
-							}
-						>
-							<Styled.StatsDesc>Market Cap</Styled.StatsDesc>
-							<Styled.StatsValue>${selected && selected.market_data.market_cap.usd}</Styled.StatsValue>
-						</Col>
-						<Col
-							xs={12}
-							md={4}
-							className={
-								"d-flex flex-row flex-lg-column align-items-center align-items-lg-start justify-content-between justify-content-lg-center "
-							}
-						>
-							<Styled.StatsDesc>All time High</Styled.StatsDesc>
-							<Styled.StatsValue className="text-success">
-								${selected && selected.market_data.ath.usd}
-							</Styled.StatsValue>
-						</Col>
-						<Col
-							xs={12}
-							md={4}
-							className={
-								"d-flex flex-row flex-lg-column align-items-center align-items-lg-start justify-content-between justify-content-lg-center "
-							}
-						>
-							<Styled.StatsDesc last>All Time Low</Styled.StatsDesc>
-							<Styled.StatsValue last className="text-danger">
-								${selected && selected.market_data.atl.usd}
-							</Styled.StatsValue>
-						</Col>
-					</div>
-				</Styled.StyledCard>
-			</Styled.ResponsiveCol>
+			<CoinChanges coin={selected} />
 
-			<Styled.ResponsiveCol>
-				<Styled.StyledCard header={true} title={"About"}>
-					<Styled.About dangerouslySetInnerHTML={{ __html: coinAbout }} />
-				</Styled.StyledCard>
-			</Styled.ResponsiveCol>
+			<div className="mb-3">
+				<CoinStats coin={selected} />
+			</div>
 
-			<Styled.ResponsiveCol>
-				<Styled.StyledCard header={true} title={"Coin Information"}>
-					<Row>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Currency Name</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsValue>{selected && selected.name}</Styled.DetailsValue>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Symbol</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsValue>
-										{selected && selected.symbol.toUpperCase()}
-									</Styled.DetailsValue>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Website</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsLink
-										withUnderline={selected && selected.links.homepage[0]}
-										href={selected && selected.links.homepage[0]}
-										target={"_blank"}
-										rel={"noopener noreferrer"}
-									>
-										{selected && selected.links.homepage[0]}
-									</Styled.DetailsLink>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Whitepaper</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsLink
-										withUnderline={selected && selected.links.ico_data}
-										href={selected && selected.ico_data ? selected.ico_data.links.whitepaper : "#"}
-										target={"_blank"}
-										rel={"noopener noreferrer"}
-									>
-										{selected && selected.ico_data ? selected.ico_data.links.whitepaper : "-"}
-									</Styled.DetailsLink>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Block Explorer</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsLink
-										withUnderline={selected && selected.links.blockchain_site[0]}
-										href={selected && (selected.links.blockchain_site[0] || "#")}
-										target={"_blank"}
-										rel={"noopener noreferrer"}
-									>
-										{selected && (selected.links.blockchain_site[0] || "-")}
-									</Styled.DetailsLink>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Github</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsLink
-										withUnderline={selected && selected.links.repos_url.github[0]}
-										href={selected && (selected.links.repos_url.github[0] || "#")}
-										target={"_blank"}
-										rel={"noopener noreferrer"}
-									>
-										{selected && (selected.links.repos_url.github[0] || "-")}
-									</Styled.DetailsLink>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Twitter</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsLink
-										withUnderline={selected && selected.links.twitter_screen_name}
-										href={
-											selected &&
-											(selected.links.twitter_screen_name
-												? `https://twitter.com/${selected.links.twitter_screen_name}`
-												: "#")
-										}
-										target={"_blank"}
-										rel={"noopener noreferrer"}
-									>
-										{selected &&
-											(selected.links.twitter_screen_name
-												? `https://twitter.com/${selected.links.twitter_screen_name}`
-												: "-")}
-									</Styled.DetailsLink>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Facebook</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsLink
-										withUnderline={selected && selected.links.facebook_username}
-										href={
-											selected &&
-											(selected.links.facebook_username
-												? `https://facebook.com/${selected.links.facebook_username}`
-												: "#")
-										}
-										target={"_blank"}
-										rel={"noopener noreferrer"}
-									>
-										{selected &&
-											(selected.links.facebook_username
-												? `https://facebook.com/${selected.links.facebook_username}`
-												: "-")}
-									</Styled.DetailsLink>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Reddit</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsLink
-										withUnderline={selected && selected.links.subreddit_url}
-										href={selected && (selected.links.subreddit_url || "#")}
-										target={"_blank"}
-										rel={"noopener noreferrer"}
-									>
-										{selected && (selected.links.subreddit_url || "-")}
-									</Styled.DetailsLink>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Telegram</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsLink
-										withUnderline={selected && selected.links.telegram_channel_identifier}
-										href={
-											selected &&
-											(selected.links.telegram_channel_identifier
-												? `https://t.me/${selected.links.telegram_channel_identifier}`
-												: "#")
-										}
-										target={"_blank"}
-										rel={"noopener noreferrer"}
-									>
-										{selected &&
-											(selected.links.telegram_channel_identifier
-												? `https://t.me/${selected.links.telegram_channel_identifier}`
-												: "-")}
-									</Styled.DetailsLink>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-						<Styled.DetailsCol xs={12} md={6}>
-							<Row className={"d-flex flex-row align-items-center justify-content-between"}>
-								<Styled.DetailsInnerCol lg={4}>
-									<Styled.DetailsDesc>Bitcoin Talk</Styled.DetailsDesc>
-								</Styled.DetailsInnerCol>
-								<Styled.DetailsInnerCol
-									lg={8}
-									className={"d-flex align-items-center justify-content-end justify-content-lg-start"}
-								>
-									<Styled.DetailsLink
-										withUnderline={selected && selected.links.bitcointalk_thread_identifier}
-										href={
-											selected &&
-											(selected.links.bitcointalk_thread_identifier
-												? `https://bitcointalk.org/index.php?topic=${selected.links.bitcointalk_thread_identifier}`
-												: "#")
-										}
-										target={"_blank"}
-										rel={"noopener noreferrer"}
-									>
-										{selected &&
-											(selected.links.bitcointalk_thread_identifier
-												? `https://bitcointalk.org/index.php?topic=${selected.links.bitcointalk_thread_identifier}`
-												: "-")}
-									</Styled.DetailsLink>
-								</Styled.DetailsInnerCol>
-							</Row>
-						</Styled.DetailsCol>
-					</Row>
-				</Styled.StyledCard>
-			</Styled.ResponsiveCol>
+			<div className="mb-3">
+				<Card header={true} title={"About"}>
+					<div dangerouslySetInnerHTML={{ __html: coinAbout }} />
+				</Card>
+			</div>
+
+			<div className="mb-3">
+				<CoinInformation coin={selected} />
+			</div>
 		</>
 	);
 };

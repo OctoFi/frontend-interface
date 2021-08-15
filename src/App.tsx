@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { HashRouter as Router } from "react-router-dom";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { Toaster } from "react-hot-toast";
+import useKeyboardShortcut from "use-keyboard-shortcut";
 
 import ApplicationUpdater from "./state/application/updater";
 import ListsUpdater from "./state/lists/updater";
@@ -20,6 +21,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import "./global.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useDarkModeManager } from "./state/user/hooks";
 
 function Updaters() {
 	return (
@@ -35,6 +37,9 @@ function Updaters() {
 
 function App() {
 	// const darkMode = useIsDarkMode();
+	const [, toggleDarkMode] = useDarkModeManager();
+
+	useKeyboardShortcut(["Shift", "*"], () => toggleDarkMode(), { overrideSystem: false });
 
 	return (
 		<Suspense fallback={<SplashScreen />}>

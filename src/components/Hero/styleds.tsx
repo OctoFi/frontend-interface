@@ -10,7 +10,7 @@ export const Hero = styled.section`
 	min-height: 40vh;
 
 	@media (min-width: 768px) {
-		min-height: 85vh;
+		min-height: 75vh;
 		padding: 5rem 0 12rem;
 	}
 `;

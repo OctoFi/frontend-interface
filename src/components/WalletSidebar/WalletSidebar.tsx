@@ -23,7 +23,7 @@ export const WalletSidebar = () => {
 
 	return (
 		<>
-			<Button variant="light" onClick={toggleShow} className="me-2">
+			<Button onClick={toggleShow}>
 				<Wallet size={20} />
 			</Button>
 
