@@ -131,7 +131,7 @@
     "fiatOn": {
         "currencyLabel": "Select currency and payment method",
         "cryptoLabel": "Purchase details",
-        "buyButton": "Buy Crypto Asset"
+        "buyButton": "Buy Crypto with Fiat"
     },
     "exchange": {
         "title": "Exchange",

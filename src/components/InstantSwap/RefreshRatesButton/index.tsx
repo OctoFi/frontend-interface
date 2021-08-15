@@ -15,7 +15,7 @@ const RefreshRatesButton = ({ loading, priceLoading, onRefresh }: RefreshRatesBu
 		<Styled.LoadingContainer onClick={onRefresh}>
 			<Styled.LoadingText>{t("instantSwap.refreshPrice")}</Styled.LoadingText>
 			<span className="text-primary">
-				<CircleLoading waiting={!loading && !priceLoading} />
+				<CircleLoading paused={loading || priceLoading} />
 			</span>
 		</Styled.LoadingContainer>
 	);

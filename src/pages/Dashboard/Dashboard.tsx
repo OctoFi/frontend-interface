@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, ListGroup } from "react-bootstrap";
 import { Route, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -52,49 +52,56 @@ export const Dashboard = () => {
 					<WalletCard />
 				</Col>
 				<Col xs={12} lg={4}>
-					<AccountCard
-						color={"primary"}
-						title={t("netWorth")}
-						value={overview.deposits.total + overview.wallet.total - overview.debts.total}
-						type={"netWorth"}
-						show={true}
-						loading={loading}
-					/>
-
-					<AccountCard
-						color={"secondary"}
-						title={t("totalAssets")}
-						value={overview.deposits.total + overview.wallet.total}
-						type={"wallet"}
-						show={true}
-						loading={loading}
-					/>
-
-					<AccountCard
-						color={"primary"}
-						title={overview.deposits.title}
-						value={overview.deposits.total}
-						type={overview.deposits.slug}
-						show={true}
-						loading={loading}
-						onShowMore={() => onSelectCard(overview.deposits.slug)}
-						assets={overview.deposits}
-					>
-						<AssetTable size={"sm"} balances={overview.deposits.balances.slice(0, 5)} />
-					</AccountCard>
-
-					<AccountCard
-						color={"secondary"}
-						title={overview.debts.title}
-						value={overview.debts.total}
-						type={overview.debts.slug}
-						show={true}
-						loading={loading}
-						onShowMore={() => onSelectCard(overview.debts.slug)}
-						assets={overview.debts}
-					>
-						<AssetTable size={"sm"} balances={overview.debts.balances.slice(0, 5)} />
-					</AccountCard>
+					<ListGroup>
+						<ListGroup.Item className="bg-transparent">
+							<AccountCard
+								color={"primary"}
+								title={t("netWorth")}
+								value={overview.deposits.total + overview.wallet.total - overview.debts.total}
+								type={"netWorth"}
+								show={true}
+								loading={loading}
+							/>
+						</ListGroup.Item>
+						<ListGroup.Item className="bg-transparent">
+							<AccountCard
+								color={"secondary"}
+								title={t("totalAssets")}
+								value={overview.deposits.total + overview.wallet.total}
+								type={"wallet"}
+								show={true}
+								loading={loading}
+							/>
+						</ListGroup.Item>
+						<ListGroup.Item className="bg-transparent">
+							<AccountCard
+								color={"primary"}
+								title={overview.deposits.title}
+								value={overview.deposits.total}
+								type={overview.deposits.slug}
+								show={true}
+								loading={loading}
+								onShowMore={() => onSelectCard(overview.deposits.slug)}
+								assets={overview.deposits}
+							>
+								<AssetTable size={"sm"} balances={overview.deposits.balances.slice(0, 5)} />
+							</AccountCard>
+						</ListGroup.Item>
+						<ListGroup.Item className="bg-transparent">
+							<AccountCard
+								color={"secondary"}
+								title={overview.debts.title}
+								value={overview.debts.total}
+								type={overview.debts.slug}
+								show={true}
+								loading={loading}
+								onShowMore={() => onSelectCard(overview.debts.slug)}
+								assets={overview.debts}
+							>
+								<AssetTable size={"sm"} balances={overview.debts.balances.slice(0, 5)} />
+							</AccountCard>
+						</ListGroup.Item>
+					</ListGroup>
 				</Col>
 			</Row>
 

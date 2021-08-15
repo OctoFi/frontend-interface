@@ -1,24 +1,25 @@
 import { Row, Col } from "react-bootstrap";
+import Card from "../../components/Card";
 import Page from "../../components/Page";
-import FiatOnramp from "../../components/FiatOnramp";
-import * as Styled from "./styleds";
+import TransakButton from "../../components/TransakButton";
+import TransakLogo from "../../assets/images/transak.png";
 
 export const Onramp = () => {
 	return (
-		<Page>
+		<Page title="Onramp">
 			<Row>
-				<Col xs={12} lg={6} className="mb-4 mb-lg-0">
-					<h2 className="mb-4">
-						Buy Crypto with <Styled.Company>Transak</Styled.Company>
-					</h2>
-					<Styled.List className="list-unstyled">
-						<li className="mb-2">Use credit, debit, or bank transfer to purchase crypto.</li>
-						<li className="mb-2">Receive it in your wallet.</li>
-						<li className="mb-2">Start trading and investing instantly.</li>
-					</Styled.List>
-				</Col>
-				<Col xs={12} lg={6}>
-					<FiatOnramp />
+				<Col xs={12} lg={4}>
+					<Card>
+						<img src={TransakLogo} height="60" alt="Transak logo" />
+						<ul className="list-unstyled px-2 mt-3 mb-4">
+							<li className="mb-1">Use credit, debit, or bank transfer.</li>
+							<li className="mb-1">Receive it in your wallet.</li>
+							<li className="mb-1">Start trading and investing instantly.</li>
+						</ul>
+						<div className="d-grid">
+							<TransakButton />
+						</div>
+					</Card>
 				</Col>
 			</Row>
 		</Page>

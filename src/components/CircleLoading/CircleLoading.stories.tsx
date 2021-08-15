@@ -12,10 +12,10 @@ const Template: Story<PureCircleLoadingProps> = (args) => <PureCircleLoading {..
 
 export const Default = Template.bind({});
 Default.args = {
-	waiting: false,
+	paused: true,
 };
 
-export const Waiting = Template.bind({});
-Waiting.args = {
-	waiting: true,
+export const Paused = Template.bind({});
+Paused.args = {
+	paused: false,
 };

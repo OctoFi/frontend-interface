@@ -4,8 +4,8 @@ export type PureWalletConnectorNameProps = {
 
 export const PureWalletConnectorName = ({ name }: PureWalletConnectorNameProps) => {
 	return (
-		<p>
+		<span>
 			Connected with <span className="fw-bold">{name}</span>
-		</p>
+		</span>
 	);
 };

@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 export interface PureAddFundsProps {
 	title?: string;
@@ -15,10 +15,10 @@ export const PureAddFunds = ({
 }: PureAddFundsProps) => {
 	return (
 		<div>
-			<div className="border rounded-top p-2 text-center">
+			<Card className="border rounded-top p-2 text-center">
 				<p className="m-0 fs-6">{title}</p>
 				<p className="m-0 fs-4 fw-bold">{balance}</p>
-			</div>
+			</Card>
 			<div className="d-grid gap-2">
 				<Button variant="primary" size="lg" className="rounded-0 rounded-bottom" onClick={onAddFunds}>
 					{label}
