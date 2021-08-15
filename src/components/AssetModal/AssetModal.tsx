@@ -2,6 +2,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { X as Close } from "react-bootstrap-icons";
 
+import { ROUTE_DASHBOARD } from "../../constants/routes";
 import { AppState } from "../../state";
 import AssetTable from "../AssetTable";
 import { Modal } from "../Modal/bootstrap";
@@ -12,7 +13,7 @@ export const AssetModal = () => {
 	const overview = useSelector((state: AppState) => state.balances.overview);
 	const { asset } = useParams();
 
-	const onHide = () => history.push("/dashboard");
+	const onHide = () => history.push(ROUTE_DASHBOARD);
 
 	if (overview[asset] === undefined) {
 		onHide();

@@ -1,26 +1,104 @@
+import { Spinner } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
+import { useTranslation } from "react-i18next";
+import Skeleton from "react-loading-skeleton";
+import { useHistory } from "react-router-dom";
+
+import { ROUTE_COIN_DETAILS } from "../../../constants/routes";
+import CurrencyText from "../../CurrencyText";
+import CoinDisplay from "../../CoinDisplay";
 import * as Styled from "./styleds";
 
-export type WalletTableProps = {
-	query: string;
-	// entities: any;
-	// columns: any;
+export type PureWalletTableProps = {
+	data: any;
+	loading?: boolean;
 };
 
-// columns={TokensColumns} entities={filteredTokensData}
-export const WalletTable = ({ query }: WalletTableProps) => {
+export const PureWalletTable = ({ data, loading = false }: PureWalletTableProps) => {
+	const { t } = useTranslation();
+	const history = useHistory();
+
+	const rowEvents = {
+		onClick: (e: any, row: any) => {
+			if (row.metadata.symbol === "ETH") {
+				history.push(`${ROUTE_COIN_DETAILS}/ethereum`);
+			} else {
+				// TODO: verify correct
+				history.push(`${ROUTE_COIN_DETAILS}/${row.metadata.address}`);
+				// history.push(`${ROUTE_COIN_DETAILS}/contract/${row.metadata.address}`);
+			}
+		},
+	};
+
+	const columns = [
+		{
+			dataField: "token",
+			text: t("token"),
+			formatter: (cellContent: any, row: any) => {
+				const isLoading = row.loading || false;
+				if (isLoading) {
+					return <Skeleton width={"100%"} height={"100%"} circle />;
+				} else {
+					return (
+						<CoinDisplay
+							currency={row.balance.currency}
+							name={row.metadata.name}
+							symbol={row.metadata.symbol}
+						/>
+					);
+				}
+			},
+		},
+		{
+			dataField: "balance",
+			text: t("balanceTitle"),
+			formatter: (cellContent: any, row: any) => {
+				const isLoading = row.loading || false;
+				if (isLoading) {
+					return <Skeleton width={80} height={24} />;
+				} else {
+					return <span>{row.balance ? row.balance.toSignificant(6) : 0}</span>;
+				}
+			},
+		},
+		{
+			dataField: "value",
+			text: t("totalValue"),
+			formatter: (cellContent: any, row: any) => {
+				const isLoading = row.loading || false;
+				if (isLoading) {
+					return (
+						<div className={"d-flex align-items-center"}>
+							<Skeleton width={24} height={24} className={"mr-2"} />
+							<Skeleton width={80} height={24} />
+						</div>
+					);
+				} else {
+					return <CurrencyText value={row.balanceUSD} />;
+				}
+			},
+		},
+	];
+
+	if (loading) {
+		return (
+			<div className="py-5 w-100 d-flex align-items-center justify-content-center">
+				<Spinner animation="border" variant="primary" id="tokens-wallet" />
+			</div>
+		);
+	}
+
 	return (
-		<Styled.WalletTableWrap>
+		<Styled.TableWrap>
 			<BootstrapTable
-				wrapperClasses="table-responsive d-none d-lg-block"
-				bordered={false}
-				classes="table table-head-custom table-vertical-center overflow-hidden"
-				bootstrap4
-				remote
 				keyField="id"
-				data={entities === null ? [] : entities}
+				bordered={false}
+				striped
+				hover
+				data={data}
 				columns={columns}
+				rowEvents={rowEvents}
 			></BootstrapTable>
-		</Styled.WalletTableWrap>
+		</Styled.TableWrap>
 	);
 };

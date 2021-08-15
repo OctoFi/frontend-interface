@@ -3,6 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Row, Col, Spinner } from "react-bootstrap";
 import dompurify from "dompurify";
+// import Web3 from "web3";
+// import { Web3Wrapper } from "@0x/web3-wrapper";
+// import { ERC20TokenContract } from "@0x/contract-wrappers";
+// import toast from "react-hot-toast";
+// import { UNLIMITED_ALLOWANCE_IN_BASE_UNITS } from "../../constants";
+// import { getContractWrappers } from "../../utils/spot/contractWrapper";
 
 import { AppState } from "../../state";
 import { useActiveWeb3React } from "../../hooks";
@@ -16,8 +22,8 @@ import HistoricalChart from "../HistoricalChart";
 import ArrowUp from "../Icons/ArrowUp";
 import ArrowDown from "../Icons/ArrowDown";
 import GradientButton from "../UI/Button";
-import * as Styled from "./styleds";
 // import UnlockModal from "../UnlockModal";
+import * as Styled from "./styleds";
 
 const CoinDetails = () => {
 	// const [unlocking, setUnlocking] = useState(false);
@@ -32,6 +38,8 @@ const CoinDetails = () => {
 	const selected = marketData.selected.data || false;
 	const tokenContract = useTokenContract(selected.contract_address);
 	const { id } = useParams();
+	// let web3;
+	// let web3Wrapper;
 
 	useEffect(() => {
 		if (tokenContract) {
@@ -49,6 +57,13 @@ const CoinDetails = () => {
 
 		dispatch(fetchHistoricalData(id));
 	}, [dispatch, id]);
+
+	// useEffect(() => {
+	// 	web3 = new Web3(Web3.givenProvider || new Web3.providers.HttpProvider(process.env.REACT_APP_NETWORK_URL));
+	// 	if (web3.currentProvider) {
+	// 		web3Wrapper = new Web3Wrapper(web3.currentProvider);
+	// 	}
+	// }, []);
 
 	const coinAbout = useMemo(() => {
 		if (selected) {

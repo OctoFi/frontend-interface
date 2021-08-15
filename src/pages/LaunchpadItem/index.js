@@ -32,6 +32,7 @@ import Presales from "../../constants/presales.json";
 // import { useContract } from "../../hooks/useContract";
 import CurrencyLogo from "../../components/Logo/CurrencyLogo";
 import * as Styled from "./styleds";
+import { ROUTE_LAUNCHPAD } from "../../constants/routes";
 
 const LaunchpadItem = () => {
 	const { t } = useTranslation();
@@ -106,7 +107,7 @@ const LaunchpadItem = () => {
 
 	useEffect(() => {
 		if (presale?.hasOwnProperty("error")) {
-			history.push("/launchpad");
+			history.push(ROUTE_LAUNCHPAD);
 		}
 	}, [presale]);
 

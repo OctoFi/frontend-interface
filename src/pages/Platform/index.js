@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Col, Row } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 
+import { ROUTE_DASHBOARD } from "../../constants/routes";
 import defiSdk from "../../utils/getDefiSdk";
 import ValueCard from "../../components/ValueCard";
 import AssetTable from "../../components/AssetTable";
@@ -19,7 +20,7 @@ function Platforms(props) {
 	useEffect(() => {
 		defiSdk.getProtocolNames().then((protocols) => {
 			if (!protocols.includes(platform)) {
-				history.push("/dashboard");
+				history.push(ROUTE_DASHBOARD);
 			}
 		});
 	}, [platform]);

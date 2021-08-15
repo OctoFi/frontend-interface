@@ -15,6 +15,7 @@ import Page from "../../components/Page";
 import ResponsiveTable from "../../components/ResponsiveTable";
 // import "../../components/UI/Button/style.scss";
 import * as Styled from "./styleds";
+import { ROUTE_GOVERNANCE } from "../../constants/routes";
 
 const Proposals = (props) => {
 	const { library } = useActiveWeb3React();
@@ -34,7 +35,7 @@ const Proposals = (props) => {
 			if (spaces.hasOwnProperty(space)) {
 				dispatch(fetchProposals(space));
 			} else {
-				history.push("/governance");
+				history.push(ROUTE_GOVERNANCE);
 			}
 		}
 	}, [spaces, space, history, dispatch]);
@@ -74,7 +75,7 @@ const Proposals = (props) => {
 
 	const rowEvents = {
 		onClick: (e, row) => {
-			history.push(`/governance/${space}/proposal/${row[0]}`);
+			history.push(`${ROUTE_GOVERNANCE}/${space}/proposal/${row[0]}`);
 		},
 	};
 

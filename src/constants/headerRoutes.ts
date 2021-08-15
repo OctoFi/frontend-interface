@@ -1,54 +1,60 @@
+import { ROUTE_CROSS, ROUTE_DASHBOARD, ROUTE_EXCHANGE, ROUTE_GOVERNANCE, ROUTE_HISTORY, ROUTE_HOME, ROUTE_INVEST, ROUTE_LAUNCHPAD, ROUTE_LOANS, ROUTE_NFT_MARKETPLACE, ROUTE_OFFRAMP, ROUTE_ONRAMP, ROUTE_POOLS } from "./routes";
+
 export const routes = {
+	homepage: {
+		title: "home",
+		path: ROUTE_HOME,
+	},
 	dashboard: {
 		title: "dashboard",
-		path: "/dashboard",
+		path: ROUTE_DASHBOARD,
 	},
 	history: {
 		title: "history",
-		path: "/history",
+		path: ROUTE_HISTORY,
 	},
 	instantSwap: {
 		title: "exchange",
-		path: "/exchange",
+		path: ROUTE_EXCHANGE,
 	},
 	invest: {
 		title: "invest",
-		path: "/invest",
+		path: ROUTE_INVEST,
 	},
 	pools: {
 		title: "pools",
-		path: "/invest/pools",
+		path: ROUTE_POOLS,
 	},
 	more: {
 		title: "more",
 		routes: {
 			governance: {
 				title: "governance",
-				path: "/governance",
+				path: ROUTE_GOVERNANCE,
 			},
 			nft: {
 				title: "nft",
-				path: "/nft",
+				path: ROUTE_NFT_MARKETPLACE,
 			},
 			on: {
 				title: "crypto",
-				path: "/onramp",
+				path: ROUTE_ONRAMP,
 			},
 			off: {
 				title: "giftCards",
-				path: "/offramp",
+				path: ROUTE_OFFRAMP,
 			},
 			loans: {
 				title: "loans",
-				path: "/invest/loans",
+				path: ROUTE_LOANS,
 			},
 			launchpad: {
 				title: "launchpad",
-				path: "/launchpad",
+				path: ROUTE_LAUNCHPAD,
 			},
 			cross: {
 				title: "cross",
-				path: "/cross/anyswap",
+				path: ROUTE_CROSS,
 			},
 		},
 	},

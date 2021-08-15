@@ -2,6 +2,7 @@ import { useEffect, Suspense, lazy } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import * as routes from "./constants/routes";
 import { AppState } from "./state";
 import { fetchCurrencies } from "./state/currency/actions";
 import { useDarkModeManager } from "./state/user/hooks";
@@ -52,32 +53,32 @@ const Routes = () => {
 	return (
 		<Suspense fallback={<SplashScreen />}>
 			<Switch>
-				<Route path={"/"} exact component={HomePage} />
-				<Route path={"/favorites"} component={Favorites} />
-				<Route path={"/history"} exact component={History} />
-				<Route path={"/offramp"} component={Offramp} />
-				<Route path={"/onramp"} component={Onramp} />
-				<Route path={"/settings"} component={Settings} />
-				<Route path={"/dashboard"} component={Dashboard} />
-				<Route path={"/exchange"} component={Exchange} />
-				<Route path={"/platforms/:platform"} component={Platform} />
-				<Route path={"/invest"} exact component={Explore} />
-				<Route path={"/invest/pools"} component={Pools} />
+				<Route path={routes.ROUTE_DEFAULT} exact component={Dashboard} />
+				<Route path={routes.ROUTE_HOME} component={HomePage} />
+				<Route path={routes.ROUTE_FAVORITES} component={Favorites} />
+				<Route path={routes.ROUTE_HISTORY} component={History} />
+				<Route path={routes.ROUTE_OFFRAMP} component={Offramp} />
+				<Route path={routes.ROUTE_ONRAMP} component={Onramp} />
+				<Route path={routes.ROUTE_SETTINGS} component={Settings} />
+				<Route path={routes.ROUTE_EXCHANGE} component={Exchange} />
+				<Route path={routes.ROUTE_INVEST} exact component={Explore} />
+				<Route path={routes.ROUTE_POOLS} component={Pools} />
 				<Route path={"/invest/tokens"} component={MarketsExplore} />
-				<Route path={"/invest/tokensets"} component={TokenSets} />
-				<Route path={"/nft"} exact component={NFTMarketplace} />
-				<Route path={"/governance"} exact component={Governance} />
-				<Route path={"/governance/:space/create"} exact component={CreateProposal} />
-				<Route path={"/governance/:space"} exact component={Proposals} />
-				<Route path={"/governance/:space/proposal/:id"} exact component={VotePage} />
-				<Route path={"/invest/loans"} component={Borrow} />
-				<Route path={"/market/:id"} exact component={CoinDetailsPage} />
-				<Route path={"/coins/:id"} exact component={CoinDetailsPage} />
-				<Route path={"/launchpad"} exact component={Launchpad} />
-				<Route path={"/launchpad/new"} exact component={NewLaunchpad} />
-				<Route path={"/launchpad/:address"} exact component={LaunchpadItem} />
-				<Route path={"/cross"} component={CrossRouteHandler} />
-				<Redirect to={"/"} />
+				<Route path={routes.ROUTE_TOKENSETS} component={TokenSets} />
+				<Route path={`${routes.ROUTE_PLATFORMS}/:platform`} component={Platform} />
+				<Route path={routes.ROUTE_NFT_MARKETPLACE} exact component={NFTMarketplace} />
+				<Route path={routes.ROUTE_GOVERNANCE} exact component={Governance} />
+				<Route path={`${routes.ROUTE_GOVERNANCE}/:space/create`} exact component={CreateProposal} />
+				<Route path={`${routes.ROUTE_GOVERNANCE}/:space`} exact component={Proposals} />
+				<Route path={`${routes.ROUTE_GOVERNANCE}/:space/proposal/:id`} exact component={VotePage} />
+				<Route path={routes.ROUTE_LOANS} component={Borrow} />
+				<Route path={`${routes.ROUTE_MARKET}/:id`} exact component={CoinDetailsPage} />
+				<Route path={`${routes.ROUTE_COIN_DETAILS}/:id`} exact component={CoinDetailsPage} />
+				<Route path={routes.ROUTE_LAUNCHPAD} exact component={Launchpad} />
+				<Route path={`${routes.ROUTE_LAUNCHPAD}/new`} exact component={NewLaunchpad} />
+				<Route path={`${routes.ROUTE_LAUNCHPAD}/:address`} exact component={LaunchpadItem} />
+				<Route path={routes.ROUTE_CROSS} component={CrossRouteHandler} />
+				<Redirect to={routes.ROUTE_DEFAULT} />
 			</Switch>
 		</Suspense>
 	);

@@ -15,8 +15,8 @@ export const PureNftWallet = ({ items }: PureNftWalletProps) => {
 	if (items.length === 0) {
 		return (
 			<div className="text-center pt-4">
-				<h4>No NFTs were found</h4>
-				<p>You can find the most popular NFTs on OpenSea using our marketplace.</p>
+				<h4>Empty</h4>
+				<p>Find the most popular NFTs from OpenSea using our NFT Marketplace.</p>
 				<Button as={NavLink} to={ROUTE_NFT_MARKETPLACE} variant="primary" size="lg">
 					Go to Marketplace
 				</Button>

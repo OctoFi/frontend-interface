@@ -40,6 +40,7 @@ import { RowBetween, RowFixed } from "../Row";
 import { LightCard } from "../StyledCards";
 import { PriceTopbar } from "./uniswap";
 import * as Styled from "./styleds";
+import { ROUTE_POOLS } from "../../constants/routes";
 
 export default function AddLiquidityModal({ history }: RouteComponentProps) {
 	const { account, chainId, library } = useActiveWeb3React();
@@ -55,7 +56,7 @@ export default function AddLiquidityModal({ history }: RouteComponentProps) {
 	useEffect(() => {
 		if (!pool || !isAddress(pool.address)) {
 			dispatch(clearSelectedPool());
-			history.push("/invest/pools");
+			history.push(ROUTE_POOLS);
 		}
 	}, [pool, dispatch, history]);
 	const currencyA = useCurrency("ETH");
@@ -238,7 +239,7 @@ export default function AddLiquidityModal({ history }: RouteComponentProps) {
 
 	const hideModal = () => {
 		dispatch(clearSelectedPool());
-		history.push("/invest/pools");
+		history.push(ROUTE_POOLS);
 	};
 
 	const pendingText = `Supplying ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${

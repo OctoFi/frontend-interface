@@ -4,31 +4,27 @@ import { Route, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
+import { ROUTE_DASHBOARD } from "../../constants/routes";
 import { useActiveWeb3React } from "../../hooks";
 import { emitter } from "../../lib/helper";
 import { AppState } from "../../state";
-import { fetchBalances, fetchTransformedBalances } from "../../state/balances/actions";
-import { useMemoTokenBalances } from "../../state/balances/hooks";
+import { fetchBalances } from "../../state/balances/actions";
 import Page from "../../components/Page";
 import AccountCard from "../../components/AccountCard";
 import AssetModal from "../../components/AssetModal";
 import AssetTable from "../../components/AssetTable";
-// import WalletTable from "../../components/AssetTable/WalletTable";
-import WalletCard from "../../components/WalletCard";
 // import ChartCard from "../../components/ChartCard";
 import Platforms from "../../components/Platforms";
+import WalletCard from "../../components/WalletCard";
 import * as Styled from "./styleds";
 
 export const Dashboard = () => {
 	const { t } = useTranslation();
 	const { account } = useActiveWeb3React();
+	const dispatch = useDispatch();
+	const history = useHistory();
 	const overview = useSelector((state: AppState) => state.balances.overview);
 	const loading = useSelector((state: AppState) => state.balances.loading);
-	// const balances = useSelector((state: AppState) => state.balances.data);
-	// const { ETH } = useSelector((state: AppState) => state.currency.currenciesRate);
-	const dispatch = useDispatch();
-	// const walletBalances = useMemoTokenBalances();
-	const history = useHistory();
 
 	useEffect(() => {
 		if (account) {
@@ -36,31 +32,15 @@ export const Dashboard = () => {
 		}
 	}, [account, dispatch]);
 
-	// useEffect(() => {
-	// 	dispatch(fetchTransformedBalances(balances, walletBalances, ETH));
-	// }, [balances, walletBalances, ETH, dispatch]);
-
-	// const onClickToken = (token: any) => {
-	// 	if (token.metadata.symbol === "ETH") {
-	// 		history.push("/coins/ethereum");
-	// 	} else {
-	// 		history.push(`/coins/${token.metadata.address}`);
-	// 		// history.push(`/coins/contract/${token.metadata.address}`);
-	// 	}
-	// };
-
 	const onSelectCard = (asset: string) => {
 		emitter.emit("open-modal", {
 			action: () => {
-				history.push("/dashboard");
+				history.push(ROUTE_DASHBOARD);
 				emitter.emit("close-modal");
 			},
 		});
-		if (asset === "wallet") {
-			history.push("/dashboard/assets");
-		} else {
-			history.push(`/dashboard/account/${asset}`);
-		}
+
+		history.push(`${ROUTE_DASHBOARD}/account/${asset}`);
 	};
 
 	return (
@@ -69,6 +49,7 @@ export const Dashboard = () => {
 				<Col xs={12} lg={8} className="mb-3 mb-lg-0">
 					{/* TODO: replace with a Portfolio Balance Chart */}
 					{/* <ChartCard /> */}
+					<WalletCard />
 				</Col>
 				<Col xs={12} lg={4}>
 					<AccountCard
@@ -88,25 +69,6 @@ export const Dashboard = () => {
 						show={true}
 						loading={loading}
 					/>
-
-					{/*
-					<AccountCard
-						color={"primary"}
-						title={overview.wallet.title}
-						value={overview.wallet.total}
-						type={overview.wallet.slug}
-						show={true}
-						loading={loading}
-						onShowMore={() => onSelectCard(overview.wallet.slug)}
-						assets={overview.wallet}
-					>
-						<WalletTable
-							balances={overview.wallet.balances.slice(0, 5)}
-							size={"sm"}
-							onClickToken={onClickToken}
-						/>
-					</AccountCard>
-					*/}
 
 					<AccountCard
 						color={"primary"}
@@ -135,23 +97,11 @@ export const Dashboard = () => {
 					</AccountCard>
 				</Col>
 			</Row>
-			<Row>
-				<Col xs={12}>
-					<WalletCard />
-					{/* <WalletTable
-						balances={overview.wallet.balances}
-						size={"sm"}
-						onClickToken={onClickToken}
-						loading={!overview}
-						show={overview}
-					/> */}
-				</Col>
-			</Row>
 
 			<Styled.RowTitle className={"h4"}>{t("platforms")}</Styled.RowTitle>
 			<Platforms />
 
-			{/* <Route path={"/dashboard/account/:asset"} component={AssetModal} /> */}
+			<Route path={`${ROUTE_DASHBOARD}/account/:asset`} component={AssetModal} />
 		</Page>
 	);
 };

@@ -1,10 +1,11 @@
-export const ROUTE_HOME = "/";
+export const ROUTE_DEFAULT = "/";
+export const ROUTE_DASHBOARD = "/";
+export const ROUTE_HOME = "/home";
 export const ROUTE_FAVORITES = "/favorites";
 export const ROUTE_HISTORY = "/history";
 export const ROUTE_OFFRAMP = "/offramp";
 export const ROUTE_ONRAMP = "/onramp";
 export const ROUTE_SETTINGS = "/settings";
-export const ROUTE_DASHBOARD = "/dashboard";
 export const ROUTE_EXCHANGE = "/exchange";
 export const ROUTE_PLATFORMS = "/platforms";
 export const ROUTE_INVEST = "/invest";

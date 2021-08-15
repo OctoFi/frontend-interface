@@ -19,6 +19,7 @@ import { ProposalContent } from "./ProposalContent";
 import { ProposalVotes } from "./ProposalVotes";
 import { VoteInformation } from "./VoteInformation";
 import { VoteResults } from "./VoteResults";
+import { ROUTE_GOVERNANCE } from "../../constants/routes";
 
 export const Vote = () => {
 	const { account, library } = useWeb3React();
@@ -52,7 +53,7 @@ export const Vote = () => {
 						toast.error("Cannot get votes, Please try again in a minute");
 					});
 			} else {
-				history.push("/governance");
+				history.push(ROUTE_GOVERNANCE);
 			}
 		}
 	}, [spaces, space, id, dispatch, history]);
@@ -134,7 +135,7 @@ export const Vote = () => {
 						: { title: "Pending", className: "label-light-info" };
 				setStatus(state);
 			} else {
-				history.push(`/governance/${space}`);
+				history.push(`${ROUTE_GOVERNANCE}/${space}`);
 			}
 		} else {
 			setSelectedProposal(false);

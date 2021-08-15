@@ -22,6 +22,7 @@ import {
 } from "../TransactionConfirmationModal";
 import DoubleCurrencyLogo from "../../components/Logo/DoubleLogo";
 
+import { ROUTE_POOLS } from "../../constants/routes";
 import { Modal } from "../Modal/bootstrap";
 import { ROUTER_ADDRESS } from "../../constants";
 import { PairState } from "../../data/Reserves";
@@ -327,9 +328,9 @@ export default function UniswapLiquidityModal({
 		(currencyA: Currency) => {
 			const newCurrencyIdA = currencyId(currencyA);
 			if (newCurrencyIdA === currencyIdB) {
-				history.push(`/invest/pools/${currencyIdB}/${currencyIdA}`);
+				history.push(`${ROUTE_POOLS}/${currencyIdB}/${currencyIdA}`);
 			} else {
-				history.push(`/invest/pools/${newCurrencyIdA}/${currencyIdB}`);
+				history.push(`${ROUTE_POOLS}/${newCurrencyIdA}/${currencyIdB}`);
 			}
 		},
 		[currencyIdB, history, currencyIdA]
@@ -339,12 +340,12 @@ export default function UniswapLiquidityModal({
 			const newCurrencyIdB = currencyId(currencyB);
 			if (currencyIdA === newCurrencyIdB) {
 				if (currencyIdB) {
-					history.push(`/invest/pools/${currencyIdB}/${newCurrencyIdB}`);
+					history.push(`${ROUTE_POOLS}/${currencyIdB}/${newCurrencyIdB}`);
 				} else {
-					history.push(`/invest/pools/${newCurrencyIdB}`);
+					history.push(`${ROUTE_POOLS}/${newCurrencyIdB}`);
 				}
 			} else {
-				history.push(`/invest/pools/${currencyIdA ? currencyIdA : "ETH"}/${newCurrencyIdB}`);
+				history.push(`${ROUTE_POOLS}/${currencyIdA ? currencyIdA : "ETH"}/${newCurrencyIdB}`);
 			}
 		},
 		[currencyIdA, history, currencyIdB]
@@ -362,7 +363,7 @@ export default function UniswapLiquidityModal({
 	return (
 		<Modal
 			show={true}
-			onHide={() => history.push("/invest/pools")}
+			onHide={() => history.push(ROUTE_POOLS)}
 			backdropClassName={"backdrop"}
 			size="md"
 			centered={true}

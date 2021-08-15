@@ -32,6 +32,7 @@ import { useApproveCallback } from "../../hooks/useApproveCallback";
 import { useETHBalances } from "../../state/wallet/hooks";
 import { usePair } from "../../data/Reserves";
 import * as Styled from "./styleds";
+import { ROUTE_LAUNCHPAD } from "../../constants/routes";
 
 const PATTERN = /^(0x[a-fA-F0-9]{40})$/;
 
@@ -397,7 +398,7 @@ const NewLaunchpad = (props) => {
 			.then(() => {
 				setLoading(false);
 				toast.success("The presale created successfully!");
-				history.push("/launchpad");
+				history.push(ROUTE_LAUNCHPAD);
 			})
 			.catch((err) => {
 				setLoading(false);

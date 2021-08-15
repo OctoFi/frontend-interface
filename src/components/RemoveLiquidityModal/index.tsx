@@ -48,6 +48,7 @@ import { LightCard } from "../StyledCards";
 import { PlatformTitle } from "../AddLiquidityModal/styleds";
 import { useTranslation } from "react-i18next";
 import { Form } from "react-bootstrap";
+import { ROUTE_POOLS } from "../../constants/routes";
 
 const Check = Form.Check;
 
@@ -184,7 +185,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 	useEffect(() => {
 		if (!pool || !isAddress(pool.address)) {
 			dispatch(clearSelectedPool());
-			history.push("/invest/pools");
+			history.push(ROUTE_POOLS);
 		}
 	}, [pool, dispatch, history]);
 
@@ -389,7 +390,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 
 	const hideModal = () => {
 		dispatch(clearSelectedPool());
-		history.push("/invest/pools");
+		history.push(ROUTE_POOLS);
 	};
 
 	const pendingText = `Withdrawing ${amount} ${pool?.poolName}`;

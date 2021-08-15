@@ -16,6 +16,7 @@ import { useActiveWeb3React } from "../../hooks";
 import Snapshot from "../../http/snapshot";
 import Page from "../../components/Page";
 import { useWalletModalToggle } from "../../state/application/hooks";
+import { ROUTE_GOVERNANCE } from "../../constants/routes";
 // import "./style.scss";
 
 const Header = styled.div`
@@ -183,7 +184,7 @@ const CreateProposals = (props) => {
 				setLoading(false);
 				toast.success("Your Proposal is in!");
 				if (res.hasOwnProperty("ipfsHash")) {
-					history.push(`/governance/${space}`);
+					history.push(`${ROUTE_GOVERNANCE}/${space}`);
 				}
 			} catch (error) {
 				toast.error("Something went wrong!");
@@ -199,7 +200,7 @@ const CreateProposals = (props) => {
 			dispatch(fetchSpaces());
 		} else {
 			if (!spaces.hasOwnProperty(space)) {
-				history.push("/governance");
+				history.push(ROUTE_GOVERNANCE);
 			}
 		}
 	}, [spaces, space, dispatch, history]);

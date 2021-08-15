@@ -9,39 +9,40 @@ import UniswapLiquidityModal from "../../components/AddLiquidityModal/uniswap";
 import * as actions from "../../state/pools/actions";
 import Page from "../../components/Page";
 import { emitter } from "../../lib/helper";
+import { ROUTE_POOLS } from "../../constants/routes";
 
 class Pools extends Component {
 	investButtonClick = () => {
 		emitter.emit("open-modal", {
 			action: () => {
-				this.props.history.push("/invest/pools");
+				this.props.history.push(ROUTE_POOLS);
 				emitter.emit("close-modal");
 			},
 		});
-		this.props.history.push("/invest/pools/ETH/undefined");
+		this.props.history.push(`${ROUTE_POOLS}/ETH/undefined`);
 	};
 	addLiquidityDialog = (type, pool) => {
 		emitter.emit("open-modal", {
 			action: () => {
-				this.props.history.push(`/invest/pools`);
+				this.props.history.push(ROUTE_POOLS);
 				emitter.emit("close-modal");
 			},
 		});
 		if (type === "Uniswap") {
 			const currencyA = pool.token0.symbol.toUpperCase() === "ETH" ? "ETH" : pool.token0.id;
 			const currencyB = pool.token1.id;
-			this.props.history.push(`/invest/pools/${currencyA}/${currencyB}`);
+			this.props.history.push(`${ROUTE_POOLS}/${currencyA}/${currencyB}`);
 		} else {
 			this.props.setSelectedPool(type, pool);
-			this.props.history.push(`/invest/pools/ETH/`);
+			this.props.history.push(`${ROUTE_POOLS}/ETH/`);
 		}
 	};
 	removeLiquidityDialog = (type, pool) => {
 		this.props.setSelectedPool(type, pool);
-		this.props.history.push(`/invest/pools/remove/ETH/`);
+		this.props.history.push(`${ROUTE_POOLS}/remove/ETH/`);
 		emitter.emit("open-modal", {
 			action: () => {
-				this.props.history.push(`/invest/pools`);
+				this.props.history.push(ROUTE_POOLS);
 				emitter.emit("close-modal");
 			},
 		});
@@ -55,9 +56,9 @@ class Pools extends Component {
 					removeLiquidityHandler={this.removeLiquidityDialog}
 				/>
 				<Switch>
-					<Route path={"/invest/pools/remove/ETH"} exact component={RemoveLiquidityModal} />
-					<Route path={"/invest/pools/:currencyIdA/:currencyIdB"} exact component={UniswapLiquidityModal} />
-					<Route path={"/invest/pools/ETH"} exact component={AddLiquidityModal} />
+					<Route path={"${ROUTE_POOLS}/remove/ETH"} exact component={RemoveLiquidityModal} />
+					<Route path={"${ROUTE_POOLS}/:currencyIdA/:currencyIdB"} exact component={UniswapLiquidityModal} />
+					<Route path={"${ROUTE_POOLS}/ETH"} exact component={AddLiquidityModal} />
 				</Switch>
 			</Page>
 		);

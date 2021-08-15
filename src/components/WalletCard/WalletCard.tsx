@@ -1,17 +1,14 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { Tab, Nav, Spinner } from "react-bootstrap";
+import { Tab, Nav } from "react-bootstrap";
 import { Search } from "react-feather";
-import { AppState } from "../../state";
 import { InputGroup, InputGroupText, InputGroupFormControl as FormControl } from "../Form";
 import NftTab from "./NftWallet";
 import WalletTable from "./WalletTable";
 
 export const WalletCard = () => {
-	const [query, setQuery] = useState("");
-	const loading = useSelector((state: AppState) => state.balances.loading);
 	const { t } = useTranslation();
+	const [query, setQuery] = useState("");
 
 	return (
 		<Tab.Container defaultActiveKey={"tokens"}>
@@ -39,13 +36,7 @@ export const WalletCard = () => {
 			</div>
 			<Tab.Content>
 				<Tab.Pane eventKey="tokens">
-					{loading ? (
-						<div className="py-5 w-100 d-flex align-items-center justify-content-center">
-							<Spinner animation="border" variant="primary" id="tokens-wallet" />
-						</div>
-					) : (
-						<WalletTable query={query} />
-					)}
+					<WalletTable query={query} />
 				</Tab.Pane>
 
 				<Tab.Pane eventKey="nft">

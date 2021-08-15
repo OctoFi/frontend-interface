@@ -2,6 +2,7 @@ import { createAction } from "@reduxjs/toolkit";
 
 import { emitter } from "../../lib/helper";
 import marketApi from "../../http/market";
+import { ROUTE_DASHBOARD } from "../../constants/routes";
 
 const api = new marketApi();
 
@@ -136,7 +137,7 @@ export const fetchSelectedContract = (address) => {
 		} catch (e) {
 			dispatch(setLoading("selected", false));
 			emitter.emit("change-route", {
-				path: "/dashboard",
+				path: ROUTE_DASHBOARD,
 			});
 		}
 	};

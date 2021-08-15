@@ -7,7 +7,7 @@ import Skeleton from "react-loading-skeleton";
 import { Button } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
 
-import { ROUTE_MARKETS_EXPLORE } from "../../../constants/routes";
+import { ROUTE_MARKET, ROUTE_MARKETS_EXPLORE } from "../../../constants/routes";
 import { CustomCard } from "../../../components/Card";
 import SearchIcon from "../../../assets/images/search.svg";
 import MarketApi from "../../../http/market";
@@ -161,7 +161,7 @@ export const Currencies = () => {
 
 	const rowEvents = {
 		onClick: (e: any, row: any) => {
-			history.push(`/market/${row?.id}`);
+			history.push(`${ROUTE_MARKET}/${row?.id}`);
 		},
 	};
 
