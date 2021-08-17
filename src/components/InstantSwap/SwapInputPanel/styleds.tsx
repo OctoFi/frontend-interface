@@ -7,14 +7,16 @@ export const InputPanel = styled.div`
 `;
 
 export const InputRow = styled.div<{ selected?: boolean }>`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	background: ${({ theme }) => theme.bg1};
 	border-radius: 12px;
 	overflow: hidden;
 	// padding: 0.75rem;
 
 	@media (min-width: 768px) {
-		${({ theme }) => theme.flexRowNoWrap};
+		display: flex;
+		flex-flow: row nowrap;
 		align-items: center;
 	}
 `;

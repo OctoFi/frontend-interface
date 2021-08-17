@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const InputRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	padding: 0.625rem 0 0;
 
@@ -41,7 +42,8 @@ export const InputContainer = styled.div`
 `;
 
 export const LabelRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	color: ${({ theme }) => theme.text1};
 	font-size: 0.75rem;
@@ -60,7 +62,8 @@ export const Aligner = styled.span`
 `;
 
 export const InputPanel = styled.div`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	position: relative;
 	border-radius: 0.42rem;
 `;
@@ -112,7 +115,8 @@ export const CurrencySelect = styled.button`
 `;
 
 export const BalanceRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	margin-top: 10px;
 	color: ${({ theme }) => theme.text1};

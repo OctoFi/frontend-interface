@@ -16,7 +16,8 @@ export const Wrapper = styled.div`
 `;
 
 export const HeaderRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	padding: 1.5rem 1.5rem;
 	font-weight: 500;
 	color: ${(props) => (props.color === "blue" ? ({ theme }) => theme.primary : "inherit")};
@@ -59,7 +60,8 @@ export const UpperSection = styled.div`
 `;
 
 export const LogoBox = styled.div`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	width: 46px;
 	height: 46px;
 	object-fit: contain;

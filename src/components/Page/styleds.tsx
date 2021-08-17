@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const PageWrap = styled.div`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	height: 100vh;
 `;
 
 export const PageContent = styled.div`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	flex: 1;
 	overflow-y: auto;
 	overflow-x: hidden;

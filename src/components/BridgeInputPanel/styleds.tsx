@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { ReactComponent as DropDown } from "../../assets/images/cross/dropdown.svg";
 
 export const InputRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	padding: 0.75rem 0;
 
@@ -84,7 +85,8 @@ export const CurrencySelect = styled.button`
 `;
 
 export const LabelRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	color: ${({ theme }) => theme.text1};
 	font-size: 0.75rem;
@@ -125,7 +127,8 @@ export const CustomDropDown = styled(DropDown)`
 `;
 
 export const InputPanel = styled.div<{ withoutMargin?: boolean }>`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	position: relative;
 	z-index: 1;
 	margin-bottom: ${({ withoutMargin }) => (withoutMargin ? "0.5rem" : "1rem")};

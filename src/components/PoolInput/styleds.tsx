@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const InputRow = styled.div<{ selected: boolean }>`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	padding: 0.75rem 0;
 
@@ -45,7 +46,8 @@ export const CurrencySelect = styled.button<{ selected: boolean }>`
 `;
 
 export const LabelRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	color: ${({ theme }) => theme.text1};
 	font-size: 0.75rem;
@@ -68,7 +70,8 @@ export const Aligner = styled.span`
 `;
 
 export const InputPanel = styled.div<{ hideInput?: boolean }>`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	position: relative;
 	z-index: 1;
 	margin-bottom: 1rem;

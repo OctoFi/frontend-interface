@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { useIsDarkMode } from "../../state/user/hooks";
 
 const QRCodeWrapper = styled.div`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	align-items: center;
 	justify-content: center;
 	border-radius: 0.75rem;

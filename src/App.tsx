@@ -18,6 +18,8 @@ import TransactionHandler from "./components/TransactionHandler";
 import { FixedGlobalStyle, ThemedGlobalStyle } from "./theme";
 import Routes from "./Routes";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap-grid.min.css";
+// import "bootstrap/dist/css/bootstrap-utilities.min.css";
 // import "./global.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Text } from "rebass";
 
 export const PriceRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	justify-content: space-between;
 	gap: 0.5rem;

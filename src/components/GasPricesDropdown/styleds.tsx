@@ -25,7 +25,8 @@ export const MenuFlyout = styled.span`
 `;
 
 export const MenuButton = styled.button`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	gap: 0.25rem;
 	background-color: transparent;

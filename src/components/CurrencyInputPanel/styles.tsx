@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const InputPanel = styled.div<{ hideInput?: boolean; withoutMargin?: boolean }>`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	position: relative;
 	z-index: 1;
 	// background: ${({ theme }) => theme.bg5};
@@ -10,14 +11,16 @@ export const InputPanel = styled.div<{ hideInput?: boolean; withoutMargin?: bool
 `;
 
 export const InputRow = styled.div<{ selected: boolean }>`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	background: ${({ theme }) => theme.bg1};
 	border-radius: 12px;
 	overflow: hidden;
 	// padding: 0.75rem;
 
 	@media (min-width: 768px) {
-		${({ theme }) => theme.flexRowNoWrap};
+		display: flex;
+		flex-flow: row nowrap;
 		align-items: center;
 	}
 `;

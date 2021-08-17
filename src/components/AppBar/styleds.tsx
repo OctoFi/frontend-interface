@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const AppNavbar = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: stretch;
 	min-height: 80px;
 	background-color: ${({ theme }) => theme.modalBG};
@@ -12,7 +13,8 @@ export const AppNavbar = styled.div`
 `;
 
 export const AppBarItem = styled(NavLink)`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	align-items: center;
 	justify-content: center;
 	gap: 6px;

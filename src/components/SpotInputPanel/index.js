@@ -6,7 +6,8 @@ import NumericalInput from "../NumericalInput";
 import { tokenAmountInUnits, unitsInTokenAmount } from "../../utils/spot/tokens";
 
 const InputRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 
 	padding: 0.625rem 0 0;
@@ -47,7 +48,8 @@ const InputContainer = styled.div`
 `;
 
 const LabelRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	color: ${({ theme }) => theme.text1};
 	font-size: 0.75rem;
@@ -66,7 +68,8 @@ const Aligner = styled.span`
 `;
 
 const InputPanel = styled.div`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	position: relative;
 	border-radius: 0.42rem;
 `;
@@ -117,7 +120,8 @@ const CurrencySelect = styled.button`
 `;
 
 let BalanceRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	margin-top: 10px;
 	color: ${({ theme }) => theme.text1};

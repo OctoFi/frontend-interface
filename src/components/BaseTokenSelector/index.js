@@ -10,11 +10,12 @@ import { useActiveWeb3React } from "../../hooks";
 import { useCurrencyBalance } from "../../state/wallet/hooks";
 import { useTranslation } from "react-i18next";
 import CurrencySelectModal from "../BaseTokenModal";
-import {ChainId, WETH} from "@uniswap/sdk";
-import {DAI, USDC, WBTC} from "../../constants";
+import { ChainId, WETH } from "@uniswap/sdk";
+import { DAI, USDC, WBTC } from "../../constants";
 
 const InputRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 
 	padding: 0.75rem 0 0;
@@ -64,7 +65,8 @@ const CurrencySelect = styled.button`
 `;
 
 const LabelRow = styled.div`
-	${({ theme }) => theme.flexRowNoWrap};
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	color: ${({ theme }) => theme.text1};
 	font-size: 0.75rem;
@@ -89,7 +91,8 @@ const StyledDropDown = styled(DropDown)`
 `;
 
 const InputPanel = styled.div`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+	flex-flow: column nowrap;
 	position: relative;
 	z-index: 1;
 `;
@@ -116,12 +119,7 @@ const Balance = styled.span`
 	}
 `;
 
-const TOKENS = [
-	WETH[ChainId.MAINNET],
-	DAI,
-	WBTC,
-	USDC
-]
+const TOKENS = [WETH[ChainId.MAINNET], DAI, WBTC, USDC];
 
 export default function BaseTokenSelector({
 	showMaxButton,
@@ -196,7 +194,9 @@ export default function BaseTokenSelector({
 										? currency.symbol.slice(0, 4) +
 										  "..." +
 										  currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
-										: currency?.symbol === 'WETH' ? 'ETH' : currency?.symbol) || t("selectToken")}
+										: currency?.symbol === "WETH"
+										? "ETH"
+										: currency?.symbol) || t("selectToken")}
 								</StyledTokenName>
 							)}
 							{!disableCurrencySelect && <StyledDropDown selected={!!currency} />}
@@ -205,7 +205,6 @@ export default function BaseTokenSelector({
 				</InputRow>
 			</div>
 			{!disableCurrencySelect && onCurrencySelect && (
-
 				<CurrencySelectModal
 					isOpen={modalOpen}
 					onDismiss={handleDismissSearch}
