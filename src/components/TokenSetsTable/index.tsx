@@ -29,8 +29,7 @@ const TokenSetsExploreTable = () => {
 		{
 			dataField: "id",
 			text: "ID",
-			// @ts-ignore
-			formatter: (cellContent, row, rowIndex) => (
+			formatter: (cellContent: any, row: any, rowIndex: number) => (
 				<Styled.CellText className="fw-bold">{rowIndex + 1}</Styled.CellText>
 			),
 		},
@@ -38,8 +37,7 @@ const TokenSetsExploreTable = () => {
 		{
 			dataField: "name",
 			text: "NAME",
-			// @ts-ignore
-			formatter: (cellContent, row, rowIndex) => (
+			formatter: (cellContent: any, row: any, rowIndex: number) => (
 				<div
 					key={rowIndex}
 					className="d-flex flex-row-reverse flex-lg-row align-items-start align-items-lg-center py-lg-2 pr-lg-4"
@@ -52,9 +50,7 @@ const TokenSetsExploreTable = () => {
 						</Styled.LogoContainer>
 					)}
 					<div className="d-flex flex-column justify-content-center ml-lg-3 mr-3 mr-lg-0">
-						<Styled.TokenSetCustomTitle className={"fw-bold"}>
-							{row.name}
-						</Styled.TokenSetCustomTitle>
+						<Styled.TokenSetCustomTitle className={"fw-bold"}>{row.name}</Styled.TokenSetCustomTitle>
 					</div>
 				</div>
 			),
@@ -66,8 +62,7 @@ const TokenSetsExploreTable = () => {
 		{
 			dataField: "price_usd",
 			text: "CURRENT PRICE",
-			// @ts-ignore
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<Styled.CellText className={`label label-inline label-lg label-light-success`}>
 					<CurrencyText value={row.price_usd} />
 				</Styled.CellText>
@@ -76,14 +71,12 @@ const TokenSetsExploreTable = () => {
 		{
 			dataField: "components",
 			text: "ASSETS",
-			// @ts-ignore
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<div className="d-flex align-items-center">
-					{/* @ts-ignore */}
-					{row.components.map((c, index) => {
+					{row.components.map((comp: any, index: number) => {
 						return (
 							<Styled.CellText key={`cell-${index}`} className={`mr-lg-4 ml-2 fs-6`}>
-								{c.symbol}
+								{comp.symbol}
 							</Styled.CellText>
 						);
 					})}
@@ -93,24 +86,21 @@ const TokenSetsExploreTable = () => {
 		{
 			dataField: "natural_units",
 			text: "NATURAL UNITS",
-			// @ts-ignore
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<Styled.CellText className="fw-bold">{row.natural_unit}</Styled.CellText>
 			),
 		},
 		{
 			dataField: "unit_shares",
 			text: "UNIT SHARES",
-			// @ts-ignore
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<Styled.CellText className="fw-bold">{row.unit_shares}</Styled.CellText>
 			),
 		},
 		{
 			dataField: "market_cap",
 			text: "MARKET CAP",
-			// @ts-ignore
-			formatter: (cellContent, row) => (
+			formatter: (cellContent: any, row: any) => (
 				<Styled.CellText>
 					<CurrencyText value={row.market_cap} />
 				</Styled.CellText>

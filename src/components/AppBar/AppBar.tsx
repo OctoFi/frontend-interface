@@ -1,43 +1,29 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
-import { PieChart, List, Maximize2, Repeat, Star, TrendingUp } from "react-feather";
-import { routes } from "../../constants/appbarRoutes";
+import { Icon } from "react-bootstrap-icons";
 import * as Styled from "./styleds";
 
-const Icons = {
-	"pie-chart": PieChart,
-	list: List,
-	"maximize-2": Maximize2,
-	repeat: Repeat,
-	star: Star,
-	"trending-up": TrendingUp,
-};
+export interface ItemProps {
+	title: string;
+	path: string;
+	icon: Icon;
+}
 
-export const AppBar = () => {
+export interface PureAppBarProps {
+	items: Array<ItemProps>;
+}
+
+export const PureAppBar = ({ items }: PureAppBarProps) => {
 	const { t } = useTranslation();
 
 	return (
 		<Styled.AppNavbar>
-			{Object.keys(routes).map((key, index) => {
-				// @ts-ignore
-				const r = routes[key];
-				// @ts-ignore
-				if (typeof Icons[r.icon] !== "undefined") {
-					return (
-						<Styled.AppBarItem key={index} to={r.path} activeClassName={"active"} exact>
-							{r.icon === "maximize-2" ? (
-								// @ts-ignore
-								<Styled.RotateIcon>{React.createElement(Icons[r.icon])}</Styled.RotateIcon>
-							) : (
-								// @ts-ignore
-								React.createElement(Icons[r.icon])
-							)}
-							<span className="sr-only">{t(`menu.${r.title}`)}</span>
-						</Styled.AppBarItem>
-					);
-				} else {
-					return false;
-				}
+			{items.map((item: any) => {
+				return (
+					<Styled.AppBarItem key={item.title} to={item.path} activeClassName="active" exact>
+						<item.icon size={24} />
+						<span className="sr-only">{t(`menu.${item.title}`)}</span>
+					</Styled.AppBarItem>
+				);
 			})}
 		</Styled.AppNavbar>
 	);

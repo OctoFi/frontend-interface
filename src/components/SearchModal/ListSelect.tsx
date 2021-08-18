@@ -133,7 +133,6 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
 
 	if (!list) return null;
 
-	// @ts-ignore
 	return (
 		<Row key={listUrl} align="center" padding="16px" id={listUrlRowHTMLId(listUrl)}>
 			<div className={"d-flex align-items-center flex-grow-1"}>

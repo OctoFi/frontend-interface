@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Spinner } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import BootstrapTable from "react-bootstrap-table-next";
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import moment from "moment";
 
+import { ROUTE_GOVERNANCE } from "../../constants/routes";
+import { useActiveWeb3React } from "../../hooks";
+import { formatProposals, getScores } from "../../lib/utils";
 import { fetchProposals, fetchSpaces } from "../../state/governance/actions";
 import { shorten } from "../../state/governance/hooks";
-import { formatProposals, getScores } from "../../lib/utils";
-import { useActiveWeb3React } from "../../hooks";
 import { ResponsiveCard } from "../../components/Card";
 import Page from "../../components/Page";
 import ResponsiveTable from "../../components/ResponsiveTable";
-// import "../../components/UI/Button/style.scss";
 import * as Styled from "./styleds";
-import { ROUTE_GOVERNANCE } from "../../constants/routes";
 
-const Proposals = (props) => {
+export const Proposals = () => {
 	const { library } = useActiveWeb3React();
 	const [selectedProposal, setSelectedProposal] = useState({});
 	const dispatch = useDispatch();
@@ -38,7 +37,7 @@ const Proposals = (props) => {
 				history.push(ROUTE_GOVERNANCE);
 			}
 		}
-	}, [spaces, space, history, dispatch]);
+	}, [spaces, space, history]);
 
 	const transformProposals = async (proposals, space) => {
 		if (proposals.hasOwnProperty(space)) {
@@ -74,7 +73,7 @@ const Proposals = (props) => {
 	}, [proposals, space]);
 
 	const rowEvents = {
-		onClick: (e, row) => {
+		onClick: (e: any, row: any) => {
 			history.push(`${ROUTE_GOVERNANCE}/${space}/proposal/${row[0]}`);
 		},
 	};
@@ -83,14 +82,14 @@ const Proposals = (props) => {
 		{
 			dataField: "asset",
 			text: t("description"),
-			formatter: (cellContent, row, rowIndex) => (
+			formatter: (cellContent: any, row: any) => (
 				<Styled.RowTitle>{shorten(row[1].msg.payload.name, "name")}</Styled.RowTitle>
 			),
 		},
 		{
 			dataField: "status",
 			text: t("status"),
-			formatter(cellContent, row) {
+			formatter(cellContent: any, row: any) {
 				const ts = (Date.now() / 1e3).toFixed();
 				const { start, end } = row[1].msg.payload;
 				let state =
@@ -114,7 +113,7 @@ const Proposals = (props) => {
 		{
 			dataField: "start",
 			text: t("startDate"),
-			formatter(cellContent, row) {
+			formatter(cellContent: any, row: any) {
 				return (
 					<Styled.CellText>
 						{moment(row[1].msg.payload.start * 1e3).format("YYYY/MM/DD HH:mm")}
@@ -125,7 +124,7 @@ const Proposals = (props) => {
 		{
 			dataField: "end",
 			text: t("endDate"),
-			formatter(cellContent, row) {
+			formatter(cellContent: any, row: any) {
 				return (
 					<Styled.CellText>{moment(row[1].msg.payload.end * 1e3).format("YYYY/MM/DD HH:mm")}</Styled.CellText>
 				);
@@ -134,7 +133,7 @@ const Proposals = (props) => {
 		{
 			dataField: "author",
 			text: t("author"),
-			formatter(cellContent, row) {
+			formatter(cellContent: any, row: any) {
 				return (
 					<Styled.CellText>
 						{row[1].address.slice(0, 6)}...{row[1].address.slice(-4)}
@@ -147,7 +146,7 @@ const Proposals = (props) => {
 	const actions = {
 		dataField: "actions",
 		text: t("table.actions"),
-		formatter(cellContent, row) {
+		formatter(cellContent: any, row: any) {
 			return (
 				<div className="d-flex flex-column align-items-stretch align-items-lg-center justify-content-center w-100">
 					<Styled.StyledLink to={`/governance/${space}/proposal/${row[0]}`}>
@@ -161,59 +160,50 @@ const Proposals = (props) => {
 
 	return (
 		<Page title={t("governance.title")} networkSensitive={false}>
-			<Row>
-				<Col xs={12}>
-					<ResponsiveCard>
-						<Styled.Header>
-							<Styled.Title className="card-title">{t("governance.proposals")}</Styled.Title>
-							<Styled.NewButton
-								to={`${location.pathname}/create`}
-								className="bg-light-primary d-none d-md-flex"
-							>
-								{t("createNew")}
-							</Styled.NewButton>
-							<Styled.GradientButton
-								to={`${location.pathname}/create`}
-								className=" btn btn-primary btn-gradient-primary d-flex d-md-none"
-							>
-								{t("createNew")}
-							</Styled.GradientButton>
-						</Styled.Header>
-						<div>
-							{governanceLoading ? (
-								<div className="d-flex align-items-center justify-content-center py-5 w-100">
-									<Spinner animation="border" variant="primary" id="proposals" />
-								</div>
-							) : (
-								<>
-									<Styled.ProposalsTableWrap>
-										<BootstrapTable
-											wrapperClasses="table-responsive d-none d-lg-block"
-											bordered={false}
-											classes="table table-head-custom table-vertical-center overflow-hidden table-hover"
-											bootstrap4
-											remote
-											keyField="id"
-											columns={columns}
-											data={Object.entries(selectedProposal)}
-											rowEvents={rowEvents}
-										/>
-									</Styled.ProposalsTableWrap>
-									<ResponsiveTable
-										breakpoint={"lg"}
-										direction={"rtl"}
-										columns={columns.concat(actions)}
-										data={Object.entries(selectedProposal)}
-										headerIndex={0}
-									/>
-								</>
-							)}
+			<ResponsiveCard>
+				<Styled.Header>
+					<Styled.Title className="card-title">{t("governance.proposals")}</Styled.Title>
+					<Styled.NewButton to={`${location.pathname}/create`} className="bg-light-primary d-none d-md-flex">
+						{t("createNew")}
+					</Styled.NewButton>
+					<Styled.GradientButton
+						to={`${location.pathname}/create`}
+						className=" btn btn-primary btn-gradient-primary d-flex d-md-none"
+					>
+						{t("createNew")}
+					</Styled.GradientButton>
+				</Styled.Header>
+				<div>
+					{governanceLoading ? (
+						<div className="d-flex align-items-center justify-content-center py-5 w-100">
+							<Spinner animation="border" variant="primary" id="proposals" />
 						</div>
-					</ResponsiveCard>
-				</Col>
-			</Row>
+					) : (
+						<>
+							<Styled.ProposalsTableWrap>
+								<BootstrapTable
+									wrapperClasses="table-responsive d-none d-lg-block"
+									bordered={false}
+									classes="table table-head-custom table-vertical-center overflow-hidden table-hover"
+									bootstrap4
+									remote
+									keyField="id"
+									columns={columns}
+									data={Object.entries(selectedProposal)}
+									rowEvents={rowEvents}
+								/>
+							</Styled.ProposalsTableWrap>
+							<ResponsiveTable
+								breakpoint={"lg"}
+								direction={"rtl"}
+								columns={columns.concat(actions)}
+								data={Object.entries(selectedProposal)}
+								headerIndex={0}
+							/>
+						</>
+					)}
+				</div>
+			</ResponsiveCard>
 		</Page>
 	);
 };
-
-export default Proposals;

@@ -636,7 +636,7 @@ export const supportedDEXes = {
     dexag: ["synthetix", "ag", "curvefi", "zero_x"],
 };
 
-export const DEXesName = {
+export const DEXesName: { [key: string]: string } = {
     Weth: "Radar Relay",
     Uniswap: "Uniswap (v1)",
     UniswapV2: "Uniswap",
@@ -667,7 +667,7 @@ export const DEXesName = {
     sideShift: "Side Shift"
 };
 
-export const DEXesImages = {
+export const DEXesImages: { [key: string]: string } = {
     Weth: "RADARRELAY.jpg",
     Uniswap: "UNISWAP.svg",
     UniswapV2: "UNISWAP.svg",

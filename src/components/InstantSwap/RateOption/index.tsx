@@ -14,9 +14,7 @@ export type RateOptionProps = {
 
 const RateOption = ({ item, onSelectRate, rate, pair, index }: RateOptionProps) => {
 	const { t } = useTranslation();
-	// @ts-ignore
 	const dexImage = DEXesImages[item.platform];
-	// @ts-ignore
 	const dexName = DEXesName[item.platform];
 
 	return (

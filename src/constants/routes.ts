@@ -1,3 +1,5 @@
+import { Icon, ArrowDownUp, GraphUp, List, Grid1x2, Star } from "react-bootstrap-icons";
+
 export const ROUTE_DEFAULT = "/";
 export const ROUTE_DASHBOARD = "/";
 export const ROUTE_HOME = "/home";
@@ -78,5 +80,33 @@ export const navigation: Array<{ title: string; path?: string; routes?: Array<{ 
                 path: ROUTE_CROSS,
             }
         ]
+    },
+];
+
+export const appbarRoutes: Array<{ title: string; path: string; icon: Icon; }> = [
+    {
+        title: "dashboard",
+        path: ROUTE_DASHBOARD,
+        icon: Grid1x2,
+    },
+    {
+        title: "history",
+        path: ROUTE_HISTORY,
+        icon: List,
+    },
+    {
+        title: "exchange",
+        path: ROUTE_EXCHANGE,
+        icon: ArrowDownUp,
+    },
+    {
+        title: "favorites",
+        path: ROUTE_FAVORITES,
+        icon: Star,
+    },
+    {
+        title: "invest",
+        path: ROUTE_INVEST,
+        icon: GraphUp,
     },
 ];
