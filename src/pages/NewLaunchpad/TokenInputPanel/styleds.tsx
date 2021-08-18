@@ -1,9 +1,6 @@
-import React, { useCallback } from "react";
 import styled from "styled-components";
-import { AutoColumn } from "../../../components/Column";
-import { RowBetween } from "../../../components/Row";
 
-const InputPanel = styled.div`
+export const InputPanel = styled.div`
 	${({ theme }) => theme.flexColumnNoWrap}
 	position: relative;
 	z-index: 1;
@@ -15,7 +12,7 @@ const InputPanel = styled.div`
 	}
 `;
 
-const ContainerRow = styled.div`
+export const ContainerRow = styled.div<{ error?: boolean }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -28,11 +25,11 @@ const ContainerRow = styled.div`
 	height: 56px;
 `;
 
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
 	flex: 1;
 `;
 
-const Input = styled.input`
+export const Input = styled.input<{ error?: boolean }>`
 	font-size: 1rem;
 	outline: none;
 	border: none;
@@ -64,7 +61,7 @@ const Input = styled.input`
 	}
 `;
 
-const Label = styled.span`
+export const Label = styled.span`
 	color: ${({ theme }) => theme.text1};
 	font-weight: 400;
 	font-size: 0.875rem;
@@ -74,45 +71,3 @@ const Label = styled.span`
 		padding: 0 1.5rem;
 	}
 `;
-
-const PATTERN = /^(0x[a-fA-F0-9]{40})$/;
-
-export default function TokenAddressInput({ id, value, onChange }) {
-	const handleInput = useCallback(
-		(event) => {
-			const input = event.target.value;
-			const withoutSpaces = input.replace(/\s+/g, "");
-			onChange(withoutSpaces);
-		},
-		[onChange]
-	);
-
-	const error = Boolean(value.length > 0 && !PATTERN.test(value));
-
-	return (
-		<InputPanel id={id}>
-			<InputContainer>
-				<AutoColumn gap="md">
-					<RowBetween>
-						<Label>Token Address</Label>
-					</RowBetween>
-					<ContainerRow error={error}>
-						<Input
-							className="recipient-address-input"
-							type="text"
-							autoComplete="off"
-							autoCorrect="off"
-							autoCapitalize="off"
-							spellCheck="false"
-							placeholder="Token Address..."
-							error={error}
-							pattern={PATTERN}
-							onChange={handleInput}
-							value={value}
-						/>
-					</ContainerRow>
-				</AutoColumn>
-			</InputContainer>
-		</InputPanel>
-	);
-}

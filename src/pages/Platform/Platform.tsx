@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { Col, Row } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Col, Row } from "react-bootstrap";
 
 import { ROUTE_DASHBOARD } from "../../constants/routes";
+import { AppState } from "../../state";
 import defiSdk from "../../utils/getDefiSdk";
-import ValueCard from "../../components/ValueCard";
 import AssetTable from "../../components/AssetTable";
-import Page from "../../components/Page";
 import Card from "../../components/Card";
+import Page from "../../components/Page";
+import ValueCard from "../../components/ValueCard";
 
-function Platforms(props) {
-	const [selectedPlatform, setSelectedPlatform] = useState(null);
+export const Platform = () => {
+	const { platform } = useParams();
+	const history = useHistory();
+	const balances = useSelector((state: AppState) => state.balances.transformedBalance);
+	const [selectedPlatform, setSelectedPlatform] = useState();
 	const [totalAssets, setTotalAssets] = useState(0);
 	const [totalDebts, setTotalDebts] = useState(0);
-	const history = useHistory();
-	const { platform } = useParams();
 
 	useEffect(() => {
 		defiSdk.getProtocolNames().then((protocols) => {
@@ -26,26 +28,26 @@ function Platforms(props) {
 	}, [platform]);
 
 	useEffect(() => {
-		const p = props.balances.find((item) => {
+		const plat = balances.find((item: any) => {
 			return item.metadata.name === platform;
 		});
-		if (p) {
-			setSelectedPlatform(p);
-			const account = {
+		if (plat) {
+			setSelectedPlatform(plat);
+			const temp = {
 				assets: 0,
 				debts: 0,
 			};
-			p.balances.forEach((balance) => {
+			plat.balances.forEach((balance) => {
 				if (balance.metadata.type === "Debt") {
-					account.debts += balance.total;
+					temp.debts += balance.total;
 				} else {
-					account.assets += balance.total;
+					temp.assets += balance.total;
 				}
 			});
-			setTotalAssets(account.assets);
-			setTotalDebts(account.debts);
+			setTotalAssets(temp.assets);
+			setTotalDebts(temp.debts);
 		}
-	}, [props.balances, platform]);
+	}, [balances, platform]);
 
 	return (
 		<Page title={platform} networkSensitive={true}>
@@ -81,13 +83,4 @@ function Platforms(props) {
 			</Row>
 		</Page>
 	);
-}
-
-const mapStateToProps = (state) => {
-	return {
-		account: state.account,
-		balances: state.balances.transformedBalance,
-	};
 };
-
-export default connect(mapStateToProps)(Platforms);

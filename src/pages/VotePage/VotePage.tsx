@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import Page from "../../components/Page";
 import Vote from "../../components/Vote";
 
-export const VotePage = () => {
+export const PureVotePage = () => {
 	const { t } = useTranslation();
 
 	return (

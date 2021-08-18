@@ -5,7 +5,7 @@ import GasIndicator from "../../components/GasIndicator";
 // import GasPricesDropdown from "../../components/GasPricesDropdown";
 import ThemeToggle from "../../components/ThemeToggle";
 
-export const Settings = () => {
+export const PureSettings = () => {
 	const { t } = useTranslation();
 
 	return (

@@ -1,38 +1,38 @@
 import { useEffect, useMemo, useState } from "react";
 import { Row, Col, Tab, Button, ListGroup, Spinner } from "react-bootstrap";
 import { ArrowLeft, Lock, Users, Info, Copy, ExternalLink as ExternalLinkIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
+import { CurrencyAmount, ETHER, Token, TokenAmount } from "@uniswap/sdk";
+import { useParams, useHistory } from "react-router-dom";
+import BigNumber from "bignumber.js";
+import copy from "copy-to-clipboard";
+import toast from "react-hot-toast";
+import { serializeError } from "eth-rpc-errors";
+
+import { ERC20_ABI } from "../../constants/abis/erc20";
+import { BalanceToken, UNLIMITED_ALLOWANCE_IN_BASE_UNITS, ZERO } from "../../constants";
+import { LAUNCHPAD_WETH_ADDRESS, LAUNCHPAD_WETH_TOKEN, LOCK_DURATION } from "../../constants/launchpad";
+import PresaleABI from "../../constants/abis/Presale/Presale.json";
+import Presales from "../../constants/presales.json";
+import { ROUTE_LAUNCHPAD } from "../../constants/routes";
+import { useActiveWeb3React } from "../../hooks";
+// import { useContract } from "../../hooks/useContract";
+import { useApproveCallback } from "../../hooks/useApproveCallback";
+import { useAccountBuy, usePresale } from "../../hooks/usePresale";
+import useTheme from "../../hooks/useTheme";
+import { useWalletModalToggle } from "../../state/application/hooks";
+import { useTokenBalance } from "../../state/wallet/hooks";
+import { calculateGasMargin, getContract, shortenAddress } from "../../utils";
+import { getExplorerLink } from "../../utils/explorer";
 
 import Page from "../../components/Page";
 import Card from "../../components/Card";
-import { useTranslation } from "react-i18next";
-import SafetyAlert from "./SafetyAlert";
-import useTheme from "../../hooks/useTheme";
-import { CurrencyAmount, ETHER, Token, TokenAmount } from "@uniswap/sdk";
 import CircleBar from "../../components/CircleBar";
 import CurrencyInputPanel from "../../components/CurrencyInputPanel";
-import { useParams, useHistory } from "react-router-dom";
-import { useAccountBuy, usePresale } from "../../hooks/usePresale";
-import { calculateGasMargin, getContract, shortenAddress } from "../../utils";
-import { getExplorerLink } from "../../utils/explorer";
-import { ERC20_ABI } from "../../constants/abis/erc20";
-import { useActiveWeb3React } from "../../hooks";
-import BigNumber from "bignumber.js";
-import { BalanceToken, UNLIMITED_ALLOWANCE_IN_BASE_UNITS, ZERO } from "../../constants";
-import { LAUNCHPAD_WETH_ADDRESS, LAUNCHPAD_WETH_TOKEN, LOCK_DURATION } from "../../constants/launchpad";
-import copy from "copy-to-clipboard";
-import toast from "react-hot-toast";
-import { useWalletModalToggle } from "../../state/application/hooks";
-import PresaleABI from "../../constants/abis/Presale/Presale.json";
-import GradientButton from "../../components/UI/Button";
-import { useTokenBalance } from "../../state/wallet/hooks";
-import { useApproveCallback } from "../../hooks/useApproveCallback";
-import { serializeError } from "eth-rpc-errors";
-
-import Presales from "../../constants/presales.json";
-// import { useContract } from "../../hooks/useContract";
 import CurrencyLogo from "../../components/Logo/CurrencyLogo";
+import GradientButton from "../../components/UI/Button";
+import SafetyAlert from "./SafetyAlert/SafetyAlert";
 import * as Styled from "./styleds";
-import { ROUTE_LAUNCHPAD } from "../../constants/routes";
 
 const LaunchpadItem = () => {
 	const { t } = useTranslation();

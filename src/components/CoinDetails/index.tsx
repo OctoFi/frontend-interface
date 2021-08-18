@@ -5,16 +5,16 @@ import { Row, Col, Spinner } from "react-bootstrap";
 import dompurify from "dompurify";
 
 import { useActiveWeb3React } from "../../hooks";
-import useTheme from "../../hooks/useTheme";
 import { useTokenContract } from "../../hooks/useContract";
+import useTheme from "../../hooks/useTheme";
 import { AppState } from "../../state";
 import { useIsDarkMode } from "../../state/user/hooks";
 import { fetchSelectedCoin, fetchHistoricalData } from "../../state/market/actions";
 import Card, { ResponsiveCard } from "../Card";
-import HistoricalChart from "../HistoricalChart";
+import { CoinChanges } from "./CoinChanges/CoinChanges";
 import { CoinInformation } from "./CoinInformation/CoinInformation";
 import { CoinStats } from "./CoinStats/CoinStats";
-import { CoinChanges } from "./CoinChanges/CoinChanges";
+import HistoricalChart from "../HistoricalChart";
 
 const CoinDetails = () => {
 	const { account } = useActiveWeb3React();

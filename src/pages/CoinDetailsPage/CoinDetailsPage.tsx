@@ -1,6 +1,6 @@
 import Page from "../../components/Page";
 // import CoinDetails from "../../components/CoinDetails";
-import { TradePanel } from "../../components/CoinDetails/TradePanel/TradePanel";
+import TradePanel from "../../components/CoinDetails/TradePanel";
 
 export const CoinDetailsPage = () => {
 	return (

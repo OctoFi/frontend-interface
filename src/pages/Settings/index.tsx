@@ -1,2 +1,2 @@
-import { Settings } from "./Settings";
-export default Settings;
+import { PureSettings } from "./Settings";
+export default PureSettings;

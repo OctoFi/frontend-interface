@@ -1,2 +1,2 @@
-import { VotePage } from "./VotePage";
-export default VotePage;
+import { PureVotePage } from "./VotePage";
+export default PureVotePage;
