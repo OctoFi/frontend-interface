@@ -1432,7 +1432,7 @@ class InstantSwap extends React.Component {
 										className="d-flex align-items-center"
 										onClick={() => this.onChangeRecipient("")}
 									>
-										<Plus size={16} className="mr-1" /> {t("addSend")} ({t("optional")})
+										<Plus size={16} className="me-1" /> {t("addSend")} ({t("optional")})
 									</Button>
 								</div>
 							) : (
@@ -1453,7 +1453,7 @@ class InstantSwap extends React.Component {
 											className="d-flex align-items-center"
 											onClick={() => this.onChangeRecipient(null)}
 										>
-											<Minus size={16} className="mr-1" /> {t("removeSend")}
+											<Minus size={16} className="me-1" /> {t("removeSend")}
 										</Button>
 									</div>
 								</>

@@ -103,7 +103,7 @@ const NFTCard = ({ loading, order, seaport }: NFTCardProps) => {
 								<div className={"d-flex align-items-center"}>
 									<Skeleton width={22} height={22} circle />
 									<Styled.DetailsText>
-										<Skeleton width={45} className={"mr-2"} />
+										<Skeleton width={45} className={"me-2"} />
 										<Skeleton width={16} />
 									</Styled.DetailsText>
 								</div>
@@ -121,8 +121,8 @@ const NFTCard = ({ loading, order, seaport }: NFTCardProps) => {
 								<div className={"d-flex align-items-center"}>
 									<Skeleton width={22} height={22} circle />
 									<Styled.DetailsText>
-										<Skeleton width={24} className={"mr-2"} />
-										<Skeleton width={36} className={"mr-2"} />
+										<Skeleton width={24} className={"me-2"} />
+										<Skeleton width={36} className={"me-2"} />
 										<Skeleton width={28} />
 									</Styled.DetailsText>
 								</div>

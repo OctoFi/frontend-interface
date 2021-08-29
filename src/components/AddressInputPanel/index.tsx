@@ -67,7 +67,7 @@ const AddressInputPanel = ({
 								style={{ fontSize: "14px" }}
 								className="d-flex align-items-center"
 							>
-								<ExternalIcon size={16} className="mr-1" />
+								<ExternalIcon size={16} className="me-1" />
 								View on explorer
 							</ExternalLink>
 						</div>

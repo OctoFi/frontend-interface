@@ -20,7 +20,7 @@ export const TokenWarningModal = ({ isOpen, tokens, onConfirm }: TokenWarningMod
 			<Modal.Header className={"px-5"}>
 				<Modal.Title className={"d-flex align-items-center"}>
 					<Styled.WarningIcon />
-					<Styled.Title className={"fw-bolder fs-5 text-danger mb-0 ml-4"}>
+					<Styled.Title className={"fw-bolder fs-5 text-danger mb-0 ms-4"}>
 						Token imported
 					</Styled.Title>
 				</Modal.Title>

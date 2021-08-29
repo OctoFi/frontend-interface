@@ -30,7 +30,7 @@ const RateOption = ({ item, onSelectRate, rate, pair, index }: RateOptionProps) 
 			</div>
 
 			<div className="d-flex flex-row align-items-center justify-content-end">
-				<Styled.RateText className={isMobile ? "mr-2" : "mr-3"}>
+				<Styled.RateText className={isMobile ? "me-2" : "me-3"}>
 					{item.rate?.toFixed(6)} {pair.destination?.token?.symbol}/{pair.deposit?.token?.symbol}
 				</Styled.RateText>
 				{index === 0 ? (

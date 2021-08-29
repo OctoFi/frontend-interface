@@ -23,7 +23,7 @@ export const CoinDisplay = ({ currency, name, symbol, image }: CoinDisplayProps)
 					width={isMobile ? 24 : 32}
 					height={isMobile ? 24 : 32}
 					circle={true}
-					className={isMobile ? "mr-2" : "mr-3"}
+					className={isMobile ? "me-2" : "me-3"}
 				/>
 			)}
 

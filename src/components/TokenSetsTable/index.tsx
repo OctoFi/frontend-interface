@@ -49,7 +49,7 @@ const TokenSetsExploreTable = () => {
 							<CurrencyLogo currency={row.currency} />
 						</Styled.LogoContainer>
 					)}
-					<div className="d-flex flex-column justify-content-center ml-lg-3 mr-3 mr-lg-0">
+					<div className="d-flex flex-column justify-content-center ms-lg-3 me-3 me-lg-0">
 						<Styled.TokenSetCustomTitle className={"fw-bold"}>{row.name}</Styled.TokenSetCustomTitle>
 					</div>
 				</div>
@@ -75,7 +75,7 @@ const TokenSetsExploreTable = () => {
 				<div className="d-flex align-items-center">
 					{row.components.map((comp: any, index: number) => {
 						return (
-							<Styled.CellText key={`cell-${index}`} className={`mr-lg-4 ml-2 fs-6`}>
+							<Styled.CellText key={`cell-${index}`} className={`me-lg-4 ms-2 fs-6`}>
 								{comp.symbol}
 							</Styled.CellText>
 						);

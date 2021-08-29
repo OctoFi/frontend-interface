@@ -257,7 +257,7 @@ export const Vote = () => {
 							<Button variant="outline-danger" onClick={() => setShowModal(false)}>
 								{t("close")}
 							</Button>
-							<Button variant="primary" onClick={handleSubmit} className={"ml-3"}>
+							<Button variant="primary" onClick={handleSubmit} className={"ms-3"}>
 								{t("governance.vote")}
 							</Button>
 						</div>

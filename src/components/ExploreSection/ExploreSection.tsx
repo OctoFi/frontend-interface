@@ -19,7 +19,7 @@ export const ExploreSection = ({ title, description, headerAction, content, dire
 				{headerAction || null}
 			</Styled.SectionHeader>
 
-			<Styled.SectionBody direction={direction || "column"} className="mr-n4">
+			<Styled.SectionBody direction={direction || "column"} className="me-n4">
 				{content}
 			</Styled.SectionBody>
 		</Styled.Section>

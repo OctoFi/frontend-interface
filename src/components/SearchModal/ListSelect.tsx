@@ -292,7 +292,7 @@ export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBac
 						onChange={handleInput}
 						onKeyDown={handleEnterKey}
 					/>
-					<Button variant={"light-primary"} onClick={handleAddList} disabled={!validUrl} className={"ml-3"}>
+					<Button variant={"light-primary"} onClick={handleAddList} disabled={!validUrl} className={"ms-3"}>
 						Add
 					</Button>
 				</CustomRow>

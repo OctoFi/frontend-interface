@@ -449,7 +449,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 												<Check
 													type={"radio"}
 													id={`withdraw-pair`}
-													className={"d-flex align-items-center py-2 ml-2"}
+													className={"d-flex align-items-center py-2 ms-2"}
 												>
 													<Check.Input
 														type={"radio"}
@@ -460,10 +460,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 													<Check.Label
 														className={"d-flex flex-column pl-2 wallet-modal__label"}
 													>
-														<div
-															className={"fw-bold"}
-															style={{ marginTop: ".375rem" }}
-														>
+														<div className={"fw-bold"} style={{ marginTop: ".375rem" }}>
 															{t("pools.inDepositedTokens")}
 														</div>
 													</Check.Label>
@@ -471,7 +468,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 												<Check
 													type={"radio"}
 													id={`withdraw-token`}
-													className={"d-flex align-items-center py-2 ml-2"}
+													className={"d-flex align-items-center py-2 ms-2"}
 												>
 													<Check.Input
 														type={"radio"}
@@ -482,10 +479,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 													<Check.Label
 														className={"d-flex flex-column pl-2 wallet-modal__label"}
 													>
-														<div
-															className={"fw-bold"}
-															style={{ marginTop: ".375rem" }}
-														>
+														<div className={"fw-bold"} style={{ marginTop: ".375rem" }}>
 															{t("pools.inCustomToken")}
 														</div>
 													</Check.Label>
@@ -521,7 +515,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 											<Check
 												type={"radio"}
 												id={`withdraw-pair-mobile`}
-												className={"d-flex align-items-center py-2 ml-2"}
+												className={"d-flex align-items-center py-2 ms-2"}
 											>
 												<Check.Input
 													type={"radio"}
@@ -530,10 +524,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 													onChange={() => setSelectedOption("pair")}
 												/>
 												<Check.Label className={"d-flex flex-column pl-2 wallet-modal__label"}>
-													<div
-														className={"fw-bold"}
-														style={{ marginTop: ".375rem" }}
-													>
+													<div className={"fw-bold"} style={{ marginTop: ".375rem" }}>
 														{t("pools.inDepositedTokens")}
 													</div>
 												</Check.Label>
@@ -541,7 +532,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 											<Check
 												type={"radio"}
 												id={`withdraw-token-mobile`}
-												className={"d-flex align-items-center py-2 ml-2"}
+												className={"d-flex align-items-center py-2 ms-2"}
 											>
 												<Check.Input
 													type={"radio"}
@@ -550,10 +541,7 @@ export default function RemoveLiquidityModal({ history }: RouteComponentProps) {
 													onChange={() => setSelectedOption("custom")}
 												/>
 												<Check.Label className={"d-flex flex-column pl-2 wallet-modal__label"}>
-													<div
-														className={"fw-bold"}
-														style={{ marginTop: ".375rem" }}
-													>
+													<div className={"fw-bold"} style={{ marginTop: ".375rem" }}>
 														{t("pools.inCustomToken")}
 													</div>
 												</Check.Label>

@@ -12,7 +12,7 @@ export type VoteInformationProps = {
 
 const Strategy = ({ index, id, symbol }: { index: number; id: string; symbol: string }) => {
 	return (
-		<div className="d-flex align-items-center ml-3">
+		<div className="d-flex align-items-center ms-3">
 			<Styled.Logo src={useLogo(id, index)} size={30} />
 			<Styled.TokenValue>{symbol}</Styled.TokenValue>
 		</div>

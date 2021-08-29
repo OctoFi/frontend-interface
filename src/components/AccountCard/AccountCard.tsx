@@ -60,7 +60,7 @@ export const PureAccountCard = ({
 							<div className={"d-flex justify-content-end"}>
 								<Button variant={"link"} onClick={onShowMore} className="d-flex align-items-center">
 									<span>{t("more")}</span>
-									<SVG src={ArrowRightIcon} width={8} height={12} className="ml-3" />
+									<SVG src={ArrowRightIcon} width={8} height={12} className="ms-3" />
 								</Button>
 							</div>
 						)}

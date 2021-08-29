@@ -18,7 +18,7 @@ export const CollectionCard = ({ collection, selected, clickHandler }: Collectio
 			const count = Math.floor(Math.random() * 2 + 1);
 			for (let i = 0; i < count; i++) {
 				const width = Math.floor(Math.random() * (count > 2 ? 50 : 70) + 30);
-				result.push(<Skeleton width={width} className={"mr-2"} />);
+				result.push(<Skeleton width={width} className={"me-2"} />);
 			}
 		}
 
