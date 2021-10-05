@@ -33,7 +33,6 @@ export enum ProviderType {
     TrustWallet = "TRUST_WALLET",
     Opera = "OPERA",
     Fallback = "FALLBACK",
-    // tslint:disable-next-line: max-file-line-count
 }
 
 export const PROXY_URL = process.env.REACT_APP_PROXY_URL || "http://localhost:3001/";
@@ -368,7 +367,7 @@ export const FACTORY_ADDRESSES = {
     1287: '0x9e73d56dd1942743ffdf055449b052a806b854be',
 }
 
-export const exploreSections = {
+export const exploreSections: { [key: string]: any } = {
     tokens: {
         title: "Top Tokens",
         slug: "tokens",
@@ -435,10 +434,10 @@ export const exploreSections = {
                 img: row?.image?.large,
                 name: row?.name || "-",
                 symbol: row?.symbol?.toUpperCase() || "-",
-                price: row.market_data.current_price.usd,
-                priceDiff: row.market_data.price_change_percentage_24h,
+                price: row?.market_data?.current_price.usd,
+                priceDiff: row?.market_data?.price_change_percentage_24h,
                 title: false,
-                src: "/coins/" + row.id,
+                src: "/coins/" + row?.id,
             };
         },
         seeMore: false,
@@ -614,7 +613,7 @@ export const marketCoins = [
 
 export const TYPING_INTERVAL: number = 300;
 
-export const supportedDEXes = {
+export const supportedDEXes: { [key: string]: Array<string> } = {
     paraswap: [
         "MultiPath",
         "ParaSwapPool",

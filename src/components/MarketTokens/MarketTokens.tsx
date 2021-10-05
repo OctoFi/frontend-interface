@@ -6,19 +6,17 @@ import { Button, Tab, Nav, Spinner } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
 import SVG from "react-inlinesvg";
 
-import { ROUTE_MARKET } from "../../constants/routes";
-import { AppState } from "../../state";
 import SearchIcon from "../../assets/images/search.svg";
-import { sortedData } from "../../lib/helper";
+import { ROUTE_MARKET } from "../../constants/routes";
 import MarketApi from "../../http/market";
-import { fetchCoinMarketPrices, fetchMarketCoins } from "../../state/market/actions";
+import { sortedData } from "../../lib/helper";
+import { AppState } from "../../state";
+import { fetchMarketCoins } from "../../state/market/actions";
+import CoinDisplay from "../CoinDisplay";
 import CurrencyText from "../CurrencyText";
 import { InputGroup, InputGroupFormControl as FormControl, InputGroupText } from "../Form";
 import ResponsiveTable from "../ResponsiveTable";
-import CoinDisplay from "../CoinDisplay";
 import * as Styled from "./styleds";
-import { useIsDarkMode } from "../../state/user/hooks";
-import { ThreeDotsVertical } from "react-bootstrap-icons";
 
 const api = new MarketApi();
 
@@ -26,10 +24,8 @@ const PAGE_SIZE = 100;
 let typingInterval: any;
 
 export const MarketTokens = () => {
-	const darkMode = useIsDarkMode();
 	const history = useHistory();
 	const [query, setQuery] = useState("");
-	const [expanded, setExpanded] = useState([]);
 	const [allTokens, setAllTokens] = useState([]);
 	const { t } = useTranslation();
 	const [sort, setSort] = useState({
@@ -49,14 +45,14 @@ export const MarketTokens = () => {
 
 	const allTokensData = useMemo(() => {
 		return sortedData(allTokens, sort);
-	}, [allTokens, query, sort]);
+	}, [allTokens, sort]);
 
 	const marketCoinsData = useMemo(() => {
 		const filterText = query.trim().toLowerCase();
 		let data;
 		if (filterText.length > 0) {
 			data = marketCoins.data.filter(
-				(token) =>
+				(token: any) =>
 					token.name.toLowerCase().indexOf(filterText) > -1 ||
 					token.symbol.toLowerCase().indexOf(filterText) > -1
 			);
@@ -80,7 +76,7 @@ export const MarketTokens = () => {
 		});
 	};
 
-	const handleObserver = (entities) => {
+	const handleObserver = (entities: any) => {
 		const target = entities[0];
 		if (target.isIntersecting) {
 			observeAction();
@@ -144,7 +140,7 @@ export const MarketTokens = () => {
 		}
 	}, [page, dispatch]);
 
-	const columns = (hasPagination, hasCoinFetch = false) => [
+	const columns = (hasPagination: boolean) => [
 		{
 			dataField: "id",
 			text: "#",
@@ -227,86 +223,12 @@ export const MarketTokens = () => {
 			),
 			sort: true,
 		},
-		{
-			dataField: "aggregations",
-			text: "Feeds",
-			formatter: (cellContent: any, row: any) =>
-				hasCoinFetch && (
-					<Button variant={darkMode ? "dark" : "light"}>
-						<ThreeDotsVertical />
-					</Button>
-				),
-			sort: false,
-		},
 	];
 
 	const rowEvents = {
 		onClick: (e: any, row: any) => {
-			if (["button", "svg", "path"].includes(e.target.tagName)) {
-				if (expanded.includes(row.id)) {
-					setExpanded(expanded.filter((exRow) => exRow !== row.id));
-				} else {
-					dispatch(
-						fetchCoinMarketPrices({
-							id: row.id,
-							symbol: row.symbol,
-						})
-					);
-					setExpanded(expanded.concat(row.id));
-				}
-			} else {
-				history.push(`${ROUTE_MARKET}/${row.id}`);
-			}
+			history.push(`${ROUTE_MARKET}/${row.id}`);
 		},
-	};
-
-	const expandRow = {
-		renderer: (row: any) => {
-			const loading = marketCoins.prices.loading[row.id];
-			const coinPrices = marketCoins.prices.data[row.id];
-			return loading ? (
-				<div className="d-flex justify-content-center py-4">
-					<Spinner animation="border" variant="primary" id="load-markets" />
-				</div>
-			) : (
-				<div className="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between py-2 px-4 text-center">
-					{coinPrices && coinPrices.hasOwnProperty("links") ? (
-						Object.keys(coinPrices.links).map((market) => {
-							return (
-								<div
-									className="d-flex flex-row justify-content-lg-center justify-content-start flex-grow-1 mb-3 mb-lg-0 flex-lg-column"
-									key={market}
-								>
-									<Styled.MarketLink
-										className="mb-lg-1 mr-2 mr-lg-0 fs-6"
-										href={coinPrices.links[market]}
-										target={"_blank"}
-										rel={"noopener noreferrer"}
-									>
-										{market} ↗
-									</Styled.MarketLink>
-									<span
-										className={`${
-											coinPrices.result[market] >= row.current_price
-												? "text-success"
-												: "text-danger"
-										} fw-bold fs-5`}
-										style={{ flex: "1" }}
-									>
-										<CurrencyText value={coinPrices.result[market]} />
-									</span>
-								</div>
-							);
-						})
-					) : (
-						<div className="d-flex flex-column flex-lg-row align-items-center justify-content-center py-5">
-							<Styled.CellText>{t("errors.default")}</Styled.CellText>
-						</div>
-					)}
-				</div>
-			);
-		},
-		expanded: expanded,
 	};
 
 	const onChangeTable = (type: string, context: any) => {
@@ -456,21 +378,20 @@ export const MarketTokens = () => {
 						<BootstrapTable
 							keyField="id"
 							data={marketCoinsData}
-							columns={columns(false, true)}
+							columns={columns(false)}
 							rowEvents={rowEvents}
 							bordered={false}
 							striped
 							hover
 							remote
 							onTableChange={onChangeTable}
-							expandRow={expandRow}
 						/>
 					</Styled.ExploreTableWrap>
 					<ResponsiveTable
 						centered
 						size={"lg"}
 						breakpoint={"lg"}
-						columns={columns(false, true)}
+						columns={columns(false)}
 						data={marketCoinsData}
 						direction={"rtl"}
 					/>

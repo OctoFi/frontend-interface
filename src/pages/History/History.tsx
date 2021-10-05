@@ -6,7 +6,7 @@ export const History = () => {
 	const { t } = useTranslation();
 
 	return (
-		<Page title={t("transactionHistory")}>
+		<Page>
 			<TransactionHistory />
 		</Page>
 	);

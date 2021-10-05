@@ -19,6 +19,7 @@ export const Navigation = () => {
 							activeClassName={"active"}
 							exact
 							className="me-3"
+							disabled={route.disabled}
 						>
 							{t(`menu.${route.title}`)}
 						</Nav.Link>
@@ -28,7 +29,12 @@ export const Navigation = () => {
 						<NavDropdown title={t(`menu.${route.title}`)} id={`dropdown-${index}`} key={index} align="end">
 							{route.routes.map((item: any, index) => {
 								return (
-									<NavDropdown.Item as={Link} to={item.path} key={`${route.title}-${index}`}>
+									<NavDropdown.Item
+										as={Link}
+										to={item.path}
+										disabled={item.disabled}
+										key={`${route.title}-${index}`}
+									>
 										{t(`menu.${item.title}`)}
 									</NavDropdown.Item>
 								);

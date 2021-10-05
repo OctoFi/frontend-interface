@@ -79,7 +79,7 @@ export const PureWalletTable = ({ data, loading = false }: PureWalletTableProps)
 					<>
 						{isLoading ? (
 							<div className={"d-flex align-items-center"}>
-								<Skeleton width={24} height={24} className={"mr-2"} />
+								<Skeleton width={24} height={24} className={"me-2"} />
 								<Skeleton width={80} height={24} />
 							</div>
 						) : (

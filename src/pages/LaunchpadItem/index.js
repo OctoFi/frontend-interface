@@ -31,7 +31,7 @@ import CircleBar from "../../components/CircleBar";
 import CurrencyInputPanel from "../../components/CurrencyInputPanel";
 import CurrencyLogo from "../../components/Logo/CurrencyLogo";
 import GradientButton from "../../components/UI/Button";
-import SafetyAlert from "./SafetyAlert/SafetyAlert";
+import SafetyAlert from "./SafetyAlert";
 import * as Styled from "./styleds";
 
 const LaunchpadItem = () => {
@@ -399,14 +399,14 @@ const LaunchpadItem = () => {
 								<Styled.TokenName>{selectedToken?.name || "-"}</Styled.TokenName>
 								<div className="d-flex align-items-center mt-2 flex-wrap">
 									<Styled.ExternalLink
-										className={"mr-2"}
+										className={"me-2"}
 										href={getExplorerLink(chainId, selectedToken?.address, "token")}
 									>
 										<Styled.LinkText>Explorer</Styled.LinkText>
 										<ExternalLinkIcon size={16} />
 									</Styled.ExternalLink>
 									<Styled.ExternalLink
-										className={"mr-2"}
+										className={"me-2"}
 										onClick={copyToClipboard.bind(this, selectedToken?.address)}
 									>
 										<Styled.LinkText>
@@ -542,7 +542,7 @@ const LaunchpadItem = () => {
 															>
 																<Button
 																	className={
-																		"flex-grow-1 ml-1 d-flex align-items-center justify-content-center"
+																		"flex-grow-1 ms-1 d-flex align-items-center justify-content-center"
 																	}
 																	variant={"primary"}
 																	style={{ height: 56 }}
@@ -582,7 +582,7 @@ const LaunchpadItem = () => {
 															>
 																<Button
 																	className={
-																		"flex-grow-1 ml-1 d-flex align-items-center justify-content-center"
+																		"flex-grow-1 ms-1 d-flex align-items-center justify-content-center"
 																	}
 																	variant={"primary"}
 																	style={{ height: 56 }}
@@ -620,7 +620,7 @@ const LaunchpadItem = () => {
 														>
 															<Button
 																className={
-																	"flex-grow-1 ml-1 d-flex align-items-center justify-content-center"
+																	"flex-grow-1 ms-1 d-flex align-items-center justify-content-center"
 																}
 																variant={"danger"}
 																style={{ height: 56 }}
@@ -654,7 +654,7 @@ const LaunchpadItem = () => {
 														>
 															<Button
 																className={
-																	"flex-grow-1 ml-1 d-flex align-items-center justify-content-center"
+																	"flex-grow-1 ms-1 d-flex align-items-center justify-content-center"
 																}
 																variant={"danger"}
 																style={{ height: 56 }}
@@ -671,7 +671,7 @@ const LaunchpadItem = () => {
 													<Row>
 														<Col xs={12}>
 															<div className="d-flex align-items-center mb-3">
-																<Styled.DetailsContainer className={"mb-0 mr-3"}>
+																<Styled.DetailsContainer className={"mb-0 me-3"}>
 																	<CircleBar
 																		fill={theme.primary}
 																		width={40}
@@ -741,7 +741,7 @@ const LaunchpadItem = () => {
 														<Col xs={12} className={"d-flex align-items-center"}>
 															<Button
 																className={
-																	"flex-grow-1 mr-1 d-flex align-items-center justify-content-center"
+																	"flex-grow-1 me-1 d-flex align-items-center justify-content-center"
 																}
 																variant={"secondary"}
 																style={{ height: 56 }}
@@ -761,7 +761,7 @@ const LaunchpadItem = () => {
 															</Button>
 															<Button
 																className={
-																	"flex-grow-1 ml-1 d-flex align-items-center justify-content-center"
+																	"flex-grow-1 ms-1 d-flex align-items-center justify-content-center"
 																}
 																variant={"primary"}
 																style={{ height: 56 }}

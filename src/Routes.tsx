@@ -25,7 +25,7 @@ const VotePage = lazy(() => import("./pages/VotePage"));
 const Offramp = lazy(() => import("./pages/Offramp"));
 const Onramp = lazy(() => import("./pages/Onramp"));
 const NFTMarketplace = lazy(() => import("./pages/NFTMarketplace"));
-const Borrow = lazy(() => import("./pages/Borrow"));
+const Loans = lazy(() => import("./pages/Loans"));
 const TokenSets = lazy(() => import("./pages/TokenSets"));
 const Launchpad = lazy(() => import("./pages/Launchpad"));
 const LaunchpadItem = lazy(() => import("./pages/LaunchpadItem"));
@@ -63,7 +63,7 @@ const Routes = () => {
 				<Route path={routes.ROUTE_EXCHANGE} component={Exchange} />
 				<Route path={routes.ROUTE_INVEST} exact component={Explore} />
 				<Route path={routes.ROUTE_POOLS} component={Pools} />
-				<Route path={"/invest/tokens"} component={MarketsExplore} />
+				<Route path={routes.ROUTE_MARKETS_EXPLORE} component={MarketsExplore} />
 				<Route path={routes.ROUTE_TOKENSETS} component={TokenSets} />
 				<Route path={`${routes.ROUTE_PLATFORMS}/:platform`} component={Platform} />
 				<Route path={routes.ROUTE_NFT_MARKETPLACE} exact component={NFTMarketplace} />
@@ -71,7 +71,7 @@ const Routes = () => {
 				<Route path={`${routes.ROUTE_GOVERNANCE}/:space/create`} exact component={CreateProposal} />
 				<Route path={`${routes.ROUTE_GOVERNANCE}/:space`} exact component={Proposals} />
 				<Route path={`${routes.ROUTE_GOVERNANCE}/:space/proposal/:id`} exact component={VotePage} />
-				<Route path={routes.ROUTE_LOANS} component={Borrow} />
+				<Route path={routes.ROUTE_LOANS} component={Loans} />
 				<Route path={`${routes.ROUTE_MARKET}/:id`} exact component={CoinDetailsPage} />
 				<Route path={`${routes.ROUTE_COIN_DETAILS}/:id`} exact component={CoinDetailsPage} />
 				<Route path={routes.ROUTE_LAUNCHPAD} exact component={Launchpad} />

@@ -171,7 +171,7 @@ export const Currencies = () => {
 		<Styled.Wrapper>
 			<div className="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center justify-content-between mb-4">
 				<div className="d-flex align-items-start justify-content-between mb-3 mb-lg-0">
-					<h2 className="mr-auto mb-0">{t("tokens.assets")}</h2>
+					<h2 className="me-auto mb-0">{t("tokens.assets")}</h2>
 					<Link to={"/invest/tokens"} className={"d-flex d-lg-none"}>
 						<Button variant="link">{t("tokens.allAssets")}</Button>
 					</Link>

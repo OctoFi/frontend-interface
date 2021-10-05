@@ -170,7 +170,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 							className="d-flex flex-row-reverse flex-lg-row align-items-center flex-row py-0 py-lg-3"
 						>
 							<PlatformLogo size={32} platform={"uniswap"} name={"Uniswap-v2"} />
-							<div className="d-flex flex-column justify-content-center ml-lg-3 mr-3 mr-lg-0">
+							<div className="d-flex flex-column justify-content-center ms-lg-3 me-3 me-lg-0">
 								<Styled.CustomTitle>
 									{row.token0?.symbol}-{row.token1?.symbol}
 								</Styled.CustomTitle>
@@ -220,7 +220,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 						<div className="d-flex flex-column-reverse flex-lg-row align-items-stretch align-items-lg-center justify-content-end flex-grow-1 flex-lg-grow-0">
 							{Number(balances[0][row.id]) > 0 ? (
 								<Styled.WithdrawButton
-									className="mt-2 mt-lg-0 mr-0 mr-lg-2"
+									className="mt-2 mt-lg-0 me-0 me-lg-2"
 									onClick={() => removeLiquidityDialog("Uniswap", pool)}
 								>
 									{t("pools.withdraw")}
@@ -257,7 +257,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 							className="d-flex flex-row-reverse flex-lg-row align-items-center flex-row py-0 py-lg-3"
 						>
 							<PlatformLogo size={32} platform={"balancer"} name={"balancer"} />
-							<div className="d-flex flex-column justify-content-center ml-lg-3 mr-3 mr-lg-0">
+							<div className="d-flex flex-column justify-content-center ms-lg-3 me-3 me-lg-0">
 								<Styled.CustomTitle>{row.tokens.map((t) => t.symbol).join("-")}</Styled.CustomTitle>
 								<Styled.PlatformName>Balancer</Styled.PlatformName>
 							</div>
@@ -303,7 +303,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 						<div className="d-flex flex-column-reverse flex-lg-row align-items-stretch align-items-lg-center justify-content-end flex-grow-1 flex-lg-grow-0">
 							{Number(balances[0][row.id]) > 0 ? (
 								<Styled.WithdrawButton
-									className="mt-2 mt-lg-0 mr-0 mr-lg-2"
+									className="mt-2 mt-lg-0 me-0 me-lg-2"
 									onClick={() => removeLiquidityDialog("Balancer", pool)}
 								>
 									{t("pools.withdraw")}
@@ -340,7 +340,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 							className="d-flex flex-row-reverse flex-lg-row align-items-center flex-row py-0 py-lg-3"
 						>
 							<PlatformLogo size={32} platform={"curve"} name={"Curve"} />
-							<div className="d-flex flex-column justify-content-center ml-lg-3 mr-3 mr-lg-0">
+							<div className="d-flex flex-column justify-content-center ms-lg-3 me-3 me-lg-0">
 								<Styled.CustomTitle>
 									{row.poolToken
 										? row.poolToken.name
@@ -386,7 +386,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 						<div className="d-flex flex-column-reverse flex-lg-row align-items-stretch align-items-lg-center justify-content-end flex-grow-1 flex-lg-grow-0">
 							{Number(balances[0][row.id]) > 0 ? (
 								<Styled.WithdrawButton
-									className="mt-2 mt-lg-0 mr-0 mr-lg-2"
+									className="mt-2 mt-lg-0 me-0 me-lg-2"
 									onClick={() => removeLiquidityDialog("Curve", pool)}
 								>
 									{t("pools.withdraw")}
@@ -423,7 +423,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 							className="d-flex flex-row-reverse flex-lg-row align-items-center flex-row py-0 py-lg-3"
 						>
 							<PlatformLogo size={32} platform={"yearn"} name={"yearn"} />
-							<div className="d-flex flex-column justify-content-center ml-lg-3 mr-3 mr-lg-0">
+							<div className="d-flex flex-column justify-content-center ms-lg-3 me-3 me-lg-0">
 								<Styled.CustomTitle>
 									{row.shareToken ? row.shareToken.name : row.underlyingToken.name}
 								</Styled.CustomTitle>
@@ -467,7 +467,7 @@ export const PoolsTab = ({ query = "", type, onAddLiquidity, onRemoveLiquidity }
 						<div className="d-flex flex-column-reverse flex-lg-row align-items-stretch align-items-lg-center justify-content-end flex-grow-1 flex-lg-grow-0">
 							{Number(balances[0][row.id]) > 0 ? (
 								<Styled.WithdrawButton
-									className="mt-2 mt-lg-0 mr-0 mr-lg-2"
+									className="mt-2 mt-lg-0 me-0 me-lg-2"
 									onClick={() => removeLiquidityDialog("Yearn", pool)}
 								>
 									{t("pools.withdraw")}

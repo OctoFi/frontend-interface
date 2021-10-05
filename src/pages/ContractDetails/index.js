@@ -102,7 +102,7 @@ const ContractDetails = (props) => {
 								<div className="d-flex align-items-center justify-content">
 									<Link
 										to={`/exchange?outputCurrency=${selected.contract_address}`}
-										className="btn btn-outline-success mr-2"
+										className="btn btn-outline-success me-2"
 									>
 										Buy
 									</Link>

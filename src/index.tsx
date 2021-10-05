@@ -12,6 +12,23 @@ import { NetworkContextName } from "./constants/network";
 import "./i18n";
 import { store } from "./state";
 import ThemeProvider from "./theme";
+// import { ThemeProvider } from "theme-ui";
+// import {
+// 	deep as preset,
+// 	base,
+// 	system,
+// 	funk,
+// 	future,
+// 	roboto,
+// 	dark,
+// 	swiss,
+// 	tosh,
+// 	bootstrap,
+// 	bulma,
+// 	tailwind,
+// 	sketchy,
+// } from "@theme-ui/presets";
+// import { theme as custom } from "./themes/PurpleTheme";
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 
@@ -20,9 +37,14 @@ ReactDOM.render(
 		<Web3ReactProvider getLibrary={getLibrary}>
 			<Web3ProviderNetwork getLibrary={getLibrary}>
 				<Provider store={store}>
+					{/* @ts-ignore */}
+					{/* <ThemeProvider theme={preset}> */}
+					{/* <ThemeProvider theme={custom}> */}
 					<ThemeProvider>
 						<App />
 					</ThemeProvider>
+					{/* </ThemeProvider> */}
+					{/* </ThemeProvider> */}
 				</Provider>
 			</Web3ProviderNetwork>
 		</Web3ReactProvider>

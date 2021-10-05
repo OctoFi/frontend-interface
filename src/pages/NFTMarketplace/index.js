@@ -50,14 +50,14 @@ class NFTMarketplace extends Component {
 								<Button
 									variant={sellSide ? "primary" : "light-primary"}
 									onClick={() => this.toggleSide(OrderSide.Sell)}
-									className={"w-50 mr-1"}
+									className={"w-50 me-1"}
 								>
 									{t("auction")}
 								</Button>
 								<Button
 									variant={buySide ? "primary" : "light-primary"}
 									onClick={() => this.toggleSide(OrderSide.Buy)}
-									className={"w-50 ml-1"}
+									className={"w-50 ms-1"}
 								>
 									{t("bids")}
 								</Button>
@@ -69,14 +69,14 @@ class NFTMarketplace extends Component {
 								<Button
 									variant={onlyForMe ? "primary" : "light-primary"}
 									onClick={this.toggleForMe}
-									className={"w-50 mr-1"}
+									className={"w-50 me-1"}
 								>
 									{t("forMe")}
 								</Button>
 								<Button
 									variant={onlyByMe ? "primary" : "light-primary"}
 									onClick={this.toggleByMe}
-									className={"w-50 ml-1"}
+									className={"w-50 ms-1"}
 								>
 									{t("byMe")}
 								</Button>

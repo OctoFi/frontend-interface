@@ -1,15 +1,25 @@
 import React, { Suspense } from "react";
 import { MemoryRouter } from "react-router";
-import { ThemeProvider } from "styled-components";
 import SplashScreen from "../src/components/SplashScreen";
-import { theme as StyledTheme } from "../src/theme";
+import { ThemeProvider } from "styled-components";
 // import { ThemeProvider } from "theme-ui";
-// import { base as preset } from "@theme-ui/presets";
+import { theme as StyledTheme } from "../src/theme";
+// import { base, system, funk, future, roboto, dark, deep, swiss, tosh, bootstrap, tailwind } from "@theme-ui/presets";
 import "../src/i18n";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // const themes = {
-// 	base: preset,
+// 	light: base,
+// 	system,
+// 	funk,
+// 	future,
+// 	roboto,
+// 	dark,
+// 	deep,
+// 	swiss,
+// 	tosh,
+// 	bootstrap,
+// 	tailwind,
 // };
 
 // Function to obtain the intended theme
@@ -36,6 +46,7 @@ export const decorators = [withThemeProvider];
 
 export const parameters = {
 	actions: { argTypesRegex: "^on[A-Z].*" },
+	backgrounds: { disabled: true },
 	controls: {
 		expanded: true,
 		matchers: {
@@ -53,6 +64,19 @@ export const globalTypes = {
 		toolbar: {
 			icon: "mirror",
 			items: ["light", "dark"],
+			// items: [
+			// 	"light",
+			// 	"system",
+			// 	"funk",
+			// 	"future",
+			// 	"roboto",
+			// 	"dark",
+			// 	"deep",
+			// 	"swiss",
+			// 	"tosh",
+			// 	"bootstrap",
+			// 	"tailwind",
+			// ],
 			showName: true,
 		},
 	},

@@ -10,14 +10,6 @@ export const CellText = styled.span`
 	}
 `;
 
-export const MarketLink = styled.a`
-	color: ${({ theme }) => theme.text1};
-
-	@media (max-width: 991px) {
-		flex-basis: 100px;
-	}
-`;
-
 export const ExploreTableWrap = styled.div`
 	.table {
 		position: relative;
@@ -26,7 +18,7 @@ export const ExploreTableWrap = styled.div`
 		margin-bottom: 0.5rem;
 
 		thead th {
-			background-color: ${({ theme }) => theme.bg5};
+			// background-color: ${({ theme }) => theme.bg5};
 			border-bottom-color: ${({ theme }) => theme.borderColor2} !important;
 			color: ${({ theme }) => theme.text1};
 			font-weight: 500;

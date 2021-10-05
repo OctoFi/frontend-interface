@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "react-bootstrap-icons";
-
-import useTheme from "../../hooks/useTheme";
+import CoinDisplay from "../CoinDisplay";
 import CurrencyText from "../CurrencyText";
-import CurrencyLogo from "../Logo/CurrencyLogo";
 import * as Styled from "./styleds";
 
 export interface PureExploreCardProps {
@@ -29,34 +27,22 @@ export const PureExploreCard = ({
 	price,
 	priceDiff,
 }: PureExploreCardProps) => {
-	const theme = useTheme();
-
 	return (
 		<Styled.Container>
 			<Styled.Wrapper>
-				<Styled.Header className="d-flex align-items-start justify-content-between">
-					<div className={"d-flex align-items-start mb-10"}>
-						<Styled.LogoContainer>
-							{imageComponent ? (
-								imageComponent
-							) : img ? (
-								<Styled.Logo src={img} alt={name} />
-							) : (
-								<CurrencyLogo currency={currency} />
-							)}
-						</Styled.LogoContainer>
-						<Styled.HeaderContent className="d-flex flex-column justify-content-center">
-							<Styled.Title>{name}</Styled.Title>
-							{symbol && <Styled.Symbol>{symbol}</Styled.Symbol>}
-						</Styled.HeaderContent>
-					</div>
+				<div className="d-flex justify-content-between mb-4">
+					<CoinDisplay currency={currency} name={name} symbol={symbol} image={imageComponent || img} />
+
 					{src && (
-						<Link className={"d-none d-md-flex align-items-center justify-content-end"} to={src}>
-							<Styled.Details>Details</Styled.Details>
-							<ChevronRight size={16} color={theme.primary} />
+						<Link
+							className="d-none d-md-flex align-items-center justify-content-end text-decoration-none"
+							to={src}
+						>
+							<span className="me-2">Details</span>
+							<ChevronRight size={16} />
 						</Link>
 					)}
-				</Styled.Header>
+				</div>
 				<div>
 					<Styled.Price>{title || "Price"}</Styled.Price>
 					<div className="d-flex align-items-center justify-content-between">
@@ -71,13 +57,10 @@ export const PureExploreCard = ({
 					</div>
 				</div>
 				{src && (
-					<div
-						className="d-flex d-md-none flex-column align-items-stretch justify-content-center"
-						style={{ marginTop: 24 }}
-					>
-						<Link to={src} className={"d-flex w-100"}>
-							<Styled.DetailsButton>Details</Styled.DetailsButton>
-						</Link>
+					<div className="d-grid d-md-none mt-4">
+						<Styled.DetailsButton to={src} variant="outline-primary" size="lg" className="fs-6">
+							Details
+						</Styled.DetailsButton>
 					</div>
 				)}
 			</Styled.Wrapper>

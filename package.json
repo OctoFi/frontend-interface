@@ -9,7 +9,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint --ext js src",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public -o docs"
   },
   "dependencies": {
     "@0x/assert": "^3.0.28",
@@ -25,6 +25,8 @@
     "@0x/web3-wrapper": "^7.5.4",
     "@apollo/client": "^3.4.7",
     "@apollo/react-hooks": "^4.0.0",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
     "@ethersproject/address": "^5.4.0",
     "@ethersproject/bignumber": "^5.4.1",
     "@ethersproject/constants": "^5.4.0",
@@ -38,6 +40,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@theme-ui/presets": "^0.10.0",
     "@transak/transak-sdk": "^1.0.28",
     "@types/aos": "^3.0.4",
     "@types/dompurify": "^2.2.3",
@@ -157,8 +160,10 @@
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-links": "^6.3.6",
+    "@storybook/addons": "^6.3.7",
     "@storybook/node-logger": "^6.3.6",
     "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.6"
+    "@storybook/react": "^6.3.6",
+    "@storybook/theming": "^6.3.7"
   }
 }

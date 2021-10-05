@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 import { useActiveWeb3React } from "../../hooks/useActiveWeb3React";
 import AppBar from "../AppBar";
 import Header from "../Header";
-import Toolbar from "../Toolbar";
+// import Toolbar from "../Toolbar";
 import Footer from "../Footer";
 import WrongNetwork from "../WrongNetwork";
 import * as Styled from "./styleds";
@@ -32,7 +32,7 @@ export const Page = ({
 		<Styled.PageWrap>
 			<Styled.PageContent>
 				<Header />
-				<Toolbar />
+				{/* <Toolbar /> */}
 				{hero}
 				<Styled.PageContainer className={`page ${fluid ? "container-fluid" : "container-lg"}`}>
 					<div>

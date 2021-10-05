@@ -23,61 +23,79 @@ export const ROUTE_LAUNCHPAD = "/launchpad";
 export const ROUTE_LAUNCHPAD_NEW = "/launchpad/new";
 export const ROUTE_CROSS = "/cross";
 
-export const navigation: Array<{ title: string; path?: string; routes?: Array<{ title: string; path?: string }> }> = [
+export const navigation: Array<{ title: string; path?: string; disabled?: boolean; routes?: Array<{ title: string; path?: string; disabled?: boolean; }> }> = [
     {
         title: "home",
         path: ROUTE_HOME,
+        disabled: false,
     },
     {
         title: "dashboard",
         path: ROUTE_DASHBOARD,
+        disabled: false,
     },
     {
         title: "history",
         path: ROUTE_HISTORY,
+        disabled: false,
     },
     {
         title: "exchange",
         path: ROUTE_EXCHANGE,
+        disabled: true,
     },
     {
         title: "invest",
         path: ROUTE_INVEST,
+        disabled: false,
     },
     {
         title: "pools",
         path: ROUTE_POOLS,
+        disabled: true,
     },
     {
         title: "more",
         routes: [
             {
+                title: "favorites",
+                path: ROUTE_FAVORITES,
+                disabled: false,
+            },
+            {
                 title: "governance",
                 path: ROUTE_GOVERNANCE,
+                disabled: true,
             },
             {
                 title: "nft",
                 path: ROUTE_NFT_MARKETPLACE,
+                disabled: true,
             },
             {
                 title: "crypto",
                 path: ROUTE_ONRAMP,
+                disabled: false,
             },
             {
                 title: "giftCards",
                 path: ROUTE_OFFRAMP,
+                disabled: false,
             },
             {
                 title: "loans",
                 path: ROUTE_LOANS,
+                disabled: false,
             },
             {
                 title: "launchpad",
                 path: ROUTE_LAUNCHPAD,
+                disabled: true,
             },
             {
                 title: "cross",
                 path: ROUTE_CROSS,
+                disabled: true,
             }
         ]
     },

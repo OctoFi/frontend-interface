@@ -1,7 +1,6 @@
-import { Button } from "react-bootstrap";
+import { Accordion, Button, Card, Spinner } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import ExchangeIcon from "../Icons/Exchange";
-import * as Styled from "./styleds";
 
 export type HistorySection = {
 	title: string;
@@ -20,10 +19,6 @@ export type PureTransactionHistoryProps = {
 export const PureTransactionHistory = ({ sections, finished, loading, onLoadMore }: PureTransactionHistoryProps) => {
 	const { t } = useTranslation();
 
-	if (!sections.length) {
-		return null;
-	}
-
 	return (
 		<>
 			{finished && sections.length === 0 && (
@@ -36,26 +31,27 @@ export const PureTransactionHistory = ({ sections, finished, loading, onLoadMore
 
 			{sections.map((section, index) => {
 				return (
-					<section key={`${section.title}-${index}`}>
-						<Styled.SectionHeader>
+					<Card key={`${section.title}-${index}`} className="bg-dark text-white">
+						<Card.Header className="d-flex align-items-center justify-content-between">
 							<div>
-								<Styled.SectionTitle>{section.title}</Styled.SectionTitle>
-								{section.description && (
-									<Styled.SectionSubTitle>{section.description}</Styled.SectionSubTitle>
-								)}
+								<h3 className="mb-0 fs-5">{section.title}</h3>
+								{section.description && <p className="fw-bold mt-2 mb-0">{section.description}</p>}
 							</div>
 							{section.headerAction || null}
-						</Styled.SectionHeader>
-
-						<div>{section.content}</div>
-					</section>
+						</Card.Header>
+						<Card.Body className="p-0">
+							<Accordion flush defaultActiveKey={`accordion-${index}-0`}>
+								{section.content}
+							</Accordion>
+						</Card.Body>
+					</Card>
 				);
 			})}
 
 			{!finished && (
-				<div className="d-flex flex-column align-items-center py-4">
+				<div className="d-flex align-items-center justify-content-around py-4">
 					<Button onClick={onLoadMore} disabled={loading}>
-						{loading ? "Loading…" : "Load More"}
+						{loading ? <Spinner animation="border" role="status" /> : "Load More"}
 					</Button>
 				</div>
 			)}

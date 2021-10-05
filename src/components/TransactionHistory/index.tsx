@@ -7,9 +7,8 @@ import axios from "axios";
 
 import { useActiveWeb3React } from "../../hooks";
 import ExchangeIcon from "../Icons/Exchange";
-import Collapse from "../Collapse";
+import Collapse from "./Collapse";
 import { PureTransactionHistory } from "./TransactionHistory";
-import * as Styled from "./styleds";
 
 const TransactionHistory = () => {
 	const { t } = useTranslation();
@@ -95,7 +94,7 @@ const TransactionHistory = () => {
 					...newTransactions.map((t, ti) => {
 						// @ts-ignore
 						const txn = result[i][t];
-						return <Collapse txn={txn} key={`${t}-${ti}`} />;
+						return <Collapse txn={txn} key={`${t}-${ti}`} ti={ti} />;
 					})
 				);
 			} else {
@@ -104,7 +103,7 @@ const TransactionHistory = () => {
 					content: newTransactions.map((t, ti) => {
 						// @ts-ignore
 						const txn = result[i][t];
-						return <Collapse txn={txn} key={t} />;
+						return <Collapse txn={txn} key={t} ti={ti} />;
 					}),
 				});
 			}
@@ -125,23 +124,21 @@ const TransactionHistory = () => {
 	};
 
 	return (
-		<Styled.CustomCard
-			header={
-				<Styled.Header className={"d-flex align-items-center justify-content-between"}>
-					<Styled.Title>{t("history")}</Styled.Title>
-					{account && transactions && (
-						<Button
-							as={CSVLink}
-							variant={"outline-primary"}
-							data={transactions}
-							filename={`${account}_${blockNumber}__defi_dashboard.csv`}
-						>
-							{t("download", { file: "CSV" })}
-						</Button>
-					)}
-				</Styled.Header>
-			}
-		>
+		<>
+			<div className="d-flex align-items-center justify-content-between mb-4">
+				<h2>{t("history")}</h2>
+				{account && transactions && (
+					<Button
+						as={CSVLink}
+						variant={"outline-primary"}
+						data={transactions}
+						filename={`${account}_${blockNumber}__defi_dashboard.csv`}
+					>
+						{t("download", { file: "CSV" })}
+					</Button>
+				)}
+			</div>
+
 			{account ? (
 				<PureTransactionHistory
 					sections={sections}
@@ -156,7 +153,7 @@ const TransactionHistory = () => {
 					<span className="text-muted fw-light fs-5">{t("errors.walletConnect")}</span>
 				</div>
 			)}
-		</Styled.CustomCard>
+		</>
 	);
 };
 

@@ -1,38 +1,38 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import toast from "react-hot-toast";
+import { Col, Row, Form, ListGroup, Button, Spinner } from "react-bootstrap";
 import { Token, TokenAmount } from "@uniswap/sdk";
 import { serializeError } from "eth-rpc-errors";
 import BigNumber from "bignumber.js";
-import { Col, Row, Form, ListGroup, Button, Spinner } from "react-bootstrap";
 import { ArrowLeft } from "react-feather";
-import toast from "react-hot-toast";
 
-import Page from "../../components/Page";
-import Card from "../../components/Card";
 import useTheme from "../../hooks/useTheme";
-import AddressInputPanel from "../../components/AddressInputPanel";
-import CurrencyLogo from "../../components/Logo/CurrencyLogo";
-import CurrencyInputPanel from "../../components/CurrencyInputPanel";
 import { getContract, shortenAddress } from "../../utils";
 import { UNLIMITED_ALLOWANCE_IN_BASE_UNITS, ZERO_ADDRESS } from "../../constants";
+import { ERC20_ABI } from "../../constants/abis/erc20";
 import { LAUNCHPAD_WETH_TOKEN, LAUNCHPAD_WHITELIST_CONTRACTS, presaleAddresses } from "../../constants/launchpad";
 import PresaleGeneratorABI from "../../constants/abis/Presale/PresaleGenerator.json";
+import PresaleSettingsABI from "../../constants/abis/Presale/PresaleSettings.json";
+import { ROUTE_LAUNCHPAD } from "../../constants/routes";
+import { usePair } from "../../data/Reserves";
 import { useActiveWeb3React } from "../../hooks";
+import { useApproveCallback } from "../../hooks/useApproveCallback";
 import { useContract } from "../../hooks/useContract";
+import { useETHBalances } from "../../state/wallet/hooks";
+import { useWalletModalToggle } from "../../state/application/hooks";
+import Page from "../../components/Page";
+import AddressInputPanel from "../../components/AddressInputPanel";
+import BaseTokenSelector from "../../components/BaseTokenSelector";
+import Card from "../../components/Card";
+import CurrencyLogo from "../../components/Logo/CurrencyLogo";
+import CurrencyInputPanel from "../../components/CurrencyInputPanel";
 import WalletConnectStatus from "../../components/WalletConnectStatus";
 import { AccountState, AccountStateContent, AccountStateTitle } from "../../components/WalletConnectStatus/styleds";
 import GradientButton from "../../components/UI/Button";
-import { useWalletModalToggle } from "../../state/application/hooks";
-import TokenAddressInput from "./TokenInputPanel/TokenInputPanel";
-import { ERC20_ABI } from "../../constants/abis/erc20";
-import BaseTokenSelector from "../../components/BaseTokenSelector";
-import PresaleSettingsABI from "../../constants/abis/Presale/PresaleSettings.json";
-import { useApproveCallback } from "../../hooks/useApproveCallback";
-import { useETHBalances } from "../../state/wallet/hooks";
-import { usePair } from "../../data/Reserves";
+import TokenAddressInput from "./TokenAddressInput";
 import * as Styled from "./styleds";
-import { ROUTE_LAUNCHPAD } from "../../constants/routes";
 
 const PATTERN = /^(0x[a-fA-F0-9]{40})$/;
 
@@ -480,7 +480,7 @@ const NewLaunchpad = (props) => {
 									<>
 										<Col xs={12}>
 											<AccountState type={"danger"} className={"bg-dark mb-3"}>
-												<AccountStateContent className={"d-flex flex-column ml-0"}>
+												<AccountStateContent className={"d-flex flex-column ms-0"}>
 													<AccountStateTitle className={"mb-2 text-success"}>
 														The {baseToken?.symbol} / {selectedToken?.symbol} pair already
 														has liquidity on Uniswap.
@@ -637,7 +637,7 @@ const NewLaunchpad = (props) => {
 															}
 															onClick={changeListingPercent.bind(this, 0)}
 															size={"sm"}
-															className={"mr-2"}
+															className={"me-2"}
 														>
 															0%
 														</Button>
@@ -647,7 +647,7 @@ const NewLaunchpad = (props) => {
 															}
 															onClick={changeListingPercent.bind(this, 10)}
 															size={"sm"}
-															className={"mr-2"}
+															className={"me-2"}
 														>
 															10%
 														</Button>
@@ -657,7 +657,7 @@ const NewLaunchpad = (props) => {
 															}
 															onClick={changeListingPercent.bind(this, 25)}
 															size={"sm"}
-															className={"mr-2"}
+															className={"me-2"}
 														>
 															25%
 														</Button>
@@ -667,7 +667,7 @@ const NewLaunchpad = (props) => {
 															}
 															onClick={changeListingPercent.bind(this, 30)}
 															size={"sm"}
-															className={"mr-2"}
+															className={"me-2"}
 														>
 															30%
 														</Button>
@@ -882,7 +882,7 @@ const NewLaunchpad = (props) => {
 											<Col xs={12} className={"d-flex align-items-center"}>
 												<Button
 													className={
-														"flex-grow-1 mr-1 d-flex align-items-center justify-content-center"
+														"flex-grow-1 me-1 d-flex align-items-center justify-content-center"
 													}
 													variant={"secondary"}
 													style={{ height: 56 }}
@@ -902,7 +902,7 @@ const NewLaunchpad = (props) => {
 												</Button>
 												<Button
 													className={
-														"flex-grow-1 ml-1 d-flex align-items-center justify-content-center"
+														"flex-grow-1 ms-1 d-flex align-items-center justify-content-center"
 													}
 													variant={"primary"}
 													style={{ height: 56 }}

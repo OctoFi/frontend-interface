@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
-	${({ theme }) => theme.flexColumnNoWrap};
+	display: flex;
+		flex-flow: column nowrap;
 	margin: 0;
 	padding: 0;
 	width: 100%;
@@ -72,24 +73,6 @@ export const SectionNumber = styled.div`
 	border-radius: 24px;
 	background-color: ${({ theme }) => theme.primaryLight};
 	color: ${({ theme }) => theme.primary};
-`;
-
-export const AlertContainer = styled.div`
-	border-radius: 12px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	min-height: 56px;
-	padding: 4px 4px 4px 16px;
-	background-color: ${({ theme }) => theme.dangerLight};
-`;
-
-export const AlertText = styled.span`
-	font-weight: 500;
-	font-size: 1rem;
-	color: ${({ theme }) => theme.danger};
-	line-height: 21px;
-	padding-right: 1rem;
 `;
 
 export const Title = styled.span`

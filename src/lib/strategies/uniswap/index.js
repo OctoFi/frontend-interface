@@ -50,12 +50,12 @@ export async function strategy(_space, network, provider, addresses, options, sn
 	if (result && result.users) {
 		result.users.forEach((u) => {
 			u.liquidityPositions
-				.filter((lp) => lp.pair.token0.id == tokenAddress || lp.pair.token1.id == tokenAddress)
+				.filter((lp) => lp.pair.token0.id === tokenAddress || lp.pair.token1.id === tokenAddress)
 				.forEach((lp) => {
 					const token0perUni = lp.pair.reserve0 / lp.pair.totalSupply;
 					const token1perUni = lp.pair.reserve1 / lp.pair.totalSupply;
 					const userScore =
-						lp.pair.token0.id == tokenAddress
+						lp.pair.token0.id === tokenAddress
 							? token0perUni * lp.liquidityTokenBalance
 							: token1perUni * lp.liquidityTokenBalance;
 
