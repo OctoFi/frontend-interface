@@ -350,7 +350,7 @@ const MintHahshList = styled.div`
 	cursor: pointer;
 	margin: 0;
 
-  ul {
+	ul {
 		list-style: none;
 		cursor: pointer;
 		margin: 0;

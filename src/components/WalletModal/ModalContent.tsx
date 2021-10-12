@@ -1,12 +1,13 @@
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { UnsupportedChainIdError } from "@web3-react/core";
-import { injected } from "../../connectors";
+import { useTranslation } from "react-i18next";
+import { isMobile } from "react-device-detect";
+import { SUPPORTED_WALLETS, injected } from "../../connectors";
 import LedgerAccounts from "../LedgerAccounts";
 import NetworkSelector from "../NetworkSelector";
 import UIButton from "../UI/Button";
 import WalletOption from "../WalletOption";
 import * as Styled from "./styleds";
-import { useTranslation } from "react-i18next";
 
 // TODO: duplicated, move to constants
 const WALLET_VIEWS = {

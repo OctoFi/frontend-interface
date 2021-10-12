@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
 	display: flex;
-		flex-flow: column nowrap;
+	flex-flow: column nowrap;
 	margin: 0;
 	padding: 0;
 	width: 100%;
