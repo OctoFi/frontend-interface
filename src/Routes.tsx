@@ -53,8 +53,8 @@ const Routes = () => {
 	return (
 		<Suspense fallback={<SplashScreen />}>
 			<Switch>
-				<Route path={routes.ROUTE_DEFAULT} exact component={Dashboard} />
-				<Route path={routes.ROUTE_HOME} component={HomePage} />
+				<Route path={routes.ROUTE_HOME} exact component={HomePage} />
+				<Route path={routes.ROUTE_DASHBOARD} component={Dashboard} />
 				<Route path={routes.ROUTE_FAVORITES} component={Favorites} />
 				<Route path={routes.ROUTE_HISTORY} component={History} />
 				<Route path={routes.ROUTE_OFFRAMP} component={Offramp} />
