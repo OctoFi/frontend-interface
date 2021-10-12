@@ -1,0 +1,2 @@
+(this["webpackJsonpfrontend-interface"]=this["webpackJsonpfrontend-interface"]||[]).push([[49],{4154:function(e,t,n){"use strict";n.r(t);var s=n(2774),a=n(748),i=n(1);t.default=function(){var e=Object(s.a)().t;return Object(i.jsxs)(a.a,{title:e("favorites"),children:[Object(i.jsx)("h4",{children:"Coming Soon!"}),Object(i.jsx)("p",{children:"Have a look at these Featured Assets in the meantime."})]})}}}]);
+//# sourceMappingURL=49.5f0d3ce3.chunk.js.map
