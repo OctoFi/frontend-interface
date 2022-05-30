@@ -8,7 +8,7 @@ import DepositsIcon from "../../assets/images/account/deposits.svg";
 import NetWorthIcon from "../../assets/images/account/networth.svg";
 import WalletIcon from "../../assets/images/account/wallet.svg";
 
-const icons: any = {
+const icons: { [key: string]: string; } = {
 	assets: AssetIcon,
 	debts: DebtIcon,
 	deposits: DepositsIcon,
@@ -17,49 +17,42 @@ const icons: any = {
 };
 
 export type AccountCardProps = {
-	color?: any;
-	type?: string;
+	color?: string;
 	title: string;
 	value: string | number;
+	type?: string;
 	assets?: any;
-	onShowMore?: any;
+	onShowMore?: () => void;
 	loading?: boolean;
-	show?: boolean;
-	className?: string | undefined;
 };
 
-function AccountCard({
-	color = "primary",
-	type = "wallet",
+const AccountCard = ({
+	color,
 	title,
 	value,
+	type = "wallet",
 	assets,
 	onShowMore,
 	loading = false,
-	show,
-	className,
 	children,
-}: PropsWithChildren<AccountCardProps>) {
+}: PropsWithChildren<AccountCardProps>) => {
 	const theme = useTheme();
 	// @ts-ignore
 	const themeColor = theme[color];
 
-	if (!show) {
-		return null;
-	}
-
 	return (
 		<PureAccountCard
-			className={className}
 			icon={icons[type]}
 			color={themeColor}
 			title={title}
 			value={value}
+			assets={assets}
 			onShowMore={onShowMore}
 			loading={loading}
-			assets={assets}
-		/>
+		>
+			{children}
+		</PureAccountCard>
 	);
-}
+};
 
 export default AccountCard;

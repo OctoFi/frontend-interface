@@ -2,11 +2,11 @@ import styled from "styled-components";
 import SVG from "react-inlinesvg";
 
 export const Card = styled.div`
-	// background-color: ${({ theme }) => theme.modalBG};
+	background-color: ${({ theme }) => theme.modalBG};
 	color: ${({ theme }) => theme.text1};
 	display: flex;
 	flex-direction: column;
-	// border-radius: 12px;
+	border-radius: 12px;
 `;
 
 export const CardHeader = styled.div`

@@ -4,50 +4,45 @@ import Skeleton from "react-loading-skeleton";
 import SVG from "react-inlinesvg";
 import { Button } from "react-bootstrap";
 
-import useTheme from "../../hooks/useTheme";
 import ArrowRightIcon from "../../assets/images/global/arrow-right.svg";
-import CurrencyText from "../CurrencyText";
+import { PureCurrencyText } from "../CurrencyText/CurrencyText";
 import * as Styled from "./styleds";
 
 export interface PureAccountCardProps {
-	className?: string | undefined;
-	color?: any;
+	color?: string;
 	title: string;
 	value: string | number;
 	assets?: any;
-	onShowMore?: any;
+	onShowMore?: () => void;
 	loading?: boolean;
 	icon: string;
 }
 
 export const PureAccountCard = ({
-	className = "",
 	color = "primary",
 	title,
-	value,
+	value = "0",
 	assets,
 	onShowMore,
 	loading = false,
-	children,
 	icon,
+	children,
 }: PropsWithChildren<PureAccountCardProps>) => {
 	const { t } = useTranslation();
-	const theme = useTheme();
-	// @ts-ignore
-	const themeColor = theme[color];
+
 	const showCardBody = children && assets?.balances?.length > 0;
 	const showCardAction = assets?.balances?.length > 5;
 
 	return (
-		<Styled.Card className={className}>
+		<Styled.Card>
 			<Styled.CardHeader>
-				<Styled.CardIcon color={themeColor}>
+				<Styled.CardIcon color={color}>
 					<Styled.CardImg src={icon} />
 				</Styled.CardIcon>
 
 				<Styled.CardHeaderContent>
 					<Styled.Title>{title}</Styled.Title>
-					<Styled.Value>{loading ? <Skeleton width={120} /> : <CurrencyText value={value} />}</Styled.Value>
+					<Styled.Value>{loading ? <Skeleton width={120} /> : <PureCurrencyText value={value} />}</Styled.Value>
 				</Styled.CardHeaderContent>
 			</Styled.CardHeader>
 
