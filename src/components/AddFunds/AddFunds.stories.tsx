@@ -6,18 +6,24 @@ import { PureAddFunds, PureAddFundsProps } from "./AddFunds";
 export default {
 	title: "Components/AddFunds",
 	component: PureAddFunds,
+	argTypes: {
+		value: {
+			control: 'text'
+		}
+	}
 } as Meta;
 
 const Template: Story<PureAddFundsProps> = (args) => <PureAddFunds {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-	title: "Total Balance",
-	label: "Add Funds",
-	balance: "0",
+Default.args = {};
+
+export const LargeValue = Template.bind({});
+LargeValue.args = {
+	value: "5643340483230.027382",
 };
 
-export const LargeBalance = Template.bind({});
-LargeBalance.args = {
-	balance: "5643340483230.027382",
+export const DarkMode = Template.bind({});
+DarkMode.args = {
+	dark: true,
 };

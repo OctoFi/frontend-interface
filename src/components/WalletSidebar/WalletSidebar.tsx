@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Button, Offcanvas, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Wallet } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 
 import { useActiveWeb3React } from "../../hooks/useActiveWeb3React";
+import { AppState } from "../../state";
 import { useWalletModalToggle } from "../../state/application/hooks";
 import { useIsDarkMode } from "../../state/user/hooks";
 import { shortenAddress } from "../../utils";
@@ -16,13 +18,17 @@ import ViewOnExplorer from "../ViewOnExplorer";
 import WalletConnectorName from "../WalletConnectorName";
 
 export const WalletSidebar = () => {
-	const darkMode = useIsDarkMode();
+	const { t } = useTranslation();
 	const { account } = useActiveWeb3React();
+	const darkMode = useIsDarkMode();
 	const toggleConnectModal = useWalletModalToggle();
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const toggleShow = () => setShow((s) => !s);
-	const { t } = useTranslation();
+
+	const overview = useSelector((state: AppState) => state.balances.overview);
+	const onAddFunds = () => alert("add funds");
+	// TODO: format balance for output
 
 	return (
 		<>
@@ -48,7 +54,12 @@ export const WalletSidebar = () => {
 							<OverlayTrigger placement={"top"} overlay={<Tooltip id={"copy-tooltip"}>Copy</Tooltip>}>
 								<CopyButton toCopy={account}>{account && shortenAddress(account)}</CopyButton>
 							</OverlayTrigger>
-							<AddFunds />
+							<AddFunds
+								title={"Total Balance"}
+								value={overview.wallet.total}
+								onAddFunds={onAddFunds}
+								dark={darkMode}
+							/>
 							<ViewOnExplorer />
 							<DisconnectAccount />
 							<TransakButton />
