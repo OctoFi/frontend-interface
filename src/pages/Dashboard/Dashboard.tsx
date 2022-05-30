@@ -59,7 +59,6 @@ export const Dashboard = () => {
 								title={t("netWorth")}
 								value={overview.deposits.total + overview.wallet.total - overview.debts.total}
 								type={"netWorth"}
-								show={true}
 								loading={loading}
 							/>
 						</ListGroup.Item>
@@ -69,7 +68,6 @@ export const Dashboard = () => {
 								title={t("totalAssets")}
 								value={overview.deposits.total + overview.wallet.total}
 								type={"wallet"}
-								show={true}
 								loading={loading}
 							/>
 						</ListGroup.Item>
@@ -78,8 +76,7 @@ export const Dashboard = () => {
 								color={"primary"}
 								title={overview.deposits.title}
 								value={overview.deposits.total}
-								type={overview.deposits.slug}
-								show={true}
+								type={"deposits"}
 								loading={loading}
 								onShowMore={() => onSelectCard(overview.deposits.slug)}
 								assets={overview.deposits}
@@ -92,8 +89,7 @@ export const Dashboard = () => {
 								color={"secondary"}
 								title={overview.debts.title}
 								value={overview.debts.total}
-								type={overview.debts.slug}
-								show={true}
+								type={"debts"}
 								loading={loading}
 								onShowMore={() => onSelectCard(overview.debts.slug)}
 								assets={overview.debts}
