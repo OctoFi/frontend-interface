@@ -11,7 +11,7 @@ import { useActiveWeb3React } from "../../hooks";
 import { useTokenContract } from "../../hooks/useContract";
 import useTheme from "../../hooks/useTheme";
 import { AppState } from "../../state";
-import { useIsDarkMode } from "../../state/user/hooks";
+import { useDarkModeManager } from "../../state/user/useDarkModeManager";
 import { fetchContractHistoricalData, fetchSelectedContract } from "../../state/market/actions";
 import CurrencyText from "../../components/CurrencyText";
 
@@ -22,7 +22,7 @@ const LoadingCol = styled(Col)`
 const ContractDetails = (props) => {
 	const { account } = useActiveWeb3React();
 	const theme = useTheme();
-	const darkMode = useIsDarkMode();
+	const [darkMode] = useDarkModeManager();
 	const dispatch = useDispatch();
 	const marketData = useSelector((state: AppState) => state.market);
 	const [walletBalance, setWalletBalance] = useState(false);

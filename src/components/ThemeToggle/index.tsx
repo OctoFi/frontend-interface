@@ -1,5 +1,5 @@
 import { PureThemeToggle } from "./ThemeToggle";
-import { useDarkModeManager } from "../../state/user/hooks";
+import { useDarkModeManager } from "../../state/user/useDarkModeManager";
 
 const ThemeToggle = () => {
 	const [darkMode, toggleDarkMode] = useDarkModeManager();

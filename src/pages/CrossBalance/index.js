@@ -1,7 +1,7 @@
+import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { Row, Col, Button as BS, ListGroup } from "react-bootstrap";
 import SVG from "react-inlinesvg";
-import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -9,7 +9,7 @@ import TokenLogo from "../../components/Logo/CrossTokenLogo";
 import getConfig from "../../config";
 import Page from "../../components/Page";
 import DefaultCard from "../../components/Card";
-import { useIsDarkMode } from "../../state/user/hooks";
+import { useDarkModeManager } from "../../state/user/useDarkModeManager";
 import {
 	InputGroup,
 	InputGroupFormControl as FormControl,
@@ -171,7 +171,7 @@ function isBaseUSD(coin) {
 
 const CrossBalance = (props) => {
 	const { account } = useActiveWeb3React();
-	const darkMode = useIsDarkMode();
+	const [darkMode] = useDarkModeManager();
 	const allBalances = useAllBalances();
 	const allTokens = useAllTokenDetails();
 	const { t } = useTranslation();

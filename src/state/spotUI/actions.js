@@ -20,7 +20,7 @@ import { getGasInfo, searchToken } from "../selectors";
 import { InsufficientOrdersAmountException, SignedOrderException } from "../../lib/exceptions/order";
 import { getExpirationTimeFromSeconds, getExpirationTimeOrdersFromConfig } from "../../utils/spot/timeUtils";
 import { getContractWrappers } from "../../utils/spot/contractWrapper";
-import { MetamaskSubprovider } from "@0x/subproviders";
+import { MetaMaskSubprovider } from "@0x/subproviders";
 import { getTransactionOptions } from "../../utils/spot/transactions";
 import { ConvertBalanceMustNotBeEqualException } from "../../lib/exceptions/convertBalance";
 
@@ -280,7 +280,7 @@ export const createSignedOrder = (amount, price, side, ethAccount, web3, library
 				affiliateAddress
 			);
 
-			const provider = new MetamaskSubprovider(web3);
+			const provider = new MetaMaskSubprovider(web3);
 			return signatureUtils.ecSignTypedDataOrderAsync(provider, order, ethAccount);
 		} catch (error) {
 			throw new SignedOrderException(error.message);

@@ -11,7 +11,7 @@ export const InputContainer = styled.div`
 	flex: 1;
 `;
 
-export const ContainerRow = styled.div<{ error?: boolean }>`
+export const ContainerRow = styled.div<{ error?: boolean; }>`
 	background-color: ${({ theme }) => theme.bg1};
 	border: 1px solid ${({ error, theme }) => (error ? theme.red1 : theme.bg1)};
 	border-radius: 12px;
@@ -25,16 +25,16 @@ export const ContainerRow = styled.div<{ error?: boolean }>`
 
 export const Label = styled.label`
 	color: ${({ theme }) => theme.text1};
-    display: block;
+	display: block;
 	font-weight: 400;
 	font-size: 0.875rem;
-    margin: 0;
+	margin: 0;
 	padding: 0.875rem;
-    min-width: 160px;
+	min-width: 160px;
 	width: 160px;
 `;
 
-export const Input = styled.input<{ error?: boolean }>`
+export const Input = styled.input<{ error?: boolean; }>`
 	font-size: 1rem;
 	outline: none;
 	border: none;

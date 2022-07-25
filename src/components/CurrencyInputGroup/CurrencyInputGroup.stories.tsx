@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureCurrencyInputGroup, PureCurrencyInputGroupProps } from "./CurrencyInputGroup";
 
 export default {
-	title: "Components/CurrencyInputGroup",
+	title: "To Do/CurrencyInputGroup",
 	component: PureCurrencyInputGroup,
 } as Meta;
 

@@ -1,14 +1,14 @@
 import { Web3Provider } from "@ethersproject/providers";
-import { InjectedConnector } from "@web3-react/injected-connector";
-import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
-import { LedgerConnector } from "@web3-react/ledger-connector";
-import { TrezorConnector } from "@web3-react/trezor-connector";
-import { NetworkConnector } from "./NetworkConnector";
-import { WalletLinkConnector } from "@web3-react/walletlink-connector";
-import { TorusConnector } from "@web3-react/torus-connector";
-import { PortisConnector } from "@web3-react/portis-connector";
-import { POLLING_INTERVAL } from "../constants";
 import { AbstractConnector } from "@web3-react/abstract-connector";
+import { InjectedConnector } from "@web3-react/injected-connector";
+import { LedgerConnector } from "@web3-react/ledger-connector";
+import { PortisConnector } from "@web3-react/portis-connector";
+import { TorusConnector } from "@web3-react/torus-connector";
+import { TrezorConnector } from "@web3-react/trezor-connector";
+import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import { WalletLinkConnector } from "@web3-react/walletlink-connector";
+import { NetworkConnector } from "./NetworkConnector";
+import { POLLING_INTERVAL } from "../constants";
 import getConfig from '../config';
 
 const PORTIS_ID = process.env.REACT_APP_PORTIS_ID;
@@ -16,7 +16,7 @@ const PORTIS_ID = process.env.REACT_APP_PORTIS_ID;
 const config = getConfig();
 
 // @ts-ignore
-const NETWORK_URL = config.nodeRpc
+const NETWORK_URL = config.nodeRpc;
 // @ts-ignore
 const CHAIN_ID = Number(config.chainID);
 
@@ -29,7 +29,7 @@ const chains = [
 	137,
 	100,
 	43114
-]
+];
 
 const networks = {
 	"1": process.env.REACT_APP_NETWORK_URL || "",
@@ -40,7 +40,7 @@ const networks = {
 	"250": "https://rpcapi.fantom.network",
 	"32659": "https://mainnet.anyswap.exchange",
 	"43114": "https://api.avax.network/ext/bc/C/rpc"
-}
+};
 
 export const NETWORK_CHAIN_ID = parseInt(process.env.REACT_APP_CHAIN_ID ?? "1");
 
@@ -149,24 +149,16 @@ export interface WalletInfo {
 	primary?: true;
 	mobile?: true;
 	mobileOnly?: true;
-	supportedNetworks?: string[]
+	supportedNetworks?: string[];
 }
 
-export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
+export const SUPPORTED_WALLETS: { [key: string]: WalletInfo; } = {
 	metamask: {
 		connector: injected,
 		name: "MetaMask",
 		description: "Easy-to-use browser extension.",
 		href: null,
 		color: "#E8831D",
-		supportedNetworks: ["MATIC", "FSN", "FTM", "HT", "BNB", "ETH", "xDAI", "AVAX"]
-	},
-	ledger: {
-		connector: ledger,
-		name: "Ledger",
-		description: "Connect to your Ledger hardware",
-		href: null,
-		color: "#315CF5",
 		supportedNetworks: ["MATIC", "FSN", "FTM", "HT", "BNB", "ETH", "xDAI", "AVAX"]
 	},
 	blank: {
@@ -177,14 +169,13 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
 		color: "#000",
 		supportedNetworks: ["MATIC", "FSN", "FTM", "HT", "BNB", "ETH", "xDAI", "AVAX"]
 	},
-	walletConnect: {
-		connector: walletconnect,
-		name: "WalletConnect",
-		description: "Connect to Wallet that supports walletConnect...",
+	ledger: {
+		connector: ledger,
+		name: "Ledger",
+		description: "Connect to your Ledger hardware",
 		href: null,
-		color: "#4196FC",
-		mobile: true,
-		supportedNetworks: ["ETH"]
+		color: "#315CF5",
+		supportedNetworks: ["MATIC", "FSN", "FTM", "HT", "BNB", "ETH", "xDAI", "AVAX"]
 	},
 	trezor: {
 		connector: trezor,
@@ -192,6 +183,15 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
 		description: "Connect to your Trezor wallet",
 		href: null,
 		color: "#142533",
+		supportedNetworks: ["ETH"]
+	},
+	walletConnect: {
+		connector: walletconnect,
+		name: "WalletConnect",
+		description: "Connect to Wallet that supports walletConnect...",
+		href: null,
+		color: "#4196FC",
+		mobile: true,
 		supportedNetworks: ["ETH"]
 	},
 	trustWallet: {

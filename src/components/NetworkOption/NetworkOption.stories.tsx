@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureNetworkOption, PureNetworkOptionProps } from "./NetworkOption";
 
 export default {
-	title: "Components/NetworkOption",
+	title: "To Do/NetworkOption",
 	component: PureNetworkOption,
 	argTypes: {
 		type: {

@@ -8,7 +8,7 @@ import { useActiveWeb3React } from "../../hooks";
 import { useTokenContract } from "../../hooks/useContract";
 import useTheme from "../../hooks/useTheme";
 import { AppState } from "../../state";
-import { useIsDarkMode } from "../../state/user/hooks";
+import { useDarkModeManager } from "../../state/user/useDarkModeManager";
 import { fetchSelectedCoin, fetchHistoricalData } from "../../state/market/actions";
 import Card, { ResponsiveCard } from "../Card";
 import { CoinChanges } from "./CoinChanges/CoinChanges";
@@ -19,7 +19,7 @@ import HistoricalChart from "../HistoricalChart";
 const CoinDetails = () => {
 	const { account } = useActiveWeb3React();
 	const theme = useTheme();
-	const darkMode = useIsDarkMode();
+	const [darkMode] = useDarkModeManager();
 	const dispatch = useDispatch();
 	const marketData = useSelector((state: AppState) => state.market);
 	const [walletBalance, setWalletBalance] = useState<number>(0);

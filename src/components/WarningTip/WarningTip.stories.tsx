@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureWarningTip, PureWarningTipProps } from "./WarningTip";
 
 export default {
-	title: "Components/WarningTip",
+	title: "To Do/WarningTip",
 	component: PureWarningTip,
 } as Meta;
 

@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureViewOnExplorer, PureViewOnExplorerProps } from "./ViewOnExplorer";
 
 export default {
-	title: "Components/ViewOnExplorer",
+	title: "To Do/ViewOnExplorer",
 	component: PureViewOnExplorer,
 	argTypes: {
 		chainId: {

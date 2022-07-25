@@ -2061,7 +2061,7 @@ const CrossBridge = (props) => {
 							if (walletType === "Ledger") {
 								setMintModelTip("Please confirm transaction on your Ledger");
 							} else {
-								setMintModelTip("Please click confirm button to sign on your Metamask.");
+								setMintModelTip("Please click confirm button to sign on your MetaMask.");
 							}
 						}
 					}}

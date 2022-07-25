@@ -1,33 +1,36 @@
+import { HTMLAttributes } from "react";
 import { Stars } from "react-bootstrap-icons";
 import Skeleton from "react-loading-skeleton";
 import * as Styled from "./styleds";
 
-export type SnapshotSpaceProps = {
+export interface SnapshotSpaceProps {
 	name: string;
 	symbol: string;
 	network: string;
 };
 
-export type PureGovernanceSpaceItemProps = {
+export interface PureGovernanceSpaceItemProps extends HTMLAttributes<HTMLElement> {
 	space: SnapshotSpaceProps;
-	id?: string;
+	// id?: string;
 	to?: string;
 	pinned?: boolean;
 	logo?: string;
 	loading?: boolean;
+	// children?: ReactChild;
 };
 
 export const PureGovernanceSpaceItem = ({
 	space,
-	id,
+	// id,
 	to = "#",
 	pinned = false,
 	logo,
 	loading = false,
+	...attrs
 }: PureGovernanceSpaceItemProps) => {
 	if (loading) {
 		return (
-			<Styled.Wrapper to={"#"} loading={loading} id={id}>
+			<Styled.Wrapper to={"#"} loading={loading} {...attrs}>
 				<Skeleton circle={true} width={88} height={88} className="mb-3" />
 
 				<Styled.Title>
@@ -41,7 +44,7 @@ export const PureGovernanceSpaceItem = ({
 	}
 
 	return (
-		<Styled.Wrapper to={to} loading={loading} id={id}>
+		<Styled.Wrapper to={to} loading={loading} {...attrs}>
 			{pinned && (
 				<Styled.StarWrapper>
 					<Stars size={18} />

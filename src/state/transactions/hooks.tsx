@@ -45,6 +45,11 @@ export function useTransactionAdder(): (
 	);
 }
 
+// we want the latest one to come first, so return negative if a is after b
+// function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
+// 	return b.addedTime - a.addedTime;
+// }
+
 // returns all the transactions for the current chain
 export function useAllTransactions(): { [txHash: string]: TransactionDetails } {
 	const { chainId } = useActiveWeb3React();

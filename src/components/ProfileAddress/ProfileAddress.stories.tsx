@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureProfileAddress, PureProfileAddressProps } from "./ProfileAddress";
 
 export default {
-	title: "Components/ProfileAddress",
+	title: "To Do/ProfileAddress",
 	component: PureProfileAddress,
 } as Meta;
 

@@ -15,7 +15,7 @@ export const CardBody = styled.div`
 	align-items: center;
 `;
 
-export const CardIcon = styled.div<{ color: string }>`
+export const CardIcon = styled.div<{ color: string; }>`
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;

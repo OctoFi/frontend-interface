@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureTransactionHistory, PureTransactionHistoryProps } from "./TransactionHistory";
 
 export default {
-	title: "Components/TransactionHistory",
+	title: "To Do/TransactionHistory",
 	component: PureTransactionHistory,
 } as Meta;
 

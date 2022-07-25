@@ -1,11 +1,10 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
 import OfframpItems from "../../data/OfframpItems";
 
 import { PureOfframpItem, PureOfframpItemProps } from "./OfframpItem";
 
 export default {
-	title: "Components/OfframpItem",
+	title: "To Do/OfframpItem",
 	component: PureOfframpItem,
 } as Meta;
 

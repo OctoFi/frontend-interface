@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { SplashScreen } from "./SplashScreen";
 
 export default {
-	title: "Components/SplashScreen",
+	title: "To Do/SplashScreen",
 	component: SplashScreen,
 } as Meta;
 

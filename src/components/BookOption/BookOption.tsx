@@ -2,7 +2,7 @@ import * as Styled from "./styleds";
 
 export interface PureBookOptionProps {
 	active?: boolean;
-	onChange?: () => void;
+	onChange?(): void;
 	isSell?: boolean;
 	isBuy?: boolean;
 }

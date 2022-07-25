@@ -8,7 +8,6 @@ import ApplicationUpdater from "./state/application/updater";
 import ListsUpdater from "./state/lists/updater";
 import MultiCallUpdater from "./state/multicall/updater";
 import TransactionUpdater from "./state/transactions/updater";
-// import { useIsDarkMode } from "./state/user/hooks";
 import UserUpdater from "./state/user/updater";
 import SplashScreen from "./components/SplashScreen";
 import RouteChanger from "./components/RouteChanger/routeChanger";
@@ -23,7 +22,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import "./global.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useDarkModeManager } from "./state/user/hooks";
+import { useDarkModeManager } from "./state/user/useDarkModeManager";
 
 function Updaters() {
 	return (
@@ -38,8 +37,7 @@ function Updaters() {
 }
 
 function App() {
-	// const darkMode = useIsDarkMode();
-	const [, toggleDarkMode] = useDarkModeManager();
+	const [darkMode, toggleDarkMode] = useDarkModeManager();
 
 	useKeyboardShortcut(["Shift", "*"], () => toggleDarkMode(), { overrideSystem: false });
 

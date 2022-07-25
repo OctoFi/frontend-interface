@@ -68,7 +68,8 @@
         "notConnected": "Wallet Not Connected",
         "connected": "Wallet Connected",
         "connectedTo": "You are connected to",
-        "title": "Wallet"
+        "title": "Wallet",
+        "changeWallet": "Change wallet"
     },
     "tokens": {
         "assets": "Assets",
@@ -471,5 +472,6 @@
     "settings": "Settings",
     "selectAccount": "Select Account",
     "selectDefaultAddress": "Select default address",
-    "walletConnectError": "Error connecting. Try refreshing the page."
+    "walletConnectError": "Error connecting. Try refreshing the page.",
+    "walletConnectNetwork": "Please connect to the appropriate network."
 }

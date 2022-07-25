@@ -8,8 +8,8 @@ export const errorsBuySell = {
 export const errorsWallet = {
 	mmLoading: "Please wait while we load your wallet",
 	mmConnect: "Click to Connect MetaMask",
-	mmLocked: "Metamask Locked",
-	mmNotInstalled: "Metamask not installed",
+	mmLocked: "MetaMask Locked",
+	mmNotInstalled: "MetaMask not installed",
 	mmGetExtension: "Get Chrome Extension ",
 	mmWrongNetwork: `Wrong network: switch to ${NETWORK_NAME}`,
 };

@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureHeader, PureHeaderProps } from "./Header";
 
 export default {
-	title: "Components/Header",
+	title: "To Do/Header",
 	component: PureHeader,
 } as Meta;
 

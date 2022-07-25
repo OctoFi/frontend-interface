@@ -1,81 +1,59 @@
 import { useEffect, useState } from "react";
-import { Button, Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import { AbstractConnector } from "@web3-react/abstract-connector";
 import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 
 import getNetConfig from "../../config";
-import { chainList } from "../../config/coinbase/nodeConfig";
 import { SUPPORTED_WALLETS } from "../../connectors";
-import LedgerPaths from "../../constants/ledgerPaths";
 import { NetworkContextName } from "../../constants/network";
-import useENSName from "../../hooks/useENSName";
 import usePrevious from "../../hooks/usePrevious";
 import { ApplicationModal } from "../../state/application/actions";
 import { useModalOpen, useWalletModalToggle } from "../../state/application/hooks";
-// import { isTransactionRecent, useAllTransactions } from "../../state/transactions/hooks";
-// import { TransactionDetails } from "../../state/transactions/reducer";
 
-// import AccountDetails from "../AccountDetails";
+import LedgerAccounts from "../LedgerAccounts";
+import LedgerPaths from "../LedgerPaths";
 import { Modal } from "../Modal/bootstrap";
-import { ModalContent } from "./ModalContent";
+import WalletSelector from "../WalletSelector";
 import * as Styled from "./styleds";
 
-// TODO: duplicated, move to constants
 const WALLET_VIEWS = {
 	OPTIONS: "options",
-	OPTIONS_SECONDARY: "options_secondary",
-	ACCOUNT: "account",
 	PENDING: "pending",
 	LEDGER_PATH: "ledger_select_path",
 	LEDGER_ACCOUNT: "ledger_select_account",
 };
 
-// we want the latest one to come first, so return negative if a is after b
-// function newTransactionsFirst(a: TransactionDetails, b: TransactionDetails) {
-// 	return b.addedTime - a.addedTime;
-// }
-
 export const PureWalletModal = () => {
+	const { t } = useTranslation();
+
 	// important that these are destructed from the account-specific web3-react context
 	const { active, account, connector, activate, error, chainId } = useWeb3React();
-	const [selectedPath, setSelectedPath] = useState<string>(LedgerPaths[0].path);
-	const [customPath, setCustomPath] = useState<string>("");
-	const [selected, setSelected] = useState<string | undefined>(undefined);
-	const [chainChanged, setChainChanged] = useState(false);
-	const [networks, setNetworks] = useState([]);
-	const [usedChain] = useState(chainId);
-
-	let config = getNetConfig();
-
-	const { ENSName } = useENSName(account ?? undefined);
-
 	const contextNetwork = useWeb3React(NetworkContextName);
-
-	// const allTransactions = useAllTransactions();
-
-	// const sortedRecentTransactions = useMemo(() => {
-	// 	const txs = Object.values(allTransactions);
-	// 	return txs.filter(isTransactionRecent).sort(newTransactionsFirst);
-	// }, [allTransactions]);
-
-	// const pendingTransactions = sortedRecentTransactions.filter((tx) => !tx.receipt).map((tx) => tx.hash);
-	// const confirmedTransactions = sortedRecentTransactions.filter((tx) => tx.receipt).map((tx) => tx.hash);
-
-	const [walletView, setWalletView] = useState(WALLET_VIEWS.ACCOUNT);
-
+	const [walletView, onSetWalletView] = useState(WALLET_VIEWS.OPTIONS);
 	const [, setPendingWallet] = useState<AbstractConnector | undefined>();
 	const [isLedger, setIsLedger] = useState<boolean>(false);
-
-	// @ts-ignore
-	const [selectedNetwork, setSelectedNetwork] = useState<string>(config.symbol);
-
-	const [pendingError, setPendingError] = useState<boolean>(false);
+	const [modalTitle, setModalTitle] = useState<string>('Connect to Wallet');
 
 	const walletModalOpen = useModalOpen(ApplicationModal.WALLET);
 	const toggleWalletModal = useWalletModalToggle();
-
 	const previousAccount = usePrevious(account);
+	// close modal when a connection is successful
+	const activePrevious = usePrevious(active);
+	const connectorPrevious = usePrevious(connector);
+
+	let config = getNetConfig();
+
+	useEffect(() => {
+		if (walletView === WALLET_VIEWS.LEDGER_PATH) {
+			setModalTitle("Select HD Derivation path");
+		} else if (walletView === WALLET_VIEWS.LEDGER_ACCOUNT) {
+			setModalTitle("Select Account");
+		} else {
+			setModalTitle("Connect to Wallet");
+		}
+	}, [walletView]);
 
 	// close on connection, when logged out before
 	useEffect(() => {
@@ -84,80 +62,26 @@ export const PureWalletModal = () => {
 		}
 	}, [account, previousAccount, toggleWalletModal, walletModalOpen, isLedger]);
 
-	// always reset to account view
+	// always reset to options view
 	useEffect(() => {
 		if (walletModalOpen) {
-			setPendingError(false);
-			setWalletView(WALLET_VIEWS.ACCOUNT);
+			// setPendingError(false);
+			onSetWalletView(WALLET_VIEWS.OPTIONS);
 		}
 	}, [walletModalOpen]);
 
-	useEffect(() => {
-		setChainChanged(true);
-	}, [chainId]);
-
-	useEffect(() => {
-		// @ts-ignore
-		setNetworks(chainList[config.env]);
-	}, [config]);
-
-	// close modal when a connection is successful
-	const activePrevious = usePrevious(active);
-	const connectorPrevious = usePrevious(connector);
 	useEffect(() => {
 		if (
 			walletModalOpen &&
 			((active && !activePrevious) || (connector && connector !== connectorPrevious && !error))
 		) {
-			setWalletView(WALLET_VIEWS.ACCOUNT);
+			onSetWalletView(WALLET_VIEWS.OPTIONS);
 		}
-	}, [setWalletView, active, error, connector, walletModalOpen, activePrevious, connectorPrevious]);
-
-	if (!contextNetwork.active && !active) {
-		return null;
-	}
-
-	const onConnectLedger = () => {
-		let path = selectedPath;
-		if (path === "custom") {
-			path = customPath;
-		}
-
-		const ledger = SUPPORTED_WALLETS.ledger;
-		tryActivation(ledger.connector(path), true);
-	};
-
-	const onUpdateNetwork = (item: any) => {
-		// @ts-ignore
-		if (item.symbol === config?.symbol || !item.isSwitch) {
-			return;
-		}
-		setSelectedNetwork(item.symbol);
-		localStorage.setItem(config.ENV_NODE_CONFIG, item.label);
-		config = getNetConfig();
-
-		if (item?.chainID !== 1 && window.ethereum) {
-			const networkDetails = {
-				chainId: `0x${item?.chainID?.toString(16)}`,
-				chainName: `${item.name} Mainnet`,
-				nativeCurrency: {
-					name: item.name,
-					symbol: item.symbol,
-					decimals: 18,
-				},
-				rpcUrls: [item.rpc],
-			};
-
-			// @ts-ignore
-			window?.ethereum?.request({
-				method: "wallet_addEthereumChain",
-				params: [networkDetails],
-			});
-		}
-	};
+	}, [onSetWalletView, active, error, connector, walletModalOpen, activePrevious, connectorPrevious]);
 
 	const tryActivation = async (connector: AbstractConnector | undefined, ledgerConnect = false) => {
 		setIsLedger(ledgerConnect);
+
 		Object.keys(SUPPORTED_WALLETS).map((key) => {
 			if (connector === SUPPORTED_WALLETS[key].connector) {
 				return SUPPORTED_WALLETS[key].name;
@@ -165,43 +89,59 @@ export const PureWalletModal = () => {
 			return true;
 		});
 
-		setPendingWallet(connector); // set wallet for pending view
-		setWalletView(WALLET_VIEWS.PENDING);
+		// set wallet for pending view
+		setPendingWallet(connector);
+		onSetWalletView(WALLET_VIEWS.PENDING);
 
 		// if the connector is walletconnect and the user has already tried to connect, manually reset the connector
 		if (connector instanceof WalletConnectConnector && connector.walletConnectProvider?.wc?.uri) {
 			connector.walletConnectProvider = undefined;
 		}
 
+		if (ledgerConnect) {
+			// onSetWalletView(WALLET_VIEWS.LEDGER_ACCOUNT);
+			onSetWalletView(WALLET_VIEWS.LEDGER_PATH);
+		}
+
 		connector &&
 			activate(connector, undefined, true)
 				.then((res) => {
-					// if(ledgerConnect) {
-					setWalletView(WALLET_VIEWS.LEDGER_ACCOUNT);
-					// }
+					if (ledgerConnect) {
+						onSetWalletView(WALLET_VIEWS.LEDGER_ACCOUNT);
+					}
 				})
 				.catch((error) => {
 					if (error instanceof UnsupportedChainIdError) {
-						activate(connector); // a little janky...can't use setError because the connector isn't set
+						// a little janky...can't use setError because the connector isn't set
+						activate(connector);
 					} else {
-						setPendingError(true);
+						// setPendingError(true);
 					}
 				});
 	};
 
+	const onHideModal = () => {
+		// setPendingError(false);
+		setPendingWallet(undefined);
+		toggleWalletModal();
+	};
+
+	const onGoBack = () => {
+		// setPendingError(false);
+		onSetWalletView(WALLET_VIEWS.OPTIONS);
+		// Sets selected wallet. constant moved to WalletSelector
+		// setSelected(undefined);
+	};
+
+	if (!contextNetwork.active && !active) {
+		return null;
+	}
+
 	return (
 		<Modal
 			show={walletModalOpen}
-			onHide={() => {
-				setPendingError(false);
-				setPendingWallet(undefined);
-				toggleWalletModal();
-
-				if (chainChanged && usedChain !== chainId) {
-					window.location.reload();
-				}
-			}}
-			dialogClassName={walletView !== WALLET_VIEWS.LEDGER_PATH ? "wallet-modal" : "wallet-modal--ledger"}
+			onHide={onHideModal}
+			dialogClassName={"wallet-modal"}
 			backdropClassName={"backdrop"}
 			size={"md"}
 			centered
@@ -209,59 +149,46 @@ export const PureWalletModal = () => {
 			<Modal.Header closeButton>
 				{walletView === WALLET_VIEWS.LEDGER_PATH && (
 					<button
-						className={"btn btn-light-primary me-4 d-none d-xl-block"}
-						onClick={() => {
-							setPendingError(false);
-							setWalletView(WALLET_VIEWS.ACCOUNT);
-							setSelected(undefined);
-						}}
+						className="btn btn-light-primary me-4 d-none d-xl-block"
+						onClick={onGoBack}
 					>
 						Back
 					</button>
 				)}
 				<Modal.Title>
-					{walletView === WALLET_VIEWS.LEDGER_PATH
-						? "Select HD Derivation path"
-						: walletView === WALLET_VIEWS.LEDGER_ACCOUNT
-						? "Select Account"
-						: account && walletView === WALLET_VIEWS.ACCOUNT
-						? "Account"
-						: "Connect to Wallet"}
+					{modalTitle}
 				</Modal.Title>
-				{account && walletView === WALLET_VIEWS.ACCOUNT && (
-					<Button
-						variant="outline-primary"
-						size="sm"
-						className={"ms-auto me-2 d-none d-xl-block"}
-						onClick={() => {
-							setWalletView(WALLET_VIEWS.OPTIONS);
-						}}
-					>
-						Change
-					</Button>
-				)}
 			</Modal.Header>
 			<Modal.Body>
 				{
 					// @ts-ignore
 					chainId && chainId !== config?.chainID && (
-						<Alert variant="warning">Please connect to the appropriate network.</Alert>
+						<Alert variant="warning">{t("walletConnectNetwork")}</Alert>
 					)
 				}
 				<Styled.Wrapper>
-					<ModalContent
-						error={error}
-						account={account}
-						walletView={walletView}
-						onSetWalletView={setWalletView}
-						onUpdateNetwork={onUpdateNetwork}
-						networks={networks}
-						selectedNetwork={selectedNetwork}
-						onConnectLedger={onConnectLedger}
-						setPendingError={setPendingError}
-						pendingError={pendingError}
-						setSelected={setSelected}
-					/>
+					{/* error?: UnsupportedChainIdError | boolean */}
+					{error ? (
+						<Styled.UpperSection>
+							<Styled.ContentWrapper>
+								{error instanceof UnsupportedChainIdError ? (
+									<Alert variant="warning">{t("walletConnectNetwork")}</Alert>
+								) : (
+									<Alert variant="warning">{t("walletConnectError")}</Alert>
+								)}
+							</Styled.ContentWrapper>
+						</Styled.UpperSection>
+					) : walletView === WALLET_VIEWS.LEDGER_ACCOUNT ? (
+						<LedgerAccounts onDone={() => onSetWalletView(WALLET_VIEWS.OPTIONS)} />
+					) : walletView === WALLET_VIEWS.LEDGER_PATH ? (
+						<LedgerPaths tryActivation={tryActivation} />
+					) : (
+						<Styled.UpperSection>
+							<Styled.ContentWrapper>
+								<WalletSelector tryActivation={tryActivation} />
+							</Styled.ContentWrapper>
+						</Styled.UpperSection>
+					)}
 				</Styled.Wrapper>
 			</Modal.Body>
 		</Modal>

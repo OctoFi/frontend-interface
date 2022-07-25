@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureThemeToggle, PureThemeToggleProps } from "./ThemeToggle";
 
 export default {
-	title: "Components/ThemeToggle",
+	title: "To Do/ThemeToggle",
 	component: PureThemeToggle,
 } as Meta;
 

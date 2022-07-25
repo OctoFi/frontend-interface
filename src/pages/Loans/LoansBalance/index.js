@@ -65,6 +65,7 @@ const CellText = styled.span`
 	font-size: 0.875rem;
 	color: ${({ theme }) => theme.text1};
 
+	// TODO: remove custom styling
 	&.fs-6 {
 		font-size: 1rem;
 	}

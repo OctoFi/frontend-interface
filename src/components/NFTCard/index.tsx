@@ -57,7 +57,7 @@ const NFTCard = ({ loading, order, seaport }: NFTCardProps) => {
 						referrerAddress: NFT_REFERRER_ACCOUNT,
 					});
 					toast.success(message);
-				} catch (error) {
+				} catch (error: any) {
 					if (error?.hasOwnProperty("code") && error?.code !== 4001) {
 						toast.error(error?.message || t("errors.default"));
 					}
@@ -140,9 +140,8 @@ const NFTCard = ({ loading, order, seaport }: NFTCardProps) => {
 				) : (
 					<Styled.StyledButton
 						onClick={buyHandler}
-						className={`btn btn-${
-							isOwner ? "secondary-light" : "primary"
-						} btn-block py-1 mt-auto d-flex align-items-center justify-content-center`}
+						className={`btn btn-${isOwner ? "secondary-light" : "primary"
+							} btn-block py-1 mt-auto d-flex align-items-center justify-content-center`}
 					>
 						{!account ? (
 							"Connect Wallet"

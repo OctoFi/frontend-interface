@@ -1,11 +1,11 @@
 import { Button, Card } from "react-bootstrap";
+import { useDarkModeManager } from "../../state/user/useDarkModeManager";
 
 export interface PureAddFundsProps {
 	title?: string;
 	value?: string | number;
 	label?: string;
 	onAddFunds?: () => void;
-	dark?: boolean;
 }
 
 export const PureAddFunds = ({
@@ -13,13 +13,14 @@ export const PureAddFunds = ({
 	value = "0",
 	label = "Add Funds",
 	onAddFunds,
-	dark = false,
 }: PureAddFundsProps) => {
+	const [darkMode] = useDarkModeManager();
+
 	return (
 		<div>
 			<Card
-				bg={dark ? 'dark text-white' : ''}
-				border={dark ? 'secondary' : ''}
+				bg={darkMode ? 'dark text-white' : ''}
+				border={darkMode ? 'secondary' : ''}
 				className="border rounded-0 rounded-top p-2 text-center"
 			>
 				<p className="m-0 fs-6">{title}</p>

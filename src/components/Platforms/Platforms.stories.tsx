@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PurePlatforms, PurePlatformsProps } from "./Platforms";
 
 export default {
-	title: "Components/Platforms",
+	title: "To Do/Platforms",
 	component: PurePlatforms,
 } as Meta;
 

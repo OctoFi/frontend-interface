@@ -1,18 +1,18 @@
 import { Row, Col } from "react-bootstrap";
 import GovernanceSpaceItem from "../GovernanceSpaceItem";
 
-export type SnapshotSpaceProps = {
+export interface SnapshotSpaceProps {
   name: string;
   symbol: string;
   network: string;
 };
 
-export type GovernanceSpaceListProps = {
+export interface GovernanceSpaceListProps {
   items: Array<SnapshotSpaceItemProps>;
   loading: boolean | any;
 };
 
-export type SnapshotSpaceItemProps = {
+export interface SnapshotSpaceItemProps {
   space: SnapshotSpaceProps;
   key: string;
   pinned: boolean;

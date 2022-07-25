@@ -4,7 +4,7 @@ import { Story, Meta } from "@storybook/react";
 import { PureSafetyAlert, PureSafetyAlertProps } from "./SafetyAlert";
 
 export default {
-	title: "Components/SafetyAlert",
+	title: "To Do/SafetyAlert",
 	component: PureSafetyAlert,
 } as Meta;
 

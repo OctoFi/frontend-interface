@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureWalletOption, PureWalletOptionProps } from "./WalletOption";
 
 export default {
-	title: "Components/WalletOption",
+	title: "To Do/WalletOption",
 	component: PureWalletOption,
 	argTypes: {
 		type: {
@@ -40,12 +38,4 @@ Disabled.args = {
 	id: "MetaMaskButton",
 	name: "MetaMask",
 	disabled: true,
-};
-
-export const LoadingColor = Template.bind({});
-LoadingColor.args = {
-	id: "MetaMaskButton",
-	name: "MetaMask",
-	loading: true,
-	loadingColor: "danger",
 };

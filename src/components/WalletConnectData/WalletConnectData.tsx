@@ -1,7 +1,7 @@
 import React from "react";
 import QRCode from "qrcode.react";
 import styled from "styled-components";
-import { useIsDarkMode } from "../../state/user/hooks";
+import { useDarkModeManager } from "../../state/user/useDarkModeManager";
 
 const QRCodeWrapper = styled.div`
 	display: flex;
@@ -18,7 +18,7 @@ export interface PureWalletConnectDataProps {
 }
 
 export const PureWalletConnectData = ({ uri = "", size }: PureWalletConnectDataProps) => {
-	const isDark = useIsDarkMode();
+	const [darkMode] = useDarkModeManager();
 
 	return (
 		<QRCodeWrapper>
@@ -26,8 +26,8 @@ export const PureWalletConnectData = ({ uri = "", size }: PureWalletConnectDataP
 				<QRCode
 					size={size}
 					value={uri}
-					bgColor={isDark ? "#333639" : "white"}
-					fgColor={isDark ? "white" : "black"}
+					bgColor={darkMode ? "#333639" : "white"}
+					fgColor={darkMode ? "white" : "black"}
 				/>
 			)}
 		</QRCodeWrapper>

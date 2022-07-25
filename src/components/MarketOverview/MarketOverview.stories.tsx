@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureMarketOverview, PureMarketOverviewProps } from "./MarketOverview";
 
 export default {
-	title: "Components/MarketOverview",
+	title: "To Do/MarketOverview",
 	component: PureMarketOverview,
 } as Meta;
 

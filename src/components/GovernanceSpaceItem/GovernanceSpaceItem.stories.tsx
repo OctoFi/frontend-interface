@@ -1,6 +1,4 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureGovernanceSpaceItem, PureGovernanceSpaceItemProps, SnapshotSpaceProps } from "./GovernanceSpaceItem";
 
 const space: SnapshotSpaceProps = {
@@ -11,7 +9,7 @@ const space: SnapshotSpaceProps = {
 const logo: string = "https://raw.githubusercontent.com/bonustrack/snapshot-spaces/master/spaces/octofi/space.png";
 
 export default {
-	title: "Components/GovernanceSpaceItem",
+	title: "To Do/GovernanceSpaceItem",
 	component: PureGovernanceSpaceItem,
 } as Meta;
 

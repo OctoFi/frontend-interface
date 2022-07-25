@@ -1,11 +1,9 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureBrandLogo, PureBrandLogoProps } from "./BrandLogo";
 import LogoImage from "../../assets/images/logo.svg";
 
 export default {
-	title: "Components/BrandLogo",
+	title: "To Do/BrandLogo",
 	component: PureBrandLogo,
 } as Meta;
 

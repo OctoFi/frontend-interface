@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as routes from "./constants/routes";
 import { AppState } from "./state";
 import { fetchCurrencies } from "./state/currency/actions";
-import { useDarkModeManager } from "./state/user/hooks";
+import { useDarkModeManager } from "./state/user/useDarkModeManager";
 import HomePage from "./pages/Home";
 import SplashScreen from "./components/SplashScreen";
 

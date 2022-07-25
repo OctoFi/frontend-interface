@@ -3,7 +3,7 @@ import * as Styled from "./styleds";
 
 export interface PureCurrencyTextProps {
 	symbol?: string;
-	value: string;
+	value: number | string;
 	separate?: boolean;
 	hide?: boolean;
 }
@@ -18,9 +18,8 @@ export const PureCurrencyText = ({ symbol = "$", value, separate = false, hide =
 			</span>
 		);
 	}
-
-	if (separate) {
-		const splitedValue = value.split(".");
+	else if (separate) {
+		const splitedValue = value.toString().split(".");
 		return (
 			<span>
 				{symbol + splitedValue[0]}

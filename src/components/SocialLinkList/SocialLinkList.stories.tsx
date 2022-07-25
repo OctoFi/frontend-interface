@@ -1,11 +1,9 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { SocialItems } from "../../data/SocialItems";
 import { PureSocialLinkList, PureSocialLinkListProps } from "./SocialLinkList";
 
 export default {
-	title: "Components/SocialLinkList",
+	title: "To Do/SocialLinkList",
 	component: PureSocialLinkList,
 } as Meta;
 

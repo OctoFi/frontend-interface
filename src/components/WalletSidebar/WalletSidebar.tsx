@@ -7,11 +7,12 @@ import { useTranslation } from "react-i18next";
 import { useActiveWeb3React } from "../../hooks/useActiveWeb3React";
 import { AppState } from "../../state";
 import { useWalletModalToggle } from "../../state/application/hooks";
-import { useIsDarkMode } from "../../state/user/hooks";
+import { useDarkModeManager } from "../../state/user/useDarkModeManager";
 import { shortenAddress } from "../../utils";
 import AddFunds from "../AddFunds";
 import CopyButton from "../CopyButton";
 import DisconnectAccount from "../DisconnectAccount";
+import NetworkSelector from "../NetworkSelector";
 import ProfileAddress from "../ProfileAddress";
 import TransakButton from "../TransakButton";
 import ViewOnExplorer from "../ViewOnExplorer";
@@ -20,9 +21,9 @@ import WalletConnectorName from "../WalletConnectorName";
 export const WalletSidebar = () => {
 	const { t } = useTranslation();
 	const { account } = useActiveWeb3React();
-	const darkMode = useIsDarkMode();
+	const [darkMode] = useDarkModeManager();
 	const toggleConnectModal = useWalletModalToggle();
-	const [show, setShow] = useState(false);
+	const [show, setShow] = useState<boolean>(false);
 	const handleClose = () => setShow(false);
 	const toggleShow = () => setShow((s) => !s);
 
@@ -43,6 +44,8 @@ export const WalletSidebar = () => {
 				<Offcanvas.Body>
 					{!account ? (
 						<div className="d-grid">
+							<NetworkSelector />
+
 							<Button variant={"primary"} onClick={toggleConnectModal}>
 								{t("menu.connect")}
 							</Button>
@@ -58,10 +61,12 @@ export const WalletSidebar = () => {
 								title={"Total Balance"}
 								value={overview.wallet.total}
 								onAddFunds={onAddFunds}
-								dark={darkMode}
 							/>
 							<ViewOnExplorer />
 							<DisconnectAccount />
+							<Button variant={"primary"} onClick={toggleConnectModal}>
+								{t("wallet.changeWallet")}
+							</Button>
 							<TransakButton />
 						</div>
 					)}

@@ -1,6 +1,4 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureNetworkSelector, PureNetworkSelectorProps } from "./NetworkSelector";
 
 const networkOptions = [
@@ -21,7 +19,7 @@ const networkOptions = [
 ];
 
 export default {
-	title: "Components/NetworkSelector",
+	title: "To Do/NetworkSelector",
 	component: PureNetworkSelector,
 } as Meta;
 

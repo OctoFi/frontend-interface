@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureCircleLoading, PureCircleLoadingProps } from "./CircleLoading";
 
 export default {
-	title: "Components/CircleLoading",
+	title: "To Do/CircleLoading",
 	component: PureCircleLoading,
 } as Meta;
 

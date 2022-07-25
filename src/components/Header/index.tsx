@@ -1,8 +1,8 @@
-import { useIsDarkMode } from "../../state/user/hooks";
+import { useDarkModeManager } from "../../state/user/useDarkModeManager";
 import { PureHeader } from "./Header";
 
 const Header = () => {
-	const darkMode = useIsDarkMode();
+	const [darkMode] = useDarkModeManager();
 
 	return <PureHeader dark={darkMode} />;
 };

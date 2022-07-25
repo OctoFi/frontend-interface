@@ -1,12 +1,12 @@
 import * as Styled from "./styleds";
 
-export type GasPricesProps = {
-	prices: Array<any>;
+export type PureGasPricesProps = {
+	prices: Array<Array<string>>;
 	selected?: string;
 	onSelectPrice: (T: string) => void;
 };
 
-const GasPrices = ({ prices, selected, onSelectPrice }: GasPricesProps) => {
+export const PureGasPrices = ({ prices, selected, onSelectPrice }: PureGasPricesProps) => {
 	return (
 		<Styled.GasRow>
 			{prices.map((item) => {
@@ -34,5 +34,3 @@ const GasPrices = ({ prices, selected, onSelectPrice }: GasPricesProps) => {
 		</Styled.GasRow>
 	);
 };
-
-export default GasPrices;

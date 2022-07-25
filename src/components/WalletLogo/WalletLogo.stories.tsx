@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureWalletLogo, PureWalletLogoProps } from "./WalletLogo";
 
 export default {
-	title: "Components/WalletLogo",
+	title: "To Do/WalletLogo",
 	component: PureWalletLogo,
 	argTypes: {
 		type: {

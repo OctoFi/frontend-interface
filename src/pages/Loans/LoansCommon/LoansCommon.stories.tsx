@@ -4,7 +4,7 @@ import { Story, Meta } from "@storybook/react";
 import { PureLoansCommon } from "./LoansCommon";
 
 export default {
-	title: "Components/LoansCommon",
+	title: "To Do/LoansCommon",
 	component: PureLoansCommon,
 } as Meta;
 

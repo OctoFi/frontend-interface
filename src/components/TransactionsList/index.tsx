@@ -2,13 +2,13 @@ import { useTranslation } from "react-i18next";
 import { getExplorerLink } from "../../utils/explorer";
 import * as Styled from "./styleds";
 
-const TransactionsList = ({ transactions }) => {
+const TransactionsList = ({ transactions }: { transactions: any; }) => {
 	const { t } = useTranslation();
 
 	return (
 		<Styled.Box>
 			{transactions && transactions?.length > 0 ? (
-				transactions.map((txn) => {
+				transactions.map((txn: any) => {
 					return (
 						<Styled.TxnBox
 							href={txn?.hash ? getExplorerLink(1, txn?.hash, "transaction") : "#"}

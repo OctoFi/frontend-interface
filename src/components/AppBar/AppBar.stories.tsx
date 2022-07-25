@@ -1,11 +1,9 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureAppBar, PureAppBarProps } from "./AppBar";
 import { appbarRoutes } from "../../constants/routes";
 
 export default {
-	title: "Components/AppBar",
+	title: "To Do/AppBar",
 	component: PureAppBar,
 } as Meta;
 

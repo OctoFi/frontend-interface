@@ -1,11 +1,9 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureValueCard, PureValueCardProps } from "./ValueCard";
 import AssetIcon from "../../assets/images/account/assets.svg";
 
 export default {
-	title: "Components/ValueCard",
+	title: "To Do/ValueCard",
 	component: PureValueCard,
 } as Meta;
 

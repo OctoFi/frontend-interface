@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureAddFunds, PureAddFundsProps } from "./AddFunds";
 
 export default {
-	title: "Components/AddFunds",
+	title: "Done/AddFunds",
 	component: PureAddFunds,
 	argTypes: {
 		value: {
@@ -25,5 +23,5 @@ LargeValue.args = {
 
 export const DarkMode = Template.bind({});
 DarkMode.args = {
-	dark: true,
+	
 };

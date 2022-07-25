@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureWalletConnectorName, PureWalletConnectorNameProps } from "./WalletConnectorName";
 
 export default {
-	title: "Components/WalletConnectorName",
+	title: "To Do/WalletConnectorName",
 	component: PureWalletConnectorName,
 } as Meta;
 

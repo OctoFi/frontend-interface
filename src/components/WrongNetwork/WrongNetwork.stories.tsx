@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureWrongNetwork, PureWrongNetworkProps } from "./WrongNetwork";
 
 export default {
-	title: "Components/WrongNetwork",
+	title: "To Do/WrongNetwork",
 	component: PureWrongNetwork,
 } as Meta;
 

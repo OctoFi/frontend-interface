@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureCopyButton, PureCopyButtonProps } from "./CopyButton";
 
 export default {
-	title: "Components/CopyButton",
+	title: "To Do/CopyButton",
 	component: PureCopyButton,
 } as Meta;
 

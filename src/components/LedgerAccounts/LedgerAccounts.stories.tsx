@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureLedgerAccounts, PureLedgerAccountsProps } from "./LedgerAccounts";
 
 export default {
-	title: "Components/LedgerAccounts",
+	title: "To Do/LedgerAccounts",
 	component: PureLedgerAccounts,
 } as Meta;
 

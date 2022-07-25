@@ -116,7 +116,7 @@ export function theme(darkMode?: boolean): DefaultTheme {
 }
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-	const darkMode = useIsDarkMode();
+	const [darkMode] = useDarkModeManager();
 	const themeObject = useMemo(() => theme(darkMode), [darkMode]);
 
 	return <StyledComponentsThemeProvider theme={themeObject}>{children}</StyledComponentsThemeProvider>;

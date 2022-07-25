@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureQuestionTooltip, PureQuestionTooltipProps } from "./QuestionTooltip";
 
 export default {
-	title: "Components/QuestionTooltip",
+	title: "To Do/QuestionTooltip",
 	component: PureQuestionTooltip,
 } as Meta;
 

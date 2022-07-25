@@ -1,11 +1,9 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PurePlatformCard, PurePlatformCardProps } from "./PlatformCard";
 import Image from "../../assets/images/ethereum-logo.png";
 
 export default {
-	title: "Components/PlatformCard",
+	title: "To Do/PlatformCard",
 	component: PurePlatformCard,
 } as Meta;
 

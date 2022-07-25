@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureNetworkLogo, PureNetworkLogoProps } from "./NetworkLogo";
 
 export default {
-	title: "Components/NetworkLogo",
+	title: "To Do/NetworkLogo",
 	component: PureNetworkLogo,
 	argTypes: {
 		type: {

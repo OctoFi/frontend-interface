@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureCurrencyText, PureCurrencyTextProps } from "./CurrencyText";
 
 export default {
-	title: "Components/CurrencyText",
+	title: "To Do/CurrencyText",
 	component: PureCurrencyText,
 } as Meta;
 

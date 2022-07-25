@@ -1,10 +1,8 @@
-import React from "react";
 import { Story, Meta } from "@storybook/react";
-
 import { PureHero, PureHeroProps } from "./Hero";
 
 export default {
-	title: "Components/Hero",
+	title: "To Do/Hero",
 	component: PureHero,
 } as Meta;
 
